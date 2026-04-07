@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CL Growth Academy × StreamLab AI — Proposal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #FFFFFF;
+            color: #111111;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* Header */
+        .header {
+            padding: 72px 0 52px;
+            border-bottom: 1px solid #EBEBEB;
+        }
+
+        .header-eyebrow {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 18px;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: #111;
+            line-height: 1.15;
+            margin-bottom: 10px;
+        }
+
+        .header-sub {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 28px;
+        }
+
+        .pill-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 5px 14px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid #E0E0E0;
+            color: #666;
+        }
+
+        .pill.active {
+            background: #111;
+            color: #FFF;
+            border-color: #111;
+        }
+
+        /* Sections */
+        .section {
+            padding: 60px 0;
+            border-bottom: 1px solid #EBEBEB;
+        }
+
+        .section:last-of-type { border-bottom: none; }
+
+        .eyebrow {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 22px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            color: #111;
+        }
+
+        h3 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #111;
+        }
+
+        p {
+            color: #555;
+            margin-bottom: 16px;
+            line-height: 1.75;
+        }
+
+        p:last-child { margin-bottom: 0; }
+
+        blockquote {
+            border-left: 2px solid #111;
+            padding: 2px 0 2px 20px;
+            margin: 28px 0;
+            font-style: italic;
+            color: #222;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* Roadmap table */
+        .roadmap-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 28px;
+        }
+
+        .roadmap-table th {
+            text-align: left;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #999;
+            padding: 0 20px 14px 0;
+            border-bottom: 1px solid #EBEBEB;
+        }
+
+        .roadmap-table td {
+            padding: 18px 20px 18px 0;
+            border-bottom: 1px solid #F4F4F4;
+            vertical-align: middle;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .roadmap-table tr.hero td {
+            color: #111;
+            font-weight: 500;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 5px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            white-space: nowrap;
+        }
+
+        .badge.dark { background: #111; color: #FFF; }
+        .badge.light { background: #F0F0F0; color: #999; }
+
+        /* Phase 1A Hero Card */
+        .hero-card {
+            background: #F7F7F7;
+            border: 1px solid #E0E0E0;
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 36px;
+        }
+
+        .hero-card-eyebrow {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .hero-card h2 {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+
+        .hero-price {
+            font-size: 14px;
+            color: #777;
+            margin-bottom: 28px;
+        }
+
+        .hero-price strong { color: #111; font-weight: 600; }
+
+        /* Before / After */
+        .ba-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin: 28px 0;
+        }
+
+        .ba-card {
+            padding: 22px;
+            border-radius: 10px;
+            background: #FFF;
+            border: 1px solid #E8E8E8;
+        }
+
+        .ba-card.after { border-color: #111; }
+
+        .ba-label {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #BBBBBB;
+            margin-bottom: 12px;
+        }
+
+        .ba-card.after .ba-label { color: #111; }
+
+        .ba-card p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.65;
+            margin: 0;
+        }
+
+        .ba-card.after p { color: #333; }
+
+        /* Flow diagram */
+        .flow {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 24px;
+            background: #FFF;
+            border: 1px solid #E8E8E8;
+            border-radius: 10px;
+            margin: 28px 0;
+        }
+
+        .flow-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            min-width: 64px;
+        }
+
+        .flow-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: #F0F0F0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .flow-icon.cta {
+            background: #111;
+            font-size: 15px;
+            font-weight: 700;
+            color: #FFF;
+        }
+
+        .flow-label {
+            font-size: 10px;
+            font-weight: 500;
+            color: #999;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .flow-arrow {
+            color: #CCCCCC;
+            font-size: 14px;
+        }
+
+        /* Deliverables */
+        .dl {
+            list-style: none;
+            margin: 20px 0 0;
+        }
+
+        .dl li {
+            display: flex;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid #F0F0F0;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.5;
+            align-items: flex-start;
+        }
+
+        .dl li:last-child { border-bottom: none; }
+
+        .dl li::before {
+            content: "→";
+            color: #BBBBBB;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        /* Collapsible toggles */
+        .toggle-group { margin-top: 20px; }
+
+        .toggle {
+            border: 1px solid #E8E8E8;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .toggle summary {
+            list-style: none;
+            padding: 22px 26px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: background 0.15s;
+        }
+
+        .toggle summary::-webkit-details-marker { display: none; }
+        .toggle summary:hover { background: #FAFAFA; }
+
+        .toggle-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .toggle-left h3 { margin: 0; font-size: 15px; }
+
+        .toggle-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .toggle-price {
+            font-size: 13px;
+            font-weight: 600;
+            color: #888;
+        }
+
+        .toggle-timeline {
+            font-size: 12px;
+            color: #BBBBBB;
+        }
+
+        .chevron {
+            font-size: 11px;
+            color: #BBBBBB;
+            transition: transform 0.2s;
+        }
+
+        details[open] .chevron { transform: rotate(180deg); }
+
+        .toggle-body {
+            padding: 0 26px 26px;
+            border-top: 1px solid #F4F4F4;
+        }
+
+        .toggle-body p {
+            margin-top: 20px;
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+
+        /* Investment table */
+        .inv-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 28px;
+        }
+
+        .inv-table th {
+            text-align: left;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #999;
+            padding: 0 0 14px;
+            border-bottom: 1px solid #EBEBEB;
+        }
+
+        .inv-table td {
+            padding: 16px 0;
+            border-bottom: 1px solid #F4F4F4;
+            font-size: 14px;
+            color: #666;
+            vertical-align: middle;
+        }
+
+        .inv-table td:first-child { width: 80px; }
+
+        .inv-table tr.total td {
+            border-bottom: none;
+            border-top: 2px solid #111;
+            padding-top: 20px;
+            font-weight: 700;
+            color: #111;
+            font-size: 15px;
+        }
+
+        .inv-note {
+            margin-top: 18px;
+            font-size: 12px;
+            color: #AAAAAA;
+            line-height: 1.6;
+        }
+
+        /* Why us */
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 28px;
+        }
+
+        .why-card {
+            padding: 24px;
+            border: 1px solid #EBEBEB;
+            border-radius: 10px;
+        }
+
+        .why-card h3 {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .why-card p {
+            font-size: 13px;
+            color: #777;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Steps */
+        .steps {
+            list-style: none;
+            counter-reset: steps;
+            margin-top: 28px;
+        }
+
+        .steps li {
+            counter-increment: steps;
+            display: flex;
+            gap: 18px;
+            padding: 18px 0;
+            border-bottom: 1px solid #F4F4F4;
+            align-items: flex-start;
+        }
+
+        .steps li:last-child { border-bottom: none; }
+
+        .steps li::before {
+            content: counter(steps);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #111;
+            color: #FFF;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .step-title {
+            font-weight: 600;
+            font-size: 14px;
+            color: #111;
+            margin-bottom: 2px;
+        }
+
+        .step-desc {
+            font-size: 13px;
+            color: #888;
+        }
+
+        /* CTA */
+        .cta {
+            background: #111;
+            border-radius: 16px;
+            padding: 48px 40px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            color: #FFF;
+            font-size: 26px;
+            margin-bottom: 8px;
+        }
+
+        .cta-sub {
+            color: rgba(255,255,255,0.55);
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        .cta-amount {
+            font-size: 48px;
+            font-weight: 700;
+            color: #FFF;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .cta-terms {
+            font-size: 13px;
+            color: rgba(255,255,255,0.4);
+            margin-bottom: 32px;
+        }
+
+        .cta-contact {
+            font-size: 14px;
+            color: rgba(255,255,255,0.5);
+        }
+
+        .cta-contact a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* Footer */
+        .footer {
+            padding: 48px 0 56px;
+            text-align: center;
+            font-size: 12px;
+            color: #CCCCCC;
+        }
+
+        /* Responsive */
+        @media (max-width: 580px) {
+            .ba-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; }
+            .header h1 { font-size: 26px; }
+            .hero-card { padding: 26px; }
+            .cta { padding: 36px 24px; }
+            .cta-amount { font-size: 36px; }
+            .flow { justify-content: flex-start; overflow-x: auto; }
+            .toggle-timeline { display: none; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- Header -->
+    <div class="header">
+        <div class="header-eyebrow">StreamLab AI × CL Growth Academy</div>
+        <h1>Agency Automation<br>Proposal</h1>
+        <div class="header-sub">Prepared for Chris Lapa, Founder</div>
+        <div class="pill-row">
+            <span class="pill active">Phase 1A · Today's Decision</span>
+            <span class="pill">April 2026</span>
+            <span class="pill">4-Phase Roadmap · $21,000 AUD total</span>
+        </div>
+    </div>
+
+    <!-- The Situation -->
+    <div class="section">
+        <div class="eyebrow">The Situation</div>
+        <p>You've built a capable, specialist team and two years of hard-won NDIS expertise. The problem isn't capability — it's that everything still flows through you manually. Every call. Every brief. Every task assignment.</p>
+        <blockquote>"If I don't do that, it stops. The team will never know."</blockquote>
+        <p>At current volume this is manageable. At 1.5× clients, this breaks. This proposal builds the infrastructure that lets your agency scale without scaling you.</p>
+    </div>
+
+    <!-- Roadmap -->
+    <div class="section">
+        <div class="eyebrow">The Full Roadmap</div>
+        <p>Four phases. One end-to-end system. From the moment a lead shows up to the monthly report your client receives. Each phase is a separate decision — you only commit to the next after the previous is delivered.</p>
+
+        <table class="roadmap-table">
+            <thead>
+                <tr>
+                    <th style="width:100px">Phase</th>
+                    <th>Name</th>
+                    <th>Covers</th>
+                    <th style="text-align:right">Investment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="hero">
+                    <td><span class="badge dark">1A · Today</span></td>
+                    <td><strong>Brief Engine</strong></td>
+                    <td>Call → brief → approval → team tasks</td>
+                    <td style="text-align:right"><strong>$3,000</strong></td>
+                </tr>
+                <tr>
+                    <td><span class="badge light">1B</span></td>
+                    <td>Full Chris OS</td>
+                    <td>Lead intake · discovery · proposal · contract · onboarding · invoicing</td>
+                    <td style="text-align:right">$6,000</td>
+                </tr>
+                <tr>
+                    <td><span class="badge light">2A</span></td>
+                    <td>Agency Delivery</td>
+                    <td>Task automation · NDIS playbooks · client asset approval · weekly check-in</td>
+                    <td style="text-align:right">$7,000</td>
+                </tr>
+                <tr>
+                    <td><span class="badge light">2B</span></td>
+                    <td>Reporting & Retention</td>
+                    <td>Reporting pipeline · monthly reports · QBR · team SOPs</td>
+                    <td style="text-align:right">$5,000</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Phase 1A Hero -->
+    <div class="section">
+        <div class="eyebrow">Today's Decision</div>
+        <p>This is the only thing we're asking you to commit to today.</p>
+
+        <div class="hero-card">
+            <div class="hero-card-eyebrow">Phase 1A</div>
+            <h2>The Brief Engine</h2>
+            <div class="hero-price"><strong>$3,000 AUD</strong> · 3–4 weeks · 50% upfront, 50% on sign-off</div>
+
+            <p>One outcome: you finish a client call and the brief is in Notion the next morning — drafted, structured, and waiting for your approval. You sign this off when you've lived it, not when we tell you it's done.</p>
+
+            <div class="ba-grid">
+                <div class="ba-card">
+                    <div class="ba-label">Before</div>
+                    <p>Call ends → 2–3 hours of manual work → process notes → brief AI → Slack message each team member → field questions → team finally moves</p>
+                </div>
+                <div class="ba-card after">
+                    <div class="ba-label">After</div>
+                    <p>Call ends → brief is in Notion overnight → you read it in 10 minutes → approve in Slack → team gets their tasks automatically</p>
+                </div>
+            </div>
+
+            <h3>How it works — 7 steps, no jargon</h3>
+            <div class="flow">
+                <div class="flow-node">
+                    <div class="flow-icon">🎙️</div>
+                    <div class="flow-label">Granola<br>records</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-node">
+                    <div class="flow-icon">⚡</div>
+                    <div class="flow-label">N8N/Make<br>triggers</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-node">
+                    <div class="flow-icon">🤖</div>
+                    <div class="flow-label">Claude<br>drafts brief</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-node">
+                    <div class="flow-icon">📋</div>
+                    <div class="flow-label">Notion<br>saves draft</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-node">
+                    <div class="flow-icon">💬</div>
+                    <div class="flow-label">Slack<br>notifies Chris</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-node">
+                    <div class="flow-icon cta">✓</div>
+                    <div class="flow-label">Chris<br>approves</div>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-node">
+                    <div class="flow-icon">📌</div>
+                    <div class="flow-label">Asana tasks<br>auto-created</div>
+                </div>
+            </div>
+
+            <h3>What gets built</h3>
+            <ul class="dl">
+                <li>Granola.ai connected to Zoom and Google Meet — auto-records every call from the moment it ends</li>
+                <li>N8N/Make.com workflow: transcript → Claude API → strategy brief generated overnight</li>
+                <li>Notion set up as your brief hub — every draft stored, searchable, version-tracked per client</li>
+                <li>Slack approval gate — you read the brief via Notion link, approve or request changes directly in Slack</li>
+                <li>Asana tasks auto-created on approval — team notified instantly with their assignments</li>
+                <li>End-to-end tested with 2 real client calls before sign-off</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Collapsible phases -->
+    <div class="section">
+        <div class="eyebrow">The Full Build — What Comes Next</div>
+        <p>Each phase builds on the last. Click to expand any phase — the full scope, deliverables, and timeline are all mapped out. Nothing is left to figure out later.</p>
+
+        <div class="toggle-group">
+
+            <!-- Phase 1B -->
+            <details class="toggle">
+                <summary>
+                    <div class="toggle-left">
+                        <span class="badge light">1B</span>
+                        <h3>Full Chris OS</h3>
+                    </div>
+                    <div class="toggle-right">
+                        <span class="toggle-price">$6,000 AUD</span>
+                        <span class="toggle-timeline">5–6 weeks</span>
+                        <span class="chevron">▼</span>
+                    </div>
+                </summary>
+                <div class="toggle-body">
+                    <p>Everything else Chris personally does to run his agency — automated. From a lead appearing in your inbox to a fully onboarded client with a scope brief ready for the team.</p>
+                    <ul class="dl">
+                        <li>Notion as lightweight CRM — lead pipeline, lead records, full client profiles replacing Gemini Gems</li>
+                        <li>Lead intake automation — web form + email inquiry → Notion lead record auto-created</li>
+                        <li>Lead qualification scoring — AI checks against NDIS ICP before a discovery call task is created</li>
+                        <li>AI-drafted initial reply → Slack approval → sends automatically</li>
+                        <li>Discovery call → transcript → AI generates follow-up email + proposal draft for Chris's review</li>
+                        <li>Contract generation + e-signature → Notion status updated automatically on signing</li>
+                        <li>Onboarding questionnaire auto-sent → scope brief generated → client workspace created in Notion</li>
+                        <li>Invoice auto-generated at each milestone → payment status tracked in Notion → overdue follow-up triggered</li>
+                        <li>Contract renewal reminder — Slack alert at 60 days before expiry</li>
+                    </ul>
+                </div>
+            </details>
+
+            <!-- Phase 2A -->
+            <details class="toggle">
+                <summary>
+                    <div class="toggle-left">
+                        <span class="badge light">2A</span>
+                        <h3>Agency Delivery</h3>
+                    </div>
+                    <div class="toggle-right">
+                        <span class="toggle-price">$7,000 AUD</span>
+                        <span class="toggle-timeline">6–7 weeks</span>
+                        <span class="chevron">▼</span>
+                    </div>
+                </summary>
+                <div class="toggle-body">
+                    <p>Where Phase 1 ends (approved brief), Phase 2A begins. Your team executes consistently, at quality, without you in the middle — role-specific briefs, internal QA, and client approval all automated.</p>
+                    <ul class="dl">
+                        <li>Role-specific Asana task automation — Google Ads, Social/Meta, and Designer each get a channel-specific brief and task set</li>
+                        <li>Internal QA step — team completes → QA review gate → then to client (nothing goes out unchecked)</li>
+                        <li>Client asset approval workflow — Chris sends to client, client approves, team publishes</li>
+                        <li>NDIS Social Ads Playbook — audience segmentation, Meta vs LinkedIn strategy, compliance requirements codified</li>
+                        <li>NDIS Google Ads Playbook — keyword strategy, campaign structure by provider type, negative keyword library</li>
+                        <li>Channel-specific brief generator — one approved brief produces three role-specific outputs automatically</li>
+                        <li>Weekly performance check-in — Monday Asana trigger per active client for mid-month optimisation</li>
+                        <li>Client communication cadence — Friday AI-drafted status email, Chris approves in Slack, sends automatically</li>
+                        <li>Google Drive campaign folder auto-created each cycle, linked directly in team Asana tasks</li>
+                    </ul>
+                </div>
+            </details>
+
+            <!-- Phase 2B -->
+            <details class="toggle">
+                <summary>
+                    <div class="toggle-left">
+                        <span class="badge light">2B</span>
+                        <h3>Reporting & Retention</h3>
+                    </div>
+                    <div class="toggle-right">
+                        <span class="toggle-price">$5,000 AUD</span>
+                        <span class="toggle-timeline">4–5 weeks</span>
+                        <span class="chevron">▼</span>
+                    </div>
+                </summary>
+                <div class="toggle-body">
+                    <p>The full system closed out. Client reporting automated, retention built in, and your team fully documented and self-sufficient.</p>
+                    <ul class="dl">
+                        <li>Reporting data pipeline — AgencyAnalytics pulling live data from Meta Ads + Google Ads automatically</li>
+                        <li>Monthly client report auto-generated — what we planned, what we executed, what the numbers show, what's next</li>
+                        <li>Chris approval gate on every report before it goes to the client</li>
+                        <li>Quarterly Business Review (QBR) workflow — Claude generates strategic review doc from 3 months of data</li>
+                        <li>Team SOPs documented per role — any new hire up to speed on any client within an hour</li>
+                        <li>Full SOP documentation — developer-handoff ready, AI-tool-agnostic architecture</li>
+                    </ul>
+                </div>
+            </details>
+
+        </div>
+    </div>
+
+    <!-- Investment -->
+    <div class="section">
+        <div class="eyebrow">Investment Summary</div>
+        <table class="inv-table">
+            <thead>
+                <tr>
+                    <th>Phase</th>
+                    <th>Deliverable</th>
+                    <th>Timeline</th>
+                    <th style="text-align:right">Investment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="badge dark">1A</span></td>
+                    <td>Brief Engine</td>
+                    <td>3–4 weeks</td>
+                    <td style="text-align:right"><strong>$3,000 AUD</strong></td>
+                </tr>
+                <tr>
+                    <td><span class="badge light">1B</span></td>
+                    <td>Full Chris OS</td>
+                    <td>5–6 weeks</td>
+                    <td style="text-align:right">$6,000 AUD</td>
+                </tr>
+                <tr>
+                    <td><span class="badge light">2A</span></td>
+                    <td>Agency Delivery</td>
+                    <td>6–7 weeks</td>
+                    <td style="text-align:right">$7,000 AUD</td>
+                </tr>
+                <tr>
+                    <td><span class="badge light">2B</span></td>
+                    <td>Reporting & Retention</td>
+                    <td>4–5 weeks</td>
+                    <td style="text-align:right">$5,000 AUD</td>
+                </tr>
+                <tr>
+                    <td colspan="3">Retainer — Ongoing system partner</td>
+                    <td style="text-align:right">$1,500 AUD/month</td>
+                </tr>
+                <tr class="total">
+                    <td colspan="3">Total Build</td>
+                    <td style="text-align:right">$21,000 AUD</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="inv-note">
+            Payment terms: 50% upfront, 50% on delivery per phase. You never pay for the next phase until the previous is delivered and signed off.<br>
+            Your commitment today: $1,500 AUD. · Estimated monthly tool costs post-build: ~$80–120 AUD/month.
+        </div>
+    </div>
+
+    <!-- Why StreamLab -->
+    <div class="section">
+        <div class="eyebrow">Why StreamLab AI</div>
+        <div class="why-grid">
+            <div class="why-card">
+                <h3>Built for founders, not teams</h3>
+                <p>We design systems for businesses where the founder is the bottleneck and the IP is in their head. We've done this before.</p>
+            </div>
+            <div class="why-card">
+                <h3>AI-agnostic architecture</h3>
+                <p>Everything is API-first. If Claude gets replaced by something better, we swap it in. Your NDIS expertise doesn't get locked into any single tool.</p>
+            </div>
+            <div class="why-card">
+                <h3>You keep control</h3>
+                <p>Every automation has an approval gate. Nothing goes to your team or your clients without your sign-off. The system is guided, not autonomous.</p>
+            </div>
+            <div class="why-card">
+                <h3>Phases, not projects</h3>
+                <p>You see results before you commit to the next step. No upfront commitment to the full build. Phase 1A works, then we talk about what's next.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Next Steps -->
+    <div class="section">
+        <div class="eyebrow">Next Steps</div>
+        <ol class="steps">
+            <li>
+                <div>
+                    <div class="step-title">Confirm Phase 1A</div>
+                    <div class="step-desc">Sign the one-page SOW. Clear scope, clear outcome.</div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="step-title">Pay 50% upfront — $1,500 AUD</div>
+                    <div class="step-desc">Invoice sent same day. Balance due on sign-off.</div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="step-title">Set up Granola.ai</div>
+                    <div class="step-desc">Free account + Zoom plugin. 10 minutes. We'll walk you through it.</div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="step-title">Kick-off call with John & Ruth</div>
+                    <div class="step-desc">We align on the first client to test with. Build begins.</div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <div class="step-title">First live brief in 3–4 weeks</div>
+                    <div class="step-desc">You finish a real client call. The brief is waiting for you the next morning.</div>
+                </div>
+            </li>
+        </ol>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta">
+        <h2>Start with Phase 1A</h2>
+        <p class="cta-sub">One decision today. The rest follows when you've seen it work.</p>
+        <div class="cta-amount">$3,000 AUD</div>
+        <div class="cta-terms">3–4 weeks · 50% upfront · Sign-off when you've lived it</div>
+        <div class="cta-contact">One message to John — <a href="mailto:john@streamlabai.com">john@streamlabai.com</a></div>
+    </div>
+
+    <div class="footer">
+        Prepared by John Maclang & Ruth Maclang · StreamLab AI · April 2026
+    </div>
+
+</div>
+</body>
+</html>
