@@ -12,7 +12,7 @@ body{font-family:"Inter",-apple-system,sans-serif;background:#fff;color:#111;lin
 .page{max-width:780px;margin:0 auto;padding:0 48px}
 
 /* ── Cover ── */
-.cover{min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:64px 0 56px;border-bottom:1px solid #E0E0E0}
+.cover{display:flex;flex-direction:column;justify-content:space-between;padding:72px 0 64px;border-bottom:1px solid #E0E0E0;min-height:680px}
 .cover-logo{height:42px;width:auto;display:block;margin-bottom:60px}
 .cover-eyebrow{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#999;margin-bottom:16px}
 .cover h1{font-size:46px;font-weight:700;letter-spacing:-.03em;color:#111;line-height:1.08;margin-bottom:10px}
@@ -209,7 +209,7 @@ h2{font-size:22px;font-weight:700;letter-spacing:-.02em;color:#111;margin-bottom
   <div class="section">
     <div class="section-eyebrow">03 — Scope of Work</div>
     <h2>Deliverables</h2>
-    <p class="section-intro">The following seven deliverables are included in Phase 1A.</p>
+    <p class="section-intro">The following six deliverables are included in Phase 1A.</p>
     <div class="deliverables">
       <div class="dl-item">
         <div class="dl-num">01</div>
@@ -221,24 +221,25 @@ h2{font-size:22px;font-weight:700;letter-spacing:-.02em;color:#111;margin-bottom
       <div class="dl-item">
         <div class="dl-num">02</div>
         <div class="dl-content">
-          <h3>AI Brief Generator</h3>
-          <p>A Claude-powered workflow trained on CL Growth Academy's marketing SOP. Takes Granola call output and produces a structured client brief — objectives, deliverables, tone, and timeline — ready for internal use and client delivery.</p>
+          <h3>SOP + Knowledge Base Training</h3>
+          <p>CL Growth Academy's marketing SOP is loaded into Claude as a structured knowledge base. This trains the AI on Chris's actual methodology before any brief is generated.</p>
         </div>
       </div>
       <div class="dl-item">
         <div class="dl-num">03</div>
         <div class="dl-content">
-          <h3>Asana Project Automation</h3>
-          <p>On brief generation, a new Asana project is created automatically with tasks assigned, due dates set, and the brief attached. No manual project setup required.</p>
+          <h3>AI Brief Generator</h3>
+          <p>A Claude-powered workflow trained on CL Growth Academy's marketing SOP. Takes Granola call output and produces a structured client brief — objectives, deliverables, tone, and timeline — ready for internal use and client delivery.</p>
         </div>
       </div>
       <div class="dl-item">
         <div class="dl-num">04</div>
         <div class="dl-content">
-          <h3>Automated Client Communication</h3>
-          <p>A templated client-facing message (email or SMS — defined in build) is triggered on project creation. Chris reviews before send on first run; subsequent sends are fully automated.</p>
+          <h3>Asana Project Automation</h3>
+          <p>On brief generation, a new Asana project is created automatically with tasks assigned, due dates set, and the brief attached. No manual project setup required.</p>
         </div>
       </div>
+
       <div class="dl-item">
         <div class="dl-num">05</div>
         <div class="dl-content">
@@ -246,15 +247,9 @@ h2{font-size:22px;font-weight:700;letter-spacing:-.02em;color:#111;margin-bottom
           <p>Core automation infrastructure built in n8n connecting Granola → Claude AI → Asana → communication layer. Fully documented and handed over at phase completion.</p>
         </div>
       </div>
+
       <div class="dl-item">
         <div class="dl-num">06</div>
-        <div class="dl-content">
-          <h3>SOP + Knowledge Base Training</h3>
-          <p>CL Growth Academy's marketing SOP is loaded into Claude as a structured knowledge base. AI brief output reflects Chris's actual methodology — not a generic template.</p>
-        </div>
-      </div>
-      <div class="dl-item">
-        <div class="dl-num">07</div>
         <div class="dl-content">
           <h3>Sign-Off Testing</h3>
           <p>Phase 1A is complete when the end-to-end workflow runs successfully on <strong>2 real client calls</strong> with accurate brief output confirmed by Chris Lapa.</p>
@@ -270,7 +265,7 @@ h2{font-size:22px;font-weight:700;letter-spacing:-.02em;color:#111;margin-bottom
     <p class="section-intro">The following are explicitly excluded from Phase 1A and addressed in subsequent phases.</p>
     <div class="oos-grid">
       <div class="oos-item"><div class="oos-dash">—</div>Multi-input trigger (email / SMS intake)</div>
-      <div class="oos-item"><div class="oos-dash">—</div>CRM integration (Pipedrive)</div>
+      <div class="oos-item"><div class="oos-dash">—</div>CRM or pipeline integration</div>
       <div class="oos-item"><div class="oos-dash">—</div>Lead qualification automation</div>
       <div class="oos-item"><div class="oos-dash">—</div>LinkedIn or outbound tooling</div>
       <div class="oos-item"><div class="oos-dash">—</div>Reporting dashboards</div>
@@ -317,54 +312,12 @@ h2{font-size:22px;font-weight:700;letter-spacing:-.02em;color:#111;margin-bottom
     </div>
   </div>
 
-  <!-- 06 TIMELINE -->
-  <div class="section">
-    <div class="section-eyebrow">06 — Timeline</div>
-    <h2>Month 1 Milestones</h2>
-    <p class="section-intro">Estimated schedule from SOW signing. Contingent on timely client input per Section 07.</p>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-week">Week 1</div>
-        <div>
-          <div class="tl-milestone">SOW signed · Deposit received · Kick-off call scheduled</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-week">Week 1</div>
-        <div>
-          <div class="tl-milestone">Onboarding questionnaire completed · SOP docs provided · Tool access granted</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-week">Week 2</div>
-        <div>
-          <div class="tl-milestone">n8n + Granola + Claude AI connected and tested internally</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-week">Week 3</div>
-        <div>
-          <div class="tl-milestone">First test brief generated · Asana automation live · Client review</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-week">Week 4</div>
-        <div>
-          <div class="tl-milestone">Sign-off testing — 2 real client calls run through the full workflow</div>
-        </div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-week">End of Month 1</div>
-        <div>
-          <div class="tl-milestone">Phase 1A closed · Documentation handed over · Balance invoice issued</div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- 07 CLIENT RESPONSIBILITIES -->
+  <!-- 07
+
+  <!-- 06 CLIENT RESPONSIBILITIES -->
   <div class="section">
-    <div class="section-eyebrow">07 — Client Responsibilities</div>
+    <div class="section-eyebrow">06 — Client Responsibilities</div>
     <h2>What We Need From You</h2>
     <p class="section-intro">To deliver Phase 1A on schedule, CL Growth Academy agrees to the following.</p>
     <div class="resp-list">
@@ -374,7 +327,7 @@ h2{font-size:22px;font-weight:700;letter-spacing:-.02em;color:#111;margin-bottom
       </div>
       <div class="resp-item">
         <div class="resp-icon">🔑</div>
-        <div>Provide access to: Granola account, Asana workspace, and all relevant SOP documents</div>
+        <div>Provide access to: Granola account, Asana workspace, Notion workspace, and all relevant SOP documents</div>
       </div>
       <div class="resp-item">
         <div class="resp-icon">📞</div>
@@ -387,9 +340,9 @@ h2{font-size:22px;font-weight:700;letter-spacing:-.02em;color:#111;margin-bottom
     </div>
   </div>
 
-  <!-- 08 TERMS -->
+  <!-- 07 TERMS -->
   <div class="section">
-    <div class="section-eyebrow">08 — Terms &amp; Conditions</div>
+    <div class="section-eyebrow">07 — Terms &amp; Conditions</div>
     <h2>Terms</h2>
     <div class="terms-grid">
       <div class="term-card">
@@ -419,9 +372,9 @@ h2{font-size:22px;font-weight:700;letter-spacing:-.02em;color:#111;margin-bottom
     </div>
   </div>
 
-  <!-- 09 SIGNATURES -->
+  <!-- 08 SIGNATURES -->
   <div class="sig-section">
-    <div class="section-eyebrow">09 — Authorisation</div>
+    <div class="section-eyebrow">08 — Authorisation</div>
     <h2>Signatures</h2>
     <p class="sig-intro">By signing below, both parties agree to the scope, investment, timeline, and terms set out in this Statement of Work. This document becomes binding upon execution by both parties.</p>
     <div class="sig-grid">
