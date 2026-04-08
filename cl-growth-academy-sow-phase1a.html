@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phase 1A — Statement of Work · CL Growth Academy × StreamLab Ai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Inter",-apple-system,sans-serif;background:#fff;color:#111;line-height:1.6;font-size:14px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{max-width:780px;margin:0 auto;padding:0 48px}
+
+/* ── Cover ── */
+.cover{min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:64px 0 56px;border-bottom:1px solid #E0E0E0}
+.cover-logo{height:42px;width:auto;display:block;margin-bottom:60px}
+.cover-eyebrow{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#999;margin-bottom:16px}
+.cover h1{font-size:46px;font-weight:700;letter-spacing:-.03em;color:#111;line-height:1.08;margin-bottom:10px}
+.cover-sub{font-size:18px;color:#666;font-weight:400;margin-bottom:40px;letter-spacing:-.01em}
+.cover-divider{width:40px;height:3px;background:#111;margin-bottom:40px;border-radius:2px}
+.cover-meta{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:440px}
+.cover-meta-item label{display:block;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#BBB;margin-bottom:5px}
+.cover-meta-item span{font-size:14px;color:#333;font-weight:500}
+.cover-bottom{display:flex;justify-content:space-between;align-items:flex-end}
+.cover-ref{font-size:11px;color:#CCC;letter-spacing:.06em;text-transform:uppercase}
+.cover-badge{display:inline-flex;align-items:center;gap:8px;background:#111;color:#fff;padding:7px 16px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.cover-badge-dot{width:6px;height:6px;border-radius:50%;background:#4ADE80;flex-shrink:0}
+
+/* ── Sections ── */
+.section{padding:52px 0;border-bottom:1px solid #EBEBEB}
+.section:last-of-type{border-bottom:none}
+.section-eyebrow{font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#CCC;margin-bottom:14px}
+h2{font-size:22px;font-weight:700;letter-spacing:-.02em;color:#111;margin-bottom:8px}
+.section-intro{font-size:14px;color:#666;line-height:1.75;margin-top:4px}
+
+/* ── Parties ── */
+.parties-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#EBEBEB;border:1px solid #EBEBEB;border-radius:14px;overflow:hidden;margin-top:28px}
+.party-cell{background:#fff;padding:24px 28px}
+.party-cell.full{grid-column:1/-1}
+.party-role{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#CCC;margin-bottom:8px}
+.party-name{font-size:15px;font-weight:600;color:#111;margin-bottom:3px}
+.party-contact{font-size:13px;color:#777}
+.party-ref-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.party-ref-item label{display:block;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#CCC;margin-bottom:5px}
+.party-ref-item span{font-size:13px;color:#333;font-weight:500}
+
+/* ── Deliverables ── */
+.deliverables{margin-top:28px}
+.dl-item{display:grid;grid-template-columns:36px 1fr;gap:18px;padding:20px 0;border-bottom:1px solid #F2F2F2;align-items:start}
+.dl-item:last-child{border-bottom:none}
+.dl-num{width:32px;height:32px;border-radius:9px;background:#111;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;letter-spacing:.02em}
+.dl-content h3{font-size:14px;font-weight:600;color:#111;margin-bottom:5px}
+.dl-content p{font-size:13px;color:#666;line-height:1.72;margin:0}
+
+/* ── Out of scope ── */
+.oos-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:20px}
+.oos-item{display:flex;align-items:center;gap:10px;padding:13px 16px;background:#FAFAFA;border:1px solid #F2F2F2;border-radius:9px;font-size:13px;color:#888}
+.oos-dash{color:#DDD;font-weight:700;flex-shrink:0}
+
+/* ── Investment ── */
+.inv-block{margin-top:24px;border:1px solid #E0E0E0;border-radius:13px;overflow:hidden}
+.inv-header-row{display:grid;grid-template-columns:1fr 140px 130px;padding:11px 24px;background:#F7F7F7;border-bottom:1px solid #E8E8E8}
+.inv-header-row span{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#BBB}
+.inv-header-row span:nth-child(2){text-align:right}
+.inv-header-row span:last-child{text-align:right}
+.inv-row{display:grid;grid-template-columns:1fr 140px 130px;padding:18px 24px;border-bottom:1px solid #F4F4F4;align-items:center}
+.inv-row:last-child{border-bottom:none}
+.inv-row.total-row{background:#111}
+.inv-label{font-size:13px;font-weight:500;color:#333}
+.inv-row.total-row .inv-label{color:#fff;font-weight:600}
+.inv-note{font-size:12px;color:#BBB;text-align:right}
+.inv-row.total-row .inv-note{color:#666}
+.inv-amount{font-size:14px;font-weight:600;color:#111;text-align:right;white-space:nowrap}
+.inv-row.total-row .inv-amount{color:#fff;font-size:16px}
+.pay-notes{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.pay-note{padding:14px 18px;background:#F9F9F9;border:1px solid #F0F0F0;border-radius:9px;font-size:13px;color:#666;display:flex;align-items:flex-start;gap:10px;line-height:1.6}
+.pay-note strong{color:#333}
+
+/* ── Timeline ── */
+.timeline{margin-top:28px}
+.tl-item{display:grid;grid-template-columns:130px 1fr;gap:20px;padding:16px 0;border-bottom:1px solid #F4F4F4;align-items:start}
+.tl-item:last-child{border-bottom:none}
+.tl-week{font-size:11px;font-weight:600;color:#BBB;letter-spacing:.06em;text-transform:uppercase;padding-top:1px;white-space:nowrap}
+.tl-milestone{font-size:13px;color:#333;font-weight:500;line-height:1.55}
+.tl-sub{font-size:12px;color:#AAA;margin-top:3px}
+
+/* ── Responsibilities ── */
+.resp-list{margin-top:20px}
+.resp-item{display:flex;align-items:flex-start;gap:14px;padding:15px 0;border-bottom:1px solid #F4F4F4;font-size:13px;color:#555;line-height:1.65}
+.resp-item:last-child{border-bottom:none}
+.resp-icon{width:28px;height:28px;border-radius:7px;background:#F5F5F5;border:1px solid #EBEBEB;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:0}
+
+/* ── Terms ── */
+.terms-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.term-card{padding:20px 22px;background:#FAFAFA;border:1px solid #F0F0F0;border-radius:10px}
+.term-title{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#999;margin-bottom:9px}
+.term-card p{font-size:12.5px;color:#666;line-height:1.68;margin:0}
+
+/* ── Signatures ── */
+.sig-section{padding:52px 0 72px}
+.sig-intro{font-size:14px;color:#666;line-height:1.75;margin:12px 0 32px}
+.sig-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.sig-block{border:1px solid #E0E0E0;border-radius:13px;overflow:hidden}
+.sig-block-header{padding:18px 24px;background:#F7F7F7;border-bottom:1px solid #E0E0E0}
+.sig-block-body{padding:24px}
+.sig-line{margin-bottom:22px}
+.sig-line:last-child{margin-bottom:0}
+.sig-line label{display:block;font-size:10px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:#CCC;margin-bottom:9px}
+.sig-field{height:48px;border-bottom:1.5px solid #E8E8E8;display:flex;align-items:flex-end;padding-bottom:8px}
+.sig-field.name-val{font-size:14px;color:#333;font-weight:500}
+.sig-name-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+/* ── Footer ── */
+.doc-footer{padding:22px 0;border-top:1px solid #EBEBEB;display:flex;justify-content:space-between;align-items:center}
+.doc-footer span{font-size:11px;color:#CCC;letter-spacing:.04em}
+
+/* ── Print ── */
+@media print{
+  .cover{min-height:auto;padding:48px 0;page-break-after:always}
+  .section{page-break-inside:avoid}
+  .page{padding:0 40px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div>
+      <img class="cover-logo" src="data:image/png;base64,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" alt="StreamLab Ai">
+      <div class="cover-eyebrow">Statement of Work</div>
+      <h1>Phase 1A<br>Brief Engine</h1>
+      <div class="cover-sub">CL Growth Academy × StreamLab Ai</div>
+      <div class="cover-divider"></div>
+      <div class="cover-meta">
+        <div class="cover-meta-item">
+          <label>Client</label>
+          <span>CL Growth Academy</span>
+        </div>
+        <div class="cover-meta-item">
+          <label>Service Provider</label>
+          <span>StreamLab Ai</span>
+        </div>
+        <div class="cover-meta-item">
+          <label>Document Date</label>
+          <span>8 April 2026</span>
+        </div>
+        <div class="cover-meta-item">
+          <label>Reference</label>
+          <span>CL-GROWTH-1A-2026</span>
+        </div>
+      </div>
+    </div>
+    <div class="cover-bottom">
+      <div class="cover-ref">Confidential · For Signature</div>
+      <div class="cover-badge"><div class="cover-badge-dot"></div>Phase 1A · Month 1</div>
+    </div>
+  </div>
+
+  <!-- 01 PARTIES -->
+  <div class="section">
+    <div class="section-eyebrow">01 — Parties</div>
+    <h2>Agreement Parties</h2>
+    <p class="section-intro">This Statement of Work is entered into by the following parties and covers Phase 1A only. Subsequent phases are subject to separate written agreements.</p>
+    <div class="parties-grid">
+      <div class="party-cell">
+        <div class="party-role">Service Provider</div>
+        <div class="party-name">StreamLab Ai</div>
+        <div class="party-contact">John Maclang · john@streamlab.ai</div>
+      </div>
+      <div class="party-cell">
+        <div class="party-role">Client</div>
+        <div class="party-name">CL Growth Academy</div>
+        <div class="party-contact">Chris Lapa</div>
+      </div>
+      <div class="party-cell full">
+        <div class="party-ref-row">
+          <div class="party-ref-item">
+            <label>SOW Reference</label>
+            <span>CL-GROWTH-1A-2026</span>
+          </div>
+          <div class="party-ref-item">
+            <label>Document Date</label>
+            <span>8 April 2026</span>
+          </div>
+          <div class="party-ref-item">
+            <label>Phase</label>
+            <span>1A — Brief Engine</span>
+          </div>
+          <div class="party-ref-item">
+            <label>Governing Law</label>
+            <span>New South Wales, AU</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 OVERVIEW -->
+  <div class="section">
+    <div class="section-eyebrow">02 — Overview</div>
+    <h2>Project Overview</h2>
+    <p class="section-intro">CL Growth Academy engages StreamLab Ai to design and build the <strong>Brief Engine</strong> — an automated intake and delivery system that captures client call data via Granola, generates a structured client brief using AI, creates and assigns tasks in Asana, and triggers client-facing communications automatically.</p>
+    <p class="section-intro" style="margin-top:12px">This Statement of Work covers <strong>Phase 1A only</strong>. Subsequent phases (1B, 2A, 2B) are subject to separate written agreements.</p>
+  </div>
+
+  <!-- 03 SCOPE -->
+  <div class="section">
+    <div class="section-eyebrow">03 — Scope of Work</div>
+    <h2>Deliverables</h2>
+    <p class="section-intro">The following seven deliverables are included in Phase 1A.</p>
+    <div class="deliverables">
+      <div class="dl-item">
+        <div class="dl-num">01</div>
+        <div class="dl-content">
+          <h3>Granola Integration</h3>
+          <p>Connect Chris's existing paid Granola account into the automation layer. Call recordings and transcripts are routed automatically — no manual export required.</p>
+        </div>
+      </div>
+      <div class="dl-item">
+        <div class="dl-num">02</div>
+        <div class="dl-content">
+          <h3>AI Brief Generator</h3>
+          <p>A Claude-powered workflow trained on CL Growth Academy's marketing SOP. Takes Granola call output and produces a structured client brief — objectives, deliverables, tone, and timeline — ready for internal use and client delivery.</p>
+        </div>
+      </div>
+      <div class="dl-item">
+        <div class="dl-num">03</div>
+        <div class="dl-content">
+          <h3>Asana Project Automation</h3>
+          <p>On brief generation, a new Asana project is created automatically with tasks assigned, due dates set, and the brief attached. No manual project setup required.</p>
+        </div>
+      </div>
+      <div class="dl-item">
+        <div class="dl-num">04</div>
+        <div class="dl-content">
+          <h3>Automated Client Communication</h3>
+          <p>A templated client-facing message (email or SMS — defined in build) is triggered on project creation. Chris reviews before send on first run; subsequent sends are fully automated.</p>
+        </div>
+      </div>
+      <div class="dl-item">
+        <div class="dl-num">05</div>
+        <div class="dl-content">
+          <h3>n8n Workflow Architecture</h3>
+          <p>Core automation infrastructure built in n8n connecting Granola → Claude AI → Asana → communication layer. Fully documented and handed over at phase completion.</p>
+        </div>
+      </div>
+      <div class="dl-item">
+        <div class="dl-num">06</div>
+        <div class="dl-content">
+          <h3>SOP + Knowledge Base Training</h3>
+          <p>CL Growth Academy's marketing SOP is loaded into Claude as a structured knowledge base. AI brief output reflects Chris's actual methodology — not a generic template.</p>
+        </div>
+      </div>
+      <div class="dl-item">
+        <div class="dl-num">07</div>
+        <div class="dl-content">
+          <h3>Sign-Off Testing</h3>
+          <p>Phase 1A is complete when the end-to-end workflow runs successfully on <strong>2 real client calls</strong> with accurate brief output confirmed by Chris Lapa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 OUT OF SCOPE -->
+  <div class="section">
+    <div class="section-eyebrow">04 — Exclusions</div>
+    <h2>Out of Scope — Phase 1A</h2>
+    <p class="section-intro">The following are explicitly excluded from Phase 1A and addressed in subsequent phases.</p>
+    <div class="oos-grid">
+      <div class="oos-item"><div class="oos-dash">—</div>Multi-input trigger (email / SMS intake)</div>
+      <div class="oos-item"><div class="oos-dash">—</div>CRM integration (Pipedrive)</div>
+      <div class="oos-item"><div class="oos-dash">—</div>Lead qualification automation</div>
+      <div class="oos-item"><div class="oos-dash">—</div>LinkedIn or outbound tooling</div>
+      <div class="oos-item"><div class="oos-dash">—</div>Reporting dashboards</div>
+      <div class="oos-item"><div class="oos-dash">—</div>Any scope not listed in Section 03</div>
+    </div>
+  </div>
+
+  <!-- 05 INVESTMENT -->
+  <div class="section">
+    <div class="section-eyebrow">05 — Investment</div>
+    <h2>Fees &amp; Payment</h2>
+    <p class="section-intro">All amounts in Australian Dollars (AUD). GST not applicable.</p>
+    <div class="inv-block">
+      <div class="inv-header-row">
+        <span>Payment Milestone</span>
+        <span>Terms</span>
+        <span>Amount (AUD)</span>
+      </div>
+      <div class="inv-row">
+        <div class="inv-label">Deposit — due on SOW signing</div>
+        <div class="inv-note">50% upfront</div>
+        <div class="inv-amount">$2,000</div>
+      </div>
+      <div class="inv-row">
+        <div class="inv-label">Balance — due on Phase 1A sign-off</div>
+        <div class="inv-note">2 live calls complete</div>
+        <div class="inv-amount">$2,000</div>
+      </div>
+      <div class="inv-row total-row">
+        <div class="inv-label">Phase 1A Total</div>
+        <div class="inv-note">Month 1</div>
+        <div class="inv-amount">$4,000</div>
+      </div>
+    </div>
+    <div class="pay-notes">
+      <div class="pay-note">
+        <span>💳</span>
+        <div><strong>Payment method:</strong> Bank transfer to StreamLab Ai Wise account (AUD). Full details included on invoice.</div>
+      </div>
+      <div class="pay-note">
+        <span>🚀</span>
+        <div><strong>Work begins</strong> upon receipt of the $2,000 AUD deposit. The deposit is non-refundable once work has commenced.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 TIMELINE -->
+  <div class="section">
+    <div class="section-eyebrow">06 — Timeline</div>
+    <h2>Month 1 Milestones</h2>
+    <p class="section-intro">Estimated schedule from SOW signing. Contingent on timely client input per Section 07.</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-week">Week 1</div>
+        <div>
+          <div class="tl-milestone">SOW signed · Deposit received · Kick-off call scheduled</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">Week 1</div>
+        <div>
+          <div class="tl-milestone">Onboarding questionnaire completed · SOP docs provided · Tool access granted</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">Week 2</div>
+        <div>
+          <div class="tl-milestone">n8n + Granola + Claude AI connected and tested internally</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">Week 3</div>
+        <div>
+          <div class="tl-milestone">First test brief generated · Asana automation live · Client review</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">Week 4</div>
+        <div>
+          <div class="tl-milestone">Sign-off testing — 2 real client calls run through the full workflow</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-week">End of Month 1</div>
+        <div>
+          <div class="tl-milestone">Phase 1A closed · Documentation handed over · Balance invoice issued</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 CLIENT RESPONSIBILITIES -->
+  <div class="section">
+    <div class="section-eyebrow">07 — Client Responsibilities</div>
+    <h2>What We Need From You</h2>
+    <p class="section-intro">To deliver Phase 1A on schedule, CL Growth Academy agrees to the following.</p>
+    <div class="resp-list">
+      <div class="resp-item">
+        <div class="resp-icon">📋</div>
+        <div>Complete the onboarding questionnaire within <strong>3 business days</strong> of signing</div>
+      </div>
+      <div class="resp-item">
+        <div class="resp-icon">🔑</div>
+        <div>Provide access to: Granola account, Asana workspace, and all relevant SOP documents</div>
+      </div>
+      <div class="resp-item">
+        <div class="resp-icon">📞</div>
+        <div>Be available for a 30-minute kick-off call in Week 1</div>
+      </div>
+      <div class="resp-item">
+        <div class="resp-icon">✅</div>
+        <div>Review and confirm brief output on 2 live client calls during sign-off testing</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 08 TERMS -->
+  <div class="section">
+    <div class="section-eyebrow">08 — Terms &amp; Conditions</div>
+    <h2>Terms</h2>
+    <div class="terms-grid">
+      <div class="term-card">
+        <div class="term-title">Intellectual Property</div>
+        <p>All automation workflows, templates, and documentation built under this SOW are owned by CL Growth Academy upon receipt of final payment.</p>
+      </div>
+      <div class="term-card">
+        <div class="term-title">Confidentiality</div>
+        <p>Both parties agree to keep all business information, SOP content, and client data shared during this engagement strictly confidential.</p>
+      </div>
+      <div class="term-card">
+        <div class="term-title">Changes to Scope</div>
+        <p>Any additions outside this SOW will be scoped and quoted separately before work begins. No out-of-scope work is undertaken without written agreement.</p>
+      </div>
+      <div class="term-card">
+        <div class="term-title">Cancellation</div>
+        <p>The deposit is non-refundable once work has commenced. If the client cancels prior to kick-off, 50% of the deposit ($1,000 AUD) will be refunded.</p>
+      </div>
+      <div class="term-card">
+        <div class="term-title">Governing Law</div>
+        <p>This agreement is governed by the laws of New South Wales, Australia. Any disputes will be resolved in NSW jurisdiction.</p>
+      </div>
+      <div class="term-card">
+        <div class="term-title">Entire Agreement</div>
+        <p>This document constitutes the entire agreement between the parties for Phase 1A and supersedes all prior discussions or representations.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 09 SIGNATURES -->
+  <div class="sig-section">
+    <div class="section-eyebrow">09 — Authorisation</div>
+    <h2>Signatures</h2>
+    <p class="sig-intro">By signing below, both parties agree to the scope, investment, timeline, and terms set out in this Statement of Work. This document becomes binding upon execution by both parties.</p>
+    <div class="sig-grid">
+      <div class="sig-block">
+        <div class="sig-block-header">
+          <div class="party-role">Service Provider</div>
+          <div class="party-name">StreamLab Ai</div>
+        </div>
+        <div class="sig-block-body">
+          <div class="sig-line">
+            <label>Signature</label>
+            <div class="sig-field"></div>
+          </div>
+          <div class="sig-name-row">
+            <div class="sig-line">
+              <label>Full Name</label>
+              <div class="sig-field name-val">John Maclang</div>
+            </div>
+            <div class="sig-line">
+              <label>Date</label>
+              <div class="sig-field"></div>
+            </div>
+          </div>
+          <div class="sig-line">
+            <label>Title</label>
+            <div class="sig-field name-val">Engagement Lead</div>
+          </div>
+        </div>
+      </div>
+      <div class="sig-block">
+        <div class="sig-block-header">
+          <div class="party-role">Client</div>
+          <div class="party-name">CL Growth Academy</div>
+        </div>
+        <div class="sig-block-body">
+          <div class="sig-line">
+            <label>Signature</label>
+            <div class="sig-field"></div>
+          </div>
+          <div class="sig-name-row">
+            <div class="sig-line">
+              <label>Full Name</label>
+              <div class="sig-field name-val">Chris Lapa</div>
+            </div>
+            <div class="sig-line">
+              <label>Date</label>
+              <div class="sig-field"></div>
+            </div>
+          </div>
+          <div class="sig-line">
+            <label>Title</label>
+            <div class="sig-field name-val">Founder</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="doc-footer">
+    <span>CL-GROWTH-1A-2026 · CONFIDENTIAL · StreamLab Ai © 2026</span>
+    <span>streamlab.ai</span>
+  </div>
+
+</div>
+</body>
+</html>
