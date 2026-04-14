@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>T3DU Operations Hub — StreamLab Ai</title>
+<style>
+:root {
+  --ink:#1D1D1F; --teal:#2BB8A6; --teal-lt:#E6F7F5; --teal-dark:#1E9688;
+  --body2:#3D3D3F; --muted:#505050;
+  --gray2:#B0B0B5; --gray3:#EBEBED; --gray4:#F7F7F8;
+  --amber:#D07000; --amber-lt:#FFF4E0; --amber-border:#E8A020;
+  --red:#CC2200; --red-lt:#FFF0EE; --red-border:#E03020;
+  --green:#1A8A3A; --white:#FFFFFF;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:-apple-system,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  background:var(--white);color:var(--ink);
+  font-size:22px;line-height:1.6;
+  padding-top:120px;
+}
+
+/* ── NAV BAR ── */
+.nav-bar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:var(--white);border-bottom:3px solid var(--teal);
+  box-shadow:0 2px 12px rgba(0,0,0,.08);
+}
+.nav-inner{
+  max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;gap:0;
+  padding:0 40px;
+}
+.nav-logo{height:36px;display:block;margin-right:40px;flex-shrink:0;}
+.nav-tabs{display:flex;gap:0;flex:1;}
+.tab-btn{
+  background:none;border:none;cursor:pointer;
+  font-family:inherit;font-size:17px;font-weight:600;
+  color:var(--muted);padding:20px 26px;
+  border-bottom:3px solid transparent;margin-bottom:-3px;
+  transition:color .15s,border-color .15s;
+  white-space:nowrap;letter-spacing:-.01em;
+}
+.tab-btn:hover{color:var(--teal);}
+.tab-btn.active{color:var(--teal);border-bottom-color:var(--teal);}
+.nav-badge{
+  font-size:12px;background:var(--teal);color:var(--white);
+  border-radius:20px;padding:2px 8px;margin-left:8px;font-weight:700;
+}
+
+/* ── CONTENT ── */
+.tab-content{display:none;max-width:1100px;margin:0 auto;padding:56px 48px 100px;}
+.tab-content.active{display:block;}
+
+/* ── PAGE HEADER ── */
+.page-eyebrow{font-size:14px;font-weight:700;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
+.page-title{font-size:56px;font-weight:700;color:var(--ink);line-height:1.06;letter-spacing:-.025em;margin-bottom:14px;}
+.page-sub{font-size:24px;color:var(--body2);margin-bottom:60px;line-height:1.45;}
+
+/* ── SECTION ── */
+.section{margin-bottom:72px;}
+.section-label{font-size:13px;font-weight:700;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;}
+.section-title{font-size:38px;font-weight:700;color:var(--ink);letter-spacing:-.015em;line-height:1.15;margin-bottom:10px;}
+.section-desc{font-size:21px;color:var(--body2);margin-bottom:30px;line-height:1.5;}
+.divider{height:1px;background:var(--gray2);margin:64px 0;}
+
+/* ── CARDS (best practice) ── */
+.bp-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.bp-card{background:var(--gray4);border-radius:16px;padding:30px 32px;border-left:6px solid var(--teal);}
+.bp-card-title{font-size:22px;font-weight:700;color:var(--ink);margin-bottom:10px;}
+.bp-card-body{font-size:20px;color:var(--body2);line-height:1.55;}
+
+/* ── CALLOUTS ── */
+.callout{border-radius:12px;padding:22px 26px;margin:20px 0;display:flex;gap:16px;align-items:flex-start;}
+.callout.warn{background:var(--amber-lt);border:2px solid var(--amber-border);}
+.callout.never{background:var(--red-lt);border:2px solid var(--red-border);}
+.callout.info{background:var(--teal-lt);border:2px solid var(--teal);}
+.callout-icon{font-size:24px;flex-shrink:0;margin-top:2px;}
+.callout-body{font-size:20px;font-weight:600;color:var(--ink);line-height:1.45;}
+.callout-body span{font-weight:400;color:var(--body2);}
+
+/* ── TIMELINE ── */
+.timeline{display:flex;gap:0;margin-bottom:40px;}
+.timeline-item{flex:1;text-align:center;position:relative;}
+.timeline-item:not(:last-child)::after{content:'';position:absolute;top:22px;left:50%;width:100%;height:2px;background:var(--gray2);z-index:0;}
+.t-dot{width:44px;height:44px;border-radius:50%;background:var(--teal);color:var(--white);font-size:17px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;position:relative;z-index:1;}
+.t-label{font-size:17px;font-weight:700;color:var(--ink);}
+.t-sub{font-size:15px;color:var(--body2);margin-top:4px;line-height:1.4;}
+
+/* ── WHAT CHANGED TABLE ── */
+.changed-table{width:100%;border-collapse:collapse;}
+.changed-table thead th{font-size:15px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:14px 22px;text-align:left;}
+.changed-table thead th.old{background:var(--gray3);color:var(--body2);border-radius:10px 0 0 0;}
+.changed-table thead th.new{background:var(--teal);color:var(--white);border-radius:0 10px 0 0;}
+.changed-table td{font-size:20px;padding:16px 22px;vertical-align:top;border-bottom:1px solid var(--gray2);line-height:1.5;}
+.changed-table td.old-c{color:var(--body2);}
+.changed-table td.new-c{color:var(--ink);background:var(--teal-lt);font-weight:500;}
+.changed-table tr:last-child td{border-bottom:none;}
+
+/* ── CHECKLISTS ── */
+.checklist{list-style:none;}
+.checklist li{display:flex;align-items:flex-start;gap:14px;padding:13px 0;border-bottom:1px solid var(--gray2);font-size:21px;color:var(--ink);}
+.checklist li:last-child{border-bottom:none;}
+.check-box{width:24px;height:24px;border:2.5px solid var(--gray2);border-radius:5px;flex-shrink:0;margin-top:2px;}
+
+/* ── SOP STEPS ── */
+.sop-steps{list-style:none;}
+.sop-step{display:flex;gap:24px;padding:22px 0;border-bottom:1px solid var(--gray2);align-items:flex-start;}
+.sop-step:last-child{border-bottom:none;}
+.step-num{width:48px;height:48px;border-radius:50%;background:var(--ink);color:var(--white);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.step-num.critical{background:var(--amber);}
+.step-title{font-size:22px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.step-body{font-size:20px;color:var(--body2);line-height:1.5;}
+.step-tag{display:inline-block;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:5px;padding:2px 10px;margin-bottom:8px;}
+.tag-critical{background:var(--amber-lt);color:var(--amber);border:1.5px solid var(--amber-border);}
+.tag-never{background:var(--red-lt);color:var(--red);border:1.5px solid var(--red-border);}
+.tag-auto{background:var(--teal-lt);color:var(--teal-dark);border:1.5px solid var(--teal);}
+
+/* ── TASKS GRID ── */
+.tasks-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.task-card{background:var(--gray4);border-radius:12px;padding:24px 26px;}
+.task-card-title{font-size:19px;font-weight:700;color:var(--ink);margin-bottom:12px;border-bottom:2px solid var(--teal);padding-bottom:8px;}
+.task-list{list-style:none;}
+.task-list li{font-size:19px;color:var(--body2);padding:6px 0;border-bottom:1px solid var(--gray2);line-height:1.45;}
+.task-list li:last-child{border-bottom:none;}
+.task-list li::before{content:"→ ";color:var(--teal-dark);font-weight:700;}
+
+/* ── NO-LONGER LIST ── */
+.no-longer{list-style:none;}
+.no-longer li{display:flex;gap:14px;align-items:flex-start;font-size:21px;color:var(--body2);padding:13px 0;border-bottom:1px solid var(--gray2);}
+.no-longer li:last-child{border-bottom:none;}
+.cross{color:var(--gray2);font-size:22px;font-weight:700;flex-shrink:0;margin-top:1px;}
+
+/* ── EMAIL CARDS ── */
+.email-card{border:2px solid var(--gray2);border-radius:16px;overflow:hidden;margin-bottom:32px;}
+.email-header{background:var(--ink);padding:20px 26px;display:flex;justify-content:space-between;align-items:center;}
+.email-tag{font-size:14px;font-weight:700;color:var(--teal);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;}
+.email-name{font-size:24px;font-weight:700;color:var(--white);}
+.email-timing{font-size:17px;color:var(--gray3);background:rgba(255,255,255,.1);border-radius:8px;padding:7px 16px;font-weight:600;}
+.email-meta{background:var(--gray4);padding:14px 26px;display:grid;grid-template-columns:80px 1fr;row-gap:6px;column-gap:12px;}
+.meta-label{font-size:16px;font-weight:700;color:var(--body2);}
+.meta-val{font-size:17px;color:var(--ink);}
+.email-body{padding:26px;}
+.email-body-text{font-size:20px;color:var(--ink);line-height:1.7;white-space:pre-line;}
+.email-var{background:var(--teal-lt);color:var(--teal-dark);font-weight:700;border-radius:4px;padding:1px 7px;font-size:18px;}
+.email-notes{background:var(--teal-lt);border-top:2px solid var(--teal);padding:16px 26px;}
+.email-notes-title{font-size:14px;font-weight:700;color:var(--teal-dark);letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px;}
+.email-notes-body{font-size:18px;color:var(--body2);line-height:1.5;}
+
+/* ── CERT TABLE ── */
+.cert-table{width:100%;border-collapse:collapse;border:2px solid var(--gray2);border-radius:14px;overflow:hidden;}
+.cert-table thead th{font-size:15px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:14px 22px;text-align:left;background:var(--ink);color:var(--white);}
+.cert-table td{font-size:20px;padding:16px 22px;vertical-align:top;border-bottom:1px solid var(--gray2);line-height:1.5;}
+.cert-table tr:last-child td{border-bottom:none;}
+.cert-table .fn{color:var(--ink);font-weight:600;width:240px;}
+.cert-table .fn small{font-weight:400;color:var(--body2);font-size:15px;display:block;margin-top:3px;}
+.cert-table .fv-tbc{color:var(--amber);font-weight:700;}
+.cert-table tr.amber-row td{background:var(--amber-lt);}
+
+/* ── WORKFLOW STEPS ── */
+.workflow{margin-top:8px;}
+.w-step{display:flex;align-items:flex-start;gap:28px;padding:28px 0;border-bottom:1px solid var(--gray2);}
+.w-step:last-child{border-bottom:none;}
+.w-num{width:54px;height:54px;background:var(--teal);color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;flex-shrink:0;margin-top:2px;}
+.w-tag{display:inline-block;background:var(--teal-lt);color:var(--teal-dark);font-size:13px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border-radius:5px;padding:2px 9px;margin-bottom:7px;border:1.5px solid var(--teal);}
+.w-title{font-size:24px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.w-body{font-size:20px;color:var(--body2);line-height:1.5;}
+
+/* ── COMPARE TABLE ── */
+.compare-table{width:100%;border-collapse:collapse;}
+.compare-table th{font-size:16px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:16px 24px;text-align:left;}
+.compare-table th.old-h{background:var(--gray3);color:var(--body2);border-radius:12px 0 0 0;}
+.compare-table th.new-h{background:var(--teal);color:var(--white);border-radius:0 12px 0 0;}
+.compare-table td{font-size:20px;padding:18px 24px;vertical-align:top;line-height:1.5;border-bottom:1px solid var(--gray2);}
+.compare-table td.old-td{color:var(--body2);}
+.compare-table td.new-td{color:var(--ink);background:var(--teal-lt);font-weight:500;}
+.compare-table tr:last-child td{border-bottom:none;}
+
+/* ── MILESTONE CALCULATOR ── */
+.input-panel{background:var(--gray4);border-radius:20px;padding:36px 40px;margin-bottom:48px;display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:end;}
+.input-label{font-size:15px;font-weight:700;color:var(--body2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px;}
+.input-field{width:100%;font-size:24px;font-weight:600;color:var(--ink);border:2.5px solid var(--gray2);border-radius:12px;padding:14px 18px;background:var(--white);outline:none;transition:border-color .2s;font-family:inherit;}
+.input-field:focus{border-color:var(--teal);}
+.input-field::placeholder{color:var(--gray2);}
+.gen-btn{width:100%;background:var(--teal);color:var(--white);border:none;border-radius:12px;font-size:22px;font-weight:700;padding:17px 28px;cursor:pointer;font-family:inherit;transition:background .2s;letter-spacing:-.01em;grid-column:1/-1;}
+.gen-btn:hover{background:var(--teal-dark);}
+.summary-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:40px;}
+.sum-tile{background:var(--gray4);border-radius:14px;padding:22px;text-align:center;border-top:3px solid var(--teal);}
+.sum-num{font-size:38px;font-weight:700;color:var(--teal);line-height:1;margin-bottom:5px;}
+.sum-label{font-size:16px;color:var(--body2);font-weight:500;}
+.table-wrap{border:2px solid var(--gray2);border-radius:16px;overflow:hidden;}
+.m-table{width:100%;border-collapse:collapse;}
+.m-table thead th{font-size:15px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:14px 18px;text-align:left;background:var(--ink);color:var(--white);}
+.m-table thead th.c-due{background:var(--teal);}
+.m-table tbody tr:nth-child(even){background:var(--gray4);}
+.m-table tbody td{font-size:20px;padding:14px 18px;border-bottom:1px solid var(--gray2);}
+.m-table tbody tr:last-child td{border-bottom:none;}
+.badge{display:inline-block;font-size:14px;font-weight:700;border-radius:6px;padding:2px 9px;}
+.badge-upcoming{background:var(--teal-lt);color:var(--teal-dark);}
+.badge-soon{background:var(--amber-lt);color:var(--amber);}
+.badge-past{background:var(--gray3);color:var(--body2);}
+.badge-today{background:var(--teal);color:var(--white);}
+.empty-state{text-align:center;padding:80px 40px;}
+.empty-icon{font-size:56px;margin-bottom:16px;}
+.empty-text{font-size:24px;font-weight:600;color:var(--gray2);}
+.empty-sub{font-size:19px;color:var(--gray2);margin-top:6px;}
+.print-note{text-align:right;margin-top:16px;}
+.print-btn{background:none;border:1.5px solid var(--gray2);border-radius:8px;font-size:16px;color:var(--body2);padding:8px 16px;cursor:pointer;font-family:inherit;transition:all .2s;}
+.print-btn:hover{border-color:var(--teal);color:var(--teal-dark);}
+
+/* ── POC REPORT ── */
+.report-row{display:grid;grid-template-columns:200px 1fr;gap:0;border-bottom:1px solid var(--gray2);}
+.report-row:last-child{border-bottom:none;}
+.r-label{font-size:17px;font-weight:700;color:var(--body2);padding:13px 16px 13px 0;}
+.r-value{font-size:18px;color:var(--ink);padding:13px 0;border-left:1px solid var(--gray2);padding-left:16px;}
+.r-value.fill{color:var(--gray2);font-style:italic;}
+
+/* ── FOOTER ── */
+.page-footer{margin-top:80px;padding-top:28px;border-top:1px solid var(--gray2);display:flex;justify-content:space-between;}
+.page-footer span{font-size:14px;color:var(--gray2);}
+
+@media print{.nav-bar,.gen-btn,.print-btn{display:none;}body{padding-top:0;}.tab-content{display:block!important;page-break-after:always;}}
+</style>
+</head>
+<body>
+
+<!-- ═══ NAV BAR ═══ -->
+<div class="nav-bar">
+  <div class="nav-inner">
+    <img src="data:image/png;base64,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" class="nav-logo" alt="StreamLab Ai">
+    <nav class="nav-tabs">
+      <button class="tab-btn active" onclick="showTab('overview')">LightSpeed VT Overview</button>
+      <button class="tab-btn" onclick="showTab('sop')">Enrollment SOP</button>
+      <button class="tab-btn" onclick="showTab('emails')">Emails &amp; Certificate</button>
+      <button class="tab-btn" onclick="showTab('calc')">Milestone Calculator <span class="nav-badge">Live</span></button>
+    </nav>
+  </div>
+</div>
+
+<!-- ═══════════ TAB 1: OVERVIEW ═══════════ -->
+<div id="tab-overview" class="tab-content active">
+  <div class="page-eyebrow">Think 3D University</div>
+  <div class="page-title">LightSpeed VT:<br>The Right Way to Run It</div>
+  <div class="page-sub">What the platform recommends &nbsp;·&nbsp; What we're proposing &nbsp;·&nbsp; What changes for you</div>
+
+  <div class="section">
+    <div class="section-label">Section 01</div>
+    <div class="section-title">What LightSpeed VT Recommends</div>
+    <div class="section-desc">These aren't our recommendations — this is LightSpeed VT's own guidance on how to get the most out of the platform.</div>
+    <div class="bp-grid">
+      <div class="bp-card">
+        <div class="bp-card-title">Use Assigned Training Templates</div>
+        <div class="bp-card-body">Build reusable templates by program type. One click assigns every course in the program to every learner in the cohort. No manual course selection each time.</div>
+      </div>
+      <div class="bp-card">
+        <div class="bp-card-title">Always Set a Due Date</div>
+        <div class="bp-card-body">Without a due date, no automatic reminder emails fire. The platform's notification system is entirely date-triggered. No date set = no reminders = learners go silent.</div>
+      </div>
+      <div class="bp-card">
+        <div class="bp-card-title">Use Watchdog for Monitoring</div>
+        <div class="bp-card-body">Watchdog sends automated progress snapshots to managers and client contacts. Stop checking dashboards manually — let the platform report to you.</div>
+      </div>
+      <div class="bp-card">
+        <div class="bp-card-title">Issue Certificates on Completion</div>
+        <div class="bp-card-body">Digital certificates fire automatically when a learner completes the program. Formal recognition drives completion rates and gives clients a tangible deliverable.</div>
+      </div>
+    </div>
+    <div class="callout warn" style="margin-top:32px;">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-body">The most common mistake: assigning training without setting a due date. <span>Without it, none of the automated emails fire — enrollment, reminder, or overdue alert. The system is completely silent.</span></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Section 02</div>
+    <div class="section-title">LightSpeed VT's Native Email Triggers</div>
+    <div class="section-desc">These fire automatically — no manual sending required — once a due date is set on the assignment.</div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="t-dot">1</div><div class="t-label">Day 1</div><div class="t-sub">Enrollment confirmation fires immediately</div></div>
+      <div class="timeline-item"><div class="t-dot">…</div><div class="t-label">In Progress</div><div class="t-sub">Watchdog monitors completion rates</div></div>
+      <div class="timeline-item"><div class="t-dot">−3</div><div class="t-label">3 Days Before</div><div class="t-sub">Reminder fires to incomplete learners only</div></div>
+      <div class="timeline-item"><div class="t-dot">+1</div><div class="t-label">1 Day After</div><div class="t-sub">Overdue alert fires to incomplete learners only</div></div>
+      <div class="timeline-item"><div class="t-dot">✓</div><div class="t-label">Completion</div><div class="t-sub">Certificate issued automatically</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Section 03</div>
+    <div class="section-title">The Proposed T3DU Workflow</div>
+    <div class="section-desc">This is what we're recommending — not built yet. Your reaction before we build anything.</div>
+    <div class="workflow">
+      <div class="w-step"><div class="w-num">1</div><div><div class="w-tag">Before Each Cohort</div><div class="w-title">Open the Milestone Calculator</div><div class="w-body">Enter the cohort start date. The calculator auto-generates 16 weeks of due dates. Read off the Week 1 due date — that's the number you enter into LightSpeed VT.</div></div></div>
+      <div class="w-step"><div class="w-num">2</div><div><div class="w-tag">Enrollment — 5 Minutes</div><div class="w-title">Assign Training via Template</div><div class="w-body">Content → Assign Training → select the T3DU Core Program template. Select the LIVE environment (never Sandbox). Add learners via Content Role. Set the due date. Click Assign.</div></div></div>
+      <div class="w-step"><div class="w-num">3</div><div><div class="w-tag">Automatic</div><div class="w-title">Platform Handles All Emails</div><div class="w-body">LightSpeed VT immediately sends the enrollment confirmation. Three days before the due date — reminder fires. One day after — overdue alert fires. You do nothing. The platform runs the follow-up cycle.</div></div></div>
+      <div class="w-step"><div class="w-num">4</div><div><div class="w-tag">Ongoing</div><div class="w-title">Watchdog Reports to Client POC</div><div class="w-body">Watchdog sends a monthly progress snapshot to the client contact automatically. Completion rates, who's behind, who's finished — without you building a report.</div></div></div>
+      <div class="w-step"><div class="w-num">5</div><div><div class="w-tag">Your New Role</div><div class="w-title">Manage Exceptions — Not Routine</div><div class="w-body">You step in when something breaks the pattern. The system handles everything routine. You handle the edge cases.</div></div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Section 04</div>
+    <div class="section-title">What Changes for You</div>
+    <table class="compare-table">
+      <thead><tr><th class="old-h">Before — Current Process</th><th class="new-h">After — Proposed System</th></tr></thead>
+      <tbody>
+        <tr><td class="old-td">Add each course to each learner manually, one by one</td><td class="new-td">Select a template — all courses assigned in one step</td></tr>
+        <tr><td class="old-td">Calculate due dates manually or skip them</td><td class="new-td">Open Milestone Calculator, enter start date, read off the date</td></tr>
+        <tr><td class="old-td">Send reminder emails yourself or let them lapse</td><td class="new-td">LightSpeed VT fires the 3-day reminder and overdue alert automatically</td></tr>
+        <tr><td class="old-td">Check the dashboard manually to see who's behind</td><td class="new-td">Watchdog reports send to you and the client contact on a schedule</td></tr>
+        <tr><td class="old-td">Build client progress reports from scratch each month</td><td class="new-td">Monthly POC report template — mostly auto-filled, you review and send</td></tr>
+        <tr><td class="old-td">Enrollment takes 30–60 minutes per cohort</td><td class="new-td">Enrollment takes 5 minutes per cohort</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="page-footer"><span>StreamLab Ai — Internal · Think 3D Solutions · T3DU Operations Hub</span><span>Version 1.0 · April 2026</span></div>
+</div>
+
+<!-- ═══════════ TAB 2: SOP ═══════════ -->
+<div id="tab-sop" class="tab-content">
+  <div class="page-eyebrow">Standard Operating Procedure</div>
+  <div class="page-title">T3DU Enrollment<br>&amp; Operations SOP</div>
+  <div class="page-sub">How to run every cohort from enrollment to completion — and what never to skip.</div>
+
+  <div class="section">
+    <div class="section-label">Overview</div>
+    <div class="section-title">What Changed</div>
+    <table class="changed-table">
+      <thead><tr><th class="old">The Old Way</th><th class="new">The New Way</th></tr></thead>
+      <tbody>
+        <tr><td class="old-c">Add each course manually to each learner, one by one</td><td class="new-c">Select a pre-built template — all courses assigned in a single step</td></tr>
+        <tr><td class="old-c">No due dates, or calculated manually each time</td><td class="new-c">Due date from Milestone Calculator, entered every time without exception</td></tr>
+        <tr><td class="old-c">Reminder emails sent manually — or not at all</td><td class="new-c">LightSpeed VT fires the 3-day reminder and overdue alert automatically</td></tr>
+        <tr><td class="old-c">Progress checked manually by logging into the dashboard</td><td class="new-c">Watchdog sends automated snapshots — you manage exceptions, not routine</td></tr>
+        <tr><td class="old-c">Client progress reports built manually each month</td><td class="new-c">Monthly POC report template — mostly auto-filled from Watchdog, you review and send</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Pre-Enrollment</div>
+    <div class="section-title">Before You Start</div>
+    <div class="section-desc">Confirm these four things before opening LightSpeed VT. If any are missing, stop and contact Manny or Tamien.</div>
+    <ul class="checklist">
+      <li><div class="check-box"></div><div>Cohort start date confirmed — in writing from Tamien or the client</div></li>
+      <li><div class="check-box"></div><div>Learner list confirmed — names and email addresses for everyone in this cohort</div></li>
+      <li><div class="check-box"></div><div>Cohort name agreed — e.g. "Think 3D — April 2026 Cohort"</div></li>
+      <li><div class="check-box"></div><div>Milestone Calculator open — Week 1 due date calculated and noted before opening LightSpeed VT</div></li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Enrollment Flow</div>
+    <div class="section-title">The 10-Step Enrollment SOP</div>
+    <ol class="sop-steps">
+      <li class="sop-step"><div class="step-num">1</div><div><div class="step-title">Open the Milestone Calculator</div><div class="step-body">Open T3DU-Weekly-Milestone-Calculator. Enter the cohort start date and cohort name. Write down the Week 1 Due Date before opening LightSpeed VT.</div></div></li>
+      <li class="sop-step"><div class="step-num">2</div><div><div class="step-title">Log into LightSpeed VT Admin</div><div class="step-body">Log in with your admin credentials. If your login is not working, contact Manny or Tamien immediately — do not proceed until access is confirmed.</div></div></li>
+      <li class="sop-step"><div class="step-num">3</div><div><div class="step-title">Navigate to Assign Training</div><div class="step-body">Content menu → 309 Assign Training → click <strong>New Assignment</strong>.</div></div></li>
+      <li class="sop-step"><div class="step-num">4</div><div><div class="step-title">Select the T3DU Core Program Template</div><div class="step-body">For a standard 16-week cohort, always use <strong>T3DU Core Program</strong>. The template assigns every required course automatically.</div></div></li>
+      <li class="sop-step"><div class="step-num">5</div><div><div class="step-title">Confirm the Course List</div><div class="step-body">LightSpeed VT shows you the courses the template will assign. If anything looks wrong, <strong>stop and contact Manny or Tamien before clicking anything else.</strong></div></div></li>
+      <li class="sop-step" style="background:var(--amber-lt);border-radius:14px;padding:22px 24px;border:2px solid var(--amber-border);margin:4px 0;">
+        <div class="step-num critical">6</div>
+        <div><div class="step-tag tag-critical">Critical Step — Never Skip</div><div class="step-title">Set the Due Date</div><div class="step-body">Enter the <strong>Week 1 Due Date from the Milestone Calculator</strong>. This triggers all automatic emails. <strong>Without a due date, the platform is completely silent. No emails fire. Nothing is automatic.</strong></div></div>
+      </li>
+      <li class="sop-step"><div class="step-num">7</div><div><div class="step-tag tag-never">Never: Sandbox or WhiteLabel Dev</div><div class="step-title">Select the Learner Environment</div><div class="step-body">Always select the <strong>LIVE T3DU learner environment</strong>. If unsure, contact Manny or Tamien before selecting.</div></div></li>
+      <li class="sop-step"><div class="step-num">8</div><div><div class="step-title">Add Learners via Content Role</div><div class="step-body">Add the cohort using the <strong>Content Role</strong>. Confirm the learner count before proceeding.</div></div></li>
+      <li class="sop-step"><div class="step-num">9</div><div><div class="step-title">Review Before Submitting</div><div class="step-body">Four checks: <strong>(1)</strong> Course list correct? <strong>(2)</strong> Environment is LIVE T3DU? <strong>(3)</strong> Due date is the Week 1 date from the calculator? <strong>(4)</strong> Email preview shows 3 notifications?</div></div></li>
+      <li class="sop-step"><div class="step-num">10</div><div><div class="step-tag tag-auto">Automatic from here</div><div class="step-title">Click Assign Training</div><div class="step-body">Click once. Enrollment confirmation emails send immediately. The 3-day reminder and overdue alert are now scheduled automatically. Enrollment is complete.</div></div></li>
+    </ol>
+    <div class="callout warn" style="margin-top:28px;">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-body">If you make a mistake during enrollment, <strong>contact Manny or Tamien immediately.</strong> <span>Before the cohort starts is fixable. After the first email goes out, it gets more complex. When in doubt, stop and message first.</span></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Ongoing</div>
+    <div class="section-title">During the Program</div>
+    <div class="tasks-grid">
+      <div class="task-card"><div class="task-card-title">Week 1 — Confirm Launch</div><ul class="task-list"><li>Confirm all learners received their enrollment confirmation email</li><li>Check LightSpeed VT that all learners show as enrolled</li><li>Flag any learners who didn't receive their email to Tamien</li></ul></div>
+      <div class="task-card"><div class="task-card-title">Weekly — Monitor Exceptions</div><ul class="task-list"><li>Review Watchdog report for learners significantly behind</li><li>Flag anyone at serious risk of not completing to Tamien</li><li>Do not manually chase learners slightly behind — the platform handles that</li></ul></div>
+      <div class="task-card"><div class="task-card-title">At Each Due Date</div><ul class="task-list"><li>Watchdog sends the overdue alert automatically</li><li>Review overdue list — note anyone critically behind</li><li>Escalate to Tamien if more than 20% of a cohort is overdue</li></ul></div>
+      <div class="task-card"><div class="task-card-title">Monthly — Client Report</div><ul class="task-list"><li>Pull the monthly Watchdog snapshot for the client</li><li>Complete the Client POC Progress Report (see below)</li><li>Send to the client POC — do not send raw data</li></ul></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">What's Gone</div>
+    <div class="section-title">What You No Longer Need to Do</div>
+    <ul class="no-longer">
+      <li><div class="cross">✕</div><div>Open each course individually to add a learner — the template handles all assignments in one step</div></li>
+      <li><div class="cross">✕</div><div>Manually calculate due dates — the Milestone Calculator does this automatically</div></li>
+      <li><div class="cross">✕</div><div>Send reminder emails manually — LightSpeed VT fires them automatically from the due date</div></li>
+      <li><div class="cross">✕</div><div>Log in daily to check who has access to what — Content Role manages access on enrollment</div></li>
+      <li><div class="cross">✕</div><div>Build monthly client progress reports from scratch — the POC report template is mostly auto-filled</div></li>
+    </ul>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Monthly Template</div>
+    <div class="section-title">Client POC Progress Report</div>
+    <div style="border:2px solid var(--gray2);border-radius:14px;overflow:hidden;margin-bottom:28px;">
+      <div style="background:var(--ink);padding:16px 24px;">
+        <div style="font-size:15px;font-weight:700;color:var(--teal);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px;">Think 3D University</div>
+        <div style="font-size:24px;font-weight:700;color:var(--white);">Monthly Training Progress Report</div>
+      </div>
+      <div style="padding:0 24px;">
+        <div class="report-row"><div class="r-label">Report Period</div><div class="r-value fill">Month YYYY</div></div>
+        <div class="report-row"><div class="r-label">Client</div><div class="r-value fill">Client company name</div></div>
+        <div class="report-row"><div class="r-label">Cohort</div><div class="r-value fill">T3DU Core Program — [Cohort Name]</div></div>
+        <div class="report-row"><div class="r-label">Prepared by</div><div class="r-value">Manny Gutierrez · Think 3D Solutions</div></div>
+      </div>
+    </div>
+    <table style="width:100%;border-collapse:collapse;border:2px solid var(--gray2);border-radius:14px;overflow:hidden;">
+      <thead><tr><th style="background:var(--gray3);color:var(--body2);font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:12px 22px;text-align:left;">Metric</th><th style="background:var(--gray3);color:var(--body2);font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:12px 22px;text-align:left;">Count</th></tr></thead>
+      <tbody>
+        <tr><td style="font-size:20px;padding:13px 22px;border-bottom:1px solid var(--gray2);">Total Learners Enrolled</td><td style="font-size:22px;font-weight:700;color:var(--teal-dark);padding:13px 22px;border-bottom:1px solid var(--gray2);">__</td></tr>
+        <tr><td style="font-size:20px;padding:13px 22px;border-bottom:1px solid var(--gray2);">On Track</td><td style="font-size:22px;font-weight:700;color:var(--teal-dark);padding:13px 22px;border-bottom:1px solid var(--gray2);">__</td></tr>
+        <tr><td style="font-size:20px;padding:13px 22px;border-bottom:1px solid var(--gray2);">Behind Schedule</td><td style="font-size:22px;font-weight:700;color:var(--amber);padding:13px 22px;border-bottom:1px solid var(--gray2);">__</td></tr>
+        <tr><td style="font-size:20px;padding:13px 22px;border-bottom:1px solid var(--gray2);">Significantly Overdue</td><td style="font-size:22px;font-weight:700;color:var(--red);padding:13px 22px;border-bottom:1px solid var(--gray2);">__</td></tr>
+        <tr><td style="font-size:20px;padding:13px 22px;">Completed Program</td><td style="font-size:22px;font-weight:700;color:var(--teal-dark);padding:13px 22px;">__</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="page-footer"><span>StreamLab Ai — Internal · Think 3D Solutions · T3DU Enrollment SOP</span><span>Version 1.0 · April 2026</span></div>
+</div>
+
+<!-- ═══════════ TAB 3: EMAILS & CERT ═══════════ -->
+<div id="tab-emails" class="tab-content">
+  <div class="page-eyebrow">LightSpeed VT Native Automation</div>
+  <div class="page-title">Enrollment Emails<br>&amp; Certificate Setup</div>
+  <div class="page-sub">The three emails LightSpeed VT fires automatically — and the certificate configuration for program completions.</div>
+
+  <div class="section">
+    <div class="section-label">How It Works</div>
+    <div class="section-title">The Trigger System</div>
+    <div class="section-desc">All three emails fire automatically once a due date is set. No manual action required. The platform handles the full communication cycle.</div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="t-dot">1</div><div class="t-label">Day 1</div><div class="t-sub">Enrollment email fires immediately</div></div>
+      <div class="timeline-item"><div class="t-dot">…</div><div class="t-label">In Progress</div><div class="t-sub">Watchdog monitors completion</div></div>
+      <div class="timeline-item"><div class="t-dot">−3</div><div class="t-label">3 Days Before</div><div class="t-sub">Reminder to incomplete learners only</div></div>
+      <div class="timeline-item"><div class="t-dot">+1</div><div class="t-label">1 Day After</div><div class="t-sub">Overdue alert to incomplete learners</div></div>
+      <div class="timeline-item"><div class="t-dot">✓</div><div class="t-label">Completion</div><div class="t-sub">Certificate issued automatically</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Email 01 of 03</div>
+    <div class="section-title">Enrollment Confirmation</div>
+    <div class="email-card">
+      <div class="email-header">
+        <div><div class="email-tag">Trigger: Immediately on enrollment</div><div class="email-name">Enrollment Confirmation</div></div>
+        <div class="email-timing">Day 1 — Automatic</div>
+      </div>
+      <div class="email-meta">
+        <div class="meta-label">From</div><div class="meta-val">Think 3D University &lt;training@think3d.com&gt;</div>
+        <div class="meta-label">Subject</div><div class="meta-val">You're enrolled — <span class="email-var">[Program Name]</span> starts <span class="email-var">[Start Date]</span></div>
+      </div>
+      <div class="email-body"><div class="email-body-text">Hi <span class="email-var">[First Name]</span>,
+
+Welcome to Think 3D University. You've been officially enrolled in <span class="email-var">[Program Name]</span>.
+
+Your training begins on <span class="email-var">[Start Date]</span>. You have 16 weeks to complete the program, with your first milestone due on <span class="email-var">[Week 1 Due Date]</span>.
+
+To access your training, log in at <span class="email-var">[LightSpeed VT Login URL]</span> using your account credentials. Your courses are already assigned and ready to start.
+
+You'll receive an automatic reminder 3 days before each milestone is due. Questions? Reply to this email.
+
+Think 3D University</div></div>
+      <div class="email-notes"><div class="email-notes-title">Config Notes</div><div class="email-notes-body">Load into LightSpeed VT → Notification Settings → Enrollment Confirmation. Update all [variables] before activating. Confirm reply-to email address with Tamien.</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Email 02 of 03</div>
+    <div class="section-title">3-Day Reminder</div>
+    <div class="email-card">
+      <div class="email-header">
+        <div><div class="email-tag">Trigger: 3 days before due date · Incomplete learners only</div><div class="email-name">3-Day Reminder</div></div>
+        <div class="email-timing">Day −3 — Automatic</div>
+      </div>
+      <div class="email-meta">
+        <div class="meta-label">Subject</div><div class="meta-val">Your T3DU training milestone is due in 3 days</div>
+      </div>
+      <div class="email-body"><div class="email-body-text">Hi <span class="email-var">[First Name]</span>,
+
+A quick heads-up — your Think 3D University training milestone is due on <span class="email-var">[Due Date]</span>. That's 3 days from now.
+
+Log in and pick up where you left off: <span class="email-var">[LightSpeed VT Login URL]</span>
+
+If you've already completed this milestone, you can ignore this message.
+
+Think 3D University</div></div>
+      <div class="email-notes"><div class="email-notes-title">Config Notes</div><div class="email-notes-body">Only fires to learners who have not yet met the completion threshold. Keep tone helpful — this is a nudge, not a warning.</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Email 03 of 03</div>
+    <div class="section-title">Overdue Alert</div>
+    <div class="email-card">
+      <div class="email-header">
+        <div><div class="email-tag">Trigger: 1 day after due date · Incomplete learners only</div><div class="email-name">Overdue Alert</div></div>
+        <div class="email-timing">Day +1 — Automatic</div>
+      </div>
+      <div class="email-meta">
+        <div class="meta-label">Subject</div><div class="meta-val">Your T3DU training milestone is now overdue</div>
+      </div>
+      <div class="email-body"><div class="email-body-text">Hi <span class="email-var">[First Name]</span>,
+
+Your Think 3D University training milestone was due on <span class="email-var">[Due Date]</span> and hasn't been completed yet.
+
+Your access is still active — log in here: <span class="email-var">[LightSpeed VT Login URL]</span>
+
+If you're having trouble or need support, reply to this email.
+
+Think 3D University</div></div>
+      <div class="email-notes"><div class="email-notes-title">Config Notes</div><div class="email-notes-body">Keep the door open — learners can still complete after the due date. Manny escalates to Tamien if more than 20% of a cohort triggers this alert.</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-label">Program Completion</div>
+    <div class="section-title">Certificate Configuration</div>
+    <div class="section-desc">LightSpeed VT issues a digital certificate automatically when a learner meets the completion criteria. Fields below need Tamien's confirmation before Phase D.</div>
+    <div class="callout warn" style="margin-bottom:28px;"><div class="callout-icon">⚠️</div><div class="callout-body">Fields highlighted in amber require confirmation from Tamien before being entered into LightSpeed VT.</div></div>
+    <table class="cert-table">
+      <thead><tr><th>Field</th><th>Value / Action Required</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="fn">Certificate Title</td><td>Certificate of Completion</td><td style="color:var(--teal-dark);font-weight:700;font-size:18px;">✓ Confirmed</td></tr>
+        <tr class="amber-row"><td class="fn">Program Name on Certificate<small>Appears as the main credential name</small></td><td class="fv-tbc">TBC — confirm exact program title with Tamien<br><small style="color:var(--body2);">e.g. "Think 3D University — Leadership Core Program"</small></td><td style="color:var(--amber);font-weight:700;font-size:18px;">⚠ Pending</td></tr>
+        <tr class="amber-row"><td class="fn">Issuing Authority<small>Organisation that formally issues the certificate</small></td><td class="fv-tbc">TBC — "Think 3D Solutions" or "Think 3D University"?</td><td style="color:var(--amber);font-weight:700;font-size:18px;">⚠ Pending</td></tr>
+        <tr class="amber-row"><td class="fn">Completion Threshold<small>% required to trigger the certificate</small></td><td class="fv-tbc">TBC — Proposed: 80% of assigned modules completed</td><td style="color:var(--amber);font-weight:700;font-size:18px;">⚠ Pending</td></tr>
+        <tr><td class="fn">Signatory</td><td>Tamien Dysart — Co-Founder, Think 3D Solutions</td><td style="color:var(--teal-dark);font-weight:700;font-size:18px;">✓ Confirmed</td></tr>
+        <tr class="amber-row"><td class="fn">Certificate Design<small>Branded template or default LightSpeed VT design</small></td><td class="fv-tbc">TBC — does Think 3D have a branded certificate template?</td><td style="color:var(--amber);font-weight:700;font-size:18px;">⚠ Pending</td></tr>
+        <tr><td class="fn">Delivery Method</td><td>Automatic — LightSpeed VT issues via email on completion</td><td style="color:var(--teal-dark);font-weight:700;font-size:18px;">✓ Confirmed</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="page-footer"><span>StreamLab Ai — Internal · Think 3D Solutions · T3DU Email Templates &amp; Certificate</span><span>Version 1.0 · April 2026</span></div>
+</div>
+
+<!-- ═══════════ TAB 4: CALCULATOR ═══════════ -->
+<div id="tab-calc" class="tab-content">
+  <div class="page-eyebrow">LightSpeed VT Enrollment Tool</div>
+  <div class="page-title">Weekly Milestone<br>Calculator</div>
+  <div class="page-sub">Enter a cohort start date — get 16 weeks of due dates, reminder dates, and overdue alerts instantly.</div>
+
+  <div class="input-panel">
+    <div><div class="input-label">Cohort Start Date</div><input type="date" id="startDate" class="input-field"></div>
+    <div><div class="input-label">Cohort Name</div><input type="text" id="cohortName" class="input-field" placeholder="e.g. Think 3D — April 2026"></div>
+    <button class="gen-btn" onclick="generate()">Generate 16-Week Schedule →</button>
+  </div>
+
+  <div id="calcOutput" style="display:none;">
+    <div class="summary-row">
+      <div class="sum-tile"><div class="sum-num">16</div><div class="sum-label">Total Weeks</div></div>
+      <div class="sum-tile"><div class="sum-num" id="tileStart">—</div><div class="sum-label">Start Date</div></div>
+      <div class="sum-tile"><div class="sum-num" id="tileEnd">—</div><div class="sum-label">Program End</div></div>
+      <div class="sum-tile"><div class="sum-num" id="tileNext">—</div><div class="sum-label">Next Milestone</div></div>
+    </div>
+    <div class="callout warn" style="margin-bottom:28px;">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-body">Week 1 Due Date (★) goes into LightSpeed VT → Assign Training → Due Date field. <span>This is the date that triggers all automatic emails.</span></div>
+    </div>
+    <div class="table-wrap">
+      <table class="m-table">
+        <thead><tr><th>Week</th><th class="c-due">Due Date ← Enter in LightSpeed VT</th><th>3-Day Reminder</th><th>Overdue Alert</th><th>Group Call</th><th>Status</th></tr></thead>
+        <tbody id="calcBody"></tbody>
+      </table>
+    </div>
+    <div class="print-note"><button class="print-btn" onclick="window.print()">🖨️ Print this schedule</button></div>
+  </div>
+
+  <div id="calcEmpty">
+    <div class="empty-state">
+      <div class="empty-icon">📅</div>
+      <div class="empty-text">Enter a cohort start date above</div>
+      <div class="empty-sub">Your 16-week schedule appears instantly</div>
+    </div>
+  </div>
+  <div class="page-footer"><span>StreamLab Ai — Internal · Think 3D Solutions · T3DU Milestone Calculator</span><span>Version 1.0 · April 2026</span></div>
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+const MO = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const DA = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+function fmt(d) { return DA[d.getDay()] + ' ' + d.getDate() + ' ' + MO[d.getMonth()] + ' ' + d.getFullYear(); }
+function fmtS(d) { return d.getDate() + ' ' + MO[d.getMonth()]; }
+function add(d, n) { const r = new Date(d); r.setDate(r.getDate() + n); return r; }
+function today() { const d = new Date(); d.setHours(0,0,0,0); return d; }
+function same(a, b) { return a.toDateString() === b.toDateString(); }
+function badge(due) {
+  const now = today();
+  const diff = Math.floor((due - now) / 86400000);
+  if (due < now && !same(due, now)) return '<span class="badge badge-past">Past</span>';
+  if (same(due, now)) return '<span class="badge badge-today">Today</span>';
+  if (diff <= 3) return '<span class="badge badge-soon">Due soon</span>';
+  return '<span class="badge badge-upcoming">Upcoming</span>';
+}
+function generate() {
+  const sv = document.getElementById('startDate').value;
+  if (!sv) { document.getElementById('startDate').style.borderColor='#CC2200'; setTimeout(()=>{document.getElementById('startDate').style.borderColor='';}, 2000); return; }
+  const p = sv.split('-');
+  const start = new Date(+p[0], +p[1]-1, +p[2]);
+  const now = today();
+  let firstUp = null;
+  let rows = '';
+  for (let w = 1; w <= 16; w++) {
+    const due = add(start, w * 7);
+    const rem = add(due, -3);
+    const ov  = add(due, 1);
+    const gc  = add(due, -2);
+    if (!firstUp && due >= now) firstUp = due;
+    const past = due < now && !same(due, now);
+    const first = w === 1;
+    rows += `<tr style="${past ? 'opacity:.45;' : ''}">
+      <td style="font-weight:700;">${first ? '<strong style="color:var(--teal-dark)">Week ' + w + ' ★</strong>' : 'Week ' + w}</td>
+      <td style="font-weight:700;${first ? 'background:var(--teal-lt);' : ''}">${fmt(due)}</td>
+      <td style="color:var(--body2);">${fmt(rem)}</td>
+      <td style="color:var(--body2);">${fmt(ov)}</td>
+      <td style="color:var(--body2);">${fmt(gc)}</td>
+      <td>${badge(due)}</td>
+    </tr>`;
+  }
+  document.getElementById('calcBody').innerHTML = rows;
+  document.getElementById('tileStart').textContent = fmtS(start);
+  document.getElementById('tileEnd').textContent = fmtS(add(start, 16 * 7));
+  document.getElementById('tileNext').textContent = firstUp ? fmtS(firstUp) : '—';
+  document.getElementById('calcOutput').style.display = 'block';
+  document.getElementById('calcEmpty').style.display = 'none';
+  document.getElementById('calcOutput').scrollIntoView({behavior:'smooth', block:'start'});
+}
+document.addEventListener('DOMContentLoaded', () => {
+  ['startDate','cohortName'].forEach(id => {
+    document.getElementById(id).addEventListener('keydown', e => { if (e.key === 'Enter') generate(); });
+  });
+});
+</script>
+</body>
+</html>
