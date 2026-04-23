@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tamien Dysart — Personal Brand Audit & Proposal · StreamLab Ai</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #000000;
+    --near-black: #1d1d1f;
+    --white: #ffffff;
+    --off-white: #f5f5f7;
+    --mid-grey: #6e6e73;
+    --border: #d2d2d7;
+    --blue: #0071e3;
+    --red: #ff3b30;
+    --green: #34c759;
+    --orange: #ff9f0a;
+    --radius: 18px;
+    --font: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; font-size: 17px; }
+  body {
+    font-family: var(--font);
+    background: var(--white);
+    color: var(--near-black);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--border);
+    height: 52px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 32px;
+  }
+  .nav-logo { font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: var(--near-black); text-decoration: none; }
+  .nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+  .nav-links a { font-size: 13px; color: var(--near-black); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-part-badge {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 3px 9px; border-radius: 980px; margin-right: 4px;
+  }
+  .nav-part-badge.p1 { background: rgba(0,113,227,0.1); color: var(--blue); }
+  .nav-part-badge.p2 { background: rgba(52,199,89,0.1); color: var(--green); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--black);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    padding: 120px 32px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(0,113,227,0.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 24px; }
+  .hero h1 { font-size: clamp(42px, 7vw, 88px); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; color: var(--white); max-width: 900px; margin-bottom: 28px; }
+  .hero h1 em { font-style: normal; color: var(--blue); }
+  .hero-sub { font-size: clamp(17px, 2vw, 21px); color: rgba(255,255,255,0.65); max-width: 640px; line-height: 1.55; margin-bottom: 48px; }
+  .hero-stats { display: flex; gap: 64px; align-items: center; justify-content: center; flex-wrap: wrap; margin-bottom: 56px; }
+  .hero-stat { text-align: center; }
+  .hero-stat .num { font-size: clamp(40px, 6vw, 72px); font-weight: 700; color: var(--white); letter-spacing: -0.04em; display: block; }
+  .hero-stat .num.red { color: var(--red); }
+  .hero-stat .num.orange { color: var(--orange); }
+  .hero-stat .label { font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; text-transform: uppercase; margin-top: 4px; }
+  .hero-divider { color: rgba(255,255,255,0.15); font-size: 40px; font-weight: 100; }
+  .hero-cta { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: var(--white); font-size: 17px; font-weight: 500; padding: 16px 32px; border-radius: 980px; text-decoration: none; transition: background 0.2s, transform 0.2s; }
+  .hero-cta:hover { background: #0077ed; transform: scale(1.02); }
+  .scroll-hint { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.3); font-size: 13px; display: flex; flex-direction: column; align-items: center; gap: 8px; animation: bounce 2s ease infinite; }
+  .scroll-hint svg { width: 20px; height: 20px; }
+  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(6px)} }
+
+  /* ── SECTION WRAPPERS ── */
+  section { padding: 120px 32px; }
+  .container { max-width: 1080px; margin: 0 auto; }
+  .section-eyebrow { font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 16px; display: block; }
+  .section-title { font-size: clamp(32px, 5vw, 56px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.08; margin-bottom: 24px; }
+  .section-sub { font-size: clamp(17px, 2vw, 21px); color: var(--mid-grey); line-height: 1.55; max-width: 680px; }
+
+  /* ── PART DIVIDER ── */
+  .part-divider {
+    padding: 0; position: relative;
+    background: var(--black);
+  }
+  .part-divider-inner {
+    max-width: 1080px; margin: 0 auto;
+    padding: 64px 32px;
+    display: flex; align-items: center; gap: 32px;
+  }
+  .part-badge {
+    flex-shrink: 0;
+    padding: 6px 18px; border-radius: 980px;
+    font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .part-badge.p1 { background: var(--blue); color: var(--white); }
+  .part-badge.p2 { background: var(--green); color: var(--white); }
+  .part-divider-line { flex: 1; height: 1px; background: rgba(255,255,255,0.12); }
+  .part-divider h2 { font-size: clamp(28px, 4vw, 48px); font-weight: 800; letter-spacing: -0.03em; color: var(--white); }
+  .part-divider p { font-size: 16px; color: rgba(255,255,255,0.5); margin-top: 10px; max-width: 560px; line-height: 1.6; }
+
+  /* ── WHY SECTION ── */
+  #why { background: var(--off-white); }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; margin-top: 72px; }
+  .why-card { background: var(--white); border-radius: var(--radius); padding: 40px 36px; border: 1px solid var(--border); position: relative; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+  .why-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+  .why-card .icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 24px; }
+  .why-card .icon.blue { background: rgba(0,113,227,0.1); }
+  .why-card .icon.orange { background: rgba(255,159,10,0.1); }
+  .why-card .icon.green { background: rgba(52,199,89,0.1); }
+  .why-card h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 14px; }
+  .why-card p { font-size: 15px; color: var(--mid-grey); line-height: 1.6; }
+  .why-card .stat-callout { margin-top: 20px; padding: 14px 18px; background: var(--off-white); border-radius: 10px; font-size: 13px; color: var(--near-black); border-left: 3px solid var(--blue); }
+  .why-card .stat-callout strong { color: var(--blue); }
+
+  /* Ceiling visual */
+  .ceiling-visual { margin-top: 64px; padding: 48px; background: var(--black); border-radius: var(--radius); color: var(--white); }
+  .ceiling-visual h3 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 8px; }
+  .ceiling-visual p { color: rgba(255,255,255,0.6); margin-bottom: 36px; font-size: 15px; }
+  .ceiling-bars { display: flex; align-items: flex-end; gap: 16px; height: 140px; }
+  .bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .bar { width: 100%; border-radius: 6px 6px 0 0; position: relative; display: flex; align-items: flex-start; justify-content: center; padding-top: 8px; font-size: 13px; font-weight: 700; }
+  .bar.referral { background: rgba(255,255,255,0.2); height: 60px; }
+  .bar.social { background: var(--blue); height: 120px; }
+  .bar.combined { background: var(--green); height: 140px; }
+  .bar-label { font-size: 12px; color: rgba(255,255,255,0.5); text-align: center; }
+
+  /* ── REALITY SECTION ── */
+  #reality { background: var(--white); }
+  .reality-headline { font-size: clamp(24px, 4vw, 42px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.15; margin: 48px 0 64px; padding: 40px 48px; background: var(--black); color: var(--white); border-radius: var(--radius); }
+  .reality-headline em { color: var(--orange); font-style: normal; }
+  .scorecard { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; border-radius: var(--radius); overflow: hidden; border: 2px solid var(--black); margin-bottom: 48px; }
+  .scorecard-item { padding: 32px 24px; background: var(--white); text-align: center; }
+  .scorecard-item:nth-child(odd) { background: var(--off-white); }
+  .scorecard-item .platform { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid-grey); margin-bottom: 12px; }
+  .scorecard-item .followers { font-size: clamp(28px, 3vw, 40px); font-weight: 800; letter-spacing: -0.04em; color: var(--near-black); }
+  .scorecard-item .posts { font-size: 13px; color: var(--mid-grey); margin-top: 4px; }
+  .scorecard-item .score-badge { display: inline-block; margin-top: 12px; padding: 4px 12px; border-radius: 980px; font-size: 12px; font-weight: 700; }
+  .score-bad { background: rgba(255,59,48,0.1); color: var(--red); }
+  .score-ok { background: rgba(255,159,10,0.1); color: var(--orange); }
+  .ratio-callout { padding: 40px 48px; border: 2px solid var(--red); border-radius: var(--radius); display: flex; align-items: center; gap: 40px; margin-bottom: 40px; }
+  .ratio-number { font-size: 80px; font-weight: 800; color: var(--red); letter-spacing: -0.05em; white-space: nowrap; flex-shrink: 0; }
+  .ratio-text h4 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+  .ratio-text p { font-size: 15px; color: var(--mid-grey); line-height: 1.6; }
+  .methodology-note { padding: 20px 28px; background: rgba(0,113,227,0.05); border: 1px solid rgba(0,113,227,0.2); border-radius: 12px; display: flex; align-items: center; gap: 16px; }
+  .methodology-note p { font-size: 13px; color: var(--mid-grey); line-height: 1.6; }
+  .methodology-note strong { color: var(--near-black); }
+
+  /* ── PLATFORM AUDIT SECTION ── */
+  #audit { background: var(--off-white); }
+  .tab-bar { display: flex; gap: 4px; background: rgba(0,0,0,0.06); border-radius: 12px; padding: 4px; margin: 48px 0 0; width: fit-content; }
+  .tab-btn { padding: 10px 24px; border: none; cursor: pointer; background: transparent; font-family: var(--font); font-size: 15px; font-weight: 500; border-radius: 9px; color: var(--mid-grey); transition: all 0.2s; }
+  .tab-btn.active { background: var(--white); color: var(--near-black); font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.12); }
+  .tab-panel { display: none; margin-top: 48px; }
+  .tab-panel.active { display: block; }
+
+  .audit-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px; align-items: start; }
+  .screenshot-frame { position: relative; border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: var(--white); box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+  .screenshot-frame .browser-chrome { height: 36px; background: #f0f0f0; display: flex; align-items: center; padding: 0 14px; gap: 6px; border-bottom: 1px solid var(--border); }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot.r { background: #ff5f57; }
+  .dot.y { background: #ffbd2e; }
+  .dot.g { background: #28c840; }
+  .url-bar { flex: 1; height: 20px; background: #e0e0e0; border-radius: 4px; margin-left: 8px; }
+  .screenshot-img { width: 100%; display: block; max-height: 480px; object-fit: cover; object-position: top; }
+
+  /* Problem accordion cards */
+  .problem-stack { display: flex; flex-direction: column; gap: 20px; }
+  .problem-card { background: var(--white); border-radius: var(--radius); padding: 28px 28px; border: 1px solid var(--border); border-left: 4px solid var(--red); cursor: pointer; transition: box-shadow 0.22s, transform 0.22s; }
+  .problem-card.standard { border-left-color: var(--blue); }
+  .problem-card.fix { border-left-color: var(--green); }
+  .problem-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.09); transform: translateY(-1px); }
+  .problem-card .card-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; color: var(--red); }
+  .problem-card.standard .card-label { color: var(--blue); }
+  .problem-card.fix .card-label { color: var(--green); }
+  .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .card-head h4 { font-size: 18px; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 0; flex: 1; }
+  .expand-caret { font-size: 22px; color: var(--mid-grey); transition: transform 0.22s, color 0.22s; flex-shrink: 0; line-height: 1; margin-top: 1px; user-select: none; }
+  .problem-card.pc-active .expand-caret { transform: rotate(90deg); color: var(--near-black); }
+  .card-body { display: none; padding-top: 14px; margin-top: 14px; border-top: 1px solid var(--border); }
+  .problem-card.pc-active .card-body { display: block; }
+  .problem-card.pc-active { box-shadow: 0 6px 28px rgba(0,0,0,0.11); }
+  .problem-card p { font-size: 14px; color: var(--mid-grey); line-height: 1.6; }
+  .problem-card .source { margin-top: 10px; font-size: 12px; color: var(--mid-grey); font-style: italic; padding-top: 10px; border-top: 1px solid var(--border); }
+
+  .fix-list { list-style: none; margin-top: 12px; }
+  .fix-list li { font-size: 14px; color: var(--near-black); padding: 6px 0; display: flex; align-items: flex-start; gap: 10px; border-bottom: 1px solid var(--off-white); }
+  .fix-list li:last-child { border-bottom: none; }
+  .fix-list .check { color: var(--green); font-weight: 700; flex-shrink: 0; }
+  .copy-ready { margin-top: 14px; padding: 16px; background: var(--off-white); border-radius: 10px; font-size: 13px; line-height: 1.65; color: var(--near-black); font-family: Georgia, serif; border: 1px solid var(--border); position: relative; }
+  .copy-badge { position: absolute; top: -10px; right: 14px; background: var(--green); color: var(--white); font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 10px; border-radius: 980px; }
+
+  /* Hotspot overlays */
+  .hotspot { position: absolute; transform: translate(-50%, -50%); width: 44px; height: 44px; display: none; align-items: center; justify-content: center; pointer-events: none; z-index: 20; }
+  .hotspot.active { display: flex; }
+  .hs-ring { position: absolute; inset: 0; border-radius: 50%; border: 2px solid currentColor; animation: hs-pulse 1.8s ease-out infinite; opacity: 0; }
+  .hs-ring-2 { position: absolute; inset: 0; border-radius: 50%; border: 2px solid currentColor; animation: hs-pulse 1.8s ease-out 0.55s infinite; opacity: 0; }
+  .hs-dot { width: 13px; height: 13px; border-radius: 50%; background: currentColor; z-index: 1; box-shadow: 0 0 0 3px rgba(255,255,255,0.95), 0 0 0 5px currentColor; }
+  .hs-label { position: absolute; left: 32px; top: 50%; transform: translateY(-50%); background: var(--near-black); color: var(--white); font-size: 11px; font-weight: 700; letter-spacing: 0.05em; padding: 5px 11px; border-radius: 7px; white-space: nowrap; }
+  .hs-label::before { content: ''; position: absolute; right: 100%; top: 50%; transform: translateY(-50%); border: 5px solid transparent; border-right-color: var(--near-black); }
+  .hotspot.hs-red { color: var(--red); }
+  .hotspot.hs-blue { color: var(--blue); }
+  .hotspot.hs-green { color: var(--green); }
+  .hotspot.hs-orange { color: var(--orange); }
+  @keyframes hs-pulse { 0%{transform:scale(1);opacity:0.8} 100%{transform:scale(2.8);opacity:0} }
+
+  /* ── PROPOSAL SECTION ── */
+  #proposal { background: var(--white); }
+
+  /* Speaker positioning intro */
+  .speaker-positioning {
+    margin-bottom: 72px; padding: 48px 52px;
+    background: var(--near-black); border-radius: var(--radius);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  }
+  .speaker-positioning h3 { font-size: 26px; font-weight: 700; letter-spacing: -0.025em; color: var(--white); margin-bottom: 16px; line-height: 1.2; }
+  .speaker-positioning p { font-size: 15px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+  .positioning-tags { display: flex; flex-direction: column; gap: 12px; }
+  .ptag { padding: 16px 20px; border-radius: 12px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); }
+  .ptag-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 4px; }
+  .ptag-value { font-size: 15px; font-weight: 600; color: var(--white); }
+
+  /* ── DELIVERABLE CARDS ── */
+  .deliverables-list { display: flex; flex-direction: column; gap: 3px; margin-top: 56px; }
+  .deliverable-card {
+    border-radius: var(--radius); border: 1.5px solid var(--border);
+    overflow: hidden; cursor: pointer;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    background: var(--white);
+  }
+  .deliverable-card:hover { border-color: rgba(0,113,227,0.35); box-shadow: 0 4px 20px rgba(0,113,227,0.07); }
+  .deliverable-card.open { border-color: var(--blue); box-shadow: 0 8px 40px rgba(0,113,227,0.1); }
+  .deliverable-head {
+    display: flex; align-items: center; gap: 20px;
+    padding: 28px 32px;
+    user-select: none;
+  }
+  .d-num {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--off-white); border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; font-weight: 800; color: var(--mid-grey);
+    flex-shrink: 0; transition: all 0.25s;
+  }
+  .deliverable-card.open .d-num { background: var(--blue); border-color: var(--blue); color: var(--white); }
+  .d-icon { font-size: 28px; flex-shrink: 0; }
+  .d-info { flex: 1; }
+  .d-title { font-size: 19px; font-weight: 700; letter-spacing: -0.015em; color: var(--near-black); margin-bottom: 4px; }
+  .d-subtitle { font-size: 13px; color: var(--mid-grey); }
+  .d-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  .d-tag { padding: 3px 10px; border-radius: 980px; font-size: 11px; font-weight: 600; background: var(--off-white); border: 1px solid var(--border); color: var(--mid-grey); }
+  .d-tag.blue { background: rgba(0,113,227,0.08); border-color: rgba(0,113,227,0.2); color: var(--blue); }
+  .d-tag.green { background: rgba(52,199,89,0.08); border-color: rgba(52,199,89,0.2); color: var(--green); }
+  .d-tag.orange { background: rgba(255,159,10,0.08); border-color: rgba(255,159,10,0.2); color: var(--orange); }
+  .d-caret { font-size: 26px; color: var(--mid-grey); transition: transform 0.25s, color 0.25s; flex-shrink: 0; }
+  .deliverable-card.open .d-caret { transform: rotate(90deg); color: var(--blue); }
+  .deliverable-body {
+    display: none; padding: 0 32px 36px; border-top: 1px solid var(--border);
+    animation: fadeSlideIn 0.22s ease;
+  }
+  .deliverable-card.open .deliverable-body { display: block; }
+  @keyframes fadeSlideIn { from { opacity:0; transform:translateY(-8px); } to { opacity:1; transform:translateY(0); } }
+
+  .d-body-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 28px; }
+  .d-col-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid-grey); margin-bottom: 14px; }
+  .d-feature-list { list-style: none; }
+  .d-feature-list li { font-size: 14px; color: var(--near-black); padding: 9px 0; display: flex; align-items: flex-start; gap: 10px; border-bottom: 1px solid var(--off-white); line-height: 1.5; }
+  .d-feature-list li:last-child { border-bottom: none; }
+  .d-feature-list .bullet { color: var(--blue); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+  .d-callout { margin-top: 24px; padding: 20px 24px; border-radius: 12px; border-left: 4px solid var(--blue); background: rgba(0,113,227,0.04); border: 1px solid rgba(0,113,227,0.15); border-left: 4px solid var(--blue); }
+  .d-callout p { font-size: 14px; color: var(--near-black); line-height: 1.65; }
+  .d-callout strong { color: var(--blue); }
+  .d-sub-card { background: var(--off-white); border-radius: 12px; padding: 20px 24px; margin-top: 16px; }
+  .d-sub-card h5 { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 8px; }
+  .d-sub-card p { font-size: 13px; color: var(--mid-grey); line-height: 1.6; }
+  .d-source { font-size: 12px; color: var(--mid-grey); font-style: italic; margin-top: 8px; }
+
+  /* GBP block inside deliverable */
+  .gbp-block { margin-top: 28px; padding: 32px 36px; background: var(--black); border-radius: 14px; color: var(--white); }
+  .gbp-block h5 { font-size: 18px; font-weight: 700; letter-spacing: -0.015em; color: var(--white); margin-bottom: 8px; }
+  .gbp-block p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.65; margin-bottom: 20px; }
+  .gbp-specs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .gbp-spec { background: rgba(255,255,255,0.06); border-radius: 10px; padding: 16px; }
+  .gbp-spec-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 6px; }
+  .gbp-spec-value { font-size: 13px; font-weight: 600; color: var(--white); line-height: 1.4; }
+
+  /* Community 3-cohort grid */
+  .cohort-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; }
+  .cohort-card { padding: 20px; border-radius: 12px; background: var(--black); }
+  .cohort-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+  .cohort-name { font-size: 16px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .cohort-count { font-size: 28px; font-weight: 800; color: var(--white); margin-bottom: 6px; letter-spacing: -0.03em; }
+  .cohort-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+
+  /* Value principle block */
+  .value-principle { margin-top: 24px; padding: 28px 32px; background: rgba(52,199,89,0.05); border: 1.5px solid rgba(52,199,89,0.2); border-radius: 14px; }
+  .value-principle .vp-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 10px; }
+  .value-principle h5 { font-size: 17px; font-weight: 700; letter-spacing: -0.015em; margin-bottom: 10px; }
+  .value-principle p { font-size: 14px; color: var(--mid-grey); line-height: 1.7; }
+
+  /* ── CONTENT AUTHORITY ENGINE ── */
+  #cae { background: var(--off-white); }
+  .step-rail { display: flex; align-items: flex-start; gap: 0; position: relative; }
+  .step-rail::before { content: ''; position: absolute; top: 28px; left: 10%; right: 10%; height: 2px; background: linear-gradient(to right, var(--blue), rgba(0,113,227,0.2)); z-index: 0; }
+  .step-node-wrap { flex: 1; text-align: center; position: relative; z-index: 1; padding: 0 8px; cursor: pointer; }
+  .step-icon { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px; font-size: 20px; box-shadow: 0 0 0 4px var(--off-white); transition: transform 0.2s, box-shadow 0.2s; }
+  .step-node-wrap:hover .step-icon { transform: scale(1.08); }
+  .step-node-wrap.active .step-icon { box-shadow: 0 0 0 4px rgba(0,113,227,0.4), 0 4px 20px rgba(0,113,227,0.25); }
+  .step-label-num { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+  .step-label-title { font-size: 12px; font-weight: 700; color: var(--near-black); margin-bottom: 4px; line-height: 1.3; }
+  .step-label-sub { font-size: 11px; color: var(--mid-grey); line-height: 1.5; }
+  .step-detail-panel { display: none; margin-top: 24px; padding: 24px 28px; background: var(--white); border-radius: 14px; border: 1.5px solid rgba(0,113,227,0.25); }
+  .step-detail-panel.visible { display: block; animation: fadeSlideIn 0.2s ease; }
+  .step-detail-panel h5 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+  .step-detail-panel p { font-size: 14px; color: var(--mid-grey); line-height: 1.65; }
+
+  /* Hub and spoke */
+  .hub-spoke { display: grid; grid-template-columns: 1fr 60px 1fr 60px 1fr; gap: 0; align-items: center; }
+  .hub-spoke-node { border-radius: 14px; padding: 28px 24px; text-align: center; }
+  .hub-node-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+  .hub-node-name { font-size: 19px; font-weight: 700; }
+  .hub-node-desc { font-size: 13px; margin-top: 6px; }
+  .hub-arrow { text-align: center; font-size: 22px; color: rgba(255,255,255,0.2); }
+
+  /* Tamien's role */
+  .role-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .role-card { padding: 28px; background: rgba(255,255,255,0.05); border-radius: 14px; text-align: center; }
+  .role-num { font-size: 48px; font-weight: 800; color: var(--blue); letter-spacing: -0.04em; }
+  .role-title { font-size: 16px; font-weight: 600; color: var(--white); margin: 10px 0 8px; }
+  .role-desc { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+  /* CTA FOOTER */
+  .cta-block { background: var(--black); padding: 100px 32px; text-align: center; color: var(--white); }
+  .cta-block h2 { font-size: clamp(36px, 5vw, 64px); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 20px; }
+  .cta-block p { font-size: 19px; color: rgba(255,255,255,0.6); margin-bottom: 40px; }
+  .btn-white { display: inline-block; background: var(--white); color: var(--black); font-size: 17px; font-weight: 600; padding: 16px 36px; border-radius: 980px; text-decoration: none; transition: opacity 0.2s; }
+  .btn-white:hover { opacity: 0.85; }
+  .footer-bar { background: rgba(0,0,0,0.95); padding: 24px 32px; text-align: center; font-size: 12px; color: rgba(255,255,255,0.3); border-top: 1px solid rgba(255,255,255,0.08); }
+
+  /* ── FADE IN ── */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .why-grid { grid-template-columns: 1fr; }
+    .audit-grid { grid-template-columns: 1fr; }
+    .scorecard { grid-template-columns: 1fr 1fr; }
+    .ratio-callout { flex-direction: column; gap: 16px; }
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 80px 20px; }
+    .d-body-grid { grid-template-columns: 1fr; }
+    .speaker-positioning { grid-template-columns: 1fr; }
+    .cohort-grid { grid-template-columns: 1fr; }
+    .gbp-specs { grid-template-columns: 1fr; }
+    .hub-spoke { grid-template-columns: 1fr; gap: 12px; }
+    .hub-arrow { transform: rotate(90deg); }
+    .role-grid { grid-template-columns: 1fr; }
+    .part-divider-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .step-rail { flex-direction: column; }
+    .step-rail::before { display: none; }
+  }
+  @media (max-width: 600px) {
+    .scorecard { grid-template-columns: 1fr; }
+    .hero-stats { gap: 32px; }
+    .ceiling-bars { height: 100px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">StreamLab Ai × Tamien Dysart</a>
+  <ul class="nav-links">
+    <li><span class="nav-part-badge p1">Part 1</span><a href="#why">The Audit</a></li>
+    <li><a href="#audit">Platform Findings</a></li>
+    <li><span class="nav-part-badge p2">Part 2</span><a href="#proposal">The Fix</a></li>
+    <li><a href="#cae">How It Works</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Personal Brand Audit &amp; Proposal · April 2026</div>
+  <h1>You have the story.<br>Almost nobody <em>knows</em> it.</h1>
+  <p class="hero-sub">StreamLab Ai conducted a full-scope digital brand audit of Tamien Dysart — approaching it the way a top-tier 2026 marketing agency would for a culture and leadership speaker positioning for national visibility. This is the diagnosis. And the prescription.</p>
+
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="num">2,084</span>
+      <span class="label">Pieces of Content</span>
+    </div>
+    <div class="hero-divider">/</div>
+    <div class="hero-stat">
+      <span class="num red">&lt;7K</span>
+      <span class="label">Total Followers</span>
+    </div>
+    <div class="hero-divider">/</div>
+    <div class="hero-stat">
+      <span class="num orange">800+</span>
+      <span class="label">Graduates. Zero Reviews.</span>
+    </div>
+  </div>
+
+  <a href="#why" class="hero-cta">See the full picture ↓</a>
+  <div class="scroll-hint">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- PART 1 DIVIDER -->
+<div class="part-divider">
+  <div class="part-divider-inner">
+    <span class="part-badge p1">Part One</span>
+    <div class="part-divider-line"></div>
+    <div>
+      <h2 style="color:var(--white);">The Audit</h2>
+      <p>Based on official 2026 documentation from LinkedIn, Meta (Instagram), and YouTube Creator Academy — not guesswork.</p>
+    </div>
+  </div>
+</div>
+
+<!-- WHY SECTION -->
+<section id="why">
+  <div class="container fade-in">
+    <span class="section-eyebrow">Why This Matters</span>
+    <h2 class="section-title">Referrals got you here.<br>They won't get you there.</h2>
+    <p class="section-sub">Word of mouth is powerful. But it has a ceiling. Here's what happens when a keynote speaker builds a digital presence that amplifies everything they're already doing.</p>
+
+    <div class="why-grid" style="margin-top:64px;">
+      <div class="why-card">
+        <div class="icon blue">🔍</div>
+        <h3>Prospects Google you before they say yes</h3>
+        <p>Before a CPO, HR Director, or event organiser agrees to a discovery call, they search Tamien Dysart. What they find — or don't find — determines whether they show up.</p>
+        <div class="stat-callout"><strong>75%</strong> of B2B buyers use LinkedIn to research speakers and vendors before engaging. If the profile doesn't tell a compelling story, the referral goes cold. — <em>LinkedIn Marketing Solutions, 2024</em></div>
+      </div>
+
+      <div class="why-card">
+        <div class="icon orange">📈</div>
+        <h3>Social is a compounding asset. Referrals aren't.</h3>
+        <p>Every referral starts from zero. A great LinkedIn post reaches 3,053 people today — and stays searchable forever. An audience compounds. A referral network has a hard ceiling.</p>
+        <div class="stat-callout">LinkedIn generates <strong>80% of all B2B social media leads</strong>. A consultant with 10K engaged followers can generate inbound enquiries while they sleep. <em>— LinkedIn Marketing Solutions, 2024</em></div>
+      </div>
+
+      <div class="why-card">
+        <div class="icon green">🎤</div>
+        <h3>Your story beats anyone in your space</h3>
+        <p>Brené Brown, Simon Sinek, Gary Vee — they are not the most credentialled people in leadership. They are the most visible and the most human. Tamien's story is more compelling than most. It just needs to be seen.</p>
+        <div class="stat-callout">Origin stories — vulnerability-driven founder narratives — outperform generic thought leadership by <strong>3–5×</strong> in reach and engagement. <em>— LinkedIn Marketing Blog, 2024</em></div>
+      </div>
+    </div>
+
+    <div class="ceiling-visual fade-in" style="margin-top:48px;">
+      <h3>The referral ceiling is real</h3>
+      <p>Lead pipeline across three scenarios — same effort, very different outcomes</p>
+      <div style="display:flex; gap:48px; flex-wrap:wrap; align-items:flex-end;">
+        <div style="flex:1; min-width:280px;">
+          <div class="ceiling-bars">
+            <div class="bar-wrap"><div class="bar referral">Now</div><div class="bar-label">Referrals only</div></div>
+            <div class="bar-wrap"><div class="bar social">+Social</div><div class="bar-label">Social only</div></div>
+            <div class="bar-wrap"><div class="bar combined">Both</div><div class="bar-label">Referrals + Social</div></div>
+          </div>
+        </div>
+        <div style="flex:1; min-width:260px; color:rgba(255,255,255,0.65); font-size:15px; line-height:1.7;">
+          <p>A personal brand doesn't replace referrals — it supercharges them. When someone gets a referral to Tamien and then finds a compelling LinkedIn presence, a pinned origin story, and 5+ speaker recommendations, conversion from referral to booking goes up significantly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REALITY SECTION -->
+<section id="reality">
+  <div class="container fade-in">
+    <span class="section-eyebrow">The Reality Check</span>
+    <h2 class="section-title">The numbers,<br>platform by platform.</h2>
+
+    <div class="reality-headline">
+      <em>2,084 pieces of content.</em> Under 7,000 total followers.<br>
+      This is not a creation problem. It is a <em>discovery and distribution</em> problem.
+    </div>
+
+    <div class="scorecard">
+      <div class="scorecard-item">
+        <div class="platform">LinkedIn Personal</div>
+        <div class="followers">3,053</div>
+        <div class="posts">followers · Active</div>
+        <span class="score-badge score-ok">6 / 10</span>
+      </div>
+      <div class="scorecard-item">
+        <div class="platform">Instagram @tamiendysart</div>
+        <div class="followers">545</div>
+        <div class="posts">followers · 311 posts</div>
+        <span class="score-badge score-bad">2 / 10</span>
+      </div>
+      <div class="scorecard-item">
+        <div class="platform">Instagram @think3dsolutions</div>
+        <div class="followers">2,015</div>
+        <div class="posts">followers · 1,703 posts</div>
+        <span class="score-badge score-bad">2 / 10</span>
+      </div>
+      <div class="scorecard-item">
+        <div class="platform">YouTube @think3dsolutions</div>
+        <div class="followers">559</div>
+        <div class="posts">subscribers · 1,064 videos · 176K views</div>
+        <span class="score-badge score-bad">3 / 10</span>
+      </div>
+    </div>
+
+    <div class="ratio-callout fade-in">
+      <div class="ratio-number">1.75</div>
+      <div class="ratio-text">
+        <h4>Followers gained per post — Instagram</h4>
+        <p>311 posts. 545 followers. That's 1.75 new followers per post — with no captions, no hashtags, no carousels. The benchmark for an optimised profile with a distribution strategy is 8–12 new followers per post. The content is not the problem. Everything around it is.</p>
+      </div>
+    </div>
+
+    <div class="methodology-note fade-in">
+      <span style="font-size:28px; flex-shrink:0;">📋</span>
+      <p><strong>Audit methodology:</strong> All platform findings are benchmarked against official 2026 documentation — LinkedIn Talent Blog, LinkedIn Marketing Solutions, Meta for Business (Instagram Creator Blog, Algorithm transparency report), and YouTube Creator Academy. Where standards are cited, the source is included in each finding below.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AUDIT SECTION -->
+<section id="audit">
+  <div class="container">
+    <span class="section-eyebrow">Platform Audit</span>
+    <h2 class="section-title">What we found.<br>What to fix.</h2>
+    <p class="section-sub">Select a platform to see the specific problems identified, what the official 2026 standard says, and the exact fix.</p>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('linkedin', this)">LinkedIn</button>
+      <button class="tab-btn" onclick="switchTab('instagram', this)">Instagram</button>
+      <button class="tab-btn" onclick="switchTab('youtube', this)">YouTube</button>
+    </div>
+
+    <!-- LINKEDIN TAB -->
+    <div class="tab-panel active" id="tab-linkedin">
+      <div class="audit-grid">
+        <div>
+          <div class="screenshot-frame">
+            <div class="browser-chrome">
+              <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+              <div class="url-bar"></div>
+            </div>
+            <img class="screenshot-img" src="input/Tamien Socmed Screenshots/screencapture-linkedin-in-tamien-dysart-2026-04-20-19_02_11.png" alt="Tamien Dysart LinkedIn profile">
+            <div class="hotspot hs-red active" id="hs-li-p1" style="top:42%;left:54%;">
+              <div class="hs-ring"></div><div class="hs-ring-2"></div><div class="hs-dot"></div>
+              <div class="hs-label">About section</div>
+            </div>
+            <div class="hotspot hs-red" id="hs-li-p2" style="top:74%;left:58%;">
+              <div class="hs-ring"></div><div class="hs-ring-2"></div><div class="hs-dot"></div>
+              <div class="hs-label">Recommendations</div>
+            </div>
+            <div class="hotspot hs-blue" id="hs-li-std" style="top:20%;left:38%;">
+              <div class="hs-ring"></div><div class="hs-ring-2"></div><div class="hs-dot"></div>
+              <div class="hs-label">Personal profile reach</div>
+            </div>
+            <div class="hotspot hs-green" id="hs-li-fix" style="top:42%;left:54%;">
+              <div class="hs-ring"></div><div class="hs-ring-2"></div><div class="hs-dot"></div>
+              <div class="hs-label">Rewrite this section</div>
+            </div>
+          </div>
+          <div style="margin-top:16px; padding:16px 20px; background:rgba(255,59,48,0.06); border-radius:12px; border:1px solid rgba(255,59,48,0.2);">
+            <p style="font-size:13px; color:var(--red); font-weight:600; margin-bottom:6px;">⚠ What we see</p>
+            <p style="font-size:13px; color:var(--near-black); line-height:1.6;">About section is written in "we" corporate voice — describes Think 3D the company, not Tamien the person. Zero recommendations visible. Activity is predominantly reposts, not original thought leadership.</p>
+          </div>
+        </div>
+
+        <div class="problem-stack">
+          <div class="problem-card pc-active" data-hs="hs-li-p1" onclick="activateCard(this)">
+            <div class="card-label">🔴 Problem 1</div>
+            <div class="card-head"><h4>About section is in corporate voice</h4><span class="expand-caret">›</span></div>
+            <div class="card-body">
+              <p>The About section talks about Think 3D Solutions — the company — not about Tamien Dysart the human. The depression at 19. Becoming a father at 17. Leaving Fortune 500. That's what stops people mid-scroll.</p>
+              <div class="source">LinkedIn Talent Blog, 2024 — First-person, keyword-rich About sections rank significantly higher in search and convert profile visits to connections at a measurably higher rate.</div>
+            </div>
+          </div>
+
+          <div class="problem-card" data-hs="hs-li-p2" onclick="activateCard(this)">
+            <div class="card-label">🔴 Problem 2</div>
+            <div class="card-head"><h4>Zero recommendations visible</h4><span class="expand-caret">›</span></div>
+            <div class="card-body">
+              <p>Tamien is a keynote and leadership speaker. Recommendations are his Google reviews. Profiles with 5+ recommendations appear in search results more often and convert at higher rates. Currently none are visible.</p>
+              <div class="source">LinkedIn Help Center, 2024 — Recommendations directly impact search visibility and profile conversion for service providers and speakers.</div>
+            </div>
+          </div>
+
+          <div class="problem-card standard" data-hs="hs-li-std" onclick="activateCard(this)">
+            <div class="card-label" style="color:var(--blue);">📘 The Standard</div>
+            <div class="card-head"><h4>Personal profiles get 561% more reach than company pages</h4><span class="expand-caret" style="color:var(--blue);">›</span></div>
+            <div class="card-body">
+              <p>For identical content, a personal LinkedIn profile reaches 561% more people than a company page post. Tamien's personal brand should lead — Think 3D and Elevate You follow.</p>
+              <div class="source">LinkedIn Official — Employee Advocacy Report, 2023</div>
+            </div>
+          </div>
+
+          <div class="problem-card fix" data-hs="hs-li-fix" onclick="activateCard(this)">
+            <div class="card-label" style="color:var(--green);">✅ The Fix — Copy-paste ready</div>
+            <div class="card-head"><h4>New About section — paste this in today</h4><span class="expand-caret" style="color:var(--green);">›</span></div>
+            <div class="card-body">
+              <div class="copy-ready">
+                <span class="copy-badge">COPY READY</span>
+                I spent 16 years inside Fortune 500 companies — Capital One, Wells Fargo — building teams and managing culture at scale. I was good at it. But I watched too many people go home exhausted, disengaged, and disconnected from the work they were doing.<br><br>
+                That bothered me. So in 2016, I left.<br><br>
+                Together with my co-founder Vaney Hariri, I built Think 3D Solutions around one belief: a culture will emerge whether you invest in it or not.<br><br>
+                Today we've empowered 800+ graduates. I also wrote a book — Elevate — because the inner work matters as much as the system.<br><br>
+                📩 Book a call: letsthink3d.com/contact-us<br>
+                📘 Get the book: Elevate on Amazon
+              </div>
+              <ul class="fix-list" style="margin-top:16px;">
+                <li><span class="check">✓</span> Send recommendation requests to 10 people — message is written, activate in the proposal section</li>
+                <li><span class="check">✓</span> Pin your origin story post (record a 2-min voice note, StreamLab writes and publishes it)</li>
+                <li><span class="check">✓</span> Switch from reposts to 3 original posts per week</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INSTAGRAM TAB -->
+    <div class="tab-panel" id="tab-instagram">
+      <div class="audit-grid">
+        <div>
+          <div class="screenshot-frame">
+            <div class="browser-chrome">
+              <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+              <div class="url-bar"></div>
+            </div>
+            <img class="screenshot-img" src="input/Tamien Socmed Screenshots/screencapture-instagram-tamiendysart-2026-04-20-19_03_17.png" alt="Tamien Dysart Instagram profile">
+            <div class="hotspot hs-red active" id="hs-ig-p1" style="top:11%;left:56%;">
+              <div class="hs-ring"></div><div class="hs-ring-2"></div><div class="hs-dot"></div>
+              <div class="hs-label">Bio section</div>
+            </div>
+            <div class="hotspot hs-red" id="hs-ig-p2" style="top:50%;left:42%;">
+              <div class="hs-ring"></div><div class="hs-ring-2"></div><div class="hs-dot"></div>
+              <div class="hs-label">307 posts — no strategy</div>
+            </div>
+            <div class="hotspot hs-blue" id="hs-ig-std" style="top:32%;left:60%;">
+              <div class="hs-ring"></div><div class="hs-ring-2"></div><div class="hs-dot"></div>
+              <div class="hs-label">Engagement signals</div>
+            </div>
+            <div class="hotspot hs-green" id="hs-ig-fix" style="top:11%;left:56%;">
+              <div class="hs-ring"></div><div class="hs-ring-2"></div><div class="hs-dot"></div>
+              <div class="hs-label">New bio goes here</div>
+            </div>
+          </div>
+          <div style="margin-top:16px; padding:16px 20px; background:rgba(255,59,48,0.06); border-radius:12px; border:1px solid rgba(255,59,48,0.2);">
+            <p style="font-size:13px; color:var(--red); font-weight:600; margin-bottom:6px;">⚠ What we see</p>
+            <p style="font-size:13px; color:var(--near-black); line-height:1.6;">Bio says "Inspiring the world to step into their #HigherPotential" — vague, no ICP, no offer, no CTA. 311 posts → 545 followers — with <strong>no captions, no hashtags, no carousels</strong>. No Linktree. Only 58 following. Think3D posts never tag @tamiendysart.</p>
+          </div>
+        </div>
+
+        <div class="problem-stack">
+          <div class="problem-card pc-active" data-hs="hs-ig-p1" onclick="activateCard(this)">
+            <div class="card-label">🔴 Problem 1</div>
+            <div class="card-head"><h4>Bio is vague — no ICP, no offer, no CTA</h4><span class="expand-caret">›</span></div>
+            <div class="card-body">
+              <p>"Inspiring the world to step into their #HigherPotential" — this could be anyone. A high-converting Instagram bio answers three questions in under 150 characters: Who are you? Who do you help? What should they do next?</p>
+              <div class="source">Meta for Business — Instagram Profile Optimisation, 2024</div>
+            </div>
+          </div>
+
+          <div class="problem-card" data-hs="hs-ig-p2" onclick="activateCard(this)">
+            <div class="card-label">🔴 Problem 2</div>
+            <div class="card-head"><h4>311 posts — no captions, no hashtags, no carousels, no Linktree</h4><span class="expand-caret">›</span></div>
+            <div class="card-body">
+              <p>Every post is published without a caption — no hook, no context, no CTA. No hashtag strategy means zero algorithm discoverability. No carousels (which get 3× more reach than single images). No Linktree on @tamiendysart — Think3D has one, the personal account has nothing. Only 58 following, zero reciprocal engagement.</p>
+              <div class="source">Instagram Creator Blog — How the Algorithm Works, 2024. Captions, hashtags, and carousel format are the three highest-leverage levers for organic reach.</div>
+            </div>
+          </div>
+
+          <div class="problem-card" onclick="activateCard(this)">
+            <div class="card-label">🔴 Problem 3</div>
+            <div class="card-head"><h4>Think3D never tags @tamiendysart — a cross-promotion gap costing followers daily</h4><span class="expand-caret">›</span></div>
+            <div class="card-body">
+              <p>Think3D Solutions has 2,015 Instagram followers. Every post featuring Tamien is a missed opportunity to drive those followers to his personal account. A simple @tamiendysart tag in every Think3D post that features him would compound personal follower growth automatically — zero extra content required.</p>
+              <div class="source">Instagram — Cross-tagging sends profile visit notifications and appears in both accounts' tagged feeds, increasing discovery for both audiences.</div>
+            </div>
+          </div>
+
+          <div class="problem-card standard" data-hs="hs-ig-std" onclick="activateCard(this)">
+            <div class="card-label" style="color:var(--blue);">📘 The Standard</div>
+            <div class="card-head"><h4>The 5-5-5 method produces reciprocal growth</h4><span class="expand-caret" style="color:var(--blue);">›</span></div>
+            <div class="card-body">
+              <p>Every day: find 5 relevant accounts in your niche, leave 5 meaningful comments, follow 5 new relevant accounts. Instagram's algorithm uses engagement signals to increase post reach.</p>
+              <div class="source">Instagram Creator Blog — Relationship signals, 2024. Consistent engagement triggers reciprocal reach increases.</div>
+            </div>
+          </div>
+
+          <div class="problem-card fix" data-hs="hs-ig-fix" onclick="activateCard(this)">
+            <div class="card-label" style="color:var(--green);">✅ The Fix</div>
+            <div class="card-head"><h4>Three changes this week</h4><span class="expand-caret" style="color:var(--green);">›</span></div>
+            <div class="card-body">
+              <div class="copy-ready">
+                <span class="copy-badge">NEW BIO — COPY READY</span>
+                Leadership coach | Culture builder | Author of Elevate<br>
+                Helping leaders build teams worth leading &amp; lives worth living<br>
+                🎤 Speaker | 📘 Get Elevate 👇<br>
+                [linktree link]
+              </div>
+              <ul class="fix-list" style="margin-top:16px;">
+                <li><span class="check">✓</span> Set up Linktree for @tamiendysart — links: Book a call → Get Elevate → Think 3D → YouTube</li>
+                <li><span class="check">✓</span> Add captions to every post — hook in line 1, value in lines 2–4, CTA in last line</li>
+                <li><span class="check">✓</span> Add hashtag stack: <span style="font-size:12px; color:var(--blue);">#LeadershipDevelopment #WorkplaceCulture #EmployeeEngagement #PersonalDevelopment #ExecutiveCoaching #Think3D #ElevateYou</span></li>
+                <li><span class="check">✓</span> Cross-tag @tamiendysart in every Think3D post featuring Tamien</li>
+                <li><span class="check">✓</span> Start daily 5-5-5 engagement ritual (15 min/day)</li>
+                <li><span class="check">✓</span> Introduce carousels — repurpose 3–5 framework slides from existing keynote material</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- YOUTUBE TAB -->
+    <div class="tab-panel" id="tab-youtube">
+      <div class="audit-grid">
+        <div>
+          <div class="screenshot-frame">
+            <div class="browser-chrome">
+              <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+              <div class="url-bar"></div>
+            </div>
+            <img class="screenshot-img" src="input/Tamien Socmed Screenshots/screencapture-youtube-think3dsolutions-2026-04-20-19_03_43.png" alt="Think 3D YouTube channel">
+            <div class="hotspot hs-orange active" id="hs-yt-opp" style="top:38%;left:30%;">
+              <div class="hs-ring"></div><div class="hs-ring-2"></div><div class="hs-dot"></div>
+              <div class="hs-label">17K view video</div>
+            </div>
+            <div class="hotspot hs-red" id="hs-yt-p1" style="top:52%;left:55%;">
+              <div class="hs-ring"></div><div class="hs-ring-2"></div><div class="hs-dot"></div>
+              <div class="hs-label">No subscriber CTA</div>
+            </div>
+            <div class="hotspot hs-red" id="hs-yt-p2" style="top:74%;left:40%;">
+              <div class="hs-ring"></div><div class="hs-ring-2"></div><div class="hs-dot"></div>
+              <div class="hs-label">Shorts — no strategy</div>
+            </div>
+            <div class="hotspot hs-blue" id="hs-yt-std" style="top:44%;left:64%;">
+              <div class="hs-ring"></div><div class="hs-ring-2"></div><div class="hs-dot"></div>
+              <div class="hs-label">Weak title</div>
+            </div>
+            <div class="hotspot hs-green" id="hs-yt-fix" style="top:38%;left:30%;">
+              <div class="hs-ring"></div><div class="hs-ring-2"></div><div class="hs-dot"></div>
+              <div class="hs-label">Start here</div>
+            </div>
+          </div>
+          <div style="margin-top:16px; padding:16px 20px; background:rgba(255,159,10,0.08); border-radius:12px; border:1px solid rgba(255,159,10,0.3);">
+            <p style="font-size:13px; color:var(--orange); font-weight:600; margin-bottom:6px;">⚡ Hidden gold here</p>
+            <p style="font-size:13px; color:var(--near-black); line-height:1.6;">1,064 videos → 559 subscribers → 176,114 total views. One video hit 17,000 views, another 14,000. The formula is proven — it just hasn't been replicated. That changes now.</p>
+          </div>
+        </div>
+
+        <div class="problem-stack">
+          <div class="problem-card pc-active" style="border-left-color:var(--orange);" data-hs="hs-yt-opp" onclick="activateCard(this)">
+            <div class="card-label" style="color:var(--orange);">⚡ Opportunity</div>
+            <div class="card-head"><h4>17K views proves the content can land</h4><span class="expand-caret" style="color:var(--orange);">›</span></div>
+            <div class="card-body">
+              <p>The top video hit 17,000 views. That's not luck — that's a formula. Reverse-engineer it: thumbnail, title structure, hook in the first 15 seconds, the search term it ranked for. Then replicate it systematically.</p>
+            </div>
+          </div>
+
+          <div class="problem-card" data-hs="hs-yt-p1" onclick="activateCard(this)">
+            <div class="card-label">🔴 Problem 1</div>
+            <div class="card-head"><h4>1,064 videos — zero subscriber CTAs</h4><span class="expand-caret">›</span></div>
+            <div class="card-body">
+              <p>1,064 videos and none ask viewers to subscribe in the first 30 seconds. Viewers watch and leave. With 176K views and only 559 subscribers, the conversion rate is critically low.</p>
+              <div class="source">YouTube Creator Academy, 2024 — Videos with a verbal subscribe CTA in the first 30 seconds convert at 2–3× the rate of videos without one.</div>
+            </div>
+          </div>
+
+          <div class="problem-card" data-hs="hs-yt-p2" onclick="activateCard(this)">
+            <div class="card-label">🔴 Problem 2</div>
+            <div class="card-head"><h4>Shorts getting 84–675 views — no strategy</h4><span class="expand-caret">›</span></div>
+            <div class="card-body">
+              <p>YouTube Shorts are now the #1 discovery mechanism for new channel subscribers. The current Shorts have no consistent hook format, no CTA, and no thematic connection to long-form content.</p>
+              <div class="source">YouTube Official Blog — Shorts and Long-Form Strategy, 2024. Shorts viewers convert to long-form at 40% when content is thematically connected.</div>
+            </div>
+          </div>
+
+          <div class="problem-card standard" data-hs="hs-yt-std" onclick="activateCard(this)">
+            <div class="card-label" style="color:var(--blue);">📘 The Standard — Title formula</div>
+            <div class="card-head"><h4>Weak titles are killing reach</h4><span class="expand-caret" style="color:var(--blue);">›</span></div>
+            <div class="card-body">
+              <p><strong>Current (weak):</strong> "Thinking Out Loud with Vaney Hariri | Episode 17"<br><br>
+              <strong>Optimised:</strong> "Why Your Best Employees Are Quietly Quitting (And What To Do About It)"<br><br>
+              Search intent, clear benefit, emotional hook. That's the formula.</p>
+            </div>
+          </div>
+
+          <div class="problem-card fix" data-hs="hs-yt-fix" onclick="activateCard(this)">
+            <div class="card-label" style="color:var(--green);">✅ The Fix — Four actions, no new filming required</div>
+            <div class="card-head"><h4>Start with what already exists</h4><span class="expand-caret" style="color:var(--green);">›</span></div>
+            <div class="card-body">
+              <ul class="fix-list">
+                <li><span class="check">✓</span> Add subscribe CTA to descriptions of existing top 10 videos</li>
+                <li><span class="check">✓</span> Add verbal CTA to all future videos in first 30 seconds</li>
+                <li><span class="check">✓</span> Clip 3 Shorts per week from existing keynote footage (60-sec format)</li>
+                <li><span class="check">✓</span> Rewrite titles + redesign thumbnails on top 10 videos using the optimised formula</li>
+                <li><span class="check">✓</span> Reverse-engineer the 17K video — document the formula and replicate</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PART 2 DIVIDER -->
+<div class="part-divider">
+  <div class="part-divider-inner">
+    <span class="part-badge p2">Part Two</span>
+    <div class="part-divider-line"></div>
+    <div>
+      <h2 style="color:var(--white);">The Fix</h2>
+      <p>What a top-tier 2026 agency builds for a keynote and leadership speaker positioning for national visibility — and what StreamLab is proposing to build and run for Tamien.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROPOSAL SECTION -->
+<section id="proposal">
+  <div class="container">
+    <span class="section-eyebrow">What We're Building for You</span>
+    <h2 class="section-title">Five systems.<br>One compounding brand.</h2>
+    <p class="section-sub">Each one runs without Tamien's daily involvement. Together they replace a full-time agency — at a fraction of the cost and with a strategy built specifically for a culture and leadership speaker.</p>
+
+    <!-- Speaker Positioning Context -->
+    <div class="speaker-positioning fade-in">
+      <div>
+        <div style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); margin-bottom:14px;">How We're Positioning Tamien in 2026</div>
+        <h3>Not just a coach. A keynote speaker with a world-class story and a corporate-grade personal brand.</h3>
+        <p style="margin-top:16px;">The brief was simple: design the infrastructure a top-tier agency would build for a culture and leadership speaker targeting CPOs, event organisers, and corporate buyers — while also serving individuals through Elevate You. The answer is a content-first, community-backed, funnel-powered system that turns Tamien's existing story and audience into a compounding inbound engine.</p>
+      </div>
+      <div class="positioning-tags">
+        <div class="ptag">
+          <div class="ptag-label">Primary Positioning</div>
+          <div class="ptag-value">Keynote · Motivational · Leadership Speaker</div>
+        </div>
+        <div class="ptag">
+          <div class="ptag-label">B2B Target</div>
+          <div class="ptag-value">CPOs, HR Directors, Corporate Event Buyers</div>
+        </div>
+        <div class="ptag">
+          <div class="ptag-label">B2C Target</div>
+          <div class="ptag-value">Emerging Leaders, Elevate You Graduates</div>
+        </div>
+        <div class="ptag">
+          <div class="ptag-label">Core Differentiator</div>
+          <div class="ptag-value">Human story + 16 years Fortune 500 + 800+ graduates</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DELIVERABLE CARDS -->
+    <div class="deliverables-list">
+
+      <!-- D1: Quarterly Social & Profile Optimization -->
+      <div class="deliverable-card" onclick="toggleDeliverable(this)">
+        <div class="deliverable-head">
+          <div class="d-num">1</div>
+          <div class="d-icon">🔄</div>
+          <div class="d-info">
+            <div class="d-title">Quarterly Social &amp; Profile Optimization</div>
+            <div class="d-subtitle">LinkedIn · Instagram · YouTube · Linktree — audited and refreshed every quarter</div>
+            <div class="d-tags">
+              <span class="d-tag blue">Ongoing · Quarterly</span>
+              <span class="d-tag">LinkedIn</span>
+              <span class="d-tag">Instagram</span>
+              <span class="d-tag">YouTube</span>
+              <span class="d-tag green">Includes Linktree</span>
+            </div>
+          </div>
+          <span class="d-caret">›</span>
+        </div>
+        <div class="deliverable-body">
+          <p style="font-size:15px; color:var(--mid-grey); line-height:1.7; margin-top:4px; max-width:760px;">Your platforms aren't a set-and-forget. Every quarter, StreamLab reviews what's working, rewrites what isn't, and realigns everything to where the audience and algorithm are moving. Profile optimisation is not a one-time event — it is a quarterly discipline.</p>
+          <div class="d-body-grid">
+            <div>
+              <div class="d-col-label">What StreamLab does every quarter</div>
+              <ul class="d-feature-list">
+                <li><span class="bullet">→</span> LinkedIn profile headline, About, and banner audit + rewrite</li>
+                <li><span class="bullet">→</span> Instagram bio and Linktree link refresh</li>
+                <li><span class="bullet">→</span> YouTube channel page — description, banner, playlists, featured sections</li>
+                <li><span class="bullet">→</span> Hashtag strategy refresh based on trending niche terms</li>
+                <li><span class="bullet">→</span> Content pillar review — double down on what's resonating, retire what isn't</li>
+                <li><span class="bullet">→</span> Metricool scheduling refresh — optimal post times updated quarterly from analytics</li>
+              </ul>
+            </div>
+            <div>
+              <div class="d-col-label">The Linktree Setup (one-time build, then quarterly refresh)</div>
+              <ul class="d-feature-list">
+                <li><span class="bullet">→</span> Book a speaker enquiry call → Tamien's calendar</li>
+                <li><span class="bullet">→</span> Get the book — Elevate on Amazon</li>
+                <li><span class="bullet">→</span> Think 3D Solutions — corporate programs</li>
+                <li><span class="bullet">→</span> Elevate You — coaching and personal development</li>
+                <li><span class="bullet">→</span> tamiendysart.com — personal hub (see Deliverable 2)</li>
+              </ul>
+              <div class="d-callout" style="margin-top:20px;">
+                <p><strong>Why this matters:</strong> Linktree sits at the end of every bio on every platform. One optimised link tree means every click from every channel goes exactly where it should — no traffic leaking into dead ends.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D2: Personal Website -->
+      <div class="deliverable-card" onclick="toggleDeliverable(this)">
+        <div class="deliverable-head">
+          <div class="d-num">2</div>
+          <div class="d-icon">🌐</div>
+          <div class="d-info">
+            <div class="d-title">Personal Website — One-Time Build + Ongoing Maintenance</div>
+            <div class="d-subtitle">tamiendysart.com — the hub that every channel points to, with SEO and GEO built in</div>
+            <div class="d-tags">
+              <span class="d-tag blue">One-time build</span>
+              <span class="d-tag">Ongoing maintenance</span>
+              <span class="d-tag green">SEO + GEO included</span>
+            </div>
+          </div>
+          <span class="d-caret">›</span>
+        </div>
+        <div class="deliverable-body">
+          <p style="font-size:15px; color:var(--mid-grey); line-height:1.7; margin-top:4px; max-width:760px;">Currently, Tamien's personal brand lives as a subpage on letsthink3d.com. That means a CPO Googling "Tamien Dysart speaker" lands on Think 3D's corporate website — not Tamien's. His book, his keynote reel, his story, and his speaking enquiry form have nowhere to live that is purely his.</p>
+          <div class="d-body-grid">
+            <div>
+              <div class="d-col-label">What gets built — tamiendysart.com</div>
+              <ul class="d-feature-list">
+                <li><span class="bullet">→</span> Speaker bio page — story, credentials, keynote topics</li>
+                <li><span class="bullet">→</span> Speaking enquiry form — direct inbound, no friction</li>
+                <li><span class="bullet">→</span> Keynote reel and media page</li>
+                <li><span class="bullet">→</span> Book page — Elevate, with Amazon link and lead magnet</li>
+                <li><span class="bullet">→</span> Coaching page — Elevate You programmes</li>
+                <li><span class="bullet">→</span> Press and media mentions</li>
+                <li><span class="bullet">→</span> Links to Think 3D and Elevate You as brands beneath Tamien</li>
+              </ul>
+            </div>
+            <div>
+              <div class="d-col-label">SEO + GEO — built in from day one</div>
+              <ul class="d-feature-list">
+                <li><span class="bullet">→</span> On-page keyword strategy: "leadership keynote speaker," "culture speaker," "executive coach [city]"</li>
+                <li><span class="bullet">→</span> Blog content that ranks — leadership frameworks, culture insights</li>
+                <li><span class="bullet">→</span> YouTube title optimisation and link engineering across every channel</li>
+                <li><span class="bullet">→</span> GEO: content structured so ChatGPT, Perplexity, and Google AI Overviews cite Tamien when someone searches for a leadership speaker</li>
+                <li><span class="bullet">→</span> Podcast + PR pitching — guest appearances build backlinks and AI authority signals</li>
+              </ul>
+              <div class="d-callout" style="margin-top:20px;">
+                <p><strong>The difference:</strong> SEO gets found on Google. <strong>GEO</strong> gets cited by AI. In 2026, you need both — and most speakers have neither.</p>
+              </div>
+            </div>
+          </div>
+          <div class="d-sub-card">
+            <h5>Ongoing Maintenance</h5>
+            <p>StreamLab updates the site monthly — new blog posts, updated speaker topics, refreshed media mentions, testimonials from new speaking engagements. A static website is a brochure. A maintained website is an asset.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- D3: AI Review Collection + GBP -->
+      <div class="deliverable-card" onclick="toggleDeliverable(this)">
+        <div class="deliverable-head">
+          <div class="d-num">3</div>
+          <div class="d-icon">⭐</div>
+          <div class="d-info">
+            <div class="d-title">AI Automated Review Collection System + Google Business Profile</div>
+            <div class="d-subtitle">800+ graduates and event organisers. Zero reviews. One system changes that permanently.</div>
+            <div class="d-tags">
+              <span class="d-tag blue">AI automated</span>
+              <span class="d-tag">Google + LinkedIn</span>
+              <span class="d-tag orange">800+ untapped contacts</span>
+              <span class="d-tag green">Google Maps + Search visibility</span>
+            </div>
+          </div>
+          <span class="d-caret">›</span>
+        </div>
+        <div class="deliverable-body">
+          <p style="font-size:15px; color:var(--mid-grey); line-height:1.7; margin-top:4px; max-width:760px;">800+ graduates. Event organisers who have seen Tamien on stage. Corporate clients who have run Think 3D programs. Not a single Google or LinkedIn review currently visible. This is social proof sitting dormant — and one automated system unlocks all of it.</p>
+          <div class="d-body-grid">
+            <div>
+              <div class="d-col-label">AI Review Request Workflow (n8n automation)</div>
+              <ul class="d-feature-list">
+                <li><span class="bullet">→</span> Trigger: program completion, speaking engagement, event wrap-up</li>
+                <li><span class="bullet">→</span> Personalised review request sent automatically — name, event, direct Google link</li>
+                <li><span class="bullet">→</span> Targets Google Business Profile and LinkedIn recommendations</li>
+                <li><span class="bullet">→</span> Follow-up sequence if no response in 5 days</li>
+                <li><span class="bullet">→</span> 800+ existing graduates receive an initial activation sequence (one-time send)</li>
+                <li><span class="bullet">→</span> All future engagements auto-trigger from the moment they close</li>
+              </ul>
+            </div>
+            <div>
+              <div class="d-col-label">Why reviews change everything</div>
+              <ul class="d-feature-list">
+                <li><span class="bullet">→</span> A CPO Googling Tamien sees star ratings before they see his bio</li>
+                <li><span class="bullet">→</span> Event organisers search "leadership speaker [city]" — reviews determine who gets booked</li>
+                <li><span class="bullet">→</span> LinkedIn recommendations increase profile search rank and conversion rate</li>
+                <li><span class="bullet">→</span> Google reviews compound — each new one increases local search visibility</li>
+              </ul>
+              <div class="d-callout" style="margin-top:20px;">
+                <p>One automation sequence turning on today means <strong>every future engagement automatically generates a review request</strong>. The system runs while Tamien speaks.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- GBP Block -->
+          <div class="gbp-block">
+            <div style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); margin-bottom:14px;">Google Business Profile — Tamien Dysart (Personal Brand)</div>
+            <h5>Set up as a Service Area Business — so Tamien shows up where bookings happen.</h5>
+            <p>Not a listing for Think 3D. A listing for <strong>Tamien Dysart</strong> — keynote speaker, motivational speaker, leadership speaker. Set up as a Service Area Business (SAB) so it doesn't require a physical address but still appears on Google Maps and in local search when event organisers search for speakers in their region.</p>
+            <div class="gbp-specs">
+              <div class="gbp-spec">
+                <div class="gbp-spec-label">Primary Categories</div>
+                <div class="gbp-spec-value">Keynote Speaker · Motivational Speaker · Leadership Speaker</div>
+              </div>
+              <div class="gbp-spec">
+                <div class="gbp-spec-label">What it unlocks</div>
+                <div class="gbp-spec-value">Google Maps visibility · Search panel · Direct call/message from search results</div>
+              </div>
+              <div class="gbp-spec">
+                <div class="gbp-spec-label">Target outcome</div>
+                <div class="gbp-spec-value">Reviews from event organizers · Inbound enquiries direct from Google · National speaker visibility</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D4: AI Community Nurture -->
+      <div class="deliverable-card" onclick="toggleDeliverable(this)">
+        <div class="deliverable-head">
+          <div class="d-num">4</div>
+          <div class="d-icon">🤝</div>
+          <div class="d-info">
+            <div class="d-title">AI Automated Community Nurture</div>
+            <div class="d-subtitle">Inner Circle setup · Newsletter · Value-first content strategy · Funnels that convert</div>
+            <div class="d-tags">
+              <span class="d-tag blue">AI automated</span>
+              <span class="d-tag">453 contacts ready</span>
+              <span class="d-tag green">Inner Circle + Newsletter</span>
+              <span class="d-tag orange">Content funnels</span>
+            </div>
+          </div>
+          <span class="d-caret">›</span>
+        </div>
+        <div class="deliverable-body">
+          <p style="font-size:15px; color:var(--mid-grey); line-height:1.7; margin-top:4px; max-width:760px;">Tamien already has a community. 800+ graduates. An Inner Circle of 126 high-intent alumni. 453 contacts cleaned and segmented. The infrastructure to keep that community warm, engaged, and converting doesn't exist yet. This deliverable builds it.</p>
+
+          <!-- Value Principle -->
+          <div class="value-principle">
+            <div class="vp-label">The Principle That Makes This Work</div>
+            <h5>Give the community something they look forward to — not just something to buy.</h5>
+            <p>The noise in 2026 is AI-generated outbound blasting people's inboxes with offers. What cuts through that noise is the opposite: a leader who shows up regularly with genuine value — frameworks, insights, behind-the-scenes thinking — that his community expects, appreciates, and shares. That's what builds the kind of authority that fills rooms without paid advertising. A good content marketing strategy with well-designed funnels outlasts any outbound campaign. StreamLab designs and runs that system for Tamien.</p>
+          </div>
+
+          <div class="d-body-grid" style="margin-top:28px;">
+            <div>
+              <div class="d-col-label">Inner Circle Group Chat (WhatsApp or Discord)</div>
+              <ul class="d-feature-list">
+                <li><span class="bullet">→</span> Infrastructure setup — platform recommendation and full configuration</li>
+                <li><span class="bullet">→</span> Onboarding sequence for the 126 existing Inner Circle members</li>
+                <li><span class="bullet">→</span> Weekly content prompts prepared by StreamLab — Tamien drops in, the system does the rest</li>
+                <li><span class="bullet">→</span> Leadership insights, challenges, behind-the-scenes from engagements</li>
+                <li><span class="bullet">→</span> Referral ask sequences built in — warm community generates warm referrals</li>
+                <li><span class="bullet">→</span> Offer nudges timed to program launches — natural, not spammy</li>
+              </ul>
+            </div>
+            <div>
+              <div class="d-col-label">Value-First Newsletter + Email Nurture (Mailchimp)</div>
+              <ul class="d-feature-list">
+                <li><span class="bullet">→</span> Existing Mailchimp account — no new spend required</li>
+                <li><span class="bullet">→</span> StreamLab writes and manages — Tamien approves, audience reads</li>
+                <li><span class="bullet">→</span> Bi-weekly cadence — leadership frameworks, event reflections, culture insights</li>
+                <li><span class="bullet">→</span> Not announcements. Not promotions. Content the list looks forward to.</li>
+                <li><span class="bullet">→</span> Offers surface naturally within value content — not as interruptions</li>
+                <li><span class="bullet">→</span> Funnels built from newsletter → booking page → speaking enquiry</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 3 Cohort Segments -->
+          <div style="margin-top:28px;">
+            <div class="d-col-label">The 453 Contacts — Already Segmented into 3 Groups</div>
+            <div class="cohort-grid">
+              <div class="cohort-card">
+                <div class="cohort-tag" style="color:var(--blue);">Segment 1 — Inner Circle</div>
+                <div class="cohort-name">Elite &amp; PoM Alumni</div>
+                <div class="cohort-count">126</div>
+                <div class="cohort-desc">Elite Mindset grads + Power of M.E. alumni. Tamien's highest-trust community. First to receive new offers, first to be asked for referrals.</div>
+              </div>
+              <div class="cohort-card">
+                <div class="cohort-tag" style="color:var(--orange);">Segment 2 — Mentorship Grads</div>
+                <div class="cohort-name">AOML Program Graduates</div>
+                <div class="cohort-count">56</div>
+                <div class="cohort-desc">6-month mentorship program graduates. High trust, high intent. Natural candidates for the next tier of engagement or corporate referrals.</div>
+              </div>
+              <div class="cohort-card">
+                <div class="cohort-tag" style="color:rgba(255,255,255,0.5);">Segment 3 — Warm Community</div>
+                <div class="cohort-name">Seminar Attendees</div>
+                <div class="cohort-count">271</div>
+                <div class="cohort-desc">Attendees from Elevating Community, Momentum Matters, Symphony of Life. Warm but further from the core. Newsletter and community value pulls them in.</div>
+              </div>
+            </div>
+            <div class="d-callout" style="margin-top:16px;">
+              <p>Each segment receives <strong>different content, different cadence, different offers</strong> — tailored to where they are in the relationship with Tamien. Automation handles the routing. StreamLab writes the content. Tamien's voice is in every message.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D5: QSR -->
+      <div class="deliverable-card" onclick="toggleDeliverable(this)">
+        <div class="deliverable-head">
+          <div class="d-num">5</div>
+          <div class="d-icon">📊</div>
+          <div class="d-info">
+            <div class="d-title">Quarterly Strategy Review (QSR)</div>
+            <div class="d-subtitle">Monthly performance data. Quarterly strategy call. Always moving toward the next level.</div>
+            <div class="d-tags">
+              <span class="d-tag blue">Ongoing · Quarterly</span>
+              <span class="d-tag">Performance reporting</span>
+              <span class="d-tag green">Strategy updates</span>
+            </div>
+          </div>
+          <span class="d-caret">›</span>
+        </div>
+        <div class="deliverable-body">
+          <p style="font-size:15px; color:var(--mid-grey); line-height:1.7; margin-top:4px; max-width:760px;">StreamLab doesn't set and forget. Every month, Metricool delivers a performance report. Every quarter, StreamLab and Tamien sit down to review what's working, what's not, and what the next 90 days should focus on.</p>
+          <div class="d-body-grid">
+            <div>
+              <div class="d-col-label">Monthly performance report (automatic)</div>
+              <ul class="d-feature-list">
+                <li><span class="bullet">→</span> Delivered by Metricool before every review</li>
+                <li><span class="bullet">→</span> Reach, engagement rate, follower growth per platform</li>
+                <li><span class="bullet">→</span> Top performing post of the month — why it worked</li>
+                <li><span class="bullet">→</span> Website traffic and search performance (from tamiendysart.com)</li>
+                <li><span class="bullet">→</span> Review count and Google Business visibility trends</li>
+              </ul>
+            </div>
+            <div>
+              <div class="d-col-label">Quarterly strategy session with StreamLab</div>
+              <ul class="d-feature-list">
+                <li><span class="bullet">→</span> Review 90-day performance against targets</li>
+                <li><span class="bullet">→</span> Update content pillars — what themes are resonating</li>
+                <li><span class="bullet">→</span> Platform priority shift — where to lean in next quarter</li>
+                <li><span class="bullet">→</span> New offer campaign planning (event, program, book, keynote)</li>
+                <li><span class="bullet">→</span> Community growth strategy refresh</li>
+              </ul>
+              <div class="d-callout" style="margin-top:20px;">
+                <p>The brand doesn't stand still. <strong>Neither does the strategy.</strong> Every quarter is a new brief — built on what the data says, not what we assumed three months ago.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /deliverables-list -->
+  </div>
+</section>
+
+<!-- CONTENT AUTHORITY ENGINE -->
+<section id="cae" style="background:var(--off-white);">
+  <div class="container">
+    <span class="section-eyebrow">How the Content Machine Works</span>
+    <h2 class="section-title">Tamien shows up to record.<br>StreamLab runs everything else.</h2>
+    <p class="section-sub">This is the flywheel at the core of the personal brand. Click each step to see exactly what happens.</p>
+
+    <!-- Hub and Spoke Architecture -->
+    <div style="margin-top:64px; padding:48px; background:var(--black); border-radius:var(--radius); color:var(--white);" class="fade-in">
+      <div style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); margin-bottom:12px;">Brand Architecture</div>
+      <h3 style="font-size:26px; font-weight:700; letter-spacing:-0.02em; margin-bottom:8px;">Tamien is the hub. Think 3D and Elevate You are the spokes.</h3>
+      <p style="color:rgba(255,255,255,0.55); font-size:15px; margin-bottom:40px;">Both B2B and B2C matter — so both platforms matter. LinkedIn drives corporate clients to Think 3D. Instagram and YouTube drive individuals to Elevate You. Tamien's personal brand is the bridge.</p>
+      <div class="hub-spoke">
+        <div class="hub-spoke-node" style="background:rgba(0,113,227,0.15); border:1px solid rgba(0,113,227,0.4); text-align:center;">
+          <div class="hub-node-label" style="color:var(--blue);">B2B · LinkedIn</div>
+          <div class="hub-node-name" style="color:var(--white);">Think 3D Solutions</div>
+          <div class="hub-node-desc" style="color:rgba(255,255,255,0.45);">CPOs · HR Directors · Corporate buyers</div>
+        </div>
+        <div class="hub-arrow">←</div>
+        <div class="hub-spoke-node" style="background:var(--blue); text-align:center; box-shadow:0 0 40px rgba(0,113,227,0.4);">
+          <div class="hub-node-label" style="color:rgba(255,255,255,0.6);">The Hub</div>
+          <div class="hub-node-name" style="color:var(--white); font-size:22px; font-weight:800;">Tamien Dysart</div>
+          <div class="hub-node-desc" style="color:rgba(255,255,255,0.7);">Speaker · Consultant · Author · Coach</div>
+        </div>
+        <div class="hub-arrow">→</div>
+        <div class="hub-spoke-node" style="background:rgba(52,199,89,0.12); border:1px solid rgba(52,199,89,0.35); text-align:center;">
+          <div class="hub-node-label" style="color:var(--green);">B2C · Instagram · YouTube</div>
+          <div class="hub-node-name" style="color:var(--white);">Elevate You</div>
+          <div class="hub-node-desc" style="color:rgba(255,255,255,0.45);">Individuals · Readers · Emerging leaders</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step Rail -->
+    <div style="margin-top:48px; padding:48px; background:var(--white); border-radius:var(--radius); border:1.5px solid var(--border);" class="fade-in">
+      <div style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); margin-bottom:8px;">The Content Flywheel — Click each step</div>
+      <p style="font-size:15px; color:var(--mid-grey); margin-bottom:36px; max-width:640px;">One batch session per month produces four weeks of content across every platform. Here's how StreamLab runs it.</p>
+
+      <div class="step-rail" id="stepRail">
+        <div class="step-node-wrap" onclick="toggleStep(this, 'step1')">
+          <div class="step-icon" style="background:var(--blue); color:var(--white);">✍️</div>
+          <div class="step-label-num" style="color:var(--blue);">Step 1</div>
+          <div class="step-label-title">StreamLab writes the script</div>
+          <div class="step-label-sub">Topic, hook, key points — all prepared</div>
+        </div>
+        <div class="step-node-wrap" onclick="toggleStep(this, 'step2')">
+          <div class="step-icon" style="background:var(--near-black); color:var(--white);">🎙️</div>
+          <div class="step-label-num" style="color:var(--mid-grey);">Step 2</div>
+          <div class="step-label-title">Tamien reads and records</div>
+          <div class="step-label-sub">One batch shoot per month with Antonio</div>
+        </div>
+        <div class="step-node-wrap" onclick="toggleStep(this, 'step3')">
+          <div class="step-icon" style="background:var(--near-black); color:var(--white);">🎬</div>
+          <div class="step-label-num" style="color:var(--mid-grey);">Step 3</div>
+          <div class="step-label-title">Antonio edits, StreamLab takes over</div>
+          <div class="step-label-sub">Edited footage handed off for publishing</div>
+        </div>
+        <div class="step-node-wrap" onclick="toggleStep(this, 'step4')">
+          <div class="step-icon" style="background:var(--blue); color:var(--white);">📲</div>
+          <div class="step-label-num" style="color:var(--blue);">Step 4</div>
+          <div class="step-label-title">StreamLab publishes the system</div>
+          <div class="step-label-sub">Metricool schedules across all platforms</div>
+        </div>
+        <div class="step-node-wrap" onclick="toggleStep(this, 'step5')">
+          <div class="step-icon" style="background:var(--green); color:var(--white);">💬</div>
+          <div class="step-label-num" style="color:var(--green);">Step 5</div>
+          <div class="step-label-title">Engagement → leads</div>
+          <div class="step-label-sub">Automation nurtures, Tamien closes</div>
+        </div>
+      </div>
+
+      <div id="step1" class="step-detail-panel" style="display:none;">
+        <h5>StreamLab writes the script</h5>
+        <p>Every week, StreamLab prepares the content brief: the topic (chosen from the agreed content pillars), the hook that stops the scroll, the key points Tamien needs to hit, and the CTA. Tamien reads it, adjusts anything that doesn't sound like him, and shows up to record. The creative direction is done before he walks into the room.</p>
+      </div>
+      <div id="step2" class="step-detail-panel" style="display:none;">
+        <h5>Tamien reads and records — one batch session per month</h5>
+        <p>One 2–3 hour session with Antonio per month. Script in hand, camera rolling. StreamLab prepares enough content in advance so the batch session produces 4+ weeks of footage across LinkedIn, Instagram, YouTube, and Shorts. Tamien's voice, Tamien's presence — just no daily filming required.</p>
+      </div>
+      <div id="step3" class="step-detail-panel" style="display:none;">
+        <h5>Antonio edits — StreamLab takes it from here</h5>
+        <p>Antonio's job ends at the edit. He delivers the cut videos to StreamLab. From there: Opus Clip processes long-form into scored Shorts, the Content Engine GPT writes captions in Tamien's voice, Canva overlays are added where needed, and everything is loaded into Metricool for scheduled publishing. Zero back-and-forth. Clean handoff.</p>
+      </div>
+      <div id="step4" class="step-detail-panel" style="display:none;">
+        <h5>StreamLab publishes — Metricool schedules at optimal times</h5>
+        <p>Every piece of content is published at the platform-optimised time across LinkedIn, Instagram, YouTube, and TikTok. Captions, hashtags, and descriptions are written and attached. Tamien receives a weekly content review — 15 minutes, once a week — to approve the queue. Everything else is handled.</p>
+      </div>
+      <div id="step5" class="step-detail-panel" style="display:none;">
+        <h5>Automation nurtures. Tamien closes.</h5>
+        <p>Comment automation handles responses using Tamien's knowledge base and voice — so conversations start without him. When a conversation gets warm — a question about booking, a referral inquiry, a coaching enquiry — it's flagged for Tamien to step in and close. StreamLab feeds the funnel. Tamien converts. That's the division of labour.</p>
+      </div>
+    </div>
+
+    <!-- Tamien's Role -->
+    <div style="margin-top:32px; padding:44px 48px; background:var(--black); border-radius:var(--radius); color:var(--white);" class="fade-in">
+      <div style="font-size:11px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--blue); margin-bottom:24px;">Tamien's Role in All of This</div>
+      <div class="role-grid">
+        <div class="role-card">
+          <div class="role-num">1×</div>
+          <div class="role-title">Batch shoot per month</div>
+          <div class="role-desc">Script ready. Antonio films. 2–3 hours produces 4+ weeks of content across every platform. StreamLab runs the rest.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-num">15</div>
+          <div class="role-title">Minutes per week — content review</div>
+          <div class="role-desc">StreamLab prepares and schedules everything via Metricool. Tamien reviews the week's batch once — that's the full weekly commitment.</div>
+        </div>
+        <div class="role-card">
+          <div class="role-num">0</div>
+          <div class="role-title">Platform admin required</div>
+          <div class="role-desc">StreamLab handles scheduling, captions, hashtags, and publishing. Tamien shows up to record and close warm conversations. Everything else is handled.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-block">
+  <h2>Ready to make<br>the work visible?</h2>
+  <p>The story is already written. The content already exists.<br>It just needs the system that makes it compound.</p>
+  <a href="mailto:john@streamlabai.com" class="btn-white">Let's talk → john@streamlabai.com</a>
+</div>
+
+<div class="footer-bar">
+  Prepared by StreamLab Ai · streamlabai.com · April 2026 · Confidential — for Tamien Dysart only
+</div>
+
+<script>
+  // Tab switching
+  function switchTab(platform, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + platform).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // Audit card accordion + hotspot
+  function activateCard(card) {
+    const stack = card.closest('.problem-stack');
+    const panel = card.closest('.tab-panel');
+    const wasActive = card.classList.contains('pc-active');
+    stack.querySelectorAll('.problem-card').forEach(c => c.classList.remove('pc-active'));
+    if (panel) panel.querySelectorAll('.hotspot').forEach(h => h.classList.remove('active'));
+    if (!wasActive) {
+      card.classList.add('pc-active');
+      const hsId = card.dataset.hs;
+      if (hsId && panel) {
+        const hs = panel.querySelector('#' + hsId);
+        if (hs) hs.classList.add('active');
+      }
+    }
+  }
+
+  // Deliverable card accordion
+  function toggleDeliverable(card) {
+    const wasOpen = card.classList.contains('open');
+    document.querySelectorAll('.deliverable-card').forEach(c => c.classList.remove('open'));
+    if (!wasOpen) card.classList.add('open');
+  }
+
+  // Step rail
+  function toggleStep(node, panelId) {
+    const rail = document.getElementById('stepRail');
+    const allPanels = document.querySelectorAll('.step-detail-panel');
+    const allNodes = rail.querySelectorAll('.step-node-wrap');
+    const targetPanel = document.getElementById(panelId);
+    const wasActive = node.classList.contains('active');
+
+    allNodes.forEach(n => n.classList.remove('active'));
+    allPanels.forEach(p => { p.style.display = 'none'; p.classList.remove('visible'); });
+
+    if (!wasActive) {
+      node.classList.add('active');
+      targetPanel.style.display = 'block';
+      targetPanel.classList.add('visible');
+    }
+  }
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Hero stat count-up
+  function animateCount(el, target) {
+    let start = 0;
+    const duration = 1800;
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(eased * target).toLocaleString();
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  const heroObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      document.querySelectorAll('.hero-stat .num').forEach(el => {
+        const text = el.textContent;
+        if (text.includes('2,084')) animateCount(el, 2084);
+      });
+      heroObserver.disconnect();
+    }
+  });
+  const heroStats = document.querySelector('.hero-stats');
+  if (heroStats) heroObserver.observe(heroStats);
+</script>
+</body>
+</html>
