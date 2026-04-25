@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Neon Elm Hotel — Digital Marketing Report</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #0a0a0a;
+      color: #f0f0f0;
+      padding: 40px 20px;
+    }
+
+    .container { max-width: 900px; margin: 0 auto; }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #222;
+    }
+
+    .logo-label {
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #00c9b1;
+      margin-bottom: 12px;
+    }
+
+    .header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      font-size: 14px;
+      color: #888;
+    }
+
+    /* Section label */
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #00c9b1;
+      margin-bottom: 16px;
+      margin-top: 48px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    /* Done items */
+    .done-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .done-card {
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .done-icon {
+      width: 36px;
+      height: 36px;
+      background: #00c9b115;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .done-card h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .done-card p {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-top: 6px;
+    }
+
+    .badge-live { background: #00c9b120; color: #00c9b1; }
+    .badge-new { background: #f59e0b20; color: #f59e0b; }
+
+    /* Stats */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .stat-card {
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-source {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 12px;
+    }
+
+    .stat-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: #00c9b1;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* Divider between stat groups */
+    .stats-group-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #444;
+      margin: 24px 0 12px;
+    }
+
+    /* What's next */
+    .next-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .next-card {
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .next-card .step {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #00c9b1;
+      margin-bottom: 10px;
+    }
+
+    .next-card h4 {
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .next-card p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* Tracking note */
+    .tracking-note {
+      background: #00c9b108;
+      border: 1px solid #00c9b122;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: #888;
+      line-height: 1.7;
+    }
+
+    .tracking-note strong { color: #00c9b1; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid #1a1a1a;
+      font-size: 12px;
+      color: #333;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      margin: 40px 0 0;
+    }
+
+    /* More details link */
+    .more-details {
+      text-align: center;
+      margin-top: 48px;
+      padding: 32px;
+      background: #111;
+      border: 1px solid #1e1e1e;
+      border-radius: 12px;
+    }
+
+    .more-details p {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    .more-details a {
+      display: inline-block;
+      background: #00c9b1;
+      color: #000;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
+    }
+
+    .more-details a:hover { background: #00b09c; }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo-label">Neon Elm Hotel</div>
+    <h1>Digital Marketing Progress Report</h1>
+    <p>Prepared March 26, 2026 &nbsp;|&nbsp; neonelmhotel.com</p>
+  </div>
+
+  <!-- Section 1: What's been done -->
+  <div class="section-label">Section 01</div>
+  <div class="section-title">What We Built</div>
+  <div class="section-sub">
+    Here is everything that has been set up for Neon Elm Hotel's digital presence. These are the foundations that allow the hotel to attract guests directly — without relying on Airbnb or Booking.com.
+  </div>
+
+  <div class="done-grid">
+    <div class="done-card">
+      <div class="done-icon">🌐</div>
+      <div>
+        <h4>Direct Booking Website</h4>
+        <p>neonelmhotel.com is live. Guests can search availability and book directly without going through an OTA.</p>
+        <span class="badge badge-live">Live</span>
+      </div>
+    </div>
+    <div class="done-card">
+      <div class="done-icon">📍</div>
+      <div>
+        <h4>Google Business Page</h4>
+        <p>Neon Elm Hotel is findable on Google Maps and Google Search. Guests can call, get directions, or click to the website directly from Google.</p>
+        <span class="badge badge-live">Live</span>
+      </div>
+    </div>
+    <div class="done-card">
+      <div class="done-icon">📊</div>
+      <div>
+        <h4>Website Analytics (GA4)</h4>
+        <p>Installed March 26. Every visit to the website is now being tracked — where people came from, what they looked at, and how long they stayed.</p>
+        <span class="badge badge-new">Just Installed</span>
+      </div>
+    </div>
+    <div class="done-card">
+      <div class="done-icon">🔗</div>
+      <div>
+        <h4>Tracked Links (UTM)</h4>
+        <p>The Google Business Page and Instagram bio both have unique tracking links. When someone clicks and visits the site, we know exactly where they came from.</p>
+        <span class="badge badge-live">Live</span>
+      </div>
+    </div>
+    <div class="done-card">
+      <div class="done-icon">⚙️</div>
+      <div>
+        <h4>GHL Marketing Account</h4>
+        <p>A dedicated marketing system has been created for Neon Elm Hotel to host email campaigns, manage guest contacts, and track leads.</p>
+        <span class="badge badge-new">Ready to Use</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 2: Results -->
+  <hr class="divider"/>
+  <div class="section-label" style="margin-top:40px;">Section 02</div>
+  <div class="section-title">Results So Far</div>
+  <div class="section-sub">
+    These numbers are from the Google Business Page and the website over the past 30 days. This is real activity from real people looking for a place to stay in San Diego.
+  </div>
+
+  <div class="stats-group-label">Google Business Page — Feb to Mar 2026</div>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-source">Discovered</div>
+      <div class="stat-number">250</div>
+      <div class="stat-label">People viewed the Neon Elm profile on Google</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-source">Interactions</div>
+      <div class="stat-number">110</div>
+      <div class="stat-label">Total actions taken on the Google listing</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-source">Directions</div>
+      <div class="stat-number">63</div>
+      <div class="stat-label">People asked Google for directions to the hotel</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-source">Website Clicks</div>
+      <div class="stat-number">40</div>
+      <div class="stat-label">People clicked through to neonelmhotel.com from Google</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-source">Calls</div>
+      <div class="stat-number">7</div>
+      <div class="stat-label">People called the hotel directly from Google</div>
+    </div>
+  </div>
+
+  <div class="stats-group-label">Website — Last 30 Days</div>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-source">Visits</div>
+      <div class="stat-number">525</div>
+      <div class="stat-label">Total visits to neonelmhotel.com</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-source">Calls</div>
+      <div class="stat-number">13</div>
+      <div class="stat-label">People called after visiting the website</div>
+    </div>
+  </div>
+
+  <div class="tracking-note">
+    <strong>Note on tracking:</strong> Website analytics (GA4) and UTM link tracking were installed on March 26, 2026. Starting from this date, we will have a much clearer picture — which platform is sending the most traffic, which campaigns are driving bookings, and where to invest more effort. The numbers above are a baseline. The next report will show campaign-level results.
+  </div>
+
+  <!-- Section 3: Next Steps -->
+  <hr class="divider"/>
+  <div class="section-label" style="margin-top:40px;">Section 03</div>
+  <div class="section-title">What's Coming Next</div>
+  <div class="section-sub">
+    These are the next steps to go from tracking visitors to understanding exactly what those visitors are doing — and converting more of them into direct bookings.
+  </div>
+
+  <div class="next-grid">
+    <div class="next-card">
+      <div class="step">Next Step 01</div>
+      <h4>Meta Pixel — Install on Website</h4>
+      <p>A Meta Pixel is a small piece of code added to the website that tells us what visitors do after they arrive. Did they click Book Now? Did they reach the checkout page? This is what unlocks retargeting ads — showing ads specifically to people who already visited the site but didn't book.</p>
+    </div>
+    <div class="next-card">
+      <div class="step">Next Step 02</div>
+      <h4>GHL — Past Guest Email Campaign</h4>
+      <p>Using the GHL marketing account, we will send an email to past Neon Elm guests offering a direct booking discount (5–10% off). This is the fastest way to generate direct bookings without ad spend. Guests who already stayed are the most likely to return.</p>
+    </div>
+    <div class="next-card">
+      <div class="step">Next Step 03</div>
+      <h4>GHL — Lead Pipeline</h4>
+      <p>Set up a simple pipeline inside GHL to track every inquiry from first contact to confirmed booking. This gives us visibility into how many leads are coming in, where they're dropping off, and what the conversion rate looks like.</p>
+    </div>
+    <div class="next-card">
+      <div class="step">Next Step 04</div>
+      <h4>30-Day Report — Traffic Sources</h4>
+      <p>In 30 days, we will have enough data from GA4 and the UTM links to show exactly where website visitors are coming from — Google, Instagram, email, or direct. This will inform where to focus efforts and budget going forward.</p>
+    </div>
+  </div>
+
+  <!-- More Details -->
+  <div class="more-details">
+    <p>For the full rebrand report and detailed breakdown</p>
+    <a href="https://noviq.my.canva.site/rebrand-neon-elm-report" target="_blank">View Full Report</a>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Neon Elm Hotel &nbsp;|&nbsp; Digital Marketing Report &nbsp;|&nbsp; March 2026
+  </div>
+
+</div>
+</body>
+</html>
