@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evan Rundle — Media Pitch Tool</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green: #1C715E; --dark: #0E3A30; --darker: #071810;
+  --white: #fff; --off: rgba(255,255,255,0.82); --muted: rgba(255,255,255,0.42);
+  --dim: rgba(255,255,255,0.1); --red: #e05c5c;
+  --serif: 'Instrument Serif', serif; --sans: 'Inter', system-ui, sans-serif;
+}
+body { background: var(--darker); color: var(--white); font-family: var(--sans); -webkit-font-smoothing: antialiased; min-height: 100vh; }
+
+/* HEADER */
+.header { background: linear-gradient(150deg, #0E3A30 0%, #071810 60%); border-bottom: 1px solid rgba(28,113,94,0.3); padding: 28px 48px; display: flex; align-items: center; justify-content: space-between; }
+.header-title { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--white); }
+.header-sub { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--green); margin-top: 3px; }
+.api-status { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); cursor: pointer; }
+.api-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--red); }
+.api-dot.connected { background: #4dd4a8; }
+
+/* LAYOUT */
+.main { max-width: 1100px; margin: 0 auto; padding: 40px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+
+/* PANELS */
+.panel { background: rgba(255,255,255,0.04); border: 1px solid var(--dim); border-radius: 18px; overflow: hidden; }
+.panel-header { padding: 18px 24px; border-bottom: 1px solid var(--dim); display: flex; align-items: center; justify-content: space-between; }
+.panel-label { font-size: 10px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--green); }
+.panel-body { padding: 24px; }
+
+/* FORM ELEMENTS */
+label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+textarea, input, select {
+  width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--dim);
+  border-radius: 10px; color: var(--white); font-family: var(--sans);
+  font-size: 13.5px; padding: 12px 16px; resize: vertical; outline: none;
+  transition: border-color 0.15s;
+}
+textarea:focus, input:focus, select:focus { border-color: var(--green); }
+textarea { line-height: 1.6; min-height: 80px; }
+select option { background: #0E3A30; }
+.field { margin-bottom: 18px; }
+.field:last-child { margin-bottom: 0; }
+
+/* BUTTONS */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 13px 28px; border-radius: 10px; font-family: var(--sans);
+  font-size: 13px; font-weight: 700; cursor: pointer; border: none;
+  letter-spacing: 0.5px; transition: all 0.15s; width: 100%;
+}
+.btn-primary { background: var(--green); color: var(--white); }
+.btn-primary:hover { background: #1d7e6a; }
+.btn-primary:disabled { background: rgba(28,113,94,0.3); color: var(--muted); cursor: not-allowed; }
+.btn-outline { background: transparent; color: var(--white); border: 1px solid var(--dim); }
+.btn-outline:hover { border-color: var(--green); color: var(--green); }
+.btn-copy { background: rgba(28,113,94,0.2); color: #4dd4a8; border: 1px solid rgba(28,113,94,0.35); padding: 8px 16px; border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; }
+.btn-copy:hover { background: rgba(28,113,94,0.35); }
+.btn-copy.copied { background: rgba(28,113,94,0.5); }
+
+/* OUTPUT */
+.output-area {
+  background: rgba(0,0,0,0.25); border: 1px solid var(--dim);
+  border-radius: 12px; padding: 20px; min-height: 200px;
+  font-size: 14px; line-height: 1.75; color: var(--off);
+  white-space: pre-wrap; word-break: break-word;
+}
+.output-area.empty { color: var(--muted); font-style: italic; display: flex; align-items: center; justify-content: center; text-align: center; }
+.output-meta { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.meta-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 5px; }
+.meta-tag.angle { background: rgba(28,113,94,0.2); color: #4dd4a8; }
+.meta-tag.tier { background: rgba(255,200,50,0.15); color: rgba(255,200,100,0.9); }
+.meta-tag.no { background: rgba(224,92,92,0.15); color: #e09090; }
+
+/* RULES SIDEBAR */
+.rules-list { list-style: none; }
+.rules-list li { font-size: 12.5px; color: var(--off); padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; gap: 10px; line-height: 1.5; }
+.rules-list li:last-child { border-bottom: none; }
+.rules-list li .ri { flex-shrink: 0; font-size: 13px; }
+
+/* SPINNER */
+.spinner { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.2); border-top-color: white; border-radius: 50%; animation: spin 0.7s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* API KEY MODAL */
+.modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center; z-index: 100; }
+.modal { background: #0E3A30; border: 1px solid rgba(28,113,94,0.4); border-radius: 20px; padding: 36px 40px; max-width: 480px; width: 90%; }
+.modal h2 { font-family: var(--serif); font-style: italic; font-size: 28px; margin-bottom: 8px; }
+.modal p { font-size: 13.5px; color: var(--off); line-height: 1.65; margin-bottom: 20px; }
+.modal a { color: #4dd4a8; text-decoration: none; }
+.modal-actions { display: flex; gap: 10px; margin-top: 16px; }
+
+/* HISTORY */
+.history-item { background: rgba(0,0,0,0.2); border: 1px solid var(--dim); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px; cursor: pointer; transition: border-color 0.15s; }
+.history-item:hover { border-color: var(--green); }
+.history-item .hi-query { font-size: 12.5px; color: var(--off); line-height: 1.5; margin-bottom: 6px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.history-item .hi-meta { font-size: 10px; color: var(--muted); display: flex; gap: 12px; }
+
+/* NOTICE */
+.notice { background: rgba(224,92,92,0.1); border: 1px solid rgba(224,92,92,0.25); border-radius: 10px; padding: 14px 18px; font-size: 13px; color: rgba(255,180,180,0.9); line-height: 1.6; margin-bottom: 20px; }
+.notice strong { color: #e09090; }
+
+.full-width { grid-column: 1 / -1; }
+.char-count { font-size: 11px; color: var(--muted); text-align: right; margin-top: 5px; }
+.char-count.over { color: #e09090; }
+</style>
+</head>
+<body>
+
+<!-- API KEY MODAL -->
+<div class="modal-overlay" id="apiModal">
+  <div class="modal">
+    <h2>One-time setup.</h2>
+    <p>This tool uses the Claude API to draft pitches. You need a free API key — takes 2 minutes to get and ~$5 in credits covers hundreds of pitches.</p>
+    <ol style="font-size:13px;color:var(--off);line-height:2;padding-left:18px;margin-bottom:16px;">
+      <li>Go to <a href="https://console.anthropic.com" target="_blank">console.anthropic.com</a></li>
+      <li>Sign up → API Keys → Create Key</li>
+      <li>Paste it below — saved locally in your browser only</li>
+    </ol>
+    <div class="field">
+      <label>Anthropic API Key</label>
+      <input type="password" id="apiKeyInput" placeholder="sk-ant-api03-..." />
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-primary" onclick="saveApiKey()">Save & Start</button>
+      <button class="btn btn-outline" onclick="closeModal()" style="width:auto;padding:13px 20px;">I'll do this later</button>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="header-title">Evan Rundle — Media Pitch Tool</div>
+    <div class="header-sub">Qwoted · HARO · Connectively</div>
+  </div>
+  <div class="api-status" onclick="showApiModal()">
+    <div class="api-dot" id="apiDot"></div>
+    <span id="apiStatusText">No API key</span>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- LEFT: INPUT -->
+  <div>
+    <div class="notice">
+      <strong>Qwoted ban risk:</strong> Qwoted detects 2nd accounts by IP + email. Keep pitches to max 5/day, only pitch when genuinely relevant, and always submit manually — never paste the same pitch twice.
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-label">The Query</div>
+      </div>
+      <div class="panel-body">
+        <div class="field">
+          <label>Paste the Qwoted / HARO query here</label>
+          <textarea id="queryInput" rows="6" placeholder="e.g. 'Looking for an expert in short-term rental operations to comment on the impact of new city regulations on Airbnb hosts. Deadline: Friday. Forbes.'" oninput="updateCharCount()"></textarea>
+          <div class="char-count" id="charCount">0 chars</div>
+        </div>
+        <div class="field">
+          <label>Publication / Outlet (if shown)</label>
+          <input type="text" id="outletInput" placeholder="e.g. Forbes, Business Insider, Skift..." />
+        </div>
+        <div class="field">
+          <label>Pitch angle — or let Claude choose</label>
+          <select id="angleSelect">
+            <option value="auto">Auto-select best angle</option>
+            <optgroup label="Primary">
+              <option value="boutique_ops">Boutique hotel operations & scaling</option>
+              <option value="str_profit">STR profitability and NOI optimization</option>
+              <option value="str_hotel">STR → boutique hotel conversion strategy</option>
+              <option value="design_revenue">Hospitality design as a revenue lever</option>
+              <option value="guest_margin">Guest experience vs. margin tradeoffs</option>
+              <option value="historic">Operating historic buildings as hospitality assets</option>
+            </optgroup>
+            <optgroup label="Investor & Market">
+              <option value="hosp_invest">Hospitality investing vs. traditional real estate</option>
+              <option value="profit_sqft">Profit per square foot in lodging assets</option>
+              <option value="passive_ops">Passive vs. operator-led hotel investments</option>
+              <option value="market_trends">Market trends in boutique hotels & STR regulation</option>
+              <option value="risk_mgmt">Risk management in hospitality operations</option>
+            </optgroup>
+            <optgroup label="Founder / Operator POV">
+              <option value="operator_reality">What operators actually deal with (beyond Airbnb hype)</option>
+              <option value="scaling_mistakes">Mistakes STR owners make when scaling</option>
+              <option value="systems">Why systems matter more than marketing in hospitality</option>
+              <option value="exit_str">When to exit STRs and move into hotel models</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="field">
+          <label>Word limit for pitch (Qwoted default: 150–200 words)</label>
+          <select id="wordLimit">
+            <option value="150">~150 words (short response)</option>
+            <option value="200" selected>~200 words (standard)</option>
+            <option value="300">~300 words (detailed)</option>
+            <option value="500">~500 words (feature request)</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" id="draftBtn" onclick="draftPitch()">
+          Draft Pitch
+        </button>
+      </div>
+    </div>
+
+    <!-- HISTORY -->
+    <div style="margin-top:20px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">Recent Pitches</div>
+      <div id="historyList"><div style="font-size:13px;color:var(--muted);font-style:italic;">No pitches drafted yet this session.</div></div>
+    </div>
+  </div>
+
+  <!-- RIGHT: OUTPUT -->
+  <div>
+    <div class="panel">
+      <div class="panel-header">
+        <div class="panel-label">Drafted Pitch</div>
+        <button class="btn-copy" id="copyBtn" onclick="copyPitch()" style="display:none;">Copy</button>
+      </div>
+      <div class="panel-body">
+        <div id="outputMeta" class="output-meta" style="display:none;"></div>
+        <div class="output-area empty" id="outputArea">
+          Paste a query and click Draft Pitch.
+        </div>
+        <div id="outputActions" style="display:none;margin-top:14px;display:none;">
+          <button class="btn btn-outline" onclick="redraft()" style="margin-top:14px;">Redraft</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SOP RULES -->
+    <div class="panel" style="margin-top:20px;">
+      <div class="panel-header">
+        <div class="panel-label">SOP Rules — Always Applied</div>
+      </div>
+      <div class="panel-body">
+        <ul class="rules-list">
+          <li><span class="ri">✅</span>Lead with data + execution, not opinions</li>
+          <li><span class="ri">✅</span>Tactical, grounded, operator-first voice</li>
+          <li><span class="ri">✅</span>Tie answers to real assets, real teams, real numbers</li>
+          <li><span class="ri">✅</span>Calm, confident, factual — no bragging tone</li>
+          <li><span class="ri">❌</span>No "morning routine" or mindset fluff</li>
+          <li><span class="ri">❌</span>Never position Evan as a "coach"</li>
+          <li><span class="ri">❌</span>No pay-to-publish, low-tier blogs, clickbait</li>
+          <li><span class="ri">❌</span>No specific commission %, IRR, or return claims</li>
+          <li><span class="ri">❌</span>Nothing that doesn't strengthen investor confidence or operator credibility</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ── SYSTEM PROMPT ──────────────────────────────────────────────────────────
+const SYSTEM_PROMPT = `You are drafting a media pitch response for Evan Rundle to submit on Qwoted or HARO.
+
+EVAN RUNDLE — EXPERT BIO:
+Evan Rundle is a boutique hotel and short-term rental operator and investor with over a decade of hands-on experience scaling hospitality assets. He is the founder of NOVIQ, where his team specializes in transforming short-term rentals and historic buildings into professionally operated boutique hotels that maximize guest experience and profit per square foot. He has overseen the launch and operation of 500+ Airbnb and hospitality units, generating $40M+ in revenue, with a focus on design-led hospitality, operational efficiency, and investor-aligned returns. His work spans STRs, boutique hotels, and hotel fund structures.
+
+APPROVED PITCH ANGLES (use the most relevant):
+Primary: Boutique hotel operations & scaling | STR profitability and NOI optimization | STR → boutique hotel conversion strategy | Hospitality design as a revenue lever | Guest experience vs. margin tradeoffs | Operating historic buildings as hospitality assets
+Investor & Market: Hospitality investing vs. traditional real estate | Profit per square foot in lodging assets | Passive vs. operator-led hotel investments | Market trends in boutique hotels and STR regulation | Risk management in hospitality operations
+Founder / Operator POV: What operators actually deal with beyond Airbnb hype | Mistakes STR owners make when scaling | Why systems matter more than marketing in hospitality | When to exit STRs and move into hotel models
+
+BRAND ALIGNMENT — pitch MUST align with one or more of:
+- NOVIQ → boutique hotel operations, STR management, asset optimization
+- The Dalton → hotel fund, investor-grade hospitality, long-term value creation
+- Operator POV → real-world execution, not theory or guru content
+
+HARD NO — reject and flag if query is about:
+- Generic entrepreneur fluff (morning routines, mindset hacks)
+- Low-tier blogs with no editorial standards
+- Pay-to-publish or contributor-pay outlets
+- Personal lifestyle or influencer features
+- Crypto or hype-driven finance
+- Anything positioning Evan as a "coach" instead of an operator
+- Clickbait headlines that cheapen brand authority
+
+PITCH WRITING RULES:
+- Lead with data + execution, not opinions
+- Keep answers tactical, grounded, and operator-first
+- Avoid marketing language — speak like an owner in the trenches
+- Tie answers back to real assets, real teams, real numbers
+- No bragging tone — calm, confident, factual
+- First person only
+- NOVIQ always in ALL CAPS
+- Never state specific % returns, IRR, or commission figures
+- Do not mention coaching, courses, or consulting
+
+OUTPUT FORMAT:
+Return a JSON object with these fields:
+{
+  "should_pitch": true/false,
+  "reason_no": "If should_pitch is false, explain why this fails the SOP filter",
+  "tier": "1" | "2" | "3",
+  "tier_note": "brief note on publication quality",
+  "angle_used": "which approved angle this pitch uses",
+  "pitch": "the full pitch text — first person, ready to copy-paste",
+  "word_count": number
+}
+
+Tier guide: 1 = major national outlet (Forbes, WSJ, Bloomberg, NYT, Fast Company, Inc, Skift, Entrepreneur) | 2 = solid trade or regional (STR-specific, real estate trade, business regional) | 3 = minor/unknown
+
+Return ONLY valid JSON. No markdown, no extra text.`;
+
+// ── STATE ──────────────────────────────────────────────────────────────────
+let currentPitch = '';
+let pitchHistory = [];
+
+// ── API KEY ────────────────────────────────────────────────────────────────
+function getApiKey() { return localStorage.getItem('anthropic_api_key') || ''; }
+function saveApiKey() {
+  const key = document.getElementById('apiKeyInput').value.trim();
+  if (!key.startsWith('sk-ant-')) { alert('That doesn\'t look like a valid Anthropic API key. It should start with sk-ant-'); return; }
+  localStorage.setItem('anthropic_api_key', key);
+  updateApiStatus();
+  closeModal();
+}
+function showApiModal() { document.getElementById('apiModal').style.display = 'flex'; }
+function closeModal() { document.getElementById('apiModal').style.display = 'none'; }
+function updateApiStatus() {
+  const key = getApiKey();
+  const dot = document.getElementById('apiDot');
+  const text = document.getElementById('apiStatusText');
+  if (key) { dot.className = 'api-dot connected'; text.textContent = 'API connected'; }
+  else { dot.className = 'api-dot'; text.textContent = 'No API key — click to set up'; }
+}
+function updateCharCount() {
+  const len = document.getElementById('queryInput').value.length;
+  const el = document.getElementById('charCount');
+  el.textContent = `${len} chars`;
+  el.className = 'char-count' + (len > 2000 ? ' over' : '');
+}
+
+// ── DRAFT PITCH ────────────────────────────────────────────────────────────
+async function draftPitch() {
+  const key = getApiKey();
+  if (!key) { showApiModal(); return; }
+  const query = document.getElementById('queryInput').value.trim();
+  if (!query) { alert('Paste a query first.'); return; }
+  const outlet = document.getElementById('outletInput').value.trim();
+  const angle = document.getElementById('angleSelect').value;
+  const wordLimit = document.getElementById('wordLimit').value;
+
+  const btn = document.getElementById('draftBtn');
+  btn.innerHTML = '<span class="spinner"></span> Drafting...';
+  btn.disabled = true;
+
+  const userPrompt = `JOURNALIST QUERY:
+${query}
+
+${outlet ? `PUBLICATION: ${outlet}` : ''}
+${angle !== 'auto' ? `REQUESTED ANGLE: ${angle}` : 'AUTO-SELECT the best matching angle.'}
+TARGET LENGTH: ~${wordLimit} words
+
+Draft the pitch. Return JSON only.`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': key,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-opus-4-7',
+        max_tokens: 1024,
+        system: SYSTEM_PROMPT,
+        messages: [{ role: 'user', content: userPrompt }]
+      })
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error?.message || `API error ${res.status}`);
+    }
+
+    const data = await res.json();
+    const raw = data.content[0].text.trim();
+    const parsed = JSON.parse(raw);
+    renderOutput(parsed, query);
+
+  } catch (e) {
+    document.getElementById('outputArea').className = 'output-area';
+    document.getElementById('outputArea').textContent = `Error: ${e.message}\n\nCheck your API key and try again.`;
+  } finally {
+    btn.innerHTML = 'Draft Pitch';
+    btn.disabled = false;
+  }
+}
+
+function renderOutput(parsed, query) {
+  const meta = document.getElementById('outputMeta');
+  const out = document.getElementById('outputArea');
+  const copyBtn = document.getElementById('copyBtn');
+
+  meta.style.display = 'flex';
+  meta.innerHTML = '';
+
+  if (!parsed.should_pitch) {
+    out.className = 'output-area';
+    out.textContent = `⛔ DO NOT PITCH\n\n${parsed.reason_no}`;
+    meta.innerHTML = `<span class="meta-tag no">NOT SUITABLE</span>`;
+    copyBtn.style.display = 'none';
+    return;
+  }
+
+  // Tier tag
+  const tierColors = { '1': '#ffd060', '2': '#4dd4a8', '3': 'rgba(255,255,255,0.4)' };
+  meta.innerHTML = `
+    <span class="meta-tag tier" style="background:rgba(255,200,50,0.15);color:${tierColors[parsed.tier] || '#fff'}">Tier ${parsed.tier} — ${parsed.tier_note || ''}</span>
+    <span class="meta-tag angle">${parsed.angle_used || 'Operator POV'}</span>
+    <span class="meta-tag" style="background:rgba(255,255,255,0.06);color:var(--muted)">${parsed.word_count || '—'} words</span>
+  `;
+
+  out.className = 'output-area';
+  out.textContent = parsed.pitch;
+  currentPitch = parsed.pitch;
+  copyBtn.style.display = 'inline-block';
+
+  // Add to history
+  pitchHistory.unshift({ query: query.substring(0, 120), tier: parsed.tier, angle: parsed.angle_used, pitch: parsed.pitch, time: new Date().toLocaleTimeString() });
+  renderHistory();
+}
+
+function renderHistory() {
+  const list = document.getElementById('historyList');
+  if (pitchHistory.length === 0) return;
+  list.innerHTML = pitchHistory.slice(0, 5).map((h, i) => `
+    <div class="history-item" onclick="loadHistory(${i})">
+      <div class="hi-query">${h.query}${h.query.length >= 120 ? '...' : ''}</div>
+      <div class="hi-meta"><span>Tier ${h.tier}</span><span>${h.angle}</span><span>${h.time}</span></div>
+    </div>
+  `).join('');
+}
+
+function loadHistory(i) {
+  const h = pitchHistory[i];
+  const out = document.getElementById('outputArea');
+  out.className = 'output-area';
+  out.textContent = h.pitch;
+  currentPitch = h.pitch;
+  document.getElementById('copyBtn').style.display = 'inline-block';
+}
+
+function copyPitch() {
+  if (!currentPitch) return;
+  navigator.clipboard.writeText(currentPitch).then(() => {
+    const btn = document.getElementById('copyBtn');
+    btn.textContent = 'Copied ✓';
+    btn.className = 'btn-copy copied';
+    setTimeout(() => { btn.textContent = 'Copy'; btn.className = 'btn-copy'; }, 2000);
+  });
+}
+
+function redraft() {
+  document.getElementById('outputArea').className = 'output-area empty';
+  document.getElementById('outputArea').textContent = 'Paste a query and click Draft Pitch.';
+  document.getElementById('outputMeta').style.display = 'none';
+  document.getElementById('copyBtn').style.display = 'none';
+  currentPitch = '';
+}
+
+// ── INIT ───────────────────────────────────────────────────────────────────
+updateApiStatus();
+if (!getApiKey()) { showApiModal(); }
+</script>
+</body>
+</html>
