@@ -23,6 +23,94 @@
     font-family: 'Cinzel', serif;
     color: var(--walnut);
     padding: 80px 60px;
+    padding-top: 144px;
+  }
+
+  /* ─── Fixed call bar ─── */
+  .call-bar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: var(--walnut);
+    border-bottom: 1px solid rgba(166,127,66,.2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 60px;
+    height: 60px;
+  }
+  .call-bar-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .call-bar-name {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .3em;
+    color: var(--brass-lt);
+    text-transform: uppercase;
+  }
+  .call-bar-divider {
+    width: 1px;
+    height: 20px;
+    background: rgba(166,127,66,.25);
+  }
+  .call-bar-address {
+    font-family: 'Cinzel', serif;
+    font-size: 7.5px;
+    letter-spacing: .3em;
+    color: rgba(166,127,66,.45);
+    text-transform: uppercase;
+  }
+  .call-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .call-phone-icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .call-phone-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--brass-lt);
+  }
+  .call-number {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: .18em;
+    color: var(--brass-lt);
+  }
+  .call-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: 1.5px solid var(--brass);
+    color: var(--brass-lt);
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .45em;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    text-decoration: none;
+    border-radius: 1px;
+    transition: background .2s, color .2s;
+  }
+  .call-btn:hover {
+    background: var(--brass);
+    color: var(--walnut);
+  }
+  .call-btn svg {
+    width: 13px;
+    height: 13px;
+    fill: currentColor;
   }
 
   /* ─── Page header ─── */
@@ -125,6 +213,25 @@
 </style>
 </head>
 <body>
+
+<!-- ── FIXED CALL BAR ── -->
+<div class="call-bar">
+  <div class="call-bar-brand">
+    <span class="call-bar-name">Woolworth Lofts</span>
+    <div class="call-bar-divider"></div>
+    <span class="call-bar-address">953 5th Ave · Gaslamp Quarter · San Diego</span>
+  </div>
+  <div class="call-bar-right">
+    <a class="call-phone-icon" href="tel:6194136889">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.25 1.01l-2.2 2.2z"/></svg>
+      <span class="call-number">(619) 413-6889</span>
+    </a>
+    <a class="call-btn" href="tel:6194136889">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.46.57 3.58a1 1 0 0 1-.25 1.01l-2.2 2.2z"/></svg>
+      Call Now
+    </a>
+  </div>
+</div>
 
 <!-- ── HEADER ── -->
 <div class="page-header">
