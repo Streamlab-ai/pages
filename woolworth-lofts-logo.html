@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Woolworth Lofts — Brand Identity System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --walnut:    #1E1410;
+    --burgundy:  #7A2320;
+    --brass:     #8C6B2F;
+    --brass-lt:  #A67F42;
+    --parchment: #E8DCC8;
+    --bg:        #EDE7D9;
+  }
+
+  body {
+    background: var(--bg);
+    font-family: 'Cinzel', serif;
+    color: var(--walnut);
+    padding: 80px 60px;
+  }
+
+  /* ─── Page header ─── */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-bottom: 1px solid rgba(140,107,47,.25);
+    padding-bottom: 28px;
+    margin-bottom: 72px;
+  }
+  .ph-left {}
+  .ph-eyebrow {
+    font-size: 8px;
+    letter-spacing: .5em;
+    color: var(--brass);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .ph-name {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: .3em;
+    color: var(--walnut);
+  }
+  .ph-right {
+    font-size: 8px;
+    letter-spacing: .35em;
+    color: var(--brass);
+    text-align: right;
+    line-height: 1.9;
+  }
+
+  /* ─── Section ─── */
+  .section { margin-bottom: 80px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .sn { font-size: 8px; letter-spacing: .4em; color: var(--brass-lt); }
+  .st { font-size: 8px; letter-spacing: .45em; text-transform: uppercase; font-weight: 600; }
+  .sr { flex: 1; height: 1px; background: rgba(140,107,47,.2); }
+
+  /* ─── Color swatches ─── */
+  .swatches {
+    display: flex;
+    gap: 3px;
+    height: 90px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .sw { flex: 1; position: relative; }
+  .sw-info {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+  }
+  .sw-name { font-size: 7px; letter-spacing: .18em; text-transform: uppercase; display: block; margin-bottom: 2px; }
+  .sw-hex  { font-size: 7.5px; letter-spacing: .1em; }
+
+  /* ─── Logo boxes ─── */
+  .logo-box {
+    padding: 60px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    border-radius: 1px;
+    min-height: 340px;
+  }
+  .lb-dark     { background: var(--walnut); }
+  .lb-light    { background: var(--parchment); }
+  .lb-burgundy { background: var(--burgundy); }
+
+  /* ─── Grids ─── */
+  .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; }
+  .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3px; }
+
+  /* ─── Type ─── */
+  .wm-primary { font-family:'Cinzel',serif; font-weight:700; letter-spacing:.28em; text-transform:uppercase; line-height:1; }
+  .wm-sub     { font-family:'Cinzel',serif; font-weight:400; letter-spacing:.75em; text-transform:uppercase; line-height:1; }
+  .wm-stamp   { font-family:'Cinzel',serif; font-weight:400; font-size:7px; letter-spacing:.42em; text-transform:uppercase; }
+
+  /* ─── Footer ─── */
+  .page-footer {
+    border-top: 1px solid rgba(140,107,47,.2);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .page-footer span {
+    font-size: 7px;
+    letter-spacing: .35em;
+    color: var(--brass);
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<div class="page-header">
+  <div class="ph-left">
+    <p class="ph-eyebrow">Brand Identity System</p>
+    <p class="ph-name">Woolworth Lofts</p>
+  </div>
+  <div class="ph-right">
+    953 5th Avenue · Gaslamp Quarter<br>
+    San Diego, CA · Est. 1886
+  </div>
+</div>
+
+<!-- ── 01  COLOR PALETTE ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="sn">01</span>
+    <span class="st">Color Palette</span>
+    <div class="sr"></div>
+  </div>
+  <div class="swatches">
+    <div class="sw" style="background:#1E1410;">
+      <div class="sw-info">
+        <span class="sw-name" style="color:#A67F42;">Deep Walnut</span>
+        <span class="sw-hex"  style="color:rgba(166,127,66,.55);">#1E1410</span>
+      </div>
+    </div>
+    <div class="sw" style="background:#7A2320;">
+      <div class="sw-info">
+        <span class="sw-name" style="color:#E8DCC8;">Brick Burgundy</span>
+        <span class="sw-hex"  style="color:rgba(232,220,200,.55);">#7A2320</span>
+      </div>
+    </div>
+    <div class="sw" style="background:#8C6B2F;">
+      <div class="sw-info">
+        <span class="sw-name" style="color:#1E1410;">Brass Dark</span>
+        <span class="sw-hex"  style="color:rgba(30,20,16,.55);">#8C6B2F</span>
+      </div>
+    </div>
+    <div class="sw" style="background:#A67F42;">
+      <div class="sw-info">
+        <span class="sw-name" style="color:#1E1410;">Brass Light</span>
+        <span class="sw-hex"  style="color:rgba(30,20,16,.55);">#A67F42</span>
+      </div>
+    </div>
+    <div class="sw" style="background:#E8DCC8; border:1px solid #D0C09A;">
+      <div class="sw-info">
+        <span class="sw-name" style="color:#1E1410;">Aged Parchment</span>
+        <span class="sw-hex"  style="color:rgba(30,20,16,.45);">#E8DCC8</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 02  PRIMARY SYMBOL ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="sn">02</span>
+    <span class="st">Primary Symbol — Victorian Arch</span>
+    <div class="sr"></div>
+  </div>
+  <div class="g2">
+
+    <div class="logo-box lb-dark">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="118" height="142">
+        <path d="M8,120 L8,54 A42,42 0 0,0 92,54 L92,120" fill="none" stroke="#A67F42" stroke-width="5" stroke-linecap="square"/>
+        <path d="M16,120 L16,57 A34,34 0 0,0 84,57 L84,120" fill="none" stroke="#A67F42" stroke-width="1.4"/>
+        <polygon points="50,5 57,19 43,19" fill="#A67F42"/>
+        <rect x="43" y="16" width="14" height="6" fill="#A67F42"/>
+        <line x1="8"  y1="77" x2="92" y2="77" stroke="#A67F42" stroke-width="2.2"/>
+        <rect x="2"  y="49" width="15" height="4" fill="#A67F42"/>
+        <rect x="83" y="49" width="15" height="4" fill="#A67F42"/>
+      </svg>
+      <p class="wm-stamp" style="color:rgba(166,127,66,.4); margin-top:28px;">Dark · Primary</p>
+    </div>
+
+    <div class="logo-box lb-light">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="118" height="142">
+        <path d="M8,120 L8,54 A42,42 0 0,0 92,54 L92,120" fill="none" stroke="#8C6B2F" stroke-width="5" stroke-linecap="square"/>
+        <path d="M16,120 L16,57 A34,34 0 0,0 84,57 L84,120" fill="none" stroke="#8C6B2F" stroke-width="1.4"/>
+        <polygon points="50,5 57,19 43,19" fill="#8C6B2F"/>
+        <rect x="43" y="16" width="14" height="6" fill="#8C6B2F"/>
+        <line x1="8"  y1="77" x2="92" y2="77" stroke="#8C6B2F" stroke-width="2.2"/>
+        <rect x="2"  y="49" width="15" height="4" fill="#8C6B2F"/>
+        <rect x="83" y="49" width="15" height="4" fill="#8C6B2F"/>
+      </svg>
+      <p class="wm-stamp" style="color:rgba(140,107,47,.4); margin-top:28px;">Light · Primary</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 04  PRIMARY WORDMARK ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="sn">04</span>
+    <span class="st">Primary Wordmark</span>
+    <div class="sr"></div>
+  </div>
+  <div class="g2">
+
+    <div class="logo-box lb-dark">
+      <div style="text-align:center; display:flex; flex-direction:column; align-items:center; gap:12px; width:90%;">
+        <p class="wm-primary" style="color:#A67F42; font-size:30px;">Woolworth</p>
+        <div style="width:100%; height:1px; background:rgba(166,127,66,.35);"></div>
+        <p class="wm-sub"     style="color:#A67F42; font-size:10.5px;">Lofts</p>
+        <p class="wm-stamp"   style="color:rgba(166,127,66,.4); margin-top:10px;">Est. 1886 · San Diego, CA</p>
+      </div>
+    </div>
+
+    <div class="logo-box lb-light">
+      <div style="text-align:center; display:flex; flex-direction:column; align-items:center; gap:12px; width:90%;">
+        <p class="wm-primary" style="color:#1E1410; font-size:30px;">Woolworth</p>
+        <div style="width:100%; height:1px; background:rgba(140,107,47,.35);"></div>
+        <p class="wm-sub"     style="color:#8C6B2F; font-size:10.5px;">Lofts</p>
+        <p class="wm-stamp"   style="color:rgba(140,107,47,.45); margin-top:10px;">Est. 1886 · San Diego, CA</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 05  FULL LOCKUP — 3 COLOR VERSIONS ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="sn">05</span>
+    <span class="st">Full Lockup — Symbol + Wordmark + Era Stamp</span>
+    <div class="sr"></div>
+  </div>
+  <div class="g3">
+
+    <!-- Dark -->
+    <div class="logo-box lb-dark">
+      <div style="text-align:center; display:flex; flex-direction:column; align-items:center; gap:18px; width:88%;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="72" height="86">
+          <path d="M8,120 L8,54 A42,42 0 0,0 92,54 L92,120" fill="none" stroke="#A67F42" stroke-width="5.5" stroke-linecap="square"/>
+          <path d="M16,120 L16,57 A34,34 0 0,0 84,57 L84,120" fill="none" stroke="#A67F42" stroke-width="1.5"/>
+          <polygon points="50,5 57,19 43,19" fill="#A67F42"/>
+          <rect x="43" y="16" width="14" height="6" fill="#A67F42"/>
+          <line x1="8" y1="77" x2="92" y2="77" stroke="#A67F42" stroke-width="2.5"/>
+          <rect x="2" y="49" width="15" height="4.5" fill="#A67F42"/>
+          <rect x="83" y="49" width="15" height="4.5" fill="#A67F42"/>
+        </svg>
+        <p class="wm-primary" style="color:#A67F42; font-size:22px; margin-top:4px;">Woolworth</p>
+        <div style="width:100%; height:1px; background:rgba(166,127,66,.3);"></div>
+        <p class="wm-sub"   style="color:#A67F42; font-size:9px;">Lofts</p>
+        <p class="wm-stamp" style="color:rgba(166,127,66,.4); margin-top:6px;">Est. 1886 · 953 5th Ave</p>
+        <p class="wm-stamp" style="color:rgba(166,127,66,.4);">San Diego, CA</p>
+      </div>
+    </div>
+
+    <!-- Parchment -->
+    <div class="logo-box lb-light">
+      <div style="text-align:center; display:flex; flex-direction:column; align-items:center; gap:18px; width:88%;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="72" height="86">
+          <path d="M8,120 L8,54 A42,42 0 0,0 92,54 L92,120" fill="none" stroke="#8C6B2F" stroke-width="5.5" stroke-linecap="square"/>
+          <path d="M16,120 L16,57 A34,34 0 0,0 84,57 L84,120" fill="none" stroke="#8C6B2F" stroke-width="1.5"/>
+          <polygon points="50,5 57,19 43,19" fill="#8C6B2F"/>
+          <rect x="43" y="16" width="14" height="6" fill="#8C6B2F"/>
+          <line x1="8" y1="77" x2="92" y2="77" stroke="#8C6B2F" stroke-width="2.5"/>
+          <rect x="2" y="49" width="15" height="4.5" fill="#8C6B2F"/>
+          <rect x="83" y="49" width="15" height="4.5" fill="#8C6B2F"/>
+        </svg>
+        <p class="wm-primary" style="color:#1E1410; font-size:22px; margin-top:4px;">Woolworth</p>
+        <div style="width:100%; height:1px; background:rgba(140,107,47,.3);"></div>
+        <p class="wm-sub"   style="color:#8C6B2F; font-size:9px;">Lofts</p>
+        <p class="wm-stamp" style="color:rgba(140,107,47,.45); margin-top:6px;">Est. 1886 · 953 5th Ave</p>
+        <p class="wm-stamp" style="color:rgba(140,107,47,.45);">San Diego, CA</p>
+      </div>
+    </div>
+
+    <!-- Burgundy -->
+    <div class="logo-box lb-burgundy">
+      <div style="text-align:center; display:flex; flex-direction:column; align-items:center; gap:18px; width:88%;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="72" height="86">
+          <path d="M8,120 L8,54 A42,42 0 0,0 92,54 L92,120" fill="none" stroke="#E8DCC8" stroke-width="5.5" stroke-linecap="square"/>
+          <path d="M16,120 L16,57 A34,34 0 0,0 84,57 L84,120" fill="none" stroke="#E8DCC8" stroke-width="1.5"/>
+          <polygon points="50,5 57,19 43,19" fill="#E8DCC8"/>
+          <rect x="43" y="16" width="14" height="6" fill="#E8DCC8"/>
+          <line x1="8" y1="77" x2="92" y2="77" stroke="#E8DCC8" stroke-width="2.5"/>
+          <rect x="2" y="49" width="15" height="4.5" fill="#E8DCC8"/>
+          <rect x="83" y="49" width="15" height="4.5" fill="#E8DCC8"/>
+        </svg>
+        <p class="wm-primary" style="color:#E8DCC8; font-size:22px; margin-top:4px;">Woolworth</p>
+        <div style="width:100%; height:1px; background:rgba(232,220,200,.3);"></div>
+        <p class="wm-sub"   style="color:#E8DCC8; font-size:9px;">Lofts</p>
+        <p class="wm-stamp" style="color:rgba(232,220,200,.5); margin-top:6px;">Est. 1886 · 953 5th Ave</p>
+        <p class="wm-stamp" style="color:rgba(232,220,200,.5);">San Diego, CA</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 06  HORIZONTAL LOCKUP ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="sn">06</span>
+    <span class="st">Horizontal Lockup</span>
+    <div class="sr"></div>
+  </div>
+  <div class="g2">
+
+    <div class="logo-box lb-dark" style="flex-direction:row; gap:28px; padding:48px; min-height:180px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="52" height="62" style="flex-shrink:0;">
+        <path d="M8,120 L8,54 A42,42 0 0,0 92,54 L92,120" fill="none" stroke="#A67F42" stroke-width="5.5" stroke-linecap="square"/>
+        <path d="M16,120 L16,57 A34,34 0 0,0 84,57 L84,120" fill="none" stroke="#A67F42" stroke-width="1.5"/>
+        <polygon points="50,5 57,19 43,19" fill="#A67F42"/>
+        <rect x="43" y="16" width="14" height="6" fill="#A67F42"/>
+        <line x1="8" y1="77" x2="92" y2="77" stroke="#A67F42" stroke-width="2.5"/>
+        <rect x="2" y="49" width="15" height="4.5" fill="#A67F42"/>
+        <rect x="83" y="49" width="15" height="4.5" fill="#A67F42"/>
+      </svg>
+      <div style="width:1px; background:rgba(166,127,66,.25); align-self:stretch;"></div>
+      <div style="display:flex; flex-direction:column; justify-content:center; gap:8px;">
+        <p class="wm-primary" style="color:#A67F42; font-size:22px;">Woolworth</p>
+        <p class="wm-sub"     style="color:#A67F42; font-size:8.5px;">Lofts</p>
+        <p class="wm-stamp"   style="color:rgba(166,127,66,.4); margin-top:4px;">Est. 1886 · San Diego</p>
+      </div>
+    </div>
+
+    <div class="logo-box lb-light" style="flex-direction:row; gap:28px; padding:48px; min-height:180px;">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="52" height="62" style="flex-shrink:0;">
+        <path d="M8,120 L8,54 A42,42 0 0,0 92,54 L92,120" fill="none" stroke="#8C6B2F" stroke-width="5.5" stroke-linecap="square"/>
+        <path d="M16,120 L16,57 A34,34 0 0,0 84,57 L84,120" fill="none" stroke="#8C6B2F" stroke-width="1.5"/>
+        <polygon points="50,5 57,19 43,19" fill="#8C6B2F"/>
+        <rect x="43" y="16" width="14" height="6" fill="#8C6B2F"/>
+        <line x1="8" y1="77" x2="92" y2="77" stroke="#8C6B2F" stroke-width="2.5"/>
+        <rect x="2" y="49" width="15" height="4.5" fill="#8C6B2F"/>
+        <rect x="83" y="49" width="15" height="4.5" fill="#8C6B2F"/>
+      </svg>
+      <div style="width:1px; background:rgba(140,107,47,.2); align-self:stretch;"></div>
+      <div style="display:flex; flex-direction:column; justify-content:center; gap:8px;">
+        <p class="wm-primary" style="color:#1E1410; font-size:22px;">Woolworth</p>
+        <p class="wm-sub"     style="color:#8C6B2F; font-size:8.5px;">Lofts</p>
+        <p class="wm-stamp"   style="color:rgba(140,107,47,.45); margin-top:4px;">Est. 1886 · San Diego</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 07  TYPOGRAPHY ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="sn">07</span>
+    <span class="st">Typography</span>
+    <div class="sr"></div>
+  </div>
+
+  <!-- Font 1: Cinzel -->
+  <div style="background:#1E1410; border-radius:1px; padding:52px 56px; margin-bottom:3px;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:36px;">
+      <div>
+        <p style="font-family:'Cinzel',serif; font-size:8px; letter-spacing:.5em; color:#A67F42; margin-bottom:6px;">PRIMARY TYPEFACE — 01</p>
+        <p style="font-family:'Cinzel',serif; font-size:34px; font-weight:700; letter-spacing:.2em; color:#E8DCC8; line-height:1;">Cinzel</p>
+      </div>
+      <div style="text-align:right;">
+        <p style="font-family:'Cinzel',serif; font-size:7.5px; letter-spacing:.3em; color:rgba(166,127,66,.6); line-height:2.2;">
+          Classification: Roman-Inspired Serif Display<br>
+          Designer: Natanael Gama<br>
+          Weights in use: Regular · Bold · Black<br>
+          Use: Wordmark · Era Stamp · Headings · Body Print
+        </p>
+      </div>
+    </div>
+
+    <!-- Weight specimen -->
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; margin-bottom:40px; padding-bottom:36px; border-bottom:1px solid rgba(166,127,66,.15);">
+      <div>
+        <p style="font-family:'Cinzel',serif; font-size:7px; letter-spacing:.4em; color:rgba(166,127,66,.5); margin-bottom:10px;">REGULAR · 400</p>
+        <p style="font-family:'Cinzel',serif; font-size:22px; font-weight:400; color:#E8DCC8; letter-spacing:.12em; line-height:1.4;">Woolworth<br>Lofts</p>
+      </div>
+      <div>
+        <p style="font-family:'Cinzel',serif; font-size:7px; letter-spacing:.4em; color:rgba(166,127,66,.5); margin-bottom:10px;">BOLD · 700</p>
+        <p style="font-family:'Cinzel',serif; font-size:22px; font-weight:700; color:#E8DCC8; letter-spacing:.12em; line-height:1.4;">Woolworth<br>Lofts</p>
+      </div>
+      <div>
+        <p style="font-family:'Cinzel',serif; font-size:7px; letter-spacing:.4em; color:rgba(166,127,66,.5); margin-bottom:10px;">BLACK · 900</p>
+        <p style="font-family:'Cinzel',serif; font-size:22px; font-weight:900; color:#E8DCC8; letter-spacing:.12em; line-height:1.4;">Woolworth<br>Lofts</p>
+      </div>
+    </div>
+
+    <!-- Scale specimen -->
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <p style="font-family:'Cinzel',serif; font-size:7px; letter-spacing:.45em; color:rgba(166,127,66,.5); margin-bottom:4px;">TYPE SCALE</p>
+      <p style="font-family:'Cinzel',serif; font-weight:900; font-size:48px; color:#E8DCC8; letter-spacing:.22em; line-height:1;">WOOLWORTH</p>
+      <p style="font-family:'Cinzel',serif; font-weight:700; font-size:28px; color:#A67F42; letter-spacing:.35em; line-height:1;">LOFTS</p>
+      <p style="font-family:'Cinzel',serif; font-weight:400; font-size:13px; color:rgba(232,220,200,.7); letter-spacing:.5em; line-height:1.6;">EST. 1886 · 953 5TH AVE · GASLAMP QUARTER · SAN DIEGO, CA</p>
+      <p style="font-family:'Cinzel',serif; font-weight:400; font-size:10px; color:rgba(166,127,66,.5); letter-spacing:.4em; line-height:1.9; margin-top:4px;">ABCDEFGHIJKLMNOPQRSTUVWXYZ · 0123456789</p>
+    </div>
+  </div>
+
+  <!-- Font 2: Cinzel Decorative -->
+  <div style="background:#E8DCC8; border-radius:1px; padding:52px 56px;">
+    <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:36px;">
+      <div>
+        <p style="font-family:'Cinzel Decorative',serif; font-size:8px; letter-spacing:.5em; color:#8C6B2F; margin-bottom:6px;">SECONDARY TYPEFACE — 02</p>
+        <p style="font-family:'Cinzel Decorative',serif; font-size:34px; font-weight:700; letter-spacing:.2em; color:#1E1410; line-height:1;">Cinzel Decorative</p>
+      </div>
+      <div style="text-align:right;">
+        <p style="font-family:'Cinzel',serif; font-size:7.5px; letter-spacing:.3em; color:rgba(140,107,47,.65); line-height:2.2;">
+          Classification: Ornamental Display Serif<br>
+          Designer: Natanael Gama<br>
+          Weights in use: Bold · Black<br>
+          Use: WL Monogram · Badge Only · Never body copy
+        </p>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:32px; margin-bottom:40px; padding-bottom:36px; border-bottom:1px solid rgba(140,107,47,.2);">
+      <div>
+        <p style="font-family:'Cinzel',serif; font-size:7px; letter-spacing:.4em; color:rgba(140,107,47,.55); margin-bottom:10px;">REGULAR · 400</p>
+        <p style="font-family:'Cinzel Decorative',serif; font-size:22px; font-weight:400; color:#1E1410; letter-spacing:.08em; line-height:1.4;">WL</p>
+      </div>
+      <div>
+        <p style="font-family:'Cinzel',serif; font-size:7px; letter-spacing:.4em; color:rgba(140,107,47,.55); margin-bottom:10px;">BOLD · 700</p>
+        <p style="font-family:'Cinzel Decorative',serif; font-size:22px; font-weight:700; color:#1E1410; letter-spacing:.08em; line-height:1.4;">WL</p>
+      </div>
+      <div>
+        <p style="font-family:'Cinzel',serif; font-size:7px; letter-spacing:.4em; color:rgba(140,107,47,.55); margin-bottom:10px;">BLACK · 900</p>
+        <p style="font-family:'Cinzel Decorative',serif; font-size:22px; font-weight:900; color:#1E1410; letter-spacing:.08em; line-height:1.4;">WL</p>
+      </div>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:48px;">
+      <p style="font-family:'Cinzel',serif; font-size:7px; letter-spacing:.45em; color:rgba(140,107,47,.5); flex-shrink:0;">MONOGRAM USE ONLY</p>
+      <p style="font-family:'Cinzel Decorative',serif; font-weight:900; font-size:80px; color:#8C6B2F; letter-spacing:.12em; line-height:1;">WL</p>
+      <div style="font-family:'Cinzel',serif; font-size:8px; color:rgba(140,107,47,.6); letter-spacing:.2em; line-height:2.2;">
+        Cinzel Decorative is reserved exclusively<br>
+        for the WL monogram badge.<br>
+        Do not use for wordmarks or body copy.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 08  SAMPLE APPLICATIONS ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="sn">08</span>
+    <span class="st">Sample Applications</span>
+    <div class="sr"></div>
+  </div>
+
+  <!-- Row 1: Key Card + Do Not Disturb -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:3px; margin-bottom:3px;">
+
+    <!-- Hotel Key Card -->
+    <div style="background:#2A2420; padding:40px; display:flex; flex-direction:column; align-items:flex-start; justify-content:space-between; border-radius:1px;">
+      <p style="font-family:'Cinzel',serif; font-size:7px; letter-spacing:.4em; color:rgba(166,127,66,.4);">Application — Hotel Key Card</p>
+      <div style="display:flex; justify-content:center; width:100%; margin:24px 0;">
+        <!-- Key card mockup -->
+        <div style="width:340px; height:215px; background:#1E1410; border-radius:12px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; box-shadow:0 8px 40px rgba(0,0,0,.5); border:1px solid rgba(166,127,66,.12); position:relative; overflow:hidden;">
+          <!-- Subtle texture overlay -->
+          <div style="position:absolute; inset:0; background:repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(166,127,66,.02) 2px, rgba(166,127,66,.02) 4px);"></div>
+          <!-- Chip placeholder -->
+          <div style="position:absolute; left:22px; top:50%; transform:translateY(-50%); width:36px; height:28px; background:rgba(166,127,66,.15); border-radius:4px; border:1px solid rgba(166,127,66,.2);"></div>
+          <!-- Logo -->
+          <div style="position:relative; display:flex; flex-direction:column; align-items:center; gap:8px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="38" height="46">
+              <path d="M8,120 L8,54 A42,42 0 0,0 92,54 L92,120" fill="none" stroke="#A67F42" stroke-width="5.5" stroke-linecap="square"/>
+              <path d="M16,120 L16,57 A34,34 0 0,0 84,57 L84,120" fill="none" stroke="#A67F42" stroke-width="1.5"/>
+              <polygon points="50,5 57,19 43,19" fill="#A67F42"/>
+              <rect x="43" y="16" width="14" height="6" fill="#A67F42"/>
+              <line x1="8" y1="77" x2="92" y2="77" stroke="#A67F42" stroke-width="2.5"/>
+              <rect x="2" y="49" width="15" height="4.5" fill="#A67F42"/>
+              <rect x="83" y="49" width="15" height="4.5" fill="#A67F42"/>
+            </svg>
+            <p style="font-family:'Cinzel',serif; font-weight:700; font-size:11px; letter-spacing:.35em; color:#A67F42;">WOOLWORTH</p>
+            <p style="font-family:'Cinzel',serif; font-weight:400; font-size:7px; letter-spacing:.6em; color:rgba(166,127,66,.6);">LOFTS</p>
+          </div>
+          <!-- Bottom stamp -->
+          <p style="position:absolute; bottom:14px; right:18px; font-family:'Cinzel',serif; font-size:6px; letter-spacing:.3em; color:rgba(166,127,66,.3);">953 5TH AVE · SAN DIEGO</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Do Not Disturb -->
+    <div style="background:#2A2420; padding:40px; display:flex; flex-direction:column; align-items:flex-start; justify-content:space-between; border-radius:1px;">
+      <p style="font-family:'Cinzel',serif; font-size:7px; letter-spacing:.4em; color:rgba(166,127,66,.4);">Application — Door Card</p>
+      <div style="display:flex; justify-content:center; width:100%; margin:24px 0;">
+        <!-- DND card mockup -->
+        <div style="width:200px; height:340px; background:#7A2320; border-radius:8px 8px 8px 8px; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:28px 20px; box-shadow:0 8px 40px rgba(0,0,0,.5); position:relative;">
+          <!-- Hole punch at top -->
+          <div style="position:absolute; top:-10px; left:50%; transform:translateX(-50%); width:18px; height:18px; background:#2A2420; border-radius:50%;"></div>
+          <!-- Top section -->
+          <div style="display:flex; flex-direction:column; align-items:center; gap:10px; margin-top:12px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" width="70" height="70">
+              <defs>
+                <path id="tDND" d="M 14,70 A 56,56 0 0,1 126,70"/>
+                <path id="bDND" d="M 20,84 A 50,50 0 0,0 120,84"/>
+              </defs>
+              <circle cx="70" cy="70" r="64" fill="none" stroke="#E8DCC8" stroke-width="2"/>
+              <circle cx="70" cy="70" r="57" fill="none" stroke="#E8DCC8" stroke-width=".7"/>
+              <text font-family="Cinzel,serif" font-size="9" fill="#E8DCC8" letter-spacing="5" font-weight="400">
+                <textPath href="#tDND" startOffset="50%" text-anchor="middle">EST. 1886</textPath>
+              </text>
+              <text font-family="Cinzel,serif" font-size="8.5" fill="#E8DCC8" letter-spacing="3" font-weight="400">
+                <textPath href="#bDND" startOffset="50%" text-anchor="middle">SAN DIEGO · CA</textPath>
+              </text>
+              <text x="70" y="78" font-family="Cinzel Decorative,serif" font-size="46" font-weight="700" fill="#E8DCC8" text-anchor="middle" dominant-baseline="middle">WL</text>
+            </svg>
+          </div>
+          <!-- Divider -->
+          <div style="width:60%; height:1px; background:rgba(232,220,200,.25);"></div>
+          <!-- Text -->
+          <div style="text-align:center; display:flex; flex-direction:column; gap:8px;">
+            <p style="font-family:'Cinzel',serif; font-weight:700; font-size:9px; letter-spacing:.4em; color:#E8DCC8;">DO NOT</p>
+            <p style="font-family:'Cinzel',serif; font-weight:700; font-size:9px; letter-spacing:.4em; color:#E8DCC8;">DISTURB</p>
+            <div style="width:40px; height:1px; background:rgba(232,220,200,.2); margin:4px auto;"></div>
+            <p style="font-family:'Cinzel',serif; font-weight:400; font-size:6.5px; letter-spacing:.3em; color:rgba(232,220,200,.45);">PLEASE</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: Letterhead + Instagram Post -->
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:3px;">
+
+    <!-- Letterhead -->
+    <div style="background:#2A2420; padding:40px; border-radius:1px;">
+      <p style="font-family:'Cinzel',serif; font-size:7px; letter-spacing:.4em; color:rgba(166,127,66,.4); margin-bottom:28px;">Application — Stationery / Letterhead</p>
+      <div style="display:flex; justify-content:center;">
+        <!-- Letter mockup — A4 proportions -->
+        <div style="width:320px; background:#E8DCC8; padding:36px 40px 40px; box-shadow:0 8px 40px rgba(0,0,0,.4);">
+          <!-- Header -->
+          <div style="display:flex; flex-direction:column; align-items:center; gap:8px; padding-bottom:20px; border-bottom:1px solid rgba(140,107,47,.25); margin-bottom:24px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="36" height="43">
+              <path d="M8,120 L8,54 A42,42 0 0,0 92,54 L92,120" fill="none" stroke="#8C6B2F" stroke-width="5.5" stroke-linecap="square"/>
+              <path d="M16,120 L16,57 A34,34 0 0,0 84,57 L84,120" fill="none" stroke="#8C6B2F" stroke-width="1.5"/>
+              <polygon points="50,5 57,19 43,19" fill="#8C6B2F"/>
+              <rect x="43" y="16" width="14" height="6" fill="#8C6B2F"/>
+              <line x1="8" y1="77" x2="92" y2="77" stroke="#8C6B2F" stroke-width="2.5"/>
+              <rect x="2" y="49" width="15" height="4.5" fill="#8C6B2F"/>
+              <rect x="83" y="49" width="15" height="4.5" fill="#8C6B2F"/>
+            </svg>
+            <p style="font-family:'Cinzel',serif; font-weight:700; font-size:12px; letter-spacing:.3em; color:#1E1410;">WOOLWORTH</p>
+            <p style="font-family:'Cinzel',serif; font-weight:400; font-size:7.5px; letter-spacing:.6em; color:#8C6B2F;">LOFTS</p>
+            <p style="font-family:'Cinzel',serif; font-weight:400; font-size:6px; letter-spacing:.3em; color:rgba(140,107,47,.5); margin-top:2px;">EST. 1886 · 953 5TH AVE · SAN DIEGO, CA</p>
+          </div>
+          <!-- Body copy placeholder -->
+          <div style="display:flex; flex-direction:column; gap:5px; margin-bottom:20px;">
+            <div style="height:6px; background:rgba(30,20,16,.1); border-radius:2px; width:90%;"></div>
+            <div style="height:6px; background:rgba(30,20,16,.1); border-radius:2px; width:100%;"></div>
+            <div style="height:6px; background:rgba(30,20,16,.1); border-radius:2px; width:95%;"></div>
+            <div style="height:6px; background:rgba(30,20,16,.1); border-radius:2px; width:80%;"></div>
+            <div style="height:6px; background:rgba(30,20,16,.08); border-radius:2px; width:100%; margin-top:6px;"></div>
+            <div style="height:6px; background:rgba(30,20,16,.08); border-radius:2px; width:88%;"></div>
+            <div style="height:6px; background:rgba(30,20,16,.08); border-radius:2px; width:93%;"></div>
+          </div>
+          <!-- Footer address -->
+          <div style="border-top:1px solid rgba(140,107,47,.2); padding-top:12px; display:flex; justify-content:space-between;">
+            <p style="font-family:'Cinzel',serif; font-size:5.5px; letter-spacing:.25em; color:rgba(140,107,47,.5);">953 5TH AVE, SAN DIEGO, CA</p>
+            <p style="font-family:'Cinzel',serif; font-size:5.5px; letter-spacing:.25em; color:rgba(140,107,47,.5);">WOOLWORTHLOFTS.COM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instagram Post -->
+    <div style="background:#2A2420; padding:40px; border-radius:1px;">
+      <p style="font-family:'Cinzel',serif; font-size:7px; letter-spacing:.4em; color:rgba(166,127,66,.4); margin-bottom:28px;">Application — Instagram Post</p>
+      <div style="display:flex; justify-content:center;">
+        <!-- IG square mockup -->
+        <div style="width:320px; height:320px; background:#1E1410; display:flex; flex-direction:column; align-items:flex-start; justify-content:space-between; padding:32px; box-shadow:0 8px 40px rgba(0,0,0,.5); position:relative; overflow:hidden;">
+          <!-- Subtle diagonal texture -->
+          <div style="position:absolute; inset:0; background:repeating-linear-gradient(135deg, transparent, transparent 30px, rgba(140,107,47,.018) 30px, rgba(140,107,47,.018) 31px);"></div>
+          <!-- Top logo -->
+          <div style="position:relative; display:flex; align-items:center; gap:12px;">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="28" height="34">
+              <path d="M8,120 L8,54 A42,42 0 0,0 92,54 L92,120" fill="none" stroke="#A67F42" stroke-width="6" stroke-linecap="square"/>
+              <path d="M16,120 L16,57 A34,34 0 0,0 84,57 L84,120" fill="none" stroke="#A67F42" stroke-width="1.5"/>
+              <polygon points="50,5 57,19 43,19" fill="#A67F42"/>
+              <rect x="43" y="16" width="14" height="6" fill="#A67F42"/>
+              <line x1="8" y1="77" x2="92" y2="77" stroke="#A67F42" stroke-width="2.5"/>
+              <rect x="2" y="49" width="15" height="4.5" fill="#A67F42"/>
+              <rect x="83" y="49" width="15" height="4.5" fill="#A67F42"/>
+            </svg>
+            <div>
+              <p style="font-family:'Cinzel',serif; font-weight:700; font-size:8px; letter-spacing:.3em; color:#A67F42; line-height:1;">WOOLWORTH</p>
+              <p style="font-family:'Cinzel',serif; font-weight:400; font-size:5.5px; letter-spacing:.5em; color:rgba(166,127,66,.6); margin-top:3px;">LOFTS</p>
+            </div>
+          </div>
+          <!-- Main copy -->
+          <div style="position:relative;">
+            <p style="font-family:'Cinzel',serif; font-weight:400; font-size:7px; letter-spacing:.4em; color:rgba(166,127,66,.5); margin-bottom:12px;">EST. 1886</p>
+            <p style="font-family:'Cinzel',serif; font-weight:700; font-size:22px; letter-spacing:.08em; color:#E8DCC8; line-height:1.35;">Built in 1886.<br>Your room<br>is ready.</p>
+          </div>
+          <!-- Bottom -->
+          <div style="position:relative; width:100%; display:flex; justify-content:space-between; align-items:flex-end;">
+            <p style="font-family:'Cinzel',serif; font-size:6px; letter-spacing:.3em; color:rgba(166,127,66,.35);">953 5TH AVE · GASLAMP QUARTER</p>
+            <p style="font-family:'Cinzel',serif; font-size:6px; letter-spacing:.25em; color:rgba(166,127,66,.35);">San Diego</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 09  BRAND DOC ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="sn">09</span>
+    <span class="st">Brand Document</span>
+    <div class="sr"></div>
+  </div>
+  <div style="background:#1E1410; border-radius:1px; padding:56px 60px; font-family:'Cinzel',serif; color:#E8DCC8;">
+
+    <div style="margin-bottom:48px;">
+      <p style="font-size:8px; letter-spacing:.5em; color:#A67F42; text-transform:uppercase; margin-bottom:10px;">What This Brand Is</p>
+      <p style="font-size:12px; font-weight:400; letter-spacing:.06em; line-height:1.9; color:rgba(232,220,200,.8);">Woolworth Lofts is a boutique loft-style hotel property at 953 5th Avenue in San Diego's Gaslamp Quarter — one of Evan's priority DTC properties. The building was constructed in 1886 as the actual F.W. Woolworth Company store — a Victorian-era commercial landmark that is now part of the preserved Gaslamp Quarter Historic District. The brand carries that original heritage into the hospitality space: one of San Diego's oldest standing commercial buildings, now reimagined as an intimate, character-rich loft stay.</p>
+      <p style="font-size:10px; font-weight:400; letter-spacing:.12em; color:#A67F42; margin-top:12px;">Priority 1 property in the NOVIQ DTC rollout.</p>
+    </div>
+
+    <div style="border-top:1px solid rgba(166,127,66,.15); padding-top:40px; margin-bottom:48px;">
+      <p style="font-size:8px; letter-spacing:.5em; color:#A67F42; text-transform:uppercase; margin-bottom:10px;">Positioning Statement</p>
+      <p style="font-size:14px; font-weight:400; letter-spacing:.08em; line-height:1.8; color:rgba(232,220,200,.9); font-style:italic;">A Victorian-era landmark at the heart of the Gaslamp Quarter — where 140 years of San Diego history meet modern comfort, and staying feels like owning a piece of the city.</p>
+    </div>
+
+    <div style="border-top:1px solid rgba(166,127,66,.15); padding-top:40px; margin-bottom:48px;">
+      <p style="font-size:8px; letter-spacing:.5em; color:#A67F42; text-transform:uppercase; margin-bottom:24px;">Ideal Guest Profile</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+        <div>
+          <p style="font-size:7px; letter-spacing:.4em; color:rgba(166,127,66,.55); margin-bottom:10px;">PRIMARY GUEST</p>
+          <p style="font-size:11px; font-weight:400; letter-spacing:.06em; line-height:1.9; color:rgba(232,220,200,.75);">Design-conscious traveler, 30–55, urban professional or creative. Values authenticity and story. Pays a premium to avoid generic hotel chains. Discovers the property through Google search after seeing it on Airbnb/Booking.com. Would book direct if they knew the property had its own site.</p>
+        </div>
+        <div>
+          <p style="font-size:7px; letter-spacing:.4em; color:rgba(166,127,66,.55); margin-bottom:10px;">SECONDARY GUEST</p>
+          <p style="font-size:11px; font-weight:400; letter-spacing:.06em; line-height:1.9; color:rgba(232,220,200,.75);">Weekend getaway couple or solo business traveler who wants a Gaslamp location with more character than the Marriott. Responsive to "book direct and get more" messaging.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid rgba(166,127,66,.15); padding-top:40px; margin-bottom:48px;">
+      <p style="font-size:8px; letter-spacing:.5em; color:#A67F42; text-transform:uppercase; margin-bottom:10px;">Brand Origin & Story</p>
+      <p style="font-size:11px; font-weight:400; letter-spacing:.06em; line-height:1.9; color:rgba(232,220,200,.75); margin-bottom:18px;">953 5th Avenue. Built in 1886. Victorian commercial architecture. Originally the F.W. Woolworth Company store — one of the earliest outposts of the five-and-dime empire that would become an icon of American retail culture. The building stood through San Diego's boom years, the Prohibition era, two World Wars, and the Gaslamp Quarter's full arc from gold rush commerce to urban decline to historic preservation. Renovated in 1922 and now part of the officially protected Gaslamp Quarter Historic District, it is one of the oldest standing commercial structures in downtown San Diego.</p>
+      <p style="font-size:11px; font-weight:400; letter-spacing:.06em; line-height:1.9; color:rgba(232,220,200,.75);">F.W. Woolworth's stores were the original "accessible luxury" — places where anyone could walk in off the street and afford something good. That democratic spirit, translated into hospitality, becomes the Woolworth Lofts brand idea: a building with the pedigree of a landmark and the warmth of a neighborhood stay. Not pretentious. Not a chain. A real address with a real story, at the center of one of the most walkable blocks in San Diego.</p>
+      <div style="display:flex; gap:48px; margin-top:28px;">
+        <div>
+          <p style="font-size:7px; letter-spacing:.4em; color:rgba(166,127,66,.5); margin-bottom:6px;">TAGLINE</p>
+          <p style="font-size:13px; font-weight:700; letter-spacing:.25em; color:#A67F42;">Where History Checks In.</p>
+        </div>
+        <div>
+          <p style="font-size:7px; letter-spacing:.4em; color:rgba(166,127,66,.5); margin-bottom:6px;">ALTERNATIVES</p>
+          <p style="font-size:10px; font-weight:400; letter-spacing:.1em; line-height:2.2; color:rgba(232,220,200,.5);">Est. 1886. Still the best address on 5th.<br>The original address. Now yours for the night.<br>140 years on the same block. Book direct.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid rgba(166,127,66,.15); padding-top:40px; margin-bottom:48px;">
+      <p style="font-size:8px; letter-spacing:.5em; color:#A67F42; text-transform:uppercase; margin-bottom:24px;">Content Pillars</p>
+      <div style="display:grid; grid-template-columns:repeat(5, 1fr); gap:16px;">
+        <div style="border-left:2px solid rgba(166,127,66,.3); padding-left:14px;">
+          <p style="font-size:7px; letter-spacing:.3em; color:rgba(166,127,66,.5); margin-bottom:6px;">01</p>
+          <p style="font-size:10px; letter-spacing:.08em; line-height:1.7; color:rgba(232,220,200,.7);">The building itself — architecture, history, original details</p>
+        </div>
+        <div style="border-left:2px solid rgba(166,127,66,.3); padding-left:14px;">
+          <p style="font-size:7px; letter-spacing:.3em; color:rgba(166,127,66,.5); margin-bottom:6px;">02</p>
+          <p style="font-size:10px; letter-spacing:.08em; line-height:1.7; color:rgba(232,220,200,.7);">The Gaslamp Quarter neighborhood — walkability, food, culture</p>
+        </div>
+        <div style="border-left:2px solid rgba(166,127,66,.3); padding-left:14px;">
+          <p style="font-size:7px; letter-spacing:.3em; color:rgba(166,127,66,.5); margin-bottom:6px;">03</p>
+          <p style="font-size:10px; letter-spacing:.08em; line-height:1.7; color:rgba(232,220,200,.7);">The loft experience — what it actually feels like to stay here</p>
+        </div>
+        <div style="border-left:2px solid rgba(166,127,66,.3); padding-left:14px;">
+          <p style="font-size:7px; letter-spacing:.3em; color:rgba(166,127,66,.5); margin-bottom:6px;">04</p>
+          <p style="font-size:10px; letter-spacing:.08em; line-height:1.7; color:rgba(232,220,200,.7);">Direct booking — why book direct, what OTAs don't offer</p>
+        </div>
+        <div style="border-left:2px solid rgba(166,127,66,.3); padding-left:14px;">
+          <p style="font-size:7px; letter-spacing:.3em; color:rgba(166,127,66,.5); margin-bottom:6px;">05</p>
+          <p style="font-size:10px; letter-spacing:.08em; line-height:1.7; color:rgba(232,220,200,.7);">Owner's POV — Evan's perspective on the property and story</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid rgba(166,127,66,.15); padding-top:40px;">
+      <p style="font-size:8px; letter-spacing:.5em; color:#A67F42; text-transform:uppercase; margin-bottom:24px;">Goals for This Brand</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+        <p style="font-size:10px; letter-spacing:.06em; line-height:1.8; color:rgba(232,220,200,.6);">→ Priority 1 in the NOVIQ DTC rollout</p>
+        <p style="font-size:10px; letter-spacing:.06em; line-height:1.8; color:rgba(232,220,200,.6);">→ Establish Google My Business with Woolworth Lofts brand name</p>
+        <p style="font-size:10px; letter-spacing:.06em; line-height:1.8; color:rgba(232,220,200,.6);">→ Build out direct booking page via Guesty booking engine</p>
+        <p style="font-size:10px; letter-spacing:.06em; line-height:1.8; color:rgba(232,220,200,.6);">→ Align listing titles across all OTAs</p>
+        <p style="font-size:10px; letter-spacing:.06em; line-height:1.8; color:rgba(232,220,200,.6);">→ Launch Instagram presence around the building's visual identity</p>
+        <p style="font-size:10px; letter-spacing:.06em; line-height:1.8; color:rgba(232,220,200,.6);">→ Use as model property for the full DTC playbook</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── 10  BRAND VOICE ── -->
+<div class="section">
+  <div class="section-header">
+    <span class="sn">10</span>
+    <span class="st">Brand Voice</span>
+    <div class="sr"></div>
+  </div>
+  <div style="background:#E8DCC8; border-radius:1px; padding:56px 60px; font-family:'Cinzel',serif; color:#1E1410;">
+
+    <div style="margin-bottom:48px;">
+      <p style="font-size:8px; letter-spacing:.5em; color:#8C6B2F; text-transform:uppercase; margin-bottom:10px;">Tone</p>
+      <p style="font-size:14px; font-weight:400; letter-spacing:.08em; line-height:1.8; color:#1E1410; font-style:italic;">Quiet confidence. The brand doesn't announce itself — it lets the building do the talking. Copy is spare, evocative, and rooted in physical detail. Old money without the pretension.</p>
+    </div>
+
+    <div style="border-top:1px solid rgba(140,107,47,.2); padding-top:40px; margin-bottom:48px;">
+      <p style="font-size:8px; letter-spacing:.5em; color:#8C6B2F; text-transform:uppercase; margin-bottom:24px;">Core Voice Attributes</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+        <div style="border-left:2px solid rgba(140,107,47,.35); padding-left:16px;">
+          <p style="font-size:10px; font-weight:700; letter-spacing:.2em; color:#1E1410; margin-bottom:6px;">UNDERSTATED</p>
+          <p style="font-size:11px; font-weight:400; letter-spacing:.06em; line-height:1.7; color:rgba(30,20,16,.65);">Never oversells; lets the details carry the weight</p>
+        </div>
+        <div style="border-left:2px solid rgba(140,107,47,.35); padding-left:16px;">
+          <p style="font-size:10px; font-weight:700; letter-spacing:.2em; color:#1E1410; margin-bottom:6px;">SPECIFIC</p>
+          <p style="font-size:11px; font-weight:400; letter-spacing:.06em; line-height:1.7; color:rgba(30,20,16,.65);">"eleven-foot ceilings, original brick" beats "luxurious rooms"</p>
+        </div>
+        <div style="border-left:2px solid rgba(140,107,47,.35); padding-left:16px;">
+          <p style="font-size:10px; font-weight:700; letter-spacing:.2em; color:#1E1410; margin-bottom:6px;">EDITORIAL</p>
+          <p style="font-size:11px; font-weight:400; letter-spacing:.06em; line-height:1.7; color:rgba(30,20,16,.65);">Writes like a well-edited magazine, not a hotel brochure</p>
+        </div>
+        <div style="border-left:2px solid rgba(140,107,47,.35); padding-left:16px;">
+          <p style="font-size:10px; font-weight:700; letter-spacing:.2em; color:#1E1410; margin-bottom:6px;">DIRECT</p>
+          <p style="font-size:11px; font-weight:400; letter-spacing:.06em; line-height:1.7; color:rgba(30,20,16,.65);">Knows what it has and says so plainly</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid rgba(140,107,47,.2); padding-top:40px; margin-bottom:48px;">
+      <p style="font-size:8px; letter-spacing:.5em; color:#8C6B2F; text-transform:uppercase; margin-bottom:28px;">Platform Voice Samples</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px;">
+
+        <div style="background:#1E1410; padding:28px 32px; border-radius:1px;">
+          <p style="font-size:7px; letter-spacing:.4em; color:rgba(166,127,66,.55); margin-bottom:16px;">INSTAGRAM</p>
+          <p style="font-size:12px; font-weight:400; letter-spacing:.06em; line-height:2; color:rgba(232,220,200,.8); font-style:italic;">"Built in 1886. Still the best address on 5th. Your room is ready."</p>
+          <div style="height:1px; background:rgba(166,127,66,.15); margin:14px 0;"></div>
+          <p style="font-size:12px; font-weight:400; letter-spacing:.06em; line-height:2; color:rgba(232,220,200,.8); font-style:italic;">"F.W. Woolworth opened his store here 140 years ago. Now it's where you stay."</p>
+          <div style="height:1px; background:rgba(166,127,66,.15); margin:14px 0;"></div>
+          <p style="font-size:12px; font-weight:400; letter-spacing:.06em; line-height:2; color:rgba(232,220,200,.8); font-style:italic;">"Not a hotel chain. Not a vacation rental. Something else entirely."</p>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:24px;">
+          <div style="background:rgba(140,107,47,.1); padding:28px 32px; border-radius:1px;">
+            <p style="font-size:7px; letter-spacing:.4em; color:#8C6B2F; margin-bottom:12px;">GOOGLE / OTA LISTING</p>
+            <p style="font-size:11px; font-weight:400; letter-spacing:.06em; line-height:1.9; color:rgba(30,20,16,.7);">Woolworth Lofts is a boutique loft-style property in a Victorian landmark building on 5th Avenue in San Diego's Gaslamp Quarter Historic District. Built in 1886 as the original F.W. Woolworth store, the building retains its historic character while offering modern comfort. Book direct for the best rate.</p>
+          </div>
+          <div style="background:rgba(140,107,47,.1); padding:28px 32px; border-radius:1px;">
+            <p style="font-size:7px; letter-spacing:.4em; color:#8C6B2F; margin-bottom:12px;">DIRECT BOOKING PAGE</p>
+            <p style="font-size:12px; font-weight:700; letter-spacing:.18em; color:#1E1410; line-height:2.1;">Where History Checks In.<br>Book direct. Best price. No middleman.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div style="border-top:1px solid rgba(140,107,47,.2); padding-top:40px; margin-bottom:48px;">
+      <p style="font-size:8px; letter-spacing:.5em; color:#8C6B2F; text-transform:uppercase; margin-bottom:24px;">Words We Use / Avoid</p>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+        <div>
+          <p style="font-size:7px; letter-spacing:.4em; color:rgba(140,107,47,.55); margin-bottom:14px;">WE SAY</p>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <p style="font-size:10px; letter-spacing:.1em; color:rgba(30,20,16,.7);">→ Lofts (not rooms, where applicable)</p>
+            <p style="font-size:10px; letter-spacing:.1em; color:rgba(30,20,16,.7);">→ Historic, original, storied</p>
+            <p style="font-size:10px; letter-spacing:.1em; color:rgba(30,20,16,.7);">→ Character, bones, detail</p>
+            <p style="font-size:10px; letter-spacing:.1em; color:rgba(30,20,16,.7);">→ Direct booking / book direct</p>
+            <p style="font-size:10px; letter-spacing:.1em; color:rgba(30,20,16,.7);">→ San Diego's Gaslamp Quarter</p>
+            <p style="font-size:10px; letter-spacing:.1em; color:rgba(30,20,16,.7);">→ The building, the address</p>
+          </div>
+        </div>
+        <div>
+          <p style="font-size:7px; letter-spacing:.4em; color:rgba(140,107,47,.55); margin-bottom:14px;">WE NEVER SAY</p>
+          <div style="display:flex; flex-direction:column; gap:8px;">
+            <p style="font-size:10px; letter-spacing:.1em; color:rgba(122,35,32,.7);">× Luxury (implies price, not quality)</p>
+            <p style="font-size:10px; letter-spacing:.1em; color:rgba(122,35,32,.7);">× World-class, state-of-the-art</p>
+            <p style="font-size:10px; letter-spacing:.1em; color:rgba(122,35,32,.7);">× Boutique (say what makes it boutique)</p>
+            <p style="font-size:10px; letter-spacing:.1em; color:rgba(122,35,32,.7);">× Cozy (too small-feeling for a loft brand)</p>
+            <p style="font-size:10px; letter-spacing:.1em; color:rgba(122,35,32,.7);">× Amazing, incredible, stunning</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid rgba(140,107,47,.2); padding-top:40px;">
+      <p style="font-size:8px; letter-spacing:.5em; color:#8C6B2F; text-transform:uppercase; margin-bottom:16px;">Visual Voice</p>
+      <p style="font-size:12px; font-weight:400; letter-spacing:.06em; line-height:1.9; color:rgba(30,20,16,.7);">Dark backgrounds. Brass and warm cream. Wide serif typography. Never centered text for headlines — left-aligned, architectural. Minimal copy on images. Let the photography breathe.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<div class="page-footer">
+  <span>Woolworth Lofts · Brand Identity · 2026</span>
+  <span>NOVIQ Property Rentals · Evan Rundle</span>
+</div>
+
+</body>
+</html>
