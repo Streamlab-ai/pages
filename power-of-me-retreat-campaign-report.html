@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Power of M.E. Retreat — Campaign Report</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: #f5f5f3;
+      color: #1a1a1a;
+      padding: 40px 20px;
+    }
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+
+    /* Header */
+    .header {
+      background: #1a1a2e;
+      color: #fff;
+      padding: 36px 40px 28px;
+    }
+    .header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+    .brand {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #a0a0c0;
+      font-weight: 500;
+    }
+    .report-date {
+      font-size: 11px;
+      color: #a0a0c0;
+      letter-spacing: 0.05em;
+    }
+    .header h1 {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+    .header .subtitle {
+      font-size: 13px;
+      color: #c0c0d8;
+    }
+
+    /* Body */
+    .body { padding: 32px 40px 40px; }
+
+    /* Goal bar */
+    .goal-bar {
+      background: #f0f0f8;
+      border-left: 4px solid #4f46e5;
+      padding: 12px 16px;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 28px;
+      font-size: 13px;
+      color: #333;
+    }
+    .goal-bar strong { color: #1a1a2e; }
+
+    /* Section titles */
+    h2 {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #4f46e5;
+      margin-bottom: 12px;
+    }
+
+    /* Stats grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .stat-card {
+      background: #f9f9fb;
+      border: 1px solid #e8e8f0;
+      border-radius: 8px;
+      padding: 14px 12px;
+      text-align: center;
+    }
+    .stat-card .value {
+      font-size: 26px;
+      font-weight: 700;
+      color: #1a1a2e;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-card .label {
+      font-size: 11px;
+      color: #777;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* Table */
+    .section { margin-bottom: 28px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+    thead tr {
+      background: #1a1a2e;
+      color: #fff;
+    }
+    thead th {
+      padding: 9px 12px;
+      text-align: left;
+      font-weight: 600;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    tbody tr:nth-child(odd) { background: #f9f9fb; }
+    tbody tr:nth-child(even) { background: #fff; }
+    tbody td {
+      padding: 9px 12px;
+      border-bottom: 1px solid #eee;
+      color: #333;
+    }
+    tbody td:first-child { font-weight: 600; color: #1a1a2e; }
+    .badge-pass {
+      display: inline-block;
+      background: #dcfce7;
+      color: #15803d;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 10px;
+    }
+    .badge-miss {
+      display: inline-block;
+      background: #fef2f2;
+      color: #b91c1c;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 10px;
+    }
+
+    /* Two-col */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .insight-card {
+      background: #f9f9fb;
+      border: 1px solid #e8e8f0;
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .insight-card h3 {
+      font-size: 12px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .insight-card p {
+      font-size: 12.5px;
+      color: #444;
+      line-height: 1.6;
+    }
+
+    /* Recommendations */
+    .reco-list {
+      list-style: none;
+      padding: 0;
+    }
+    .reco-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      font-size: 13px;
+      color: #333;
+      line-height: 1.5;
+    }
+    .reco-list li:last-child { border-bottom: none; }
+    .reco-num {
+      background: #1a1a2e;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #f5f5f3;
+      border-top: 1px solid #e8e8f0;
+      padding: 16px 40px;
+      font-size: 11px;
+      color: #999;
+      display: flex;
+      justify-content: space-between;
+    }
+    .divider {
+      border: none;
+      border-top: 1px solid #eee;
+      margin: 0 0 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-top">
+        <span class="brand">StreamLab Ai — Think 3D Solutions</span>
+        <span class="report-date">June 4, 2026</span>
+      </div>
+      <h1>Power of M.E. Retreat<br>Email Campaign Report</h1>
+      <div class="subtitle">Inner Circle Activation — May 2026 · Apollo.io</div>
+    </div>
+
+    <!-- BODY -->
+    <div class="body">
+
+      <!-- Campaign Goal -->
+      <div class="goal-bar">
+        <strong>Campaign Goal:</strong> Fill 13 remaining seats for the Power of M.E. Retreat — May 29, Culture Cove, Sioux Falls — by activating three tiers of Tamien's existing community.
+      </div>
+
+      <!-- Combined Stats -->
+      <div class="section">
+        <h2>Overall Results — 3 Sequences Combined</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="value">325</div>
+            <div class="label">Delivered</div>
+          </div>
+          <div class="stat-card">
+            <div class="value">80%</div>
+            <div class="label">Avg Open Rate</div>
+          </div>
+          <div class="stat-card">
+            <div class="value">32%</div>
+            <div class="label">Avg Click Rate</div>
+          </div>
+          <div class="stat-card">
+            <div class="value">0</div>
+            <div class="label">Unsubscribes</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sequence Breakdown -->
+      <div class="section">
+        <h2>Sequence Breakdown</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Segment</th>
+              <th>Delivered</th>
+              <th>Open Rate</th>
+              <th>Click Rate</th>
+              <th>Reply Rate</th>
+              <th>Opt-Outs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Inner Circle<br><span style="font-weight:400;font-size:11px;color:#777;">Elite Mindset + Alumni</span></td>
+              <td>90</td>
+              <td>78.9%</td>
+              <td>16.7%</td>
+              <td>3.3%</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Mentorship Graduates<br><span style="font-weight:400;font-size:11px;color:#777;">AOML Grads</span></td>
+              <td>38</td>
+              <td>86.8%</td>
+              <td>28.9%</td>
+              <td>5.3%</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>Warm Community<br><span style="font-weight:400;font-size:11px;color:#777;">Seminar Attendees</span></td>
+              <td>197</td>
+              <td>79.2%</td>
+              <td>39.1%</td>
+              <td>2.0%</td>
+              <td>0</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- KPI Check -->
+      <div class="section">
+        <h2>Performance vs. Targets</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Target</th>
+              <th>Inner Circle</th>
+              <th>Mentorship Grads</th>
+              <th>Warm Community</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Open Rate</td>
+              <td>&gt;30%</td>
+              <td><span class="badge-pass">78.9% ✓</span></td>
+              <td><span class="badge-pass">86.8% ✓</span></td>
+              <td><span class="badge-pass">79.2% ✓</span></td>
+            </tr>
+            <tr>
+              <td>Click Rate</td>
+              <td>&gt;15%</td>
+              <td><span class="badge-pass">16.7% ✓</span></td>
+              <td><span class="badge-pass">28.9% ✓</span></td>
+              <td><span class="badge-pass">39.1% ✓</span></td>
+            </tr>
+            <tr>
+              <td>Reply Rate</td>
+              <td>&gt;3%</td>
+              <td><span class="badge-pass">3.3% ✓</span></td>
+              <td><span class="badge-pass">5.3% ✓</span></td>
+              <td><span class="badge-miss">2.0% ✗</span></td>
+            </tr>
+            <tr>
+              <td>Opt-Out Rate</td>
+              <td>&lt;1%</td>
+              <td><span class="badge-pass">0% ✓</span></td>
+              <td><span class="badge-pass">0% ✓</span></td>
+              <td><span class="badge-pass">0% ✓</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Key Insights -->
+      <div class="section">
+        <h2>Key Takeaways</h2>
+        <div class="two-col">
+          <div class="insight-card">
+            <h3>What Worked</h3>
+            <p>Open and click rates crushed targets across all three segments — 5–10x better than the parallel cold outbound sequence. Zero unsubscribes confirms the community trusts Tamien's messaging. Mentorship Graduates were the standout: highest open, click, and reply rate despite being the smallest list.</p>
+          </div>
+          <div class="insight-card">
+            <h3>Where It Broke Down</h3>
+            <p>The gap was between click and purchase — not between send and click. Email got attention. The retreat landing page or booking step didn't close it. This is not an email problem — it's a conversion funnel problem to solve before the next event.</p>
+          </div>
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- Recommendations -->
+      <div class="section">
+        <h2>Recommendations for Upcoming Events</h2>
+        <ul class="reco-list">
+          <li>
+            <span class="reco-num">1</span>
+            <span><strong>Re-use these lists only for local events.</strong> Most contacts are Sioux Falls–based. These sequences should be re-activated when Tamien is running an event in or near Sioux Falls. For Kansas City, Jacksonville, and Denver, we build fresh local lists via Apollo prospecting.</span>
+          </li>
+          <li>
+            <span class="reco-num">2</span>
+            <span><strong>Prioritise Mentorship Graduates every time.</strong> This is Tamien's highest-trust, highest-engagement segment. Whenever there's an event in their area, they get first contact — and a personalised message, not a broadcast.</span>
+          </li>
+          <li>
+            <span class="reco-num">3</span>
+            <span><strong>Fix the post-click experience before the next event.</strong> Email performance was strong — the drop-off is at the landing page or registration flow. This needs to be reviewed and tightened before we drive traffic to it again.</span>
+          </li>
+          <li>
+            <span class="reco-num">4</span>
+            <span><strong>Run email and social together.</strong> The content calendar (in progress) will reinforce email messaging for each event. Contacts who see Tamien on socials <em>and</em> receive an email are significantly more likely to convert. Both channels go live together going forward.</span>
+          </li>
+        </ul>
+      </div>
+
+    </div><!-- /body -->
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <span>Data source: Apollo.io · Campaign Brief: Notion (Apr 22, 2026)</span>
+      <span>Prepared by StreamLab Ai — June 4, 2026</span>
+    </div>
+
+  </div>
+</body>
+</html>
