@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elevate You — Brand Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Fragment+Mono&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --dark-forest:  #052e1c;
+  --forest:       #123928;
+  --forest-mid:   #284732;
+  --sage:         #53b58b;
+  --olive:        #425a2c;
+  --olive-light:  #93a15a;
+  --lime:         #d7ee70;
+  --orange:       #ff8935;
+  --amber:        #bf621f;
+  --off-white:    #f6f7f2;
+  --white:        #ffffff;
+  --grey:         #636669;
+  --light-grey:   #dee3dc;
+  --lime-tint:    #eff5d8;
+  --sage-tint:    #f4f7f4;
+  --warm-tint:    #f7ecde;
+  --text:         #000000;
+  --text-mid:     #2a2a2a;
+  --text-muted:   #636669;
+}
+
+body {
+  background: var(--off-white);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  width: 1080px;
+  margin: 0 auto;
+  padding: 64px 72px 80px;
+}
+
+/* ── SECTION LABEL ───────────────────────────── */
+.section-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--olive);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--light-grey);
+}
+
+/* ── HEADER ──────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 36px;
+  margin-bottom: 52px;
+  border-bottom: 2px solid var(--sage);
+}
+.logo-wordmark {
+  font-family: 'DM Serif Display', serif;
+  font-size: 44px;
+  font-weight: 400;
+  color: var(--dark-forest);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.brand-tagline {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+.header-right { text-align: right; }
+.doc-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.doc-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  color: var(--forest);
+  margin-top: 4px;
+}
+
+/* ── POSITIONING ─────────────────────────────── */
+.positioning-section { margin-bottom: 56px; }
+.positioning-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  gap: 16px;
+}
+.pos-card {
+  background: var(--white);
+  border: 1px solid var(--light-grey);
+  border-radius: 12px;
+  padding: 24px 20px;
+}
+.pos-card.hero {
+  background: var(--dark-forest);
+  border-color: transparent;
+}
+.pos-pill {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  background: var(--lime-tint);
+  color: var(--olive);
+}
+.pos-pill.dark {
+  background: rgba(215,238,112,0.15);
+  color: var(--lime);
+}
+.pos-headline {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+.pos-headline.light { color: var(--white); }
+.pos-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.pos-body.light { color: rgba(255,255,255,0.55); }
+.pos-mantra {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(215,238,112,0.12);
+  color: var(--lime);
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(215,238,112,0.25);
+}
+
+/* ── PALETTE STRIP ───────────────────────────── */
+.palette-strip {
+  display: flex;
+  height: 44px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 44px;
+  border: 1px solid var(--light-grey);
+}
+.strip-block { flex: 1; }
+
+/* ── COLORS ──────────────────────────────────── */
+.color-section { margin-bottom: 56px; }
+.color-groups { display: flex; gap: 18px; }
+.color-group { flex: 1; }
+.color-group-title {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.color-stack { display: flex; flex-direction: column; gap: 7px; }
+.swatch {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--white);
+  border: 1px solid var(--light-grey);
+}
+.swatch.on-dark {
+  background: var(--forest);
+  border-color: rgba(255,255,255,0.08);
+}
+.swatch-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+.swatch-name { font-size: 11px; font-weight: 600; color: var(--text); line-height: 1.3; }
+.swatch-name.l { color: #fff; }
+.swatch-hex { font-size: 10px; letter-spacing: 0.07em; color: var(--text-muted); margin-top: 2px; font-family: 'Fragment Mono', monospace; }
+.swatch-hex.l { color: rgba(255,255,255,0.45); }
+.swatch-use { font-size: 9px; font-style: italic; color: var(--text-muted); margin-top: 2px; opacity: 0.85; }
+.swatch-use.l { color: rgba(255,255,255,0.3); }
+
+/* ── TYPOGRAPHY ──────────────────────────────── */
+.type-section { margin-bottom: 56px; }
+.type-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+.type-card {
+  background: var(--white);
+  border: 1px solid var(--light-grey);
+  border-radius: 12px;
+  padding: 26px 22px;
+}
+.type-header {
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--lime-tint);
+}
+.font-name {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--olive);
+}
+.font-role { font-size: 10px; color: var(--text-muted); margin-top: 3px; }
+.weight-row { padding: 8px 0; border-bottom: 1px solid var(--off-white); }
+.weight-row:last-child { border-bottom: none; }
+.w-sample { line-height: 1.25; }
+.w-tag { font-size: 9px; color: var(--text-muted); margin-top: 3px; letter-spacing: 0.06em; }
+
+/* Font specimens */
+.ds-400  { font-family:'DM Serif Display',serif; font-size:28px; font-weight:400; color:var(--text); }
+.ds-400i { font-family:'DM Serif Display',serif; font-size:22px; font-weight:400; font-style:italic; color:var(--forest); }
+.ds-body { font-family:'DM Serif Display',serif; font-size:18px; font-weight:400; color:var(--text-mid); }
+
+.dm-700  { font-family:'DM Sans',sans-serif; font-size:16px; font-weight:700; color:var(--text); }
+.dm-600  { font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; color:var(--text); }
+.dm-400  { font-family:'DM Sans',sans-serif; font-size:13px; font-weight:400; line-height:1.65; color:var(--text-mid); }
+.dm-300  { font-family:'DM Sans',sans-serif; font-size:12px; font-weight:300; line-height:1.65; color:var(--text-muted); }
+
+.mono    { font-family:'Fragment Mono',monospace; font-size:11px; color:var(--olive); }
+
+/* ── USE CASES ───────────────────────────────── */
+.use-section { margin-bottom: 56px; }
+.use-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+/* 1. Dark hero card */
+.uc-hero {
+  background: var(--dark-forest);
+  border-radius: 14px;
+  padding: 40px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.uc-hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(83,181,139,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+.uc-hero-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 14px;
+}
+.uc-hero-headline {
+  font-family: 'DM Serif Display', serif;
+  font-size: 30px;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+.uc-hero-headline em { font-style: italic; color: var(--lime); }
+.uc-hero-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+.uc-hero-cta {
+  display: inline-block;
+  background: var(--lime);
+  color: var(--dark-forest);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+.uc-hero-footer {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-family: 'DM Serif Display', serif;
+  font-size: 15px;
+  font-style: italic;
+  color: rgba(255,255,255,0.35);
+}
+
+/* 2. Quote card */
+.uc-quote {
+  background: var(--forest);
+  border-radius: 14px;
+  padding: 36px 32px 28px;
+  position: relative;
+  overflow: hidden;
+}
+.uc-quote::before {
+  content: '\201C';
+  font-family: 'DM Serif Display', serif;
+  font-size: 160px;
+  color: var(--sage);
+  opacity: 0.12;
+  position: absolute;
+  top: -20px; left: 18px;
+  line-height: 1;
+}
+.uc-quote-text {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--white);
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
+}
+.uc-quote-rule { width: 36px; height: 2px; background: var(--sage); margin: 16px 0 12px; }
+.uc-quote-attr {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-style: italic;
+  color: var(--sage);
+}
+.uc-quote-footer {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.uc-quote-brand {
+  font-family: 'DM Serif Display', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--lime);
+}
+.uc-quote-hashtags {
+  font-size: 9px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.04em;
+}
+
+/* 3. Light event card */
+.uc-event {
+  background: var(--white);
+  border: 1px solid var(--light-grey);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.uc-event-top { padding: 26px 24px 20px; }
+.uc-event-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  font-style: italic;
+  color: var(--dark-forest);
+  margin-bottom: 16px;
+}
+.uc-event-headline {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+.uc-event-pills { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 14px; }
+.pill {
+  font-size: 10px;
+  font-weight: 500;
+  background: var(--lime-tint);
+  color: var(--olive);
+  border-radius: 20px;
+  padding: 4px 10px;
+}
+.pill.sage {
+  background: rgba(83,181,139,0.12);
+  color: var(--forest);
+}
+.uc-event-body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.uc-event-bar {
+  background: var(--dark-forest);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.uc-event-bar-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.03em;
+}
+.uc-event-cta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--lime);
+  color: var(--dark-forest);
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+/* 4. Insight post */
+.uc-insight {
+  background: var(--sage-tint);
+  border: 1px solid var(--light-grey);
+  border-radius: 14px;
+  padding: 28px 26px;
+}
+.uc-insight-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--olive);
+  margin-bottom: 10px;
+}
+.uc-insight-headline {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  color: var(--dark-forest);
+  line-height: 1.3;
+  margin-bottom: 14px;
+}
+.uc-insight-quote {
+  background: var(--lime-tint);
+  border-left: 3px solid var(--sage);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--forest);
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+.uc-insight-list { list-style: none; margin-bottom: 16px; }
+.uc-insight-list li {
+  font-size: 11px;
+  color: var(--text-mid);
+  line-height: 1.65;
+  padding: 3px 0 3px 16px;
+  position: relative;
+}
+.uc-insight-list li::before {
+  content: '→';
+  position: absolute; left: 0;
+  color: var(--sage);
+  font-weight: 600;
+}
+.uc-insight-close {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--dark-forest);
+  border-top: 1px solid var(--light-grey);
+  padding-top: 14px;
+}
+.uc-insight-tags { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px; }
+.tag { font-size: 9px; color: var(--sage); font-weight: 500; letter-spacing: 0.03em; }
+
+/* ── TONE OF VOICE ───────────────────────────── */
+.tone-section { margin-bottom: 56px; }
+.tone-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.tone-card {
+  background: var(--white);
+  border: 1px solid var(--light-grey);
+  border-radius: 10px;
+  padding: 20px 18px;
+  border-top: 3px solid var(--sage);
+}
+.tone-title { font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text); margin-bottom: 8px; }
+.tone-desc { font-size: 11px; line-height: 1.65; color: var(--text-muted); }
+.tone-example {
+  margin-top: 10px;
+  padding: 8px 10px;
+  background: var(--lime-tint);
+  border-radius: 5px;
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-size: 11px;
+  color: var(--forest);
+  line-height: 1.55;
+}
+
+/* ── DO / DON'T ──────────────────────────────── */
+.rules-section { margin-bottom: 56px; }
+.rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.rules-card {
+  background: var(--white);
+  border: 1px solid var(--light-grey);
+  border-radius: 12px;
+  padding: 22px 20px;
+}
+.rules-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--light-grey);
+}
+.rules-title.do { color: var(--forest); }
+.rules-title.dont { color: #b91c1c; }
+.rules-list { list-style: none; }
+.rules-list li {
+  font-size: 11px;
+  color: var(--text-mid);
+  line-height: 1.55;
+  padding: 5px 0 5px 18px;
+  position: relative;
+  border-bottom: 1px solid var(--off-white);
+}
+.rules-list li:last-child { border-bottom: none; }
+.rules-list.do li::before { content: '✓'; position: absolute; left: 0; color: var(--sage); font-weight: 700; }
+.rules-list.dont li::before { content: '✕'; position: absolute; left: 0; color: #b91c1c; font-weight: 700; }
+
+/* ── FOOTER ──────────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 28px;
+  border-top: 1px solid var(--light-grey);
+}
+.footer-left { font-size: 10px; color: var(--text-muted); letter-spacing: 0.06em; }
+.footer-brand { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 13px; color: var(--text-muted); }
+.footer-brand span { color: var(--sage); }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ═══════════════════════════════════ -->
+<header class="header">
+  <div>
+    <div class="logo-wordmark">elevate you</div>
+    <div class="brand-tagline">Elevate Self · Extend Impact · CommYOUnity</div>
+  </div>
+  <div class="header-right">
+    <div class="doc-label">Brand Kit</div>
+    <div class="doc-title">Colors · Type · Voice · Use Cases</div>
+  </div>
+</header>
+
+<!-- ══ POSITIONING ══════════════════════════════ -->
+<div class="positioning-section">
+  <div class="section-label">Brand Positioning</div>
+  <div class="positioning-grid">
+    <div class="pos-card hero">
+      <div class="pos-pill dark">One-Line Identity</div>
+      <div class="pos-headline light">The entry point to intentional leadership.</div>
+      <div class="pos-body light">Before you can build a culture, lead a team, or change a community — you have to fix the way you show up. That's what Elevate You does. Individual change that ripples out.</div>
+      <div class="pos-mantra">Mantra: Elevate Self</div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-pill">Who It Serves</div>
+      <div class="pos-headline">The Person Before the Title</div>
+      <div class="pos-body">High-achievers in their late 20s–mid-40s on autopilot. Nonprofit leaders, community builders, managers and team leads who give everything to others — and haven't invested in themselves.</div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-pill">The Problem</div>
+      <div class="pos-headline">Autopilot Living</div>
+      <div class="pos-body">95% of actions are driven by emotional state. Identity wasn't built by intention — it was shaped by environment and circumstance. Change isn't a willpower problem. It's a wiring problem.</div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-pill">The Promise</div>
+      <div class="pos-headline">From IN It to Leading It</div>
+      <div class="pos-body">You don't just participate in your community — you shape it. A better you is better for everybody.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PALETTE STRIP ════════════════════════════ -->
+<div class="palette-strip">
+  <div class="strip-block" style="background:#052e1c;"></div>
+  <div class="strip-block" style="background:#123928;"></div>
+  <div class="strip-block" style="background:#284732;"></div>
+  <div class="strip-block" style="background:#425a2c;"></div>
+  <div class="strip-block" style="background:#53b58b;"></div>
+  <div class="strip-block" style="background:#93a15a;"></div>
+  <div class="strip-block" style="background:#d7ee70;"></div>
+  <div class="strip-block" style="background:#eff5d8;"></div>
+  <div class="strip-block" style="background:#f6f7f2;"></div>
+  <div class="strip-block" style="background:#bf621f;"></div>
+  <div class="strip-block" style="background:#ff8935;"></div>
+  <div class="strip-block" style="background:#ffffff; border-right:1px solid #dee3dc;"></div>
+</div>
+
+<!-- ══ COLORS ═══════════════════════════════════ -->
+<div class="color-section">
+  <div class="section-label">Color Palette</div>
+  <div class="color-groups">
+
+    <!-- Greens: Dark -->
+    <div class="color-group">
+      <div class="color-group-title">Green — Dark (Backgrounds & Depth)</div>
+      <div class="color-stack">
+        <div class="swatch on-dark">
+          <div class="swatch-dot" style="background:#052e1c; border-color:rgba(255,255,255,0.1);"></div>
+          <div>
+            <div class="swatch-name l">Dark Forest</div>
+            <div class="swatch-hex l">#052e1c</div>
+            <div class="swatch-use l">Primary dark background, hero sections</div>
+          </div>
+        </div>
+        <div class="swatch on-dark">
+          <div class="swatch-dot" style="background:#123928; border-color:rgba(255,255,255,0.1);"></div>
+          <div>
+            <div class="swatch-name l">Forest</div>
+            <div class="swatch-hex l">#123928</div>
+            <div class="swatch-use l">Quote cards, secondary dark containers</div>
+          </div>
+        </div>
+        <div class="swatch on-dark">
+          <div class="swatch-dot" style="background:#284732; border-color:rgba(255,255,255,0.1);"></div>
+          <div>
+            <div class="swatch-name l">Forest Mid</div>
+            <div class="swatch-hex l">#284732</div>
+            <div class="swatch-use l">Card backgrounds, hover states on dark</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#425a2c;"></div>
+          <div>
+            <div class="swatch-name">Olive</div>
+            <div class="swatch-hex">#425a2c</div>
+            <div class="swatch-use">Section labels, supporting borders</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Greens: Mid & Accent -->
+    <div class="color-group">
+      <div class="color-group-title">Green — Mid & Accent (Brand Signature)</div>
+      <div class="color-stack">
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#53b58b;"></div>
+          <div>
+            <div class="swatch-name">Sage</div>
+            <div class="swatch-hex">#53b58b</div>
+            <div class="swatch-use">Primary brand accent, quote marks, CTAs on light</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#93a15a;"></div>
+          <div>
+            <div class="swatch-name">Khaki</div>
+            <div class="swatch-hex">#93a15a</div>
+            <div class="swatch-use">Supporting text, warm-green moments</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#d7ee70; border-color:rgba(0,0,0,0.1);"></div>
+          <div>
+            <div class="swatch-name">Lime</div>
+            <div class="swatch-hex">#d7ee70</div>
+            <div class="swatch-use">Primary CTA buttons on dark, high-energy accent</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#eff5d8; border-color:rgba(0,0,0,0.08);"></div>
+          <div>
+            <div class="swatch-name">Lime Tint</div>
+            <div class="swatch-hex">#eff5d8</div>
+            <div class="swatch-use">Tag fills, card accents, blockquote backgrounds</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Neutrals & Warm -->
+    <div class="color-group">
+      <div class="color-group-title">Neutrals & Warm Accents</div>
+      <div class="color-stack">
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#f6f7f2; border-color:rgba(0,0,0,0.1);"></div>
+          <div>
+            <div class="swatch-name">Off-White</div>
+            <div class="swatch-hex">#f6f7f2</div>
+            <div class="swatch-use">Page background, base surface</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#dee3dc; border-color:rgba(0,0,0,0.08);"></div>
+          <div>
+            <div class="swatch-name">Sage Grey</div>
+            <div class="swatch-hex">#dee3dc</div>
+            <div class="swatch-use">Borders, dividers, subtle UI elements</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#ff8935;"></div>
+          <div>
+            <div class="swatch-name">Orange</div>
+            <div class="swatch-hex">#ff8935</div>
+            <div class="swatch-use">Warm accent, energy moments, secondary CTA</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#bf621f;"></div>
+          <div>
+            <div class="swatch-name">Amber</div>
+            <div class="swatch-hex">#bf621f</div>
+            <div class="swatch-use">Hover on orange, warm tonal moments</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ TYPOGRAPHY ════════════════════════════════ -->
+<div class="type-section">
+  <div class="section-label">Typography</div>
+  <div class="type-grid">
+
+    <div class="type-card">
+      <div class="type-header">
+        <div class="font-name">DM Serif Display</div>
+        <div class="font-role">Headlines · Pull Quotes · Brand Voice · Warmth</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample ds-400">Elevate Self. Elevate Your Life.</div>
+        <div class="w-tag">400 Regular — primary headlines</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample ds-400i">From self-awareness to amplified impact.</div>
+        <div class="w-tag">400 Italic — pull quotes, brand statements</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample ds-body">The entry point to intentional leadership.</div>
+        <div class="w-tag">Regular body size — subheadings, section intro</div>
+      </div>
+    </div>
+
+    <div class="type-card">
+      <div class="type-header">
+        <div class="font-name">DM Sans</div>
+        <div class="font-role">Body · UI · Buttons · Captions · Navigation</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample dm-700">Register Now · 100% Free · 72 Seats</div>
+        <div class="w-tag">700 Bold — CTA buttons, urgency labels</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample dm-600">Built for community builders and leaders at every level.</div>
+        <div class="w-tag">600 SemiBold — subheadings, pill labels</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample dm-400">Join our interactive workshop designed to help you develop essential community leadership skills and show up with more purpose.</div>
+        <div class="w-tag">400 Regular — body copy, descriptions</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample dm-300">The Social, 301 S Thompson Ave, Sioux Falls, SD · Cost: FREE — 100% Sponsored</div>
+        <div class="w-tag">300 Light — captions, secondary info</div>
+      </div>
+    </div>
+
+    <div class="type-card">
+      <div class="type-header">
+        <div class="font-name">Fragment Mono</div>
+        <div class="font-role">Data · Stats · Hex Codes · Technical Labels</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample mono">#052e1c · #53b58b · #d7ee70</div>
+        <div class="w-tag">Regular — hex references, brand codes</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample mono">95% — emotional state driven<br>72 seats · 8:15 AM · July 16, 2026</div>
+        <div class="w-tag">Regular — stats, data callouts, technical specs</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample mono">Phase 1 of 8 · Week 04 of 48</div>
+        <div class="w-tag">Regular — program tracking, structured data</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ USE CASES ════════════════════════════════ -->
+<div class="use-section">
+  <div class="section-label">Use Case Samples — Based on Elevate You Facebook Posts</div>
+  <div class="use-grid">
+
+    <!-- 1. Dark hero / announcement -->
+    <div class="uc-hero">
+      <div class="uc-hero-eyebrow">Elevate You · The First Ripple</div>
+      <div class="uc-hero-headline">Every community<br>starts <em>here.</em></div>
+      <div class="uc-hero-body">An interactive workshop for community builders, nonprofit leaders, and anyone who leads people — designed to shift the way you show up.</div>
+      <div class="uc-hero-cta">Register Now — It's Free</div>
+      <div class="uc-hero-footer">July 16, 2026 · Sioux Falls, SD · 72 Seats</div>
+    </div>
+
+    <!-- 2. Quote card -->
+    <div class="uc-quote">
+      <div class="uc-quote-text">"Most people wait to be given a seat at the table. Leaders learn to bring their own chair."</div>
+      <div class="uc-quote-rule"></div>
+      <div class="uc-quote-attr">— Tamien Dysart</div>
+      <div class="uc-quote-footer">
+        <div class="uc-quote-brand">elevate you</div>
+        <div class="uc-quote-hashtags">#ElevateYou #Leadership #CommunityLeadership</div>
+      </div>
+    </div>
+
+    <!-- 3. Light event card -->
+    <div class="uc-event">
+      <div class="uc-event-top">
+        <div class="uc-event-logo">elevate you</div>
+        <div class="uc-event-headline">The First Ripple:<br>Mastering the 'You'<br>in CommYOUnity</div>
+        <div class="uc-event-pills">
+          <span class="pill">Thu · Jul 16, 2026</span>
+          <span class="pill">8:15–11:15 AM</span>
+          <span class="pill sage">Free · 72 Seats</span>
+        </div>
+        <div class="uc-event-body">Built for community builders, nonprofit directors, managers, and anyone who leads people — with or without a formal title.</div>
+      </div>
+      <div class="uc-event-bar">
+        <div class="uc-event-bar-text">The Social · 301 S Thompson Ave · Sioux Falls, SD</div>
+        <div class="uc-event-cta">Register Now</div>
+      </div>
+    </div>
+
+    <!-- 4. Insight/thought leadership post (from actual FB format) -->
+    <div class="uc-insight">
+      <div class="uc-insight-eyebrow">Leadership Insight</div>
+      <div class="uc-insight-headline">A bad system will beat a good person every time.</div>
+      <div class="uc-insight-quote">"A bad system will beat a good person every time." — W. Edwards Deming</div>
+      <div class="uc-insight-list">
+        <li>Accountability isn't pressure after failure — it's creating conditions for success before it</li>
+        <li>Vague expectations and absent feedback loops are system failures, not people failures</li>
+        <li>Leaders who rescue instead of coach prevent growth</li>
+        <li>Psychological safety is a system — not a feeling</li>
+      </div>
+      <div class="uc-insight-close">Are you fighting your people — or the system you built?</div>
+      <div class="uc-insight-tags">
+        <span class="tag">#Leadership</span>
+        <span class="tag">#ExecutiveLeadership</span>
+        <span class="tag">#WorkplaceCulture</span>
+        <span class="tag">#PeopleLeadership</span>
+        <span class="tag">#ElevateYou</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ TONE OF VOICE ════════════════════════════ -->
+<div class="tone-section">
+  <div class="section-label">Tone of Voice</div>
+  <div class="tone-grid">
+    <div class="tone-card">
+      <div class="tone-title">Challenge First</div>
+      <div class="tone-desc">Opens by flipping conventional wisdom — never starts with affirmation. Earns attention with the uncomfortable reframe before giving the answer.</div>
+      <div class="tone-example">"Most leaders attribute accountability failures to people problems. The real issue is often broken systems."</div>
+    </div>
+    <div class="tone-card">
+      <div class="tone-title">Frame-Flipping</div>
+      <div class="tone-desc">Uses contrast to shift perspective. Before/after, IN vs THE. The transformation is always visible — not just described.</div>
+      <div class="tone-example">"IN the community → THE community. You're not just in it. You lead it."</div>
+    </div>
+    <div class="tone-card">
+      <div class="tone-title">Grounded in Science</div>
+      <div class="tone-desc">Backs every claim with research, data, or credible authority. Biology and neuroscience make it credible — human stories make it land.</div>
+      <div class="tone-example">"95% of daily actions are driven by emotional state. Change isn't a willpower problem — it's a wiring problem."</div>
+    </div>
+    <div class="tone-card">
+      <div class="tone-title">Framework-Driven</div>
+      <div class="tone-desc">Never just insight — always a structure. Lists, distinctions, and frameworks give the reader something to hold on to and act on.</div>
+      <div class="tone-example">Awareness → Alignment → Activation → Amplification.</div>
+    </div>
+    <div class="tone-card">
+      <div class="tone-title">Direct Close</div>
+      <div class="tone-desc">Ends with a pointed question or one clear CTA. The reader should feel accountable, not just informed. Never vague.</div>
+      <div class="tone-example">"Are you fighting your people, or the system you built?"</div>
+    </div>
+    <div class="tone-card">
+      <div class="tone-title">Inclusive, Not Corporate</div>
+      <div class="tone-desc">Built for community leaders, not executives. Warm, peer-to-peer, accessible. The YOU in CommYOUnity is always the focus.</div>
+      <div class="tone-example">"Built for anyone who leads people — with or without a formal title."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DO / DON'T ═══════════════════════════════ -->
+<div class="rules-section">
+  <div class="section-label">Do / Don't</div>
+  <div class="rules-grid">
+    <div class="rules-card">
+      <div class="rules-title do">Do</div>
+      <ul class="rules-list do">
+        <li>Open with a challenge or reframe — never a compliment</li>
+        <li>Use DM Serif Display for all headlines and pull quotes</li>
+        <li>Use Lime (#d7ee70) for CTAs on dark backgrounds</li>
+        <li>Use Sage (#53b58b) for accents on light backgrounds</li>
+        <li>Ground every insight in science, data, or lived proof</li>
+        <li>Keep event content warm, accessible, community-first</li>
+        <li>End with a direct question or one clear CTA</li>
+        <li>Use green tones throughout — the brand is all green</li>
+      </ul>
+    </div>
+    <div class="rules-card">
+      <div class="rules-title dont">Don't</div>
+      <ul class="rules-list dont">
+        <li>Use blue or navy — that is not part of this brand</li>
+        <li>Use gold or amber (except the warm orange accent) — that's Think 3D</li>
+        <li>Use Barlow Condensed — that's Think 3D and Tamien's personal brand</li>
+        <li>Frame content through corporate HR / turnover stats</li>
+        <li>Use hustle culture language — no grind, crush it, go hard</li>
+        <li>Post inspiration without a practical framework or structure</li>
+        <li>Confuse Elevate You (individual/community) with Think 3D (organizational)</li>
+        <li>Say "guru", "thought leader", "quick fix", or "soft skills"</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-left">goelevateyou.com · Fonts: DM Serif Display, DM Sans, Fragment Mono (Google Fonts) · June 2026</div>
+  <div class="footer-brand">Prepared by <span>StreamLab</span></div>
+</footer>
+
+</body>
+</html>
