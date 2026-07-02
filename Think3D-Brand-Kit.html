@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Think3D — Brand Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy-deep:    #0e2a3d;
+  --navy:         #1f6581;
+  --blue:         #2ea3f2;
+  --blue-dark:    #1c7fc4;
+  --sky:          #b3e1f5;
+  --sky-tint:     #e8f3fb;
+  --slate:        #515151;
+  --grey:         #666666;
+  --light-grey:   #e2e2e2;
+  --off-white:    #f7f7f7;
+  --white:        #ffffff;
+  --text:         #222222;
+  --text-mid:     #333333;
+  --text-muted:   #666666;
+}
+
+body {
+  background: var(--off-white);
+  color: var(--text);
+  font-family: 'Roboto', sans-serif;
+  width: 1080px;
+  margin: 0 auto;
+  padding: 64px 72px 80px;
+}
+
+/* ── SECTION LABEL ───────────────────────────── */
+.section-label {
+  font-family: 'Oxygen', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--light-grey);
+}
+
+/* ── HEADER ──────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 36px;
+  margin-bottom: 52px;
+  border-bottom: 2px solid var(--blue);
+}
+.header-left { display: flex; align-items: center; gap: 16px; }
+.logo-mark { width: 52px; height: 52px; filter: drop-shadow(0 0 0 transparent); background: var(--navy-deep); border-radius: 10px; padding: 6px; }
+.logo-mark img { width: 100%; height: 100%; object-fit: contain; }
+.logo-wordmark {
+  font-family: 'Heebo', sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--navy-deep);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.brand-tagline {
+  font-family: 'Oxygen', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 10px;
+}
+.header-right { text-align: right; }
+.doc-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.doc-title {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--navy);
+  margin-top: 4px;
+}
+
+/* ── POSITIONING ─────────────────────────────── */
+.positioning-section { margin-bottom: 56px; }
+.positioning-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  gap: 16px;
+}
+.pos-card {
+  background: var(--white);
+  border: 1px solid var(--light-grey);
+  border-radius: 12px;
+  padding: 24px 20px;
+}
+.pos-card.hero {
+  background: var(--navy-deep);
+  border-color: transparent;
+}
+.pos-pill {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 4px 9px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  background: var(--sky-tint);
+  color: var(--navy);
+}
+.pos-pill.dark {
+  background: rgba(46,163,242,0.18);
+  color: var(--sky);
+}
+.pos-headline {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+.pos-headline.light { color: var(--white); }
+.pos-body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.pos-body.light { color: rgba(255,255,255,0.6); }
+.pos-mantra {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(46,163,242,0.15);
+  color: var(--sky);
+  padding: 5px 10px;
+  border-radius: 4px;
+  border: 1px solid rgba(46,163,242,0.3);
+}
+
+/* ── PALETTE STRIP ───────────────────────────── */
+.palette-strip {
+  display: flex;
+  height: 44px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 44px;
+  border: 1px solid var(--light-grey);
+}
+.strip-block { flex: 1; }
+
+/* ── COLORS ──────────────────────────────────── */
+.color-section { margin-bottom: 56px; }
+.color-groups { display: flex; gap: 18px; }
+.color-group { flex: 1; }
+.color-group-title {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.color-stack { display: flex; flex-direction: column; gap: 7px; }
+.swatch {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: var(--white);
+  border: 1px solid var(--light-grey);
+}
+.swatch.on-dark {
+  background: var(--navy-deep);
+  border-color: rgba(255,255,255,0.08);
+}
+.swatch-dot {
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+.swatch-name { font-size: 11px; font-weight: 700; color: var(--text); line-height: 1.3; }
+.swatch-name.l { color: #fff; }
+.swatch-hex { font-size: 10px; letter-spacing: 0.07em; color: var(--text-muted); margin-top: 2px; font-family: 'Oxygen', monospace; }
+.swatch-hex.l { color: rgba(255,255,255,0.45); }
+.swatch-use { font-size: 9px; font-style: italic; color: var(--text-muted); margin-top: 2px; opacity: 0.85; }
+.swatch-use.l { color: rgba(255,255,255,0.3); }
+
+/* ── TYPOGRAPHY ──────────────────────────────── */
+.type-section { margin-bottom: 56px; }
+.type-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; }
+.type-card {
+  background: var(--white);
+  border: 1px solid var(--light-grey);
+  border-radius: 12px;
+  padding: 26px 22px;
+}
+.type-header {
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--sky-tint);
+}
+.font-name {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+.font-role { font-size: 10px; color: var(--text-muted); margin-top: 3px; }
+.weight-row { padding: 8px 0; border-bottom: 1px solid var(--off-white); }
+.weight-row:last-child { border-bottom: none; }
+.w-sample { line-height: 1.3; }
+.w-tag { font-size: 9px; color: var(--text-muted); margin-top: 3px; letter-spacing: 0.06em; }
+
+/* Font specimens */
+.hb-800  { font-family:'Heebo',sans-serif; font-size:26px; font-weight:800; color:var(--text); }
+.hb-700  { font-family:'Heebo',sans-serif; font-size:20px; font-weight:700; color:var(--navy); }
+.hb-500  { font-family:'Heebo',sans-serif; font-size:16px; font-weight:500; color:var(--text-mid); }
+
+.rb-700  { font-family:'Roboto',sans-serif; font-size:16px; font-weight:700; color:var(--text); }
+.rb-500  { font-family:'Roboto',sans-serif; font-size:14px; font-weight:500; color:var(--text); }
+.rb-400  { font-family:'Roboto',sans-serif; font-size:13px; font-weight:400; line-height:1.65; color:var(--text-mid); }
+.rb-300  { font-family:'Roboto',sans-serif; font-size:12px; font-weight:300; line-height:1.65; color:var(--text-muted); }
+
+.oxy    { font-family:'Oxygen',sans-serif; font-size:11px; color:var(--navy); }
+.oxy-700 { font-family:'Oxygen',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-mid); }
+
+/* ── USE CASES ───────────────────────────────── */
+.use-section { margin-bottom: 56px; }
+.use-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+
+/* 1. Dark hero card */
+.uc-hero {
+  background: var(--navy-deep);
+  border-radius: 14px;
+  padding: 40px 36px;
+  position: relative;
+  overflow: hidden;
+}
+.uc-hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(46,163,242,0.22) 0%, transparent 70%);
+  pointer-events: none;
+}
+.uc-hero-eyebrow {
+  font-family: 'Oxygen', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sky);
+  margin-bottom: 14px;
+}
+.uc-hero-headline {
+  font-family: 'Heebo', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+.uc-hero-headline em { font-style: normal; color: var(--sky); }
+.uc-hero-body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  margin-bottom: 22px;
+}
+.uc-hero-cta {
+  display: inline-block;
+  background: var(--blue);
+  color: var(--white);
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 10px 22px;
+  border-radius: 6px;
+  letter-spacing: 0.02em;
+}
+.uc-hero-footer {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-family: 'Oxygen', sans-serif;
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+}
+
+/* 2. Quote card */
+.uc-quote {
+  background: var(--navy);
+  border-radius: 14px;
+  padding: 36px 32px 28px;
+  position: relative;
+  overflow: hidden;
+}
+.uc-quote::before {
+  content: '\201C';
+  font-family: 'Heebo', sans-serif;
+  font-size: 160px;
+  font-weight: 800;
+  color: var(--blue);
+  opacity: 0.15;
+  position: absolute;
+  top: -20px; left: 18px;
+  line-height: 1;
+}
+.uc-quote-text {
+  font-family: 'Heebo', sans-serif;
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
+}
+.uc-quote-rule { width: 36px; height: 2px; background: var(--sky); margin: 16px 0 12px; }
+.uc-quote-attr {
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  font-style: italic;
+  color: var(--sky);
+}
+.uc-quote-footer {
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.uc-quote-brand {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--sky);
+}
+.uc-quote-hashtags {
+  font-size: 9px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.04em;
+}
+
+/* 3. Light event card */
+.uc-event {
+  background: var(--white);
+  border: 1px solid var(--light-grey);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.uc-event-top { padding: 26px 24px 20px; }
+.uc-event-logo {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--navy-deep);
+  margin-bottom: 16px;
+}
+.uc-event-headline {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 800;
+  font-size: 24px;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+.uc-event-pills { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 14px; }
+.pill {
+  font-size: 10px;
+  font-weight: 500;
+  background: var(--sky-tint);
+  color: var(--navy);
+  border-radius: 20px;
+  padding: 4px 10px;
+}
+.pill.blue {
+  background: rgba(46,163,242,0.12);
+  color: var(--blue-dark);
+}
+.uc-event-body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+.uc-event-bar {
+  background: var(--navy-deep);
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.uc-event-bar-text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.03em;
+}
+.uc-event-cta {
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--blue);
+  color: var(--white);
+  padding: 8px 16px;
+  border-radius: 5px;
+}
+
+/* 4. Insight post */
+.uc-insight {
+  background: var(--sky-tint);
+  border: 1px solid var(--light-grey);
+  border-radius: 14px;
+  padding: 28px 26px;
+}
+.uc-insight-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+.uc-insight-headline {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--navy-deep);
+  line-height: 1.3;
+  margin-bottom: 14px;
+}
+.uc-insight-quote {
+  background: var(--white);
+  border-left: 3px solid var(--blue);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  font-family: 'Heebo', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--navy);
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+.uc-insight-list { list-style: none; margin-bottom: 16px; }
+.uc-insight-list li {
+  font-size: 11px;
+  color: var(--text-mid);
+  line-height: 1.65;
+  padding: 3px 0 3px 16px;
+  position: relative;
+}
+.uc-insight-list li::before {
+  content: '→';
+  position: absolute; left: 0;
+  color: var(--blue);
+  font-weight: 700;
+}
+.uc-insight-close {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--navy-deep);
+  border-top: 1px solid var(--light-grey);
+  padding-top: 14px;
+}
+.uc-insight-tags { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px; }
+.tag { font-size: 9px; color: var(--blue-dark); font-weight: 500; letter-spacing: 0.03em; }
+
+/* ── TONE OF VOICE ───────────────────────────── */
+.tone-section { margin-bottom: 56px; }
+.tone-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.tone-card {
+  background: var(--white);
+  border: 1px solid var(--light-grey);
+  border-radius: 10px;
+  padding: 20px 18px;
+  border-top: 3px solid var(--blue);
+}
+.tone-title { font-family: 'Oxygen', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text); margin-bottom: 8px; }
+.tone-desc { font-size: 11px; line-height: 1.65; color: var(--text-muted); }
+.tone-example {
+  margin-top: 10px;
+  padding: 8px 10px;
+  background: var(--sky-tint);
+  border-radius: 5px;
+  font-family: 'Heebo', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  color: var(--navy);
+  line-height: 1.55;
+}
+
+/* ── DO / DON'T ──────────────────────────────── */
+.rules-section { margin-bottom: 56px; }
+.rules-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.rules-card {
+  background: var(--white);
+  border: 1px solid var(--light-grey);
+  border-radius: 12px;
+  padding: 22px 20px;
+}
+.rules-title {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 800;
+  font-size: 17px;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--light-grey);
+}
+.rules-title.do { color: var(--navy); }
+.rules-title.dont { color: #b91c1c; }
+.rules-list { list-style: none; }
+.rules-list li {
+  font-size: 11px;
+  color: var(--text-mid);
+  line-height: 1.55;
+  padding: 5px 0 5px 18px;
+  position: relative;
+  border-bottom: 1px solid var(--off-white);
+}
+.rules-list li:last-child { border-bottom: none; }
+.rules-list.do li::before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-weight: 700; }
+.rules-list.dont li::before { content: '✕'; position: absolute; left: 0; color: #b91c1c; font-weight: 700; }
+
+/* ── SOURCE NOTE ─────────────────────────────── */
+.source-note {
+  background: #fff8e6;
+  border: 1px solid #f0d98c;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 44px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  line-height: 1.7;
+  color: #6b5200;
+}
+.source-note b { color: #4a3800; }
+
+/* ── FOOTER ──────────────────────────────────── */
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 28px;
+  border-top: 1px solid var(--light-grey);
+}
+.footer-left { font-size: 10px; color: var(--text-muted); letter-spacing: 0.06em; }
+.footer-brand { font-family: 'Heebo', sans-serif; font-weight: 700; font-size: 13px; color: var(--text-muted); }
+.footer-brand span { color: var(--blue); }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ═══════════════════════════════════ -->
+<header class="header">
+  <div class="header-left">
+    <div class="logo-mark"><img src="https://letsthink3d.com/wp-content/uploads/2024/02/cropped-t3d-faded-logomark-270x270.png" alt="Think3D logomark"></div>
+    <div>
+      <div class="logo-wordmark">think3d</div>
+      <div class="brand-tagline">Transform Your Workplace Culture · Strengthen Your Business</div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="doc-label">Brand Kit</div>
+    <div class="doc-title">Colors · Type · Voice · Use Cases</div>
+  </div>
+</header>
+
+<!-- ══ SOURCE NOTE ══════════════════════════════ -->
+<div class="source-note">
+  <b>Sourced directly from letsthink3d.com</b> (2026-07-02) — colors pulled from live CSS, fonts from the loaded Google Fonts stack, logo from the site's own asset files. This matches the blue palette already used in the Leading Forward (Event 2) drafts in <code>client-think3d/</code>. Note: Elevate You's brand kit doc lists Think3D as gold/amber + Barlow Condensed — that appears to be outdated or refers to an earlier direction. Flag if Think3D has since rebranded and this needs to be overridden.
+</div>
+
+<!-- ══ POSITIONING ══════════════════════════════ -->
+<div class="positioning-section">
+  <div class="section-label">Brand Positioning</div>
+  <div class="positioning-grid">
+    <div class="pos-card hero">
+      <div class="pos-pill dark">One-Line Identity</div>
+      <div class="pos-headline light">Transform your workplace culture. Strengthen your business.</div>
+      <div class="pos-body light">Think3D is a strategic culture consultancy — an organizational counterpart to Elevate You's individual focus. Where Elevate You changes the person, Think3D changes the company around them.</div>
+      <div class="pos-mantra">Framework: Extract · Engage · Evaluate · Evolve</div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-pill">Who It Serves</div>
+      <div class="pos-headline">Organizations &amp; Their Leaders</div>
+      <div class="pos-body">Companies and leadership teams who want to build a workplace culture that boosts productivity, retention, and profitability — not individual community leaders (that's Elevate You).</div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-pill">The Problem</div>
+      <div class="pos-headline">Culture Isn't an Accident</div>
+      <div class="pos-body">"Outstanding company cultures are not built by accident. They stem from ongoing efforts across the organization." Most companies never assess or design their culture — it just happens to them.</div>
+    </div>
+    <div class="pos-card">
+      <div class="pos-pill">The Promise</div>
+      <div class="pos-headline">A Destination for Top Talent</div>
+      <div class="pos-body">"We believe that we can better the world by improving people's lives by changing the way they work." Give the best professionals a compelling reason to choose you.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PALETTE STRIP ════════════════════════════ -->
+<div class="palette-strip">
+  <div class="strip-block" style="background:#0e2a3d;"></div>
+  <div class="strip-block" style="background:#1f6581;"></div>
+  <div class="strip-block" style="background:#1c7fc4;"></div>
+  <div class="strip-block" style="background:#2ea3f2;"></div>
+  <div class="strip-block" style="background:#b3e1f5;"></div>
+  <div class="strip-block" style="background:#e8f3fb;"></div>
+  <div class="strip-block" style="background:#f7f7f7;"></div>
+  <div class="strip-block" style="background:#e2e2e2;"></div>
+  <div class="strip-block" style="background:#666666;"></div>
+  <div class="strip-block" style="background:#515151;"></div>
+  <div class="strip-block" style="background:#ffffff; border-right:1px solid #e2e2e2;"></div>
+</div>
+
+<!-- ══ COLORS ═══════════════════════════════════ -->
+<div class="color-section">
+  <div class="section-label">Color Palette — Verified from letsthink3d.com</div>
+  <div class="color-groups">
+
+    <!-- Blues: Dark -->
+    <div class="color-group">
+      <div class="color-group-title">Blue — Dark (Backgrounds &amp; Depth)</div>
+      <div class="color-stack">
+        <div class="swatch on-dark">
+          <div class="swatch-dot" style="background:#0e2a3d; border-color:rgba(255,255,255,0.1);"></div>
+          <div>
+            <div class="swatch-name l">Navy Deep</div>
+            <div class="swatch-hex l">#0e2a3d</div>
+            <div class="swatch-use l">Primary dark background, hero sections</div>
+          </div>
+        </div>
+        <div class="swatch on-dark">
+          <div class="swatch-dot" style="background:#1f6581; border-color:rgba(255,255,255,0.1);"></div>
+          <div>
+            <div class="swatch-name l">Navy</div>
+            <div class="swatch-hex l">#1f6581</div>
+            <div class="swatch-use l">Quote cards, secondary dark containers</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#515151;"></div>
+          <div>
+            <div class="swatch-name">Slate</div>
+            <div class="swatch-hex">#515151</div>
+            <div class="swatch-use">Site nav bar, footer text (from live CSS)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Blues: Mid & Accent -->
+    <div class="color-group">
+      <div class="color-group-title">Blue — Mid &amp; Accent (Brand Signature)</div>
+      <div class="color-stack">
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#2ea3f2;"></div>
+          <div>
+            <div class="swatch-name">Blue</div>
+            <div class="swatch-hex">#2ea3f2</div>
+            <div class="swatch-use">Primary brand accent — most-used color on live site, CTAs</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#1c7fc4;"></div>
+          <div>
+            <div class="swatch-name">Blue Dark</div>
+            <div class="swatch-hex">#1c7fc4</div>
+            <div class="swatch-use">Hover states, link visited</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#b3e1f5; border-color:rgba(0,0,0,0.1);"></div>
+          <div>
+            <div class="swatch-name">Sky</div>
+            <div class="swatch-hex">#b3e1f5</div>
+            <div class="swatch-use">Logomark color, nav highlight, light accent</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#e8f3fb; border-color:rgba(0,0,0,0.08);"></div>
+          <div>
+            <div class="swatch-name">Sky Tint</div>
+            <div class="swatch-hex">#e8f3fb</div>
+            <div class="swatch-use">Tag fills, card accents, section backgrounds</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Neutrals -->
+    <div class="color-group">
+      <div class="color-group-title">Neutrals</div>
+      <div class="color-stack">
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#f7f7f7; border-color:rgba(0,0,0,0.1);"></div>
+          <div>
+            <div class="swatch-name">Off-White</div>
+            <div class="swatch-hex">#f7f7f7</div>
+            <div class="swatch-use">Page background, base surface (site footer bg)</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#e2e2e2; border-color:rgba(0,0,0,0.08);"></div>
+          <div>
+            <div class="swatch-name">Light Grey</div>
+            <div class="swatch-hex">#e2e2e2</div>
+            <div class="swatch-use">Borders, dividers, subtle UI elements</div>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-dot" style="background:#666666;"></div>
+          <div>
+            <div class="swatch-name">Grey</div>
+            <div class="swatch-hex">#666666</div>
+            <div class="swatch-use">Body copy, secondary text</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ TYPOGRAPHY ════════════════════════════════ -->
+<div class="type-section">
+  <div class="section-label">Typography — Live Font Stack</div>
+  <div class="type-grid">
+
+    <div class="type-card">
+      <div class="type-header">
+        <div class="font-name">Heebo</div>
+        <div class="font-role">Headlines · H1–H6 · Brand Voice</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample hb-800">Transform Your Workplace Culture.</div>
+        <div class="w-tag">800 ExtraBold — primary headlines</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample hb-700">Strengthen Your Business.</div>
+        <div class="w-tag">700 Bold — subheadings, section titles</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample hb-500">Extract · Engage · Evaluate · Evolve</div>
+        <div class="w-tag">500 Medium — framework labels, callouts</div>
+      </div>
+    </div>
+
+    <div class="type-card">
+      <div class="type-header">
+        <div class="font-name">Roboto</div>
+        <div class="font-role">Body · UI · Buttons · Captions</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample rb-700">Get Started · Book a Consultation</div>
+        <div class="w-tag">700 Bold — CTA buttons</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample rb-500">Outstanding company cultures are not built by accident.</div>
+        <div class="w-tag">500 Medium — subheadings, pull lines</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample rb-400">We collect essential data about your business and team to uncover key insights, then tailor strategies and solutions.</div>
+        <div class="w-tag">400 Regular — body copy, descriptions</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample rb-300">Tech Central, 710 Central St, Kansas City, MO · July 31, 2026</div>
+        <div class="w-tag">300 Light — captions, secondary info</div>
+      </div>
+    </div>
+
+    <div class="type-card">
+      <div class="type-header">
+        <div class="font-name">Oxygen</div>
+        <div class="font-role">Nav · Labels · Technical / Data Callouts</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample oxy">#0e2a3d · #2ea3f2 · #b3e1f5</div>
+        <div class="w-tag">Regular — hex references, brand codes</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample oxy-700">Our Process</div>
+        <div class="w-tag">700 Bold, uppercase — nav labels, eyebrows</div>
+      </div>
+      <div class="weight-row">
+        <div class="w-sample oxy">Half-Day Seminar · 12:00–4:00 PM · Kansas City, MO</div>
+        <div class="w-tag">Regular — event specs, structured data</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ USE CASES ════════════════════════════════ -->
+<div class="use-section">
+  <div class="section-label">Use Case Samples — Based on Leading Forward (Event 2)</div>
+  <div class="use-grid">
+
+    <!-- 1. Dark hero / announcement -->
+    <div class="uc-hero">
+      <div class="uc-hero-eyebrow">Think3D · Leading Forward</div>
+      <div class="uc-hero-headline">Culture by design.<br><em>Not by accident.</em></div>
+      <div class="uc-hero-body">A half-day leadership seminar for the organizational leaders who build the culture their people come home feeling like every day.</div>
+      <div class="uc-hero-cta">Register — Leading Forward</div>
+      <div class="uc-hero-footer">July 31, 2026 · Kansas City, MO · 12:00–4:00 PM</div>
+    </div>
+
+    <!-- 2. Quote card -->
+    <div class="uc-quote">
+      <div class="uc-quote-text">"A bad system will beat a good person every time. Culture is the system — build it on purpose."</div>
+      <div class="uc-quote-rule"></div>
+      <div class="uc-quote-attr">— Think3D</div>
+      <div class="uc-quote-footer">
+        <div class="uc-quote-brand">think3d</div>
+        <div class="uc-quote-hashtags">#Think3D #WorkplaceCulture #LeadingForward</div>
+      </div>
+    </div>
+
+    <!-- 3. Light event card -->
+    <div class="uc-event">
+      <div class="uc-event-top">
+        <div class="uc-event-logo">think3d</div>
+        <div class="uc-event-headline">Leading Forward:<br>A Half-Day<br>Leadership Seminar</div>
+        <div class="uc-event-pills">
+          <span class="pill">Fri · Jul 31, 2026</span>
+          <span class="pill">12:00–4:00 PM</span>
+          <span class="pill blue">Kansas City, MO</span>
+        </div>
+        <div class="uc-event-body">Built for organizational leaders who want to turn managers into exceptional leaders and build a culture that drives retention, engagement, and growth.</div>
+      </div>
+      <div class="uc-event-bar">
+        <div class="uc-event-bar-text">Tech Central · 710 Central St · Kansas City, MO</div>
+        <div class="uc-event-cta">Register Now</div>
+      </div>
+    </div>
+
+    <!-- 4. Insight/thought leadership post -->
+    <div class="uc-insight">
+      <div class="uc-insight-eyebrow">Culture Insight</div>
+      <div class="uc-insight-headline">Satisfied employees create satisfied customers.</div>
+      <div class="uc-insight-quote">"Outstanding company cultures are not built by accident. They stem from ongoing efforts across the organization."</div>
+      <div class="uc-insight-list">
+        <li>Extract — collect essential data about your business and team</li>
+        <li>Engage — tailor strategies and solutions using that data</li>
+        <li>Evaluate — assess progress and gather feedback</li>
+        <li>Evolve — adjust tools, services, and coaching as needs change</li>
+      </div>
+      <div class="uc-insight-close">Is your culture happening to you — or being built by you?</div>
+      <div class="uc-insight-tags">
+        <span class="tag">#WorkplaceCulture</span>
+        <span class="tag">#OrganizationalLeadership</span>
+        <span class="tag">#EmployeeExperience</span>
+        <span class="tag">#Think3D</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ TONE OF VOICE ════════════════════════════ -->
+<div class="tone-section">
+  <div class="section-label">Tone of Voice</div>
+  <div class="tone-grid">
+    <div class="tone-card">
+      <div class="tone-title">Outcome-First</div>
+      <div class="tone-desc">Headlines lead with the business result, not the feeling. Culture is framed as a lever for productivity, retention, and profitability.</div>
+      <div class="tone-example">"Cultivate a strong company culture that boosts productivity, enhances profitability, and drives business success."</div>
+    </div>
+    <div class="tone-card">
+      <div class="tone-title">Systems, Not Accidents</div>
+      <div class="tone-desc">Culture is never framed as something that just happens — it's a system to be designed, assessed, and maintained deliberately.</div>
+      <div class="tone-example">"Outstanding company cultures are not built by accident."</div>
+    </div>
+    <div class="tone-card">
+      <div class="tone-title">Framework-Driven</div>
+      <div class="tone-desc">Every engagement maps to the same four-step process. Gives leadership teams something structured to follow, not just inspiration.</div>
+      <div class="tone-example">Extract → Engage → Evaluate → Evolve.</div>
+    </div>
+    <div class="tone-card">
+      <div class="tone-title">Business Case for People</div>
+      <div class="tone-desc">Ties employee wellbeing directly to business outcomes — talent retention, customer satisfaction, competitive advantage.</div>
+      <div class="tone-example">"Satisfied employees create satisfied customers."</div>
+    </div>
+    <div class="tone-card">
+      <div class="tone-title">Consultative, Not Hype</div>
+      <div class="tone-desc">Direct and measured. Speaks like a strategic partner assessing and advising — not a motivational speaker.</div>
+      <div class="tone-example">"We assess progress and gather feedback to fine-tune our approach."</div>
+    </div>
+    <div class="tone-card">
+      <div class="tone-title">Organization-Facing</div>
+      <div class="tone-desc">Speaks to leadership teams and companies, not individuals. The unit of change is the organization — contrast with Elevate You's individual focus.</div>
+      <div class="tone-example">"Turn managers into exceptional leaders."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ DO / DON'T ═══════════════════════════════ -->
+<div class="rules-section">
+  <div class="section-label">Do / Don't</div>
+  <div class="rules-grid">
+    <div class="rules-card">
+      <div class="rules-title do">Do</div>
+      <ul class="rules-list do">
+        <li>Use Heebo for all headlines and section titles</li>
+        <li>Use Roboto for body copy, Oxygen for nav/labels</li>
+        <li>Use Blue (#2ea3f2) as the primary CTA/accent color</li>
+        <li>Use Navy Deep (#0e2a3d) for dark backgrounds and hero sections</li>
+        <li>Frame every insight as a business outcome (retention, productivity, profit)</li>
+        <li>Map content back to Extract / Engage / Evaluate / Evolve where relevant</li>
+        <li>Speak to organizations and leadership teams, not individuals</li>
+        <li>Keep tone consultative and measured — a strategic partner, not a hype account</li>
+      </ul>
+    </div>
+    <div class="rules-card">
+      <div class="rules-title dont">Don't</div>
+      <ul class="rules-list dont">
+        <li>Use green — that's Elevate You</li>
+        <li>Use DM Serif Display or DM Sans — that's Elevate You / Tamien's personal brand</li>
+        <li>Frame content through individual self-leadership — that's Elevate You</li>
+        <li>Use hustle culture language — no grind, crush it, go hard</li>
+        <li>Post inspiration without tying it back to a business outcome or the framework</li>
+        <li>Confuse Think3D (organizational/B2B) with Elevate You (individual/community)</li>
+        <li>Use gold/amber or Barlow Condensed without confirming with Ruth first — conflicts with the live site (see note above)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-left">letsthink3d.com · Fonts: Heebo, Roboto, Oxygen (Google Fonts) · Sourced 2026-07-02</div>
+  <div class="footer-brand">Prepared by <span>StreamLab</span></div>
+</footer>
+
+</body>
+</html>
