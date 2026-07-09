@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pilot Automation Guide — Elevate You (Corrected)</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --text-primary: #1d1d1f;
+    --text-secondary: #6e6e73;
+    --text-tertiary: #86868b;
+    --accent: #0066cc;
+    --accent-light: #e8f0fb;
+    --green: #1a8a4a;
+    --green-light: #e6f5ed;
+    --amber: #a8590a;
+    --amber-light: #fbf0e1;
+    --border: #d2d2d7;
+    --border-light: #e8e8ed;
+    --bg: #ffffff;
+    --bg-secondary: #f5f5f7;
+    --bg-tertiary: #fbfbfd;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,0.07), 0 1px 4px rgba(0,0,0,0.04);
+    --shadow-lg: 0 12px 40px rgba(0,0,0,0.09), 0 2px 8px rgba(0,0,0,0.04);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --radius-xs: 6px;
+  }
+
+  html { -webkit-font-smoothing: antialiased; scroll-behavior: smooth; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border-light);
+    padding: 48px 40px 36px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .header-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+  }
+  .pill-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+  .pill.amber { background: var(--amber-light); color: var(--amber); }
+  .pill.amber .pill-dot { background: var(--amber); }
+  .header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .header-sub {
+    font-size: 17px;
+    color: var(--text-secondary);
+    font-weight: 400;
+    max-width: 600px;
+    line-height: 1.5;
+  }
+  .header-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-light);
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .meta-item strong { color: var(--text-secondary); font-weight: 500; }
+
+  /* ── NAV TABS ── */
+  .nav-outer {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--border-light);
+  }
+  .nav-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    gap: 0;
+  }
+  .nav-tab {
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    white-space: nowrap;
+    user-select: none;
+  }
+  .nav-tab:hover { color: var(--text-primary); }
+  .nav-tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ── CONTENT ── */
+  .content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* ── SECTION LABELS ── */
+  .section-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+  .section-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 28px;
+    max-width: 620px;
+    line-height: 1.6;
+  }
+  .divider {
+    height: 1px;
+    background: var(--border-light);
+    margin: 44px 0;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+  }
+  .card-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  /* ── STEP FLOW ── */
+  .step-list { display: flex; flex-direction: column; gap: 0; }
+  .step-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .step-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .step-num {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 700;
+    flex-shrink: 0;
+  }
+  .step-num.blue { background: var(--accent); color: #fff; }
+  .step-num.green { background: var(--green); color: #fff; }
+  .step-num.amber { background: var(--amber); color: #fff; }
+  .step-line-v {
+    width: 1px;
+    flex: 1;
+    min-height: 28px;
+    background: var(--border-light);
+    margin: 6px 0;
+  }
+  .step-body {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    flex: 1;
+    margin-bottom: 16px;
+  }
+  .step-body.warn {
+    background: var(--amber-light);
+    border-color: rgba(168,89,10,0.25);
+  }
+  .step-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .step-badge.blue { background: var(--accent-light); color: var(--accent); }
+  .step-badge.green { background: var(--green-light); color: var(--green); }
+  .step-badge.amber { background: #fff; color: var(--amber); border: 1px solid rgba(168,89,10,0.35); }
+  .step-body h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    letter-spacing: -0.1px;
+  }
+  .step-body p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
+  .step-body code {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 12px;
+    font-family: 'SF Mono', 'Menlo', monospace;
+    color: var(--accent);
+  }
+  .step-body ol.compact, .step-body ul.compact {
+    margin: 8px 0 0 18px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+  }
+
+  /* ── WF CHAIN ── */
+  .wf-chain-wrap {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-bottom: 32px;
+  }
+  .wf-chain-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 16px;
+  }
+  .wf-chain {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+  .wf-node {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    min-width: 140px;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+  }
+  .wf-node.flagged { border-color: rgba(168,89,10,0.4); }
+  .wf-node-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .wf-node-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 3px;
+  }
+  .wf-node-when {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    line-height: 1.4;
+  }
+  .wf-node-flag {
+    margin-top: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--amber);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .wf-connector {
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+    flex-shrink: 0;
+  }
+  .wf-connector-line {
+    width: 24px;
+    height: 1px;
+    background: var(--border);
+  }
+  .wf-connector-arrow {
+    width: 0; height: 0;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 6px solid var(--border);
+  }
+
+  /* ── COHORT ID BLOCK ── */
+  .cohort-id-wrap {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .cohort-id-wrap h4 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .cohort-id-wrap p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+  }
+  .cohort-examples {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .cohort-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .cohort-tag {
+    font-family: 'SF Mono', 'Menlo', monospace;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xs);
+    padding: 5px 12px;
+    min-width: 130px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+  .cohort-label { font-size: 13px; color: var(--text-secondary); }
+
+  /* ── PROTECTION LAYERS ── */
+  .protection-list { display: flex; flex-direction: column; gap: 12px; }
+  .protection-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+  }
+  .protection-item.warn { background: var(--amber-light); }
+  .wf-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    padding: 4px 10px;
+    border-radius: var(--radius-xs);
+    background: var(--accent-light);
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+    white-space: nowrap;
+  }
+  .wf-badge.amber { background: #fff; color: var(--amber); border: 1px solid rgba(168,89,10,0.35); }
+  .protection-text { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+  .protection-text strong { color: var(--text-primary); font-weight: 600; }
+
+  /* ── FILTER CARDS ── */
+  .filter-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 12px;
+  }
+  .filter-card-header {
+    padding: 16px 20px 14px;
+    border-bottom: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .filter-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 3px;
+  }
+  .filter-id {
+    font-size: 11px;
+    color: var(--text-tertiary);
+    font-weight: 500;
+  }
+  .filter-logic {
+    font-size: 12px;
+    color: var(--text-tertiary);
+    font-family: 'SF Mono', 'Menlo', monospace;
+  }
+  .filter-use {
+    font-size: 12px;
+    color: var(--text-secondary);
+    text-align: right;
+    max-width: 280px;
+    line-height: 1.5;
+    flex-shrink: 0;
+  }
+  .filter-tip {
+    padding: 10px 20px;
+    background: var(--bg-secondary);
+    font-size: 12px;
+    color: var(--text-tertiary);
+  }
+  .filter-tip strong { color: var(--text-secondary); }
+  .filter-tip.warn { background: var(--amber-light); color: var(--amber); }
+  .filter-tip.warn strong { color: var(--amber); }
+
+  /* ── HOW TO READ ── */
+  .how-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+  .how-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .how-card-icon {
+    font-size: 22px;
+    margin-bottom: 10px;
+  }
+  .how-card h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+  }
+  .how-card ol {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    counter-reset: step;
+  }
+  .how-card li {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    counter-increment: step;
+    line-height: 1.5;
+  }
+  .how-card li::before {
+    content: counter(step);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent);
+    background: var(--accent-light);
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── FIELDS TABLE ── */
+  .fields-wrap {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 28px;
+  }
+  .fields-table { width: 100%; border-collapse: collapse; }
+  .fields-table thead th {
+    background: var(--bg-secondary);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    padding: 10px 20px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .fields-table tbody tr { border-bottom: 1px solid var(--border-light); }
+  .fields-table tbody tr:last-child { border-bottom: none; }
+  .fields-table tbody tr:hover td { background: var(--bg-tertiary); }
+  .fields-table tbody tr.flagged td { background: var(--amber-light); }
+  .fields-table td { padding: 14px 20px; vertical-align: top; }
+  .field-name { font-size: 14px; font-weight: 600; color: var(--text-primary); margin-bottom: 2px; }
+  .field-type { font-size: 11px; color: var(--text-tertiary); font-style: italic; }
+  .field-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+  .field-warn {
+    margin-top: 8px;
+    font-size: 12px;
+    color: var(--amber);
+    font-weight: 600;
+    display: flex;
+    gap: 6px;
+    align-items: flex-start;
+  }
+  .status-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    margin: 2px 2px 2px 0;
+  }
+  .chip-dot { width: 5px; height: 5px; border-radius: 50%; }
+  .status-chip.gray { background: #f0f0f2; color: #6e6e73; }
+  .status-chip.gray .chip-dot { background: #6e6e73; }
+  .status-chip.blue { background: var(--accent-light); color: var(--accent); }
+  .status-chip.blue .chip-dot { background: var(--accent); }
+  .status-chip.green { background: var(--green-light); color: var(--green); }
+  .status-chip.green .chip-dot { background: var(--green); }
+  .status-chip.amber { background: var(--amber-light); color: var(--amber); }
+  .status-chip.amber .chip-dot { background: var(--amber); }
+
+  /* ── COLUMNS CALLOUT ── */
+  .columns-wrap {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+  }
+  .columns-wrap h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+  .columns-wrap p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 14px;
+  }
+  .col-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .col-tag {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xs);
+    padding: 5px 12px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+  }
+  .col-tag.num {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .col-tag .num-badge {
+    background: var(--accent);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .sort-tip {
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-light);
+  }
+  .sort-tip strong { color: var(--text-primary); }
+
+  /* ── CALLOUT (generic warning box) ── */
+  .callout {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    background: var(--amber-light);
+    border: 1px solid rgba(168,89,10,0.3);
+    border-radius: var(--radius);
+    padding: 18px 22px;
+    margin-bottom: 28px;
+  }
+  .callout-icon { font-size: 18px; flex-shrink: 0; }
+  .callout h4 { font-size: 14px; font-weight: 700; color: var(--amber); margin-bottom: 4px; }
+  .callout p { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+  .callout p strong { color: var(--text-primary); }
+
+  /* ── QUICK REFERENCE ── */
+  .qref-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; }
+  .qref-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.15s;
+  }
+  .qref-item:hover { box-shadow: var(--shadow-md); }
+  .qref-item.warn { border-color: rgba(168,89,10,0.35); background: var(--amber-light); }
+  .qref-q {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    flex: 1;
+  }
+  .qref-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--border-light);
+    flex-shrink: 0;
+  }
+  .qref-a {
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 500;
+    text-align: right;
+    flex-shrink: 0;
+    max-width: 260px;
+  }
+  .qref-item.warn .qref-a { color: var(--amber); }
+
+  /* ── SHAREPOINT LINKS ── */
+  .links-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 24px;
+  }
+  .links-card-header {
+    padding: 14px 20px;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-light);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+  }
+  .link-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 20px;
+    border-bottom: 1px solid var(--border-light);
+    text-decoration: none;
+    transition: background 0.1s;
+  }
+  .link-row:last-child { border-bottom: none; }
+  .link-row:hover { background: var(--bg-secondary); }
+  .link-icon {
+    width: 28px; height: 28px;
+    background: var(--accent-light);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .link-label {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: var(--text-primary);
+    flex: 1;
+  }
+  .link-arrow {
+    font-size: 14px;
+    color: var(--text-tertiary);
+  }
+
+  /* ── NOTION BADGE STRIP ── */
+  .badge-strip {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .notion-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 8px 14px;
+    font-size: 12.5px;
+    color: var(--text-secondary);
+    box-shadow: var(--shadow-sm);
+  }
+  .notion-badge strong { color: var(--text-primary); font-weight: 600; }
+
+  /* ── FOOTER ── */
+  .footer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 24px 40px 40px;
+    border-top: 1px solid var(--border-light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .footer-left { font-size: 12px; color: var(--text-tertiary); }
+  .footer-right { font-size: 12px; color: var(--text-tertiary); }
+
+  /* ── INLINE LINKS ── */
+  a.inline-link {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(0,102,204,0.25);
+    transition: border-color 0.15s;
+  }
+  a.inline-link:hover { border-bottom-color: var(--accent); }
+
+  @media (max-width: 640px) {
+    .header, .content, .footer { padding-left: 20px; padding-right: 20px; }
+    .nav-inner { padding: 0 20px; overflow-x: auto; }
+    .header h1 { font-size: 26px; }
+    .card-grid-2, .how-grid, .tracking-grid { grid-template-columns: 1fr; }
+    .filter-card-header { flex-direction: column; }
+    .filter-use { text-align: left; max-width: 100%; }
+    .qref-item { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .qref-a { text-align: left; max-width: 100%; }
+    .qref-divider { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-eyebrow">
+    <div class="pill"><div class="pill-dot"></div>Pilot Automation System</div>
+    <div class="pill amber"><div class="pill-dot"></div>Rev. 2 — verified against live build</div>
+  </div>
+  <h1>How the System Works</h1>
+  <p class="header-sub">A reference guide for launching pilot cohorts, reading diagnostic data, and managing participants in Pipedrive. This revision was checked line-by-line against the live WF1–WF5 n8n workflows.</p>
+  <div class="header-meta">
+    <div class="meta-item">Client <strong>Elevate You</strong></div>
+    <div class="meta-item">·</div>
+    <div class="meta-item">Prepared by <strong>StreamLab AI</strong></div>
+    <div class="meta-item">·</div>
+    <div class="meta-item">July 2026</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav-outer">
+  <div class="nav-inner">
+    <div class="nav-tab active" onclick="switchTab('launch')">Launch a Cohort</div>
+    <div class="nav-tab" onclick="switchTab('track')">Track Responses</div>
+    <div class="nav-tab" onclick="switchTab('fields')">Pipedrive Fields</div>
+    <div class="nav-tab" onclick="switchTab('quickref')">Quick Reference</div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- ── TAB 1: LAUNCH ── -->
+  <div class="panel active" id="tab-launch">
+
+    <div class="section-eyebrow">Getting started</div>
+    <div class="section-title">Two steps to launch, one manual step mid-pilot</div>
+    <p class="section-desc">Every new pilot cohort starts with the same two actions from Matt. WF1 through WF3 then run automatically. Before WF4's weekly heat map can send, one Pipedrive field has to be updated by hand per participant — see step 3 below.</p>
+
+    <div class="step-list">
+      <div class="step-item">
+        <div class="step-left">
+          <div class="step-num blue">1</div>
+          <div class="step-line-v"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-badge blue">Matt's Action</div>
+          <h4>Upload the Cohort Roster to SharePoint</h4>
+          <p>Open the <a href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQATa5Qq47j7T5acJepWobg6Af0EO_9RUP98TvE9k0fDbLs?e=fVGMEi" target="_blank" class="inline-link">Pilot Roster Template ↗</a> in SharePoint and add each participant to the <strong>PilotRoster</strong> table.</p>
+          <p style="margin-top:10px"><strong>Columns must be entered in this exact order</strong> — WF1 reads each row by column position, not by header name, so a column out of place will corrupt every row behind it:</p>
+          <ol class="compact">
+            <li><code>PilotName</code></li>
+            <li><code>CohortID</code></li>
+            <li><code>FirstName</code></li>
+            <li><code>LastName</code></li>
+            <li><code>Email</code> — required, must contain @</li>
+            <li><code>Role / Title</code></li>
+            <li><code>Company</code></li>
+            <li><code>ChampionName</code> — the leader who receives Monday reports</li>
+            <li><code>ChampionEmail</code></li>
+            <li><code>PilotStartDate</code> — format YYYY-MM-DD</li>
+            <li><code>Notes</code> — optional</li>
+          </ol>
+          <p style="margin-top:10px">Assign a unique Cohort ID that will identify this group across all data — for example, <code>SF-2026-07</code> for Sioux Falls July 2026. Never reuse an ID.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-left">
+          <div class="step-num blue">2</div>
+          <div class="step-line-v"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-badge blue">Matt's Action</div>
+          <h4>Set the Trigger in Pipedrive</h4>
+          <p>Open the client's Deal in Pipedrive. Set <strong>Stage → Pilot Active</strong> and flip <strong>Confirm Pilot Cohort → Yes</strong>. WF1 fires the moment both conditions are true on the same deal update.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-left">
+          <div class="step-num green">✓</div>
+          <div class="step-line-v"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-badge green">Automation Active</div>
+          <h4>WF1 → WF2 → WF3 run automatically from here</h4>
+          <p>WF1 imports the roster and creates Pipedrive records. WF2 sends the pre-filled diagnostic link every weekday at 8AM Central to anyone marked Not Sent. WF3 runs every Friday at 10AM Central — it matches completed responses back to Pipedrive and sends a reminder to anyone still unresponded 3+ days after their initial send.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-left">
+          <div class="step-num amber">!</div>
+          <div class="step-line-v"></div>
+        </div>
+        <div class="step-body warn">
+          <div class="step-badge amber">Matt's Action — Required</div>
+          <h4>Manually advance participants to "Practice" phase</h4>
+          <p>Nothing in WF1–WF3 ever changes a participant's <strong>Current Phase</strong> field — it's set once at import (<code>Diagnostic</code>) and stays there. WF4's Friday heat map send only pulls people where <strong>Current Phase = Practice</strong>, so once the diagnostic period ends, Matt needs to open each participant's Person record in Pipedrive and set Current Phase to <strong>Practice</strong> himself. Nobody is included in the heat map until this is done.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-left">
+          <div class="step-num green">✓</div>
+        </div>
+        <div class="step-body">
+          <div class="step-badge green">Automation Active</div>
+          <h4>WF4 and WF5 take it from there</h4>
+          <p>WF4 sends the weekly leader heat map every Friday at 8AM Central and delivers the Monday leader report at 8AM Central. WF5 checks every Monday at 10AM Central for cohorts with both pre- and post-diagnostic data ready, then assembles the Executive Brief data package and notifies Matt/Tamien.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-eyebrow">System overview</div>
+    <div class="section-title">The five-workflow engine</div>
+    <p class="section-desc">Each workflow has one job. Cadences below are pulled directly from each workflow's live schedule trigger, not from the original design plan.</p>
+
+    <div class="wf-chain-wrap">
+      <div class="wf-chain-label">Automated sequence — fires in order</div>
+      <div class="wf-chain">
+        <div class="wf-node">
+          <div class="wf-node-label">WF1</div>
+          <div class="wf-node-name">Roster Import</div>
+          <div class="wf-node-when">Fires immediately on trigger</div>
+        </div>
+        <div class="wf-connector"><div class="wf-connector-line"></div><div class="wf-connector-arrow"></div></div>
+        <div class="wf-node">
+          <div class="wf-node-label">WF2</div>
+          <div class="wf-node-name">Diagnostic Send</div>
+          <div class="wf-node-when">Weekdays, 8AM Central</div>
+        </div>
+        <div class="wf-connector"><div class="wf-connector-line"></div><div class="wf-connector-arrow"></div></div>
+        <div class="wf-node">
+          <div class="wf-node-label">WF3</div>
+          <div class="wf-node-name">Response Tracking</div>
+          <div class="wf-node-when">Fridays, 10AM Central — tracks + 3-day reminder</div>
+        </div>
+        <div class="wf-connector"><div class="wf-connector-line"></div><div class="wf-connector-arrow"></div></div>
+        <div class="wf-node flagged">
+          <div class="wf-node-label">WF4</div>
+          <div class="wf-node-name">Weekly Heat Map</div>
+          <div class="wf-node-when">Friday 8AM send · Monday 8AM report</div>
+          <div class="wf-node-flag">⚠ needs manual Current Phase update</div>
+        </div>
+        <div class="wf-connector"><div class="wf-connector-line"></div><div class="wf-connector-arrow"></div></div>
+        <div class="wf-node">
+          <div class="wf-node-label">WF5</div>
+          <div class="wf-node-name">Executive Brief</div>
+          <div class="wf-node-when">Mondays, 10AM Central — checks pre+post data ready</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-eyebrow">Cohort ID convention</div>
+    <div class="section-title">The naming rule that keeps everything organized</div>
+    <p class="section-desc">The Cohort ID is embedded in every form URL sent to participants. It's the primary key that flows through Pipedrive, SharePoint, and all five workflows. Use a consistent format so data stays clean across multiple cohorts.</p>
+
+    <div class="cohort-id-wrap">
+      <h4>Format — [City or Company]-[YYYY]-[MM]</h4>
+      <p>One ID per cohort. Assign it when you build the roster. Never reuse an ID.</p>
+      <div class="cohort-examples">
+        <div class="cohort-row"><div class="cohort-tag">SF-2026-07</div><div class="cohort-label">Sioux Falls event cohort, July 2026</div></div>
+        <div class="cohort-row"><div class="cohort-tag">KC-2026-07</div><div class="cohort-label">Kansas City event cohort, July 2026</div></div>
+        <div class="cohort-row"><div class="cohort-tag">ACME-2026-08</div><div class="cohort-label">ACME Corp pilot, August 2026</div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── TAB 2: TRACK RESPONSES ── -->
+  <div class="panel" id="tab-track">
+
+    <div class="section-eyebrow">Monitoring</div>
+    <div class="section-title">See who's responded and who hasn't</div>
+    <p class="section-desc">The system tracks every participant's status in real time. These are the four Pipedrive filters the workflows themselves rely on — the same ones give Matt an immediate view of where each cohort stands.</p>
+
+    <div class="filter-card">
+      <div class="filter-card-header">
+        <div>
+          <div class="filter-name">Pre-Diagnostic Not Sent <span class="filter-id">Filter 171</span></div>
+          <div class="filter-logic">Contact Type = Pilot Respondent · Pre-Diagnostic Status = Not Sent</div>
+        </div>
+        <div class="filter-use">The queue WF2 sends against each weekday morning. If someone stays stuck here, WF2 hasn't reached them yet.</div>
+      </div>
+      <div class="filter-tip"><strong>Use this to:</strong> confirm new imports are in the send queue.</div>
+    </div>
+
+    <div class="filter-card">
+      <div class="filter-card-header">
+        <div>
+          <div class="filter-name">Pre-Diagnostic Sent — No Completion <span class="filter-id">Filter 172</span></div>
+          <div class="filter-logic">Contact Type = Pilot Respondent · Pre-Diagnostic Status = Sent</div>
+        </div>
+        <div class="filter-use">Everyone who received the link but hasn't submitted. This is also the pool WF3 pulls reminder candidates from every Friday.</div>
+      </div>
+      <div class="filter-tip"><strong>Use this to:</strong> identify who needs a manual nudge, and confirm WF3's reminders are firing on schedule.</div>
+    </div>
+
+    <div class="filter-card">
+      <div class="filter-card-header">
+        <div>
+          <div class="filter-name">Practice Phase Active <span class="filter-id">Filter 173</span></div>
+          <div class="filter-logic">Current Phase = Practice</div>
+        </div>
+        <div class="filter-use">WF4 pulls this exact filter every Friday to build the heat map send list.</div>
+      </div>
+      <div class="filter-tip warn"><strong>Important:</strong> this filter is empty until Matt manually sets Current Phase = Practice on each participant. See the Launch tab, step 3.</div>
+    </div>
+
+    <div class="filter-card">
+      <div class="filter-card-header">
+        <div>
+          <div class="filter-name">Post-Diagnostic Sent <span class="filter-id">Filter 174</span></div>
+          <div class="filter-logic">Post-Diagnostic Status = Sent</div>
+        </div>
+        <div class="filter-use">Used by WF5 to confirm a cohort's post-diagnostic has gone out before it starts checking for completed pre+post data pairs.</div>
+      </div>
+      <div class="filter-tip"><strong>Use this to:</strong> check whether the post-diagnostic round has been sent for a given cohort.</div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-eyebrow">Reading the data</div>
+    <div class="section-title">Where to find responses and counts</div>
+    <p class="section-desc">Pipedrive shows individual status. SharePoint Excel files hold the actual response data and per-cohort counts.</p>
+
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-card-icon">📊</div>
+        <h4>Reading diagnostic responses</h4>
+        <ol>
+          <li><a href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQDwYhBu5WvwTrYFNXvLS-lgAca8L3STyOzJL5EeRp7lHVA?e=wdZjD3" target="_blank" class="inline-link">Open Ripple Diagnostic Responses ↗</a></li>
+          <li>Filter the <strong>Cohort ID</strong> column to your cohort</li>
+          <li>Filter the <strong>Phase</strong> column — Pre or Post</li>
+          <li>Copy/paste into AI tool or export to CSV</li>
+        </ol>
+      </div>
+      <div class="how-card">
+        <div class="how-card-icon">🔢</div>
+        <h4>Getting a per-cohort count</h4>
+        <ol>
+          <li><a href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQATa5Qq47j7T5acJepWobg6Af0EO_9RUP98TvE9k0fDbLs?e=fVGMEi" target="_blank" class="inline-link">Open Pilot Roster Template ↗</a> — use the Send Log tab</li>
+          <li>Filter by the <strong>Cohort ID</strong> column</li>
+          <li>Row count = total participants in that cohort</li>
+          <li>Note: Pipedrive does not display group totals</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-eyebrow">Data integrity</div>
+    <div class="section-title">Why cohorts never get mixed up</div>
+    <p class="section-desc">Three layers of protection ensure that a participant who appears in two separate cohorts generates two independent, correctly labeled records — never a merge conflict.</p>
+
+    <div class="protection-list">
+      <div class="protection-item">
+        <div class="wf-badge">WF1</div>
+        <div class="protection-text"><strong>Cohort ID baked in at import.</strong> Every participant gets their Cohort ID the moment their roster row is processed — written to their Pipedrive Person record immediately.</div>
+      </div>
+      <div class="protection-item">
+        <div class="wf-badge">WF2</div>
+        <div class="protection-text"><strong>Prefilled URL per person.</strong> WF2 generates a unique form URL for each participant with their Email and Cohort ID embedded as hidden fields. They never type it — it arrives pre-populated.</div>
+      </div>
+      <div class="protection-item">
+        <div class="wf-badge">WF3</div>
+        <div class="protection-text"><strong>Email + Cohort ID matching key.</strong> WF3 uses both fields together — not email alone — to match submissions back to Pipedrive records. One person in two cohorts gets two correctly labeled entries.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── TAB 3: PIPEDRIVE FIELDS ── -->
+  <div class="panel" id="tab-fields">
+
+    <div class="section-eyebrow">Pipedrive custom fields</div>
+    <div class="section-title">What gets tracked on every participant</div>
+    <p class="section-desc">These custom Person fields are set automatically by the workflows, with one exception noted below. Matt can view and filter on any of them directly in Pipedrive's People list view.</p>
+
+    <div class="fields-wrap">
+      <table class="fields-table">
+        <thead>
+          <tr>
+            <th style="width:38%">Field</th>
+            <th>Values &amp; Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="field-name">Contact Type</div><div class="field-type">Single option</div></td>
+            <td><div class="field-desc">Pilot Respondent · Sales Contact<br>Set to <em>Pilot Respondent</em> for every participant added via WF1.</div></td>
+          </tr>
+          <tr>
+            <td><div class="field-name">Cohort ID</div><div class="field-type">Text</div></td>
+            <td><div class="field-desc">The unique identifier for this cohort (e.g. <code style="font-size:12px;font-family:monospace;color:var(--accent)">SF-2026-07</code>). Set at WF1 import. Used as the matching key in every downstream workflow.</div></td>
+          </tr>
+          <tr>
+            <td><div class="field-name">Associated Pilot</div><div class="field-type">Text</div></td>
+            <td><div class="field-desc">Name of the pilot program this participant belongs to.</div></td>
+          </tr>
+          <tr>
+            <td><div class="field-name">Pre-Diagnostic Status</div><div class="field-type">Single option</div></td>
+            <td>
+              <div class="field-desc" style="margin-bottom:8px">Updated automatically as WF2 and WF3 run. There is no separate "reminder sent" field — a reminder simply moves this status to <em>Reminder Sent</em>.</div>
+              <span class="status-chip gray"><span class="chip-dot"></span>Not Sent</span>
+              <span class="status-chip blue"><span class="chip-dot"></span>Sent</span>
+              <span class="status-chip amber"><span class="chip-dot"></span>Reminder Sent</span>
+              <span class="status-chip green"><span class="chip-dot"></span>Completed</span>
+              <span class="status-chip gray"><span class="chip-dot"></span>Needs Review</span>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="field-name">Post-Diagnostic Status</div><div class="field-type">Single option</div></td>
+            <td>
+              <div class="field-desc" style="margin-bottom:8px">Mirrors Pre-Diagnostic Status for the post-practice round. Checked by WF5 (via Filter 174) before assembling the Executive Brief.</div>
+              <span class="status-chip gray"><span class="chip-dot"></span>Not Sent</span>
+              <span class="status-chip blue"><span class="chip-dot"></span>Sent</span>
+              <span class="status-chip amber"><span class="chip-dot"></span>Reminder Sent</span>
+              <span class="status-chip green"><span class="chip-dot"></span>Completed</span>
+              <span class="status-chip gray"><span class="chip-dot"></span>Needs Review</span>
+            </td>
+          </tr>
+          <tr>
+            <td><div class="field-name">Pre-Diagnostic Sent At</div><div class="field-type">Date</div></td>
+            <td><div class="field-desc">Timestamp written automatically when WF2 sends the prefilled form URL. There is no corresponding "completed at" timestamp — completion is tracked only by the status value above.</div></td>
+          </tr>
+          <tr class="flagged">
+            <td><div class="field-name">Current Phase</div><div class="field-type">Single option</div></td>
+            <td>
+              <div class="field-desc" style="margin-bottom:8px">Diagnostic (set automatically by WF1 at import) · Practice · Proof · Complete</div>
+              <span class="status-chip blue"><span class="chip-dot"></span>Diagnostic</span>
+              <span class="status-chip amber"><span class="chip-dot"></span>Practice</span>
+              <span class="status-chip gray"><span class="chip-dot"></span>Proof</span>
+              <span class="status-chip green"><span class="chip-dot"></span>Complete</span>
+              <div class="field-warn">⚠ Does not advance automatically. Matt must change this to Practice by hand — WF4 will not include a participant in the Friday heat map until this is set.</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout">
+      <div class="callout-icon">⚠</div>
+      <div>
+        <h4>Known limitation — Current Phase</h4>
+        <p>WF1 sets <strong>Current Phase</strong> to <em>Diagnostic</em> when a participant is created and nothing after that ever updates it. WF4's participant list is built entirely from Pipedrive Filter 173 (<code>Current Phase = Practice</code>), so heat maps silently send to nobody until Matt updates each participant's record. This is the one point in the pipeline that isn't yet hands-off.</p>
+      </div>
+    </div>
+
+    <div class="columns-wrap">
+      <h4>Recommended column setup for People list view</h4>
+      <p>Add these columns to your Pipedrive People view. They give you a full picture of every participant's status at a glance, including the Current Phase column you'll need to update by hand.</p>
+      <div class="col-tags">
+        <div class="col-tag">Cohort ID</div>
+        <div class="col-tag">Pre-Diagnostic Status</div>
+        <div class="col-tag">Pre-Diagnostic Sent At</div>
+        <div class="col-tag">Post-Diagnostic Status</div>
+        <div class="col-tag">Current Phase</div>
+        <div class="col-tag">Associated Pilot</div>
+      </div>
+      <div class="sort-tip">
+        <strong>Sorting tip:</strong> Click the <strong>Cohort ID</strong> column header to cluster all participants in the same cohort together. Then shift-click <strong>Pre-Diagnostic Status</strong> to add a secondary sort — non-responders appear at the top within each cohort group. Sort by <strong>Current Phase</strong> to quickly spot who's still sitting in Diagnostic and needs to be advanced to Practice.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── TAB 4: QUICK REFERENCE ── -->
+  <div class="panel" id="tab-quickref">
+
+    <div class="section-eyebrow">At a glance</div>
+    <div class="section-title">Common questions and where to find the answer</div>
+    <p class="section-desc">A practical lookup table for the most frequent data questions Matt will have during a pilot run.</p>
+
+    <div class="qref-list">
+      <div class="qref-item">
+        <div class="qref-q">Who hasn't submitted their diagnostic?</div>
+        <div class="qref-divider"></div>
+        <div class="qref-a">Pipedrive → "Pre-Diagnostic Sent — No Completion" (Filter 172)</div>
+      </div>
+      <div class="qref-item">
+        <div class="qref-q">How many people are in a specific cohort?</div>
+        <div class="qref-divider"></div>
+        <div class="qref-a"><a href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQATa5Qq47j7T5acJepWobg6Af0EO_9RUP98TvE9k0fDbLs?e=fVGMEi" target="_blank" class="inline-link">Pilot Roster / Send Log ↗</a> → filter by Cohort ID</div>
+      </div>
+      <div class="qref-item">
+        <div class="qref-q">View all submissions for one cohort</div>
+        <div class="qref-divider"></div>
+        <div class="qref-a"><a href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQDwYhBu5WvwTrYFNXvLS-lgAca8L3STyOzJL5EeRp7lHVA?e=wdZjD3" target="_blank" class="inline-link">Ripple Diagnostic Responses ↗</a> → filter Cohort ID</div>
+      </div>
+      <div class="qref-item">
+        <div class="qref-q">Compare Pre vs Post diagnostic responses</div>
+        <div class="qref-divider"></div>
+        <div class="qref-a"><a href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQDwYhBu5WvwTrYFNXvLS-lgAca8L3STyOzJL5EeRp7lHVA?e=wdZjD3" target="_blank" class="inline-link">Same Excel ↗</a> → filter Phase — Pre or Post</div>
+      </div>
+      <div class="qref-item warn">
+        <div class="qref-q">Why isn't someone getting the Friday heat map?</div>
+        <div class="qref-divider"></div>
+        <div class="qref-a">Check their <strong>Current Phase</strong> field — must be manually set to Practice</div>
+      </div>
+      <div class="qref-item">
+        <div class="qref-q">View this week's team heat map data</div>
+        <div class="qref-divider"></div>
+        <div class="qref-a"><a href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQCIlhrqM5ZKTJqeavPCzXD8ATATZfQWEig_-CYQglYsXg0?e=rIA4cF" target="_blank" class="inline-link">Weekly Heat Map Responses ↗</a></div>
+      </div>
+      <div class="qref-item">
+        <div class="qref-q">Launch a new pilot cohort</div>
+        <div class="qref-divider"></div>
+        <div class="qref-a"><a href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQATa5Qq47j7T5acJepWobg6Af0EO_9RUP98TvE9k0fDbLs?e=fVGMEi" target="_blank" class="inline-link">Upload Roster ↗</a> (11 columns, exact order) → Pipedrive: Pilot Active + Confirm Yes</div>
+      </div>
+      <div class="qref-item">
+        <div class="qref-q">View the Executive Brief data package</div>
+        <div class="qref-divider"></div>
+        <div class="qref-a"><a href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQCOoVtcHc-lQZqN3CnXixqxAWaalIQmb29KydmXJeuSncI?e=qASZnt" target="_blank" class="inline-link">Executive Brief Data Excel ↗</a></div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-eyebrow">SharePoint data files</div>
+    <div class="section-title">Direct links to your data</div>
+    <p class="section-desc">All response data lives in SharePoint. These are the files you'll use most frequently.</p>
+
+    <div class="links-card">
+      <div class="links-card-header">SharePoint — Elevate You</div>
+      <a class="link-row" href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQDwYhBu5WvwTrYFNXvLS-lgAca8L3STyOzJL5EeRp7lHVA?e=wdZjD3" target="_blank">
+        <div class="link-icon">📋</div>
+        <div class="link-label">Ripple Diagnostic Responses — all cohorts, all submissions</div>
+        <div class="link-arrow">↗</div>
+      </a>
+      <a class="link-row" href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQCIlhrqM5ZKTJqeavPCzXD8ATATZfQWEig_-CYQglYsXg0?e=rIA4cF" target="_blank">
+        <div class="link-icon">🗂</div>
+        <div class="link-label">Weekly Leader Heat Map Responses</div>
+        <div class="link-arrow">↗</div>
+      </a>
+      <a class="link-row" href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQATa5Qq47j7T5acJepWobg6Af0EO_9RUP98TvE9k0fDbLs?e=fVGMEi" target="_blank">
+        <div class="link-icon">📁</div>
+        <div class="link-label">Pilot Roster Template — upload new cohorts here</div>
+        <div class="link-arrow">↗</div>
+      </a>
+    </div>
+
+    <div class="badge-strip">
+      <a href="https://app.notion.com/p/3916a6183ac981619f7fe6a5b28e2a8a" target="_blank" class="notion-badge" style="text-decoration:none"><strong>Notion Manual</strong> Matt's Guide — Pilot Automation ↗</a>
+      <a href="https://app.notion.com/p/32e6a6183ac981d58cabec8592c0d0b0" target="_blank" class="notion-badge" style="text-decoration:none"><strong>Workspace</strong> Elevate You × StreamLab AI ↗</a>
+      <a href="https://app.notion.com/p/37c6a6183ac981ed9d4be6fafcbc7a4b" target="_blank" class="notion-badge" style="text-decoration:none"><strong>Event Hub</strong> Tamien Event Promotion Hub ↗</a>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">Elevate You × StreamLab AI &nbsp;·&nbsp; Pilot Automation System &nbsp;·&nbsp; Confidential</div>
+  <div class="footer-right">Revised July 2026 &nbsp;·&nbsp; verified against live n8n build &nbsp;·&nbsp; streamlabai.com</div>
+</div>
+
+<script>
+function switchTab(name) {
+  const ids = ['launch','track','fields','quickref'];
+  document.querySelectorAll('.nav-tab').forEach((t, i) => {
+    t.classList.toggle('active', ids[i] === name);
+  });
+  document.querySelectorAll('.panel').forEach(p => {
+    p.classList.toggle('active', p.id === 'tab-' + name);
+  });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
