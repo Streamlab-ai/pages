@@ -811,10 +811,10 @@
 <div class="header">
   <div class="header-eyebrow">
     <div class="pill"><div class="pill-dot"></div>Pilot Automation System</div>
-    <div class="pill amber"><div class="pill-dot"></div>Rev. 2 — verified against live build</div>
+    <div class="pill amber"><div class="pill-dot"></div>Rev. 3 — verified against live build</div>
   </div>
   <h1>How the System Works</h1>
-  <p class="header-sub">A reference guide for launching pilot cohorts, reading diagnostic data, and managing participants in Pipedrive.</p>
+  <p class="header-sub">A reference guide for launching pilot cohorts, reading diagnostic data, and managing participants in Pipedrive. This revision was checked line-by-line against the live WF1–WF5 n8n workflows.</p>
   <div class="header-meta">
     <div class="meta-item">Client <strong>Elevate You</strong></div>
     <div class="meta-item">·</div>
@@ -841,8 +841,8 @@
   <div class="panel active" id="tab-launch">
 
     <div class="section-eyebrow">Getting started</div>
-    <div class="section-title">Two steps to launch, one manual step mid-pilot</div>
-    <p class="section-desc">Every new pilot cohort starts with the same two actions from Matt. WF1 through WF3 then run automatically. Before WF4's weekly heat map can send, one Pipedrive field has to be updated by hand per participant — see step 3 below.</p>
+    <div class="section-title">Two steps, then the system handles the rest</div>
+    <p class="section-desc">Every new pilot cohort starts with the same two actions from Matt. Once both are done, WF1 through WF5 execute automatically — no further input needed until results are ready. As of July 9, 2026, participants advance to Practice phase automatically the moment they complete their pre-diagnostic, so the weekly heat map needs no manual per-participant step either.</p>
 
     <div class="step-list">
       <div class="step-item">
@@ -889,29 +889,8 @@
         </div>
         <div class="step-body">
           <div class="step-badge green">Automation Active</div>
-          <h4>WF1 → WF2 → WF3 run automatically from here</h4>
-          <p>WF1 imports the roster and creates Pipedrive records. WF2 sends the pre-filled diagnostic link every weekday at 8AM Central to anyone marked Not Sent. WF3 runs every Friday at 10AM Central — it matches completed responses back to Pipedrive and sends a reminder to anyone still unresponded 3+ days after their initial send.</p>
-        </div>
-      </div>
-      <div class="step-item">
-        <div class="step-left">
-          <div class="step-num amber">!</div>
-          <div class="step-line-v"></div>
-        </div>
-        <div class="step-body warn">
-          <div class="step-badge amber">Matt's Action — Required</div>
-          <h4>Manually advance participants to "Practice" phase</h4>
-          <p>Nothing in WF1–WF3 ever changes a participant's <strong>Current Phase</strong> field — it's set once at import (<code>Diagnostic</code>) and stays there. WF4's Friday heat map send only pulls people where <strong>Current Phase = Practice</strong>, so once the diagnostic period ends, Matt needs to open each participant's Person record in Pipedrive and set Current Phase to <strong>Practice</strong> himself. Nobody is included in the heat map until this is done.</p>
-        </div>
-      </div>
-      <div class="step-item">
-        <div class="step-left">
-          <div class="step-num green">✓</div>
-        </div>
-        <div class="step-body">
-          <div class="step-badge green">Automation Active</div>
-          <h4>WF4 and WF5 take it from there</h4>
-          <p>WF4 sends the weekly leader heat map every Friday at 8AM Central and delivers the Monday leader report at 8AM Central. WF5 checks every Monday at 10AM Central for cohorts with both pre- and post-diagnostic data ready, then assembles the Executive Brief data package and notifies Matt/Tamien.</p>
+          <h4>WF1 through WF5 run automatically from here</h4>
+          <p>WF1 imports the roster and creates Pipedrive records. WF2 sends the pre-filled diagnostic link every weekday at 8AM Central to anyone marked Not Sent. WF3 runs every Friday at 10AM Central — it matches completed responses back to Pipedrive, marks them Completed, <strong>advances Current Phase to Practice automatically</strong> so no one needs to update that field by hand, and sends a reminder to anyone still unresponded 3+ days after their initial send. WF4 then sends the weekly leader heat map every Friday at 8AM Central and delivers the Monday leader report. WF5 checks every Monday at 10AM Central for cohorts with both pre- and post-diagnostic data ready, then assembles the Executive Brief data package and notifies Matt/Tamien.</p>
         </div>
       </div>
     </div>
@@ -943,11 +922,10 @@
           <div class="wf-node-when">Fridays, 10AM Central — tracks + 3-day reminder</div>
         </div>
         <div class="wf-connector"><div class="wf-connector-line"></div><div class="wf-connector-arrow"></div></div>
-        <div class="wf-node flagged">
+        <div class="wf-node">
           <div class="wf-node-label">WF4</div>
           <div class="wf-node-name">Weekly Heat Map</div>
           <div class="wf-node-when">Friday 8AM send · Monday 8AM report</div>
-          <div class="wf-node-flag">⚠ needs manual Current Phase update</div>
         </div>
         <div class="wf-connector"><div class="wf-connector-line"></div><div class="wf-connector-arrow"></div></div>
         <div class="wf-node">
@@ -1013,7 +991,7 @@
         </div>
         <div class="filter-use">WF4 pulls this exact filter every Friday to build the heat map send list.</div>
       </div>
-      <div class="filter-tip warn"><strong>Important:</strong> this filter is empty until Matt manually sets Current Phase = Practice on each participant. See the Launch tab, step 3.</div>
+      <div class="filter-tip"><strong>Use this to:</strong> see who's currently in the active practice period. Current Phase advances to Practice automatically when WF3 marks someone's pre-diagnostic Completed — no manual update needed.</div>
     </div>
 
     <div class="filter-card">
@@ -1133,32 +1111,24 @@
             <td><div class="field-name">Pre-Diagnostic Sent At</div><div class="field-type">Date</div></td>
             <td><div class="field-desc">Timestamp written automatically when WF2 sends the prefilled form URL. There is no corresponding "completed at" timestamp — completion is tracked only by the status value above.</div></td>
           </tr>
-          <tr class="flagged">
+          <tr>
             <td><div class="field-name">Current Phase</div><div class="field-type">Single option</div></td>
             <td>
               <div class="field-desc" style="margin-bottom:8px">Diagnostic (set automatically by WF1 at import) · Practice · Proof · Complete</div>
               <span class="status-chip blue"><span class="chip-dot"></span>Diagnostic</span>
-              <span class="status-chip amber"><span class="chip-dot"></span>Practice</span>
+              <span class="status-chip green"><span class="chip-dot"></span>Practice</span>
               <span class="status-chip gray"><span class="chip-dot"></span>Proof</span>
-              <span class="status-chip green"><span class="chip-dot"></span>Complete</span>
-              <div class="field-warn">⚠ Does not advance automatically. Matt must change this to Practice by hand — WF4 will not include a participant in the Friday heat map until this is set.</div>
+              <span class="status-chip gray"><span class="chip-dot"></span>Complete</span>
+              <div class="field-desc" style="margin-top:8px">Advances Diagnostic → Practice automatically — WF3 sets this the moment it marks someone's pre-diagnostic Completed. Proof and Complete are not yet automated and would need to be set manually if used.</div>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="callout">
-      <div class="callout-icon">⚠</div>
-      <div>
-        <h4>Known limitation — Current Phase</h4>
-        <p>WF1 sets <strong>Current Phase</strong> to <em>Diagnostic</em> when a participant is created and nothing after that ever updates it. WF4's participant list is built entirely from Pipedrive Filter 173 (<code>Current Phase = Practice</code>), so heat maps silently send to nobody until Matt updates each participant's record. This is the one point in the pipeline that isn't yet hands-off.</p>
-      </div>
-    </div>
-
     <div class="columns-wrap">
       <h4>Recommended column setup for People list view</h4>
-      <p>Add these columns to your Pipedrive People view. They give you a full picture of every participant's status at a glance, including the Current Phase column you'll need to update by hand.</p>
+      <p>Add these columns to your Pipedrive People view. They give you a full picture of every participant's status at a glance.</p>
       <div class="col-tags">
         <div class="col-tag">Cohort ID</div>
         <div class="col-tag">Pre-Diagnostic Status</div>
@@ -1168,7 +1138,7 @@
         <div class="col-tag">Associated Pilot</div>
       </div>
       <div class="sort-tip">
-        <strong>Sorting tip:</strong> Click the <strong>Cohort ID</strong> column header to cluster all participants in the same cohort together. Then shift-click <strong>Pre-Diagnostic Status</strong> to add a secondary sort — non-responders appear at the top within each cohort group. Sort by <strong>Current Phase</strong> to quickly spot who's still sitting in Diagnostic and needs to be advanced to Practice.
+        <strong>Sorting tip:</strong> Click the <strong>Cohort ID</strong> column header to cluster all participants in the same cohort together. Then shift-click <strong>Pre-Diagnostic Status</strong> to add a secondary sort — non-responders appear at the top within each cohort group. <strong>Current Phase</strong> moves to Practice on its own once someone completes their pre-diagnostic, so this column is just for visibility, not something you need to maintain.
       </div>
     </div>
 
@@ -1202,10 +1172,10 @@
         <div class="qref-divider"></div>
         <div class="qref-a"><a href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQDwYhBu5WvwTrYFNXvLS-lgAca8L3STyOzJL5EeRp7lHVA?e=wdZjD3" target="_blank" class="inline-link">Same Excel ↗</a> → filter Phase — Pre or Post</div>
       </div>
-      <div class="qref-item warn">
+      <div class="qref-item">
         <div class="qref-q">Why isn't someone getting the Friday heat map?</div>
         <div class="qref-divider"></div>
-        <div class="qref-a">Check their <strong>Current Phase</strong> field — must be manually set to Practice</div>
+        <div class="qref-a">Check their <strong>Current Phase</strong> field is Practice — it only advances once their pre-diagnostic is marked Completed</div>
       </div>
       <div class="qref-item">
         <div class="qref-q">View this week's team heat map data</div>
