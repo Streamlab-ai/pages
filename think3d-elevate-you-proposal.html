@@ -1,0 +1,1239 @@
+<title>Think3D + Elevate You — Integrated Marketing Strategy</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-alt: #f5f5f7;
+    --bg-dark: #0b0b0d;
+    --ink: #1d1d1f;
+    --ink-soft: #6e6e73;
+    --ink-faint: #a1a1a6;
+    --line: rgba(0,0,0,0.08);
+    --card: #ffffff;
+    --card-line: rgba(0,0,0,0.07);
+    --accent: #0071e3;
+    --accent-ink: #ffffff;
+    --think3d: #0071e3;
+    --think3d-bg: rgba(0,113,227,0.08);
+    --elevate: #d1690a;
+    --elevate-bg: rgba(209,105,10,0.09);
+    --good: #1d7a4c;
+    --radius-lg: 28px;
+    --radius-md: 18px;
+    --radius-sm: 10px;
+    --maxw: 1120px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000;
+      --bg-alt: #1d1d1f;
+      --ink: #f5f5f7;
+      --ink-soft: #98989d;
+      --ink-faint: #6e6e73;
+      --line: rgba(255,255,255,0.1);
+      --card: #17181a;
+      --card-line: rgba(255,255,255,0.09);
+      --accent: #2997ff;
+      --think3d: #2997ff;
+      --think3d-bg: rgba(41,151,255,0.12);
+      --elevate: #ff9f2e;
+      --elevate-bg: rgba(255,159,46,0.12);
+      --good: #34c778;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #000000;
+    --bg-alt: #1d1d1f;
+    --ink: #f5f5f7;
+    --ink-soft: #98989d;
+    --ink-faint: #6e6e73;
+    --line: rgba(255,255,255,0.1);
+    --card: #17181a;
+    --card-line: rgba(255,255,255,0.09);
+    --accent: #2997ff;
+    --think3d: #2997ff;
+    --think3d-bg: rgba(41,151,255,0.12);
+    --elevate: #ff9f2e;
+    --elevate-bg: rgba(255,159,46,0.12);
+    --good: #34c778;
+  }
+  :root[data-theme="light"] {
+    --bg: #ffffff;
+    --bg-alt: #f5f5f7;
+    --ink: #1d1d1f;
+    --ink-soft: #6e6e73;
+    --ink-faint: #a1a1a6;
+    --line: rgba(0,0,0,0.08);
+    --card: #ffffff;
+    --card-line: rgba(0,0,0,0.07);
+    --accent: #0071e3;
+    --think3d: #0071e3;
+    --think3d-bg: rgba(0,113,227,0.08);
+    --elevate: #d1690a;
+    --elevate-bg: rgba(209,105,10,0.09);
+    --good: #1d7a4c;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: auto; }
+  section[id] { scroll-margin-top: 60px; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  h1, h2, h3 { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif; text-wrap: balance; margin: 0; }
+  p { text-wrap: pretty; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-variant-numeric: tabular-nums; }
+
+  /* progress bar */
+  #progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); z-index: 60; width: 0%; transition: width .1s linear; }
+
+  /* nav */
+  #topnav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    height: 52px; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 max(20px, calc((100vw - var(--maxw)) / 2));
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--line);
+  }
+  #topnav .brand { font-size: 13px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; }
+  #topnav .brand span { color: var(--ink-soft); font-weight: 400; }
+  #topnav .idx { font-size: 12px; color: var(--ink-soft); font-family: ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: 0.02em; white-space: nowrap; }
+
+  /* dot nav */
+  #dotnav { position: fixed; right: 22px; top: 50%; transform: translateY(-50%); z-index: 55; display: flex; flex-direction: column; gap: 12px; }
+  #dotnav button { width: 9px; height: 9px; padding: 0; border-radius: 50%; background: var(--ink-faint); border: none; cursor: pointer; position: relative; opacity: .55; transition: transform .2s, opacity .2s, background .2s; }
+  #dotnav button:hover, #dotnav button:focus-visible { opacity: 1; transform: scale(1.25); }
+  #dotnav button.active { background: var(--accent); opacity: 1; transform: scale(1.3); }
+  #dotnav button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  #dotnav button .tip {
+    position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
+    white-space: nowrap; font-size: 11.5px; font-weight: 600; color: var(--ink);
+    background: var(--card); border: 1px solid var(--card-line); padding: 5px 10px; border-radius: 7px;
+    opacity: 0; pointer-events: none; transition: opacity .15s;
+  }
+  #dotnav button:hover .tip, #dotnav button:focus-visible .tip { opacity: 1; }
+  @media (max-width: 900px) { #dotnav { display: none; } }
+
+  /* collapsible cards */
+  .chev { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--card-line);
+    display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--ink-soft);
+    transition: transform .3s ease; }
+  .xcard.open .chev { transform: rotate(180deg); color: var(--accent); border-color: currentColor; }
+
+  /* subsection heading — labeled divider used within a section */
+  .subhead { display: flex; align-items: center; gap: 14px; margin: 56px 0 4px; font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-faint); }
+  .subhead::after { content: ""; flex: 1; height: 1px; background: var(--card-line); }
+
+  /* generic accordion (benchmark orgs, authorities, patterns, recommendations) */
+  .xlist { margin-top: 28px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; align-items: start; }
+  @media (max-width: 760px) { .xlist { grid-template-columns: 1fr; } }
+  .xcard { background: var(--card); border: 1px solid var(--card-line); border-radius: var(--radius-md); overflow: hidden; cursor: default; }
+  .xcard.open { grid-column: 1 / -1; }
+  .xcard-trigger {
+    all: unset; box-sizing: border-box; display: flex; width: 100%; align-items: center;
+    justify-content: space-between; gap: 14px; cursor: pointer; padding: 17px 20px;
+  }
+  .xcard-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .xcard-trigger .ttl { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .xcard-trigger h4 { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+  .xcard-trigger .sub { font-size: 12.5px; color: var(--ink-soft); font-weight: 500; }
+  .xcard-panel { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .35s ease, opacity .3s ease; padding: 0 20px; }
+  .xcard.open .xcard-panel { opacity: 1; padding-bottom: 22px; }
+  .xfield { margin-top: 16px; }
+  .xfield:first-child { margin-top: 0; }
+  .xfield .flabel { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; color: var(--accent); }
+  .xfield p, .xfield ul { margin-top: 6px; font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
+  .xfield ul { padding-left: 18px; margin-bottom: 0; }
+  .xfield ul li { margin-bottom: 5px; }
+  .xfield .notcopy { color: var(--elevate); }
+  .xrefs { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--card-line); font-size: 13px; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+  .xrefs .flabel { display: block; width: 100%; margin-bottom: 6px; }
+  .xrefs a { color: var(--accent); text-decoration: none; }
+  .xrefs a:hover { text-decoration: underline; }
+
+  /* momentum callout */
+  .momentum { margin-top: 40px; padding: 28px 30px; border-radius: var(--radius-md); background: var(--card); border: 1px solid var(--card-line); }
+  .momentum .flabel-row { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--good); margin-bottom: 14px; }
+  .momentum .flabel-row i { width: 7px; height: 7px; border-radius: 50%; background: var(--good); box-shadow: 0 0 0 3px color-mix(in srgb, var(--good) 18%, transparent); }
+  .momentum ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .momentum li { font-size: 14.5px; line-height: 1.55; padding-left: 20px; position: relative; color: var(--ink-soft); }
+  .momentum li::before { content: "—"; position: absolute; left: 0; color: var(--ink-faint); }
+  .momentum li b { color: var(--ink); font-weight: 600; }
+
+  section { position: relative; padding: 148px max(20px, calc((100vw - var(--maxw)) / 2)) 120px; }
+  section.tight { padding-top: 128px; padding-bottom: 100px; }
+  .bg-alt { background: var(--bg-alt); }
+  .bg-dark { background: var(--bg-dark); color: #f5f5f7; }
+  .bg-dark .ink-soft, .bg-dark .eyebrow { color: #9a9aa0; }
+
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 18px;
+  }
+  .h-xl { font-size: clamp(36px, 6vw, 68px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.04; }
+  .h-lg { font-size: clamp(30px, 4.4vw, 48px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.08; }
+  .h-md { font-size: clamp(20px, 2.4vw, 26px); font-weight: 600; letter-spacing: -0.01em; }
+  .lede { font-size: clamp(18px, 2vw, 22px); color: var(--ink-soft); font-weight: 400; line-height: 1.5; max-width: 640px; margin-top: 20px; }
+  .kicker-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 28px; color: var(--ink-faint); font-size: 14px; }
+  .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--ink-faint); }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* cover */
+  #cover { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: 52px; }
+  #cover .h-xl { font-size: clamp(42px, 8vw, 96px); }
+  #cover .meta { margin-top: 44px; display: flex; gap: 28px; flex-wrap: wrap; font-size: 14px; color: var(--ink-soft); }
+  #cover .meta b { color: var(--ink); font-weight: 600; }
+  .scrollcue { position: absolute; bottom: 40px; left: max(20px, calc((100vw - var(--maxw)) / 2)); font-size: 12px; color: var(--ink-faint); display: flex; align-items: center; gap: 8px; }
+  .scrollcue .bar { width: 1px; height: 28px; background: var(--ink-faint); animation: pulse 1.8s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{ opacity:.25 } 50%{ opacity:1 } }
+
+  /* tension */
+  .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 56px; }
+  @media (max-width: 760px) { .twocol { grid-template-columns: 1fr; } }
+  .panel { border-radius: var(--radius-md); padding: 32px; border: 1px solid var(--card-line); background: var(--card); }
+  .panel h3 { font-size: 15px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-faint); font-weight: 700; margin-bottom: 18px; }
+  .panel ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .panel li { font-size: 14.5px; line-height: 1.5; padding-left: 20px; position: relative; }
+  .panel.no li::before { content: "•"; position: absolute; left: 2px; color: var(--ink-faint); }
+  .panel.yes li::before { content: "•"; position: absolute; left: 2px; color: var(--accent); }
+
+  .quote { margin-top: 56px; padding: 48px clamp(24px,5vw,64px); border-radius: var(--radius-lg); background: var(--bg-alt); }
+  .bg-alt .quote { background: var(--bg); }
+  .quote p { font-size: clamp(24px, 3.4vw, 36px); font-weight: 600; letter-spacing: -0.015em; line-height: 1.28; max-width: 820px; }
+  .quote span { display: block; margin-top: 20px; font-size: 15px; font-weight: 500; color: var(--ink-soft); }
+
+  .analogy { margin-top: 24px; display: flex; gap: 16px; align-items: flex-start; padding: 22px 26px; border-radius: var(--radius-sm); border: 1px dashed var(--card-line); }
+  .analogy b { color: var(--accent); }
+
+  /* priority grid */
+  .grid7 { margin-top: 52px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  @media (max-width: 900px) { .grid7 { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 620px) { .grid7 { grid-template-columns: 1fr; } }
+  .pcard { background: var(--card); border: 1px solid var(--card-line); border-radius: var(--radius-md); padding: 26px; }
+  .pcard .num { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13px; color: var(--accent); font-weight: 600; }
+  .pcard h4 { margin-top: 14px; font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+  .pcard p { margin-top: 8px; font-size: 14.5px; color: var(--ink-soft); line-height: 1.5; }
+
+  /* tables */
+  .tablewrap { margin-top: 48px; overflow-x: auto; border-radius: var(--radius-md); border: 1px solid var(--card-line); background: var(--card); }
+  table { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 560px; }
+  th { text-align: left; font-size: 12px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-faint); font-weight: 700; padding: 16px 22px; border-bottom: 1px solid var(--card-line); }
+  td { padding: 18px 22px; border-bottom: 1px solid var(--card-line); vertical-align: top; line-height: 1.45; }
+  tr:last-child td { border-bottom: none; }
+  .tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
+  .tag.think3d { background: var(--think3d-bg); color: var(--think3d); }
+  .tag.elevate { background: var(--elevate-bg); color: var(--elevate); }
+  .tag i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+  /* asset cards */
+  .grid3 { margin-top: 52px; display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+  @media (max-width: 860px) { .grid3 { grid-template-columns: 1fr; } }
+  .asset { background: var(--card); border: 1px solid var(--card-line); border-radius: var(--radius-md); padding: 28px; }
+  .asset .who { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-faint); font-weight: 700; }
+  .asset .url { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 15px; color: var(--accent); margin-top: 8px; }
+  .asset p { margin-top: 14px; font-size: 14.5px; color: var(--ink-soft); line-height: 1.5; }
+  .status { margin-top: 18px; display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; color: var(--good); }
+  .status i { width: 7px; height: 7px; border-radius: 50%; background: var(--good); box-shadow: 0 0 0 3px color-mix(in srgb, var(--good) 18%, transparent); }
+  .socialrow { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--card-line); }
+  .socialrow .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; color: var(--ink-faint); margin-bottom: 10px; }
+  .socialrow .icons { display: flex; gap: 10px; }
+  .socialrow .icons span { width: 28px; height: 28px; border-radius: 8px; background: var(--bg-alt); display: flex; align-items: center; justify-content: center; color: var(--ink-soft); }
+  .bg-alt .socialrow .icons span { background: var(--bg); }
+  .socialrow .icons svg { width: 15px; height: 15px; }
+
+  /* journey flow */
+  .flow { margin-top: 56px; display: flex; flex-wrap: wrap; gap: 0; align-items: stretch; }
+  .step { display: flex; align-items: center; }
+  .step .box { background: var(--card); border: 1px solid var(--card-line); border-radius: var(--radius-sm); padding: 16px 18px; min-width: 132px; text-align: center; }
+  .step .box .n { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 11px; color: var(--accent); font-weight: 700; }
+  .step .box .t { margin-top: 6px; font-size: 13.5px; font-weight: 600; line-height: 1.3; }
+  .arrow { width: 26px; display: flex; align-items: center; justify-content: center; color: var(--ink-faint); flex-shrink: 0; }
+  @media (max-width: 900px) { .flow { flex-direction: column; align-items: flex-start; } .arrow { width: 26px; height: 26px; transform: rotate(90deg); margin-left: 12px; } .step { width: 100%; } .step .box { width: 100%; } }
+  .flow-note { margin-top: 30px; font-size: 15px; color: var(--ink-soft); max-width: 600px; }
+
+  /* system 4 cards */
+  .grid4 { margin-top: 52px; display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+  @media (max-width: 980px) { .grid4 { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 560px) { .grid4 { grid-template-columns: 1fr; } }
+  .scard { background: var(--card); border: 1px solid var(--card-line); border-radius: var(--radius-md); padding: 24px; }
+  .scard .tag-mini { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--accent); }
+  .scard h4 { margin-top: 12px; font-size: 17px; font-weight: 600; }
+  .scard p { margin-top: 8px; font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
+  .paidnote { margin-top: 28px; padding: 20px 24px; border-radius: var(--radius-sm); background: var(--bg-alt); font-size: 14.5px; color: var(--ink-soft); }
+  .bg-alt .paidnote { background: var(--bg); }
+
+  /* measurement */
+  .northstar { margin-top: 48px; padding: 30px 32px; border-radius: var(--radius-md); background: var(--card); border: 1px solid var(--card-line); }
+  .northstar .eyebrow { margin-bottom: 10px; }
+  .northstar p { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.4; }
+  .scoregrid { margin-top: 22px; display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+  @media (max-width: 980px) { .scoregrid { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 560px) { .scoregrid { grid-template-columns: 1fr; } }
+  .scorecat { padding: 22px; border-radius: var(--radius-sm); border: 1px solid var(--card-line); }
+  .scorecat h5 { font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-faint); font-weight: 700; }
+  .scorecat ul { margin: 12px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .scorecat li { font-size: 13.5px; color: var(--ink-soft); line-height: 1.4; padding-left: 14px; position: relative; }
+  .scorecat li::before { content: "•"; position: absolute; left: 0; color: var(--accent); }
+
+  /* roadmap */
+  .phases { margin-top: 52px; display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+  @media (max-width: 1080px) { .phases { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 640px) { .phases { grid-template-columns: 1fr; } }
+  .phase { border-radius: var(--radius-md); border: 1px solid var(--card-line); background: var(--card); padding: 28px; display: flex; flex-direction: column; }
+  .phase .days { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12.5px; color: var(--accent); font-weight: 700; letter-spacing: .02em; }
+  .phase h4 { margin-top: 10px; font-size: 19px; font-weight: 700; letter-spacing: -0.01em; }
+  .phase .lbl { margin-top: 20px; font-size: 11.5px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-faint); font-weight: 700; }
+  .phase p { margin-top: 8px; font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+  .phase .deliv { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--card-line); font-size: 13.5px; font-weight: 600; }
+
+  /* roles */
+  .cadence-row { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .cadchip { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--card-line); font-size: 13px; font-weight: 600; }
+  .cadchip b { color: var(--accent); font-weight: 700; }
+
+  /* first move */
+  .firstmove-wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; margin-top: 20px; align-items: start; }
+  @media (max-width: 860px) { .firstmove-wrap { grid-template-columns: 1fr; } }
+  .datepill { display: inline-flex; align-items: baseline; gap: 10px; padding: 10px 18px; border-radius: 999px; background: var(--elevate-bg); color: var(--elevate); font-weight: 700; font-size: 14px; margin-bottom: 22px; }
+  .checklist { background: var(--card); border: 1px solid var(--card-line); border-radius: var(--radius-md); padding: 26px; }
+  .checklist ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .checklist li { font-size: 14.5px; line-height: 1.4; padding-left: 24px; position: relative; }
+  .checklist li::before { content: "—"; position: absolute; left: 0; color: var(--ink-faint); font-weight: 700; }
+  .checklist li b { color: var(--elevate); font-weight: 700; }
+
+  /* proposal / closing */
+  #proposal .h-xl { color: #f5f5f7; }
+  #proposal .lede { color: #9a9aa0; }
+  .actionlist { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 40px; }
+  @media (max-width: 760px) { .actionlist { grid-template-columns: 1fr; } }
+  .actionitem { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .actionitem .n { font-family: ui-monospace, "SF Mono", Menlo, monospace; color: var(--accent); font-size: 13px; font-weight: 700; flex-shrink: 0; padding-top: 2px; }
+  .actionitem p { font-size: 15px; line-height: 1.4; color: #e4e4e6; }
+  .investcard { margin-top: 56px; padding: 40px clamp(24px,5vw,52px); border-radius: var(--radius-lg); background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.12); }
+  .investcard h3 { font-size: clamp(22px,2.8vw,30px); font-weight: 700; letter-spacing: -0.01em; color: #f5f5f7; }
+  .investcard p { margin-top: 14px; font-size: 16px; color: #b6b6ba; max-width: 560px; line-height: 1.55; }
+  .cta-row { margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 600; font-size: 15px; text-decoration: none; border: none; cursor: pointer; }
+  .btn.ghost { background: transparent; border: 1px solid rgba(255,255,255,0.25); color: #f5f5f7; }
+  footer { padding: 40px max(20px, calc((100vw - var(--maxw)) / 2)) 48px; color: #6e6e73; font-size: 12.5px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  #proposal { background: var(--bg-dark); }
+</style>
+
+<div id="progress"></div>
+<nav id="topnav">
+  <div class="brand">StreamLab AI <span>× Think3D + Elevate You</span></div>
+  <div class="idx mono"><span id="navidx">01</span> / 15 — <span id="navlabel">Overview</span></div>
+</nav>
+<div id="dotnav"></div>
+
+<section id="cover">
+  <div class="eyebrow reveal in-view">Strategic Proposal — Prepared for Tamien Dysart, Vaney Hariri &amp; Matt Krall</div>
+  <h1 class="h-xl reveal in-view">One playbook.<br>Two brands.<br>Built to scale, separately.</h1>
+  <p class="lede reveal in-view" style="max-width:600px;">An integrated marketing strategy for Think3D and Elevate You — how personal authority becomes qualified pipeline, without collapsing two businesses into one.</p>
+  <div class="meta reveal in-view">
+    <div><b>Prepared by</b> StreamLab AI</div>
+    <div><b>Meeting</b> July 30, 2026</div>
+    <div><b>For</b> Think3D Solutions &amp; Elevate You</div>
+  </div>
+  <div class="scrollcue"><div class="bar"></div> Scroll</div>
+</section>
+
+<section id="tension" class="bg-alt" data-label="The Core Tension">
+  <div class="eyebrow reveal">The Operating Principle</div>
+  <h2 class="h-lg reveal">You already believe this. Now it has to run like it.</h2>
+  <p class="lede reveal">Tamien, Vaney, and Matt already treat Think3D and Elevate You as two different businesses, not two doors into the same one. The work ahead isn't convincing anyone of that — it's building the systems, routing, and content discipline that make the model actually hold once campaigns, events, and busy weeks put pressure on it.</p>
+
+  <div class="twocol">
+    <div class="panel yes reveal">
+      <h3>Already true</h3>
+      <ul>
+        <li>Think3D and Elevate You are led by different pairings and solve different problems for different buyers.</li>
+        <li>Tamien, Vaney, and Matt each already run independent personal-brand sites.</li>
+        <li>Think3D runs on HubSpot; Elevate You runs on Pipedrive — a deliberate choice, not an accident.</li>
+        <li>Coordination already happens through approved events and referrals, not a shared brand.</li>
+      </ul>
+    </div>
+    <div class="panel no reveal">
+      <h3>What has to get operational</h3>
+      <ul>
+        <li>Every campaign, landing page, and CTA has to route to the correct business without leaking into the other.</li>
+        <li>Content has to stay distinct enough that a buyer never has to ask "wait, is this Think3D or Elevate You?"</li>
+        <li>Proof, reporting, and pipeline attribution stay separated at the system level, not just the strategy level.</li>
+        <li>The discipline has to survive shared events, cross-referrals, and busy weeks — not just the plan on paper.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quote reveal">
+    <p>“Personal brands earn attention and trust. Business brands package the proof, capture the demand, and convert that trust into revenue.”</p>
+    <span>— The operating principle behind this entire strategy</span>
+  </div>
+
+  <div class="analogy reveal">
+    <div>🏥</div>
+    <div><b>Tamien, Vaney, and Matt are the surgeons.</b> Think3D and Elevate You are the hospitals — they handle the intake, the billing, the delivery, and the aftercare. You can't run a pediatric center and a cardiology wing out of the same waiting room.</div>
+  </div>
+</section>
+
+<section id="niche" data-label="Why This Needs a Different Playbook">
+  <div class="eyebrow reveal">Why Generic Marketing Fails Here</div>
+  <h2 class="h-lg reveal">A narrow, high-value niche doesn't get sold like a commodity.</h2>
+  <p class="lede reveal">Think3D and Elevate You aren't selling a low-consideration product to a broad audience. They're selling six-figure, trust-based engagements inside a specific, well-defined category — which means the marketing has to behave differently than the volume-based playbooks built for broad consumer or SMB offers.</p>
+
+  <div class="grid4">
+    <div class="scard reveal"><div class="tag-mini">Narrow, not broad</div><h4>The addressable buyer is small and specific</h4><p>Executives, HR leaders, and organizational sponsors — not a mass market. Precision beats reach.</p></div>
+    <div class="scard reveal"><div class="tag-mini">Trust before transaction</div><h4>Six figures is never bought cold</h4><p>Authority has to build over months of real exposure, not clicks over a few days of a campaign.</p></div>
+    <div class="scard reveal"><div class="tag-mini">Own the category</div><h4>Participation is invisible</h4><p>Being "a" leadership consultancy doesn't register. Owning a named problem does.</p></div>
+    <div class="scard reveal"><div class="tag-mini">Proof over promotion</div><h4>Evidence outweighs volume</h4><p>A documented diagnostic and case study beats a higher posting frequency, every time.</p></div>
+  </div>
+  <p class="flow-note reveal" style="margin-top:32px;">That's exactly the discipline the category leaders in this space already run on. Here's what we found when we studied them.</p>
+</section>
+
+<section id="summary" data-label="Executive Summary">
+  <div class="eyebrow reveal">Executive Summary</div>
+  <h2 class="h-lg reveal">Six moves. One operating principle.</h2>
+  <p class="lede reveal">The highest-impact priorities for the next two quarters, in order.</p>
+
+  <div class="grid7">
+    <div class="pcard reveal"><div class="num">01</div><h4>Build the right authority layer</h4><p>Tamien and Vaney lead trust-building for Think3D. Tamien and Matt lead it for Elevate You. Personal brands create attention; the business provides proof and follow-up.</p></div>
+    <div class="pcard reveal"><div class="num">02</div><h4>Build a real buyer journey</h4><p>No cold prospect goes straight into a high-commitment program. Every audience gets trust exposure, proof, and a low-risk diagnostic first.</p></div>
+    <div class="pcard reveal"><div class="num">03</div><h4>LinkedIn as the primary channel</h4><p>Instagram and YouTube extend reach and humanity. Company pages amplify proof — they don't duplicate personal content.</p></div>
+    <div class="pcard reveal"><div class="num">04</div><h4>Every event is a full campaign</h4><p>Promotion, registration, reminders, attendance, follow-up, testimonials, and CRM progression — designed before launch, not after.</p></div>
+    <div class="pcard reveal"><div class="num">05</div><h4>Build owned audiences</h4><p>Social reach must consistently move qualified people into HubSpot or Pipedrive through landing pages, diagnostics, and nurture.</p></div>
+    <div class="pcard reveal"><div class="num">06</div><h4>Measure revenue, not volume</h4><p>The scorecard is qualified audience growth, named leads, booked conversations, pipeline value, and revenue influenced.</p></div>
+  </div>
+</section>
+
+<section id="assets" class="bg-alt" data-label="Live Assets">
+  <div class="eyebrow reveal">Live Personal-Brand Assets</div>
+  <h2 class="h-lg reveal">The foundation is already live.</h2>
+  <p class="lede reveal">These are completed assets, not future build items. The next priority is optimization, proof deployment, and correct routing — not relaunching.</p>
+
+  <div class="grid3">
+    <div class="asset reveal">
+      <div class="who">Tamien Dysart</div>
+      <div class="url">tamien-dysart.com</div>
+      <p>The central authority hub connecting speaking, leadership perspective, and both businesses. Routes visitors to the correct offer based on intent.</p>
+      <div class="status"><i></i>Live — optimize routing &amp; proof</div>
+      <div class="socialrow">
+        <div class="lbl">Personal channels — in addition to Think3D &amp; Elevate You company pages</div>
+        <div class="icons">
+          <span title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8.5" r="1.1" fill="currentColor" stroke="none"/><path d="M8 11v6M12 11v6M12 13.2c0-1.3 1-2.2 2.2-2.2 1.3 0 2.1.9 2.1 2.2V17" stroke-linecap="round"/></svg></span>
+          <span title="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.5 9.5l5 2.5-5 2.5z" fill="currentColor" stroke="none"/></svg></span>
+          <span title="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M14 8.5h-1.5c-1 0-1.5.5-1.5 1.5v2h3l-.4 3h-2.6V21" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r="0.9" fill="currentColor" stroke="none"/></svg></span>
+        </div>
+      </div>
+    </div>
+    <div class="asset reveal">
+      <div class="who">Vaney Hariri</div>
+      <div class="url">vaneyhariri.com</div>
+      <p>Independent hub for culture, community, speaking, CultureCon, and Culture Cove. Preserves his distinct voice — does not route into Elevate You.</p>
+      <div class="status"><i></i>Live — optimize routing &amp; proof</div>
+      <div class="socialrow">
+        <div class="lbl">Personal channels — in addition to Think3D company pages</div>
+        <div class="icons">
+          <span title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8.5" r="1.1" fill="currentColor" stroke="none"/><path d="M8 11v6M12 11v6M12 13.2c0-1.3 1-2.2 2.2-2.2 1.3 0 2.1.9 2.1 2.2V17" stroke-linecap="round"/></svg></span>
+          <span title="YouTube"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="M10.5 9.5l5 2.5-5 2.5z" fill="currentColor" stroke="none"/></svg></span>
+          <span title="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M14 8.5h-1.5c-1 0-1.5.5-1.5 1.5v2h3l-.4 3h-2.6V21" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r="0.9" fill="currentColor" stroke="none"/></svg></span>
+        </div>
+      </div>
+    </div>
+    <div class="asset reveal">
+      <div class="who">Matt Krall</div>
+      <div class="url">mattkrall.com</div>
+      <p>Independent authority hub for Matt's thinking and Clarity Conversation. Supports Elevate You demand without presenting Matt as a Think3D rep.</p>
+      <div class="status"><i></i>Live — optimize routing &amp; proof</div>
+      <div class="socialrow">
+        <div class="lbl">Personal channels — in addition to Elevate You company pages</div>
+        <div class="icons">
+          <span title="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="8" cy="8.5" r="1.1" fill="currentColor" stroke="none"/><path d="M8 11v6M12 11v6M12 13.2c0-1.3 1-2.2 2.2-2.2 1.3 0 2.1.9 2.1 2.2V17" stroke-linecap="round"/></svg></span>
+          <span title="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M14 8.5h-1.5c-1 0-1.5.5-1.5 1.5v2h3l-.4 3h-2.6V21" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r="0.9" fill="currentColor" stroke="none"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="benchmark" class="bg-alt" data-label="Category Benchmark">
+  <div class="eyebrow reveal">Category &amp; Competitor Benchmark</div>
+  <h2 class="h-lg reveal">What the category leaders already prove works.</h2>
+  <p class="lede reveal">Ten direct and adjacent category peers, benchmarked against public evidence of demand — not private lead counts, which none of them disclose. Tap any organization to expand category fit, why it's in the same niche, demand signals, what to emulate, and what to adapt, with links to their official pages.</p>
+
+  <div class="subhead reveal">Category &amp; Competitor Peers</div>
+  <div class="xlist reveal">
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false">
+        <div class="ttl"><h4>Culture Partners</h4><span class="tag think3d"><i></i>Think3D</span></div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="xcard-panel">
+        <div class="xfield"><div class="flabel">Category fit</div><p>Very close direct peer — organizational culture consulting, leadership behavior, accountability, workshops, retreats.</p></div>
+        <div class="xfield"><div class="flabel">Why it's in the same niche</div><ul>
+          <li>Positions culture as a business-performance issue, not an HR checkbox.</li>
+          <li>Spans short keynotes through multi-year transformation journeys.</li>
+          <li>Methodology connects beliefs, behavior, and business results — the same logic behind Think3D's work.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Public demand signals</div><ul>
+          <li>37 years operating history, with major enterprise client logos and published case studies.</li>
+          <li>A named methodology ("Change Activation," "The Results Equation"), best-selling books, and a visible funnel from assessment through long-term journey.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Marketing activities worth emulating</div><ul>
+          <li>Owns a named category instead of generic "culture consulting."</li>
+          <li>Uses a short diagnostic as a real entry point, backed by frequent executive-level webinars.</li>
+          <li>Consistently ties messaging to revenue, EBITDA, and execution — never culture for its own sake.</li>
+          <li>Built a full offer ladder: assessment → consultation → workshop → journey → reinforcement.</li>
+          <li>Uses a visible expert (Dr. Jessica Kriegel) as the media engine.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">What Think3D should adapt</div><ul>
+          <li>Build a branded Think3D culture diagnostic on its own methodology.</li>
+          <li>Publish one recurring monthly executive webinar.</li>
+          <li>Present programs as a journey — diagnosis through reinforcement — not disconnected workshops.</li>
+        </ul></div>
+        <div class="xrefs"><span class="flabel">Official references</span><a href="https://culturepartners.com/" target="_blank" rel="noopener">culturepartners.com</a><a href="https://culturepartners.com/about/" target="_blank" rel="noopener">About</a><a href="https://culturepartners.com/about/bio-jessica-kriegel/" target="_blank" rel="noopener">Jessica Kriegel</a></div>
+      </div>
+    </div>
+
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false">
+        <div class="ttl"><h4>The Arbinger Institute</h4><span class="tag think3d"><i></i>Think3D</span><span class="tag elevate"><i></i>Elevate You</span></div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="xcard-panel">
+        <div class="xfield"><div class="flabel">Category fit</div><p>Very close direct peer for both — mindset, culture transformation, accountability, conflict, behavior change.</p></div>
+        <div class="xfield"><div class="flabel">Why it's in the same niche</div><ul>
+          <li>Argues behavior under pressure originates beneath surface-level skills — the same inside-out logic behind Elevate You's self-leadership model and Think3D's culture work.</li>
+          <li>Serves leaders, teams, organizations, nonprofits, healthcare systems, and public agencies.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Public demand signals</div><ul>
+          <li>Thousands of organizations served globally; a subscriber community exceeding 50,000 leaders.</li>
+          <li>A mature demand system of books, webinars, podcast content, downloadable tools, and certification.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Marketing activities worth emulating</div><ul>
+          <li>Anchors a complex methodology in one simple contrast (inward vs. outward mindset).</li>
+          <li>Publishes practical tools, not only opinions — check-ins, job maps, conversation guides.</li>
+          <li>Runs a high-frequency webinar engine targeting specific symptoms: blame, conflict, toxic leadership.</li>
+          <li>Builds an owned newsletter audience before ever asking for a strategy session.</li>
+          <li>Offers train-the-trainer certification once the method is proven and repeatable.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">What to adapt</div><ul>
+          <li>Turn Tamien and Vaney's frameworks into downloadable tools leaders can apply immediately.</li>
+          <li>Build webinar topics around specific operational pain, not broad leadership themes.</li>
+          <li>Consider a certified-facilitator model only after the methodology is fully documented.</li>
+        </ul></div>
+        <div class="xrefs"><span class="flabel">Official references</span><a href="https://arbinger.com/about" target="_blank" rel="noopener">About Arbinger</a><a href="https://arbinger.com/resources" target="_blank" rel="noopener">Resources</a><a href="https://arbinger.com/workshops" target="_blank" rel="noopener">Workshops</a></div>
+      </div>
+    </div>
+
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false">
+        <div class="ttl"><h4>The Table Group / Patrick Lencioni</h4><span class="tag think3d"><i></i>Think3D</span></div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="xcard-panel">
+        <div class="xfield"><div class="flabel">Category fit</div><p>Very close direct peer — organizational health, leadership-team cohesion, communication, clarity, executive offsites.</p></div>
+        <div class="xfield"><div class="flabel">Why it's in the same niche</div><ul>
+          <li>Core work is improving leadership-team behavior and culture.</li>
+          <li>Executive offsites and customized journeys closely resemble Think3D's retreat and facilitation work.</li>
+          <li>Value proposition: reduced politics and confusion, stronger morale, lower turnover.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Public demand signals</div><ul>
+          <li>Patrick Lencioni's books have sold millions of copies; the firm has trained a global consultant network.</li>
+          <li>Converts intellectual property into consulting, speaking, assessments, software, and practitioner programs.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Marketing activities worth emulating</div><ul>
+          <li>Owns a category — "Organizational Health" — clearer and more memorable than generic teamwork consulting.</li>
+          <li>Uses books and signature frameworks as permanent demand engines.</li>
+          <li>Offers a free assessment as the entry point, letting leaders recognize the problem before talking to sales.</li>
+          <li>Builds one founder-led content franchise across podcast, articles, books, and live sessions.</li>
+          <li>Makes the first paid step concrete — a two-day executive offsite, not an undefined engagement.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">What Think3D should adapt</div><ul>
+          <li>Select one category-level phrase Think3D can become known for.</li>
+          <li>Package one flagship executive-team entry engagement with a clear duration and output.</li>
+          <li>Develop a proprietary assessment and executive debrief.</li>
+          <li>Turn Tamien and Vaney's strongest frameworks into recurring books, talks, podcasts, and tools.</li>
+        </ul></div>
+        <div class="xrefs"><span class="flabel">Official references</span><a href="https://www.tablegroup.com/" target="_blank" rel="noopener">The Table Group</a><a href="https://www.tablegroup.com/consulting/" target="_blank" rel="noopener">Consulting</a><a href="https://www.tablegroup.com/topics-and-resources/organizational-health/" target="_blank" rel="noopener">Organizational Health</a></div>
+      </div>
+    </div>
+
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false">
+        <div class="ttl"><h4>FranklinCovey</h4><span class="tag think3d"><i></i>Think3D</span><span class="tag elevate"><i></i>Elevate You</span></div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="xcard-panel">
+        <div class="xfield"><div class="flabel">Category fit</div><p>Direct peer for both — leadership development, culture, individual effectiveness, behavior change, organizational performance.</p></div>
+        <div class="xfield"><div class="flabel">Why it's in the same niche</div><ul>
+          <li>Develops leaders and culture through behavior change, not inspiration alone.</li>
+          <li>Serves both individuals and entire organizations.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Public demand signals</div><ul>
+          <li>Long-established global brand with major enterprise clients.</li>
+          <li>Subscription-based delivery combining content, experts, technology, and measurement; extensive resource library and case studies.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Marketing activities worth emulating</div><ul>
+          <li>Builds a content-to-enterprise bridge — books and public insight attract, case studies and consultation convert.</li>
+          <li>Uses free guides and webcasts to segment buyers by problem.</li>
+          <li>Creates journeys rather than courses — sustained application, not event-based training.</li>
+          <li>Publishes client proof organized by business problem, not by service line.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">What to adapt</div><ul>
+          <li>Structure offers as defined journeys with prework, live experience, application, and reinforcement.</li>
+          <li>Build a case-study library categorized by buyer problem.</li>
+          <li>Create downloadable executive guides tied to a real consultation or diagnostic.</li>
+        </ul></div>
+        <div class="xrefs"><span class="flabel">Official references</span><a href="https://www.franklincovey.com/why-franklincovey/leadership/" target="_blank" rel="noopener">Leadership</a><a href="https://www.franklincovey.com/why-franklincovey/winning-culture/" target="_blank" rel="noopener">Winning Culture</a><a href="https://www.franklincovey.com/about/" target="_blank" rel="noopener">About</a></div>
+      </div>
+    </div>
+
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false">
+        <div class="ttl"><h4>Center for Creative Leadership</h4><span class="tag think3d"><i></i>Think3D</span><span class="tag elevate"><i></i>Elevate You</span></div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="xcard-panel">
+        <div class="xfield"><div class="flabel">Category fit</div><p>Direct peer for both — evidence-based leadership development, coaching, assessments, custom organizational programs.</p></div>
+        <div class="xfield"><div class="flabel">Why it's in the same niche</div><ul>
+          <li>Develops leaders at multiple levels through self-awareness, feedback, practice, coaching, and real-world application.</li>
+          <li>Works with both individual leaders and large organizations — the same executive, HR, and L&amp;D buyers relevant to Think3D.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Public demand signals</div><ul>
+          <li>More than 50 years of research and delivery; partnerships with over two-thirds of the Fortune 1000.</li>
+          <li>More than 100,000 alumni in its flagship program.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Marketing activities worth emulating</div><ul>
+          <li>Makes research a major acquisition channel — guides, white papers, and original studies establish authority before the buyer speaks with sales.</li>
+          <li>Segments programs by leader level so buyers immediately see the right fit.</li>
+          <li>Makes program architecture fully transparent: duration, format, outcomes, coaching, delivery mode.</li>
+          <li>Offers open enrollment and custom enterprise paths side by side.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">What to adapt</div><ul>
+          <li>Clarify which programs serve emerging leaders, managers, senior leaders, and executive teams.</li>
+          <li>Publish original field research based on surveys, diagnostic patterns, and program outcomes.</li>
+          <li>Create buyer-facing program guides with clear fit, format, outcomes, and next steps.</li>
+        </ul></div>
+        <div class="xrefs"><span class="flabel">Official references</span><a href="https://www.ccl.org/about-us/" target="_blank" rel="noopener">About CCL</a><a href="https://www.ccl.org/leadership-programs/leadership-development-program/" target="_blank" rel="noopener">Leadership Programs</a><a href="https://www.ccl.org/about-us/research/" target="_blank" rel="noopener">Research</a></div>
+      </div>
+    </div>
+
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false">
+        <div class="ttl"><h4>Gallup Workplace</h4><span class="tag think3d"><i></i>Think3D</span></div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="xcard-panel">
+        <div class="xfield"><div class="flabel">Category fit</div><p>Direct category peer for Think3D; adjacent but strategically valuable for Elevate You.</p></div>
+        <div class="xfield"><div class="flabel">Why it's in the same niche</div><ul>
+          <li>Sells leadership, manager development, employee engagement, strengths, and culture transformation.</li>
+          <li>Its research-driven culture audit and manager-development approach address the same organizational buyers as Think3D.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Public demand signals</div><ul>
+          <li>More than 50 years of workplace research; one of the most recognizable workplace-research publishing engines.</li>
+          <li>Proprietary assessments, recurring reports, benchmark data, and enterprise partnerships.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Marketing activities worth emulating</div><ul>
+          <li>Owns recurring data that makes it a source journalists, executives, and HR leaders cite.</li>
+          <li>Builds a sustained content lane around accidental managers and leadership readiness.</li>
+          <li>Gives prospects a useful sample assessment while reserving the full diagnostic for qualified engagements.</li>
+          <li>Uses a benchmark narrative — current state vs. desired standard — without unsupported universal claims.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">What to adapt</div><ul>
+          <li>Publish regular insights that make Think3D a source chambers and HR leaders cite.</li>
+          <li>Build sustained content around a specific manager-readiness lane.</li>
+          <li>Connect every research topic back to a diagnostic or executive briefing.</li>
+        </ul></div>
+        <div class="xrefs"><span class="flabel">Official references</span><a href="https://www.gallup.com/workplace/home.aspx" target="_blank" rel="noopener">Gallup Workplace</a><a href="https://www.gallup.com/workplace/229832/culture.aspx" target="_blank" rel="noopener">Organizational Culture</a><a href="https://www.gallup.com/workplace/328460/why-managers-need-leadership-development.aspx" target="_blank" rel="noopener">Leadership Development</a></div>
+      </div>
+    </div>
+
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false">
+        <div class="ttl"><h4>BetterUp</h4><span class="tag elevate"><i></i>Elevate You</span></div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="xcard-panel">
+        <div class="xfield"><div class="flabel">Category fit</div><p>Closest scaled, technology-enabled peer for Elevate You; adjacent to Think3D.</p></div>
+        <div class="xfield"><div class="flabel">Why it's in the same niche</div><ul>
+          <li>Personalized development, deployed across organizations; frames development as a measurable capability, not just coaching sessions.</li>
+          <li>Combines human coaching, AI coaching, behavioral science, and enterprise analytics — closely overlapping Elevate You's long-term direction.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Public demand signals</div><ul>
+          <li>More than 750 enterprise customers; thousands of coaches operating globally.</li>
+          <li>Public outcome and ROI claims, client logos, case studies, and named enterprise products.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Marketing activities worth emulating</div><ul>
+          <li>Connects human development directly to business metrics: productivity, retention, promotion, revenue.</li>
+          <li>Names the platform and products so the architecture is easy to understand.</li>
+          <li>Segments by organizational problem rather than a generic coaching pitch.</li>
+          <li>Leads with enterprise proof, measurement, and security/confidentiality information.</li>
+          <li>Uses personalized demos, tailored to the prospect's strategy and workforce — never generic sales calls.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">What Elevate You should adapt</div><ul>
+          <li>Explain how the behavioral system connects to business outcomes without overstating unverified results.</li>
+          <li>Build separate solution pages for individual development, manager-cohort deployment, and organizational implementation.</li>
+          <li>Replace a generic "book a call" with a diagnostic or strategy session tailored to the buyer's context.</li>
+        </ul></div>
+        <div class="xrefs"><span class="flabel">Official references</span><a href="https://www.betterup.com/enterprise" target="_blank" rel="noopener">BetterUp Enterprise</a><a href="https://www.betterup.com/about-us" target="_blank" rel="noopener">About</a><a href="https://www.betterup.com/platform" target="_blank" rel="noopener">Platform</a></div>
+      </div>
+    </div>
+
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false">
+        <div class="ttl"><h4>The Wiseman Group / Liz Wiseman</h4><span class="tag elevate"><i></i>Elevate You</span></div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="xcard-panel">
+        <div class="xfield"><div class="flabel">Category fit</div><p>Direct peer for Elevate You; relevant to Think3D's leadership-development work.</p></div>
+        <div class="xfield"><div class="flabel">Why it's in the same niche</div><ul>
+          <li>Research-backed leadership development through books, assessments, workshops, coaching, and keynotes.</li>
+          <li>Focus on leader behavior, talent activation, and high-performance culture; one memorable idea extended into many products.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Public demand signals</div><ul>
+          <li>Major book sales, a large newsletter audience, recognizable enterprise clients, and extensive training reach.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Marketing activities worth emulating</div><ul>
+          <li>Quiz-to-nurture funnel using a genuinely useful self-assessment.</li>
+          <li>Weekly newsletter delivering one practical leadership idea, consistently.</li>
+          <li>Monthly live show — a recurring appointment with the market, not just campaign bursts.</li>
+          <li>Free tools linked to named IP: discussion guides, reflection tools, development plans.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">What Elevate You should adapt</div><ul>
+          <li>Develop a useful self-leadership or pressure-pattern diagnostic — results should educate, not just collect an email.</li>
+          <li>Build a regular newsletter and recurring live sessions around specific workplace situations.</li>
+          <li>Every free tool should lead naturally to a program, pilot, or conversation.</li>
+        </ul></div>
+        <div class="xrefs"><span class="flabel">Official references</span><a href="https://thewisemangroup.com/" target="_blank" rel="noopener">The Wiseman Group</a><a href="https://thewisemangroup.com/who-we-are/our-team/liz-wiseman/" target="_blank" rel="noopener">Liz Wiseman</a><a href="https://thewisemangroup.com/services/workshops/" target="_blank" rel="noopener">Workshops</a></div>
+      </div>
+    </div>
+
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false">
+        <div class="ttl"><h4>The Optimism Company / Simon Sinek</h4><span class="tag think3d"><i></i>Think3D</span><span class="tag elevate"><i></i>Elevate You</span></div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="xcard-panel">
+        <div class="xfield"><div class="flabel">Category fit</div><p>Direct leadership-development peer and the strongest personal-brand-led marketing exemplar; not an exact substitute for all of Think3D's consulting work.</p></div>
+        <div class="xfield"><div class="flabel">Why it's in the same niche</div><ul>
+          <li>Sells leadership, trust, communication, culture, and purpose through keynotes, workshops, private classes, and custom organizational programs.</li>
+          <li>Simon's personal authority creates demand for both individual learning and high-consideration organizational engagements — the same pathway relevant to Tamien, Vaney, and Matt.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Public demand signals</div><ul>
+          <li>Global book and media reach, a major podcast and newsletter, millions of video views, and enterprise clients.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Marketing activities worth emulating</div><ul>
+          <li>Repeats one signature thesis for years rather than constantly inventing new messages.</li>
+          <li>Builds a long-form authority engine — talks, podcast, books, interviews, essays — before the buyer ever reaches a business page.</li>
+          <li>Scales through a trained instructor network instead of requiring the founder to deliver every engagement.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">What to adapt — <span class="notcopy">do not copy tone or language</span></div><ul>
+          <li>Tamien needs a small number of signature ideas consistently linked to the correct Think3D, Elevate You, speaking, or book pathway.</li>
+          <li>Copy the discipline of category repetition and the separation between authority content and commercial conversion — not Simon's voice.</li>
+        </ul></div>
+        <div class="xrefs"><span class="flabel">Official references</span><a href="https://simonsinek.com/" target="_blank" rel="noopener">The Optimism Company</a><a href="https://simonsinek.com/business" target="_blank" rel="noopener">Business Programs</a><a href="https://simonsinek.com/simons-bio" target="_blank" rel="noopener">Bio</a></div>
+      </div>
+    </div>
+
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false">
+        <div class="ttl"><h4>Great Place To Work</h4><span class="tag think3d"><i></i>Think3D — adjacent</span></div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="xcard-panel">
+        <div class="xfield"><div class="flabel">Category fit</div><p>Adjacent culture-measurement and recognition exemplar; not a direct substitute for Think3D's implementation work.</p></div>
+        <div class="xfield"><div class="flabel">Why it's relevant but not exact</div><ul>
+          <li>Reaches the same HR, people, and executive buyers through surveys, benchmarking, and certification.</li>
+          <li>Its strongest commercial engine is certification and benchmarking rather than leadership and culture implementation.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Marketing activities worth emulating</div><ul>
+          <li>Uses recognition itself as demand creation, paired with visible status.</li>
+          <li>Runs annual lists and events as recurring market moments that generate PR, referrals, and partnerships.</li>
+          <li>Survey-led entry point creates a natural path into consulting.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel"><span class="notcopy">What not to copy</span></div><p>Think3D should not create a certification or award before its criteria, verification process, governance, and market credibility are strong enough to protect trust.</p></div>
+        <div class="xrefs"><span class="flabel">Official references</span><a href="https://www.greatplacetowork.com/" target="_blank" rel="noopener">Great Place To Work</a><a href="https://greatplacetowork.com.ph/culture-consulting/" target="_blank" rel="noopener">Culture Consulting</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subhead reveal" style="margin-top:52px;">Personal-Brand Authorities Worth Studying</div>
+  <p class="flow-note reveal" style="margin-top:12px;">These aren't all exact operational competitors — some are personal-brand exemplars whose authority creates demand for leadership products, speaking, and coaching, the same mechanism Tamien, Vaney, and Matt are already building.</p>
+
+  <div class="xlist reveal">
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false">
+        <div class="ttl"><h4>Patrick Lencioni</h4><span class="sub">Think3D — organizational health, leadership-team alignment, executive offsites</span></div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="xcard-panel">
+        <div class="xfield"><div class="flabel">Why benchmark him</div><p>Both a founder and a category creator whose personal ideas directly power a consulting company.</p></div>
+        <div class="xfield"><div class="flabel">What made it work</div><p>Made a complex organizational problem easy to understand through memorable language and business fables; turned books into assessments, talks, consulting, offsites, software, and certification.</p></div>
+        <div class="xfield"><div class="flabel">Emulate</div><p>Make Think3D's frameworks easier to name, remember, explain, and diagnose; build a clear executive-offsite or diagnostic entry point that can progress into a longer implementation journey.</p></div>
+        <div class="xrefs"><span class="flabel">Official reference</span><a href="https://www.tablegroup.com/pat/" target="_blank" rel="noopener">tablegroup.com/pat</a></div>
+      </div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false">
+        <div class="ttl"><h4>Simon Sinek</h4><span class="sub">Tamien's ecosystem authority — speaking, books, leadership, purpose, trust</span></div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="xcard-panel">
+        <div class="xfield"><div class="flabel">Why benchmark him</div><p>His personal brand converts a small set of signature ideas into content, a podcast, an app, keynotes, workshops, and facilitator training.</p></div>
+        <div class="xfield"><div class="flabel">Emulate</div><p>Consistent signature language, high-quality long-form conversations, short practical lessons, an email audience, and product paths that extend beyond speaking.</p></div>
+        <div class="xfield"><div class="flabel"><span class="notcopy">Do not copy</span></div><p>Broad inspirational content without a clear Think3D or Elevate You commercial route.</p></div>
+        <div class="xrefs"><span class="flabel">Official reference</span><a href="https://simonsinek.com/" target="_blank" rel="noopener">simonsinek.com</a></div>
+      </div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false">
+        <div class="ttl"><h4>Marshall Goldsmith</h4><span class="sub">Both — measurable behavior-change coaching, relevant especially to Elevate You</span></div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="xcard-panel">
+        <div class="xfield"><div class="flabel">Why benchmark him</div><p>Authority grounded in a specific, measurable coaching method (Stakeholder Centered Coaching), extensive free education, books, executive proof, and a global coach network.</p></div>
+        <div class="xfield"><div class="flabel">What made it work</div><p>Uses stakeholder evidence — the people around the leader, not the coach — to confirm whether behavior actually changed.</p></div>
+        <div class="xfield"><div class="flabel">Emulate</div><p>Practical free tools, a clear behavior-change promise, strong founder-led publishing, and visible proof of methodology; make the practice-and-evidence loop extremely easy to explain; build Tamien and Matt's personal authority around the methodology, not only the company brand.</p></div>
+        <div class="xrefs"><span class="flabel">Official references</span><a href="https://www.marshallgoldsmith.com/" target="_blank" rel="noopener">marshallgoldsmith.com</a><a href="https://www.marshallgoldsmith.com/post/stakeholder-centered-coaching" target="_blank" rel="noopener">Stakeholder Centered Coaching</a></div>
+      </div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false">
+        <div class="ttl"><h4>Dr. Jessica Kriegel</h4><span class="sub">Model for Vaney &amp; Tamien as visible in-house culture experts</span></div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="xcard-panel">
+        <div class="xfield"><div class="flabel">Why benchmark her</div><p>She operates as a visible executive expert inside a culture-consulting company rather than as a detached lifestyle influencer.</p></div>
+        <div class="xfield"><div class="flabel">Emulate</div><p>Media commentary on current workplace issues, research-backed executive webinars, TED-level speaking assets, provocative category language, and consistent routing back to the company's assessment and consultation.</p></div>
+        <div class="xrefs"><span class="flabel">Official reference</span><a href="https://culturepartners.com/about/bio-jessica-kriegel/" target="_blank" rel="noopener">Jessica Kriegel bio</a></div>
+      </div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false">
+        <div class="ttl"><h4>Liz Wiseman</h4><span class="sub">Matt &amp; Tamien's Elevate You authority and practical content</span></div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="xcard-panel">
+        <div class="xfield"><div class="flabel">What made it work</div><p>One research-backed concept expanded into books, quizzes, assessments, workshops, coaching, keynotes, free tools, a newsletter, and a monthly show — providing immediate utility before any commercial ask.</p></div>
+        <div class="xfield"><div class="flabel">Emulate</div><p>A useful self-leadership diagnostic, a regular newsletter, and recurring live sessions built around specific workplace situations; every free tool leads naturally to a program, pilot, or conversation.</p></div>
+        <div class="xrefs"><span class="flabel">Official reference</span><a href="https://thewisemangroup.com/who-we-are/our-team/liz-wiseman/" target="_blank" rel="noopener">thewisemangroup.com</a></div>
+      </div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false">
+        <div class="ttl"><h4>Amy C. Edmondson</h4><span class="sub">Vaney's culture &amp; communication authority — psychological safety, team learning</span></div>
+        <span class="chev">⌄</span>
+      </button>
+      <div class="xcard-panel">
+        <div class="xfield"><div class="flabel">Why benchmark her</div><p>Adjacent authority exemplar, not a direct competitor — built category authority through original academic research, books, articles, teaching, and one precisely named concept, earning influence as the <i>source</i> of the idea rather than a commentator.</p></div>
+        <div class="xfield"><div class="flabel">Emulate</div><p>Think3D should develop original research and documented field insight around intentional culture, communication, and behavior under pressure; Vaney should own a small number of sharply defined ideas and build evidence around them.</p></div>
+        <div class="xrefs"><span class="flabel">Official reference</span><a href="https://amycedmondson.com/about/" target="_blank" rel="noopener">amycedmondson.com</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="patterns" class="bg-alt" data-label="10 Marketing Patterns">
+  <div class="eyebrow reveal">What the Leaders Have in Common</div>
+  <h2 class="h-lg reveal">Ten marketing patterns, shared by every category leader.</h2>
+  <p class="lede reveal">Across all ten organizations above, the same demand architecture repeats — regardless of whether they sell software, consulting, or coaching. Tap each pattern for what it means for Think3D and Elevate You.</p>
+
+  <div class="xlist reveal">
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>1. They own named intellectual property</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="xfield"><p>Successful firms don't market "leadership coaching" alone. They market Organizational Health, Outward Mindset, The Results Equation, SLII, Human Transformation, Stakeholder Centered Coaching — a memorable, ownable system.</p></div><div class="xfield"><div class="flabel">Implication</div><p>Think3D and Elevate You need separate named category language and separate signature methods.</p></div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>2. They educate before they sell</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="xfield"><p>Books, podcasts, webinars, reports, guides, newsletters, and free courses let buyers experience the thinking before entering a sales process.</p></div><div class="xfield"><div class="flabel">Implication</div><p>The goal is not more generic posting — it's a deliberate library that helps buyers diagnose problems and understand the method.</p></div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>3. They use assessments as demand capture</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="xfield"><p>Assessments work because they create useful self-recognition and give a natural reason for a debrief or strategy session.</p></div><div class="xfield"><div class="flabel">Implication</div><p>Think3D should have an organizational culture or leadership diagnostic. Elevate You should have a separate self-leadership or behavioral-pattern diagnostic.</p></div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>4. They convert through a consultative next step</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="xfield"><p>The enterprise CTA is usually a strategy session, consultation, advisor conversation, or tailored demo — not an immediate purchase.</p></div><div class="xfield"><div class="flabel">Implication</div><p>Website and campaign CTAs should reflect buyer readiness and route to the correct business and CRM.</p></div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>5. They prove outcomes repeatedly</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="xfield"><p>Client stories, logos, quotes, quantified outcomes, before-and-after narratives, and implementation details reduce perceived risk.</p></div><div class="xfield"><div class="flabel">Implication</div><p>Proof capture must become part of delivery for both businesses — not an afterthought.</p></div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>6. They productize the first step</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="xfield"><p>Executive offsites, workshops, assessments, open programs, public courses, or pilots give buyers a lower-risk way to experience the methodology.</p></div><div class="xfield"><div class="flabel">Implication</div><p>Each business needs one clear flagship entry engagement, once its offers are confirmed by the owners.</p></div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>7. Founder authority and company conversion work together</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="xfield"><p>The individual attracts attention; the company explains the method, proof, implementation, and next step.</p></div><div class="xfield"><div class="flabel">Implication</div><p>Tamien, Vaney, and Matt's live personal websites should distribute authority into the correct business rather than merge the brands.</p></div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>8. They build owned audiences</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="xfield"><p>Newsletters, subscriber communities, practitioner groups, podcasts, and certification communities reduce dependence on social algorithms.</p></div><div class="xfield"><div class="flabel">Implication</div><p>Think3D and Elevate You each need separate email audiences and nurture systems.</p></div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>9. They create distribution through partners</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="xfield"><p>Certifications, licensed content, resellers, facilitators, associations, and strategic alliances expand reach beyond what a founder can deliver alone.</p></div><div class="xfield"><div class="flabel">Implication</div><p>Begin with chambers, associations, HR networks, event partners, and referral partners before considering formal certification.</p></div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>10. They measure application, not attendance</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="xfield"><p>The best brands discuss behavior application, business performance, stakeholder perception, retention, productivity, and implementation — not just satisfaction scores.</p></div><div class="xfield"><div class="flabel">Implication</div><p>Measurement must be designed into the program before marketing makes outcome claims.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="recommendations" data-label="Recommendations">
+  <div class="eyebrow reveal">What We Recommend</div>
+  <h2 class="h-lg reveal">Turning the benchmark into a build plan.</h2>
+  <p class="lede reveal">One recommended demand model per business, plus the highest-impact activities to implement first — each expandable below.</p>
+
+  <div class="xlist reveal">
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Recommended model — Think3D</h4><span class="tag think3d"><i></i>Think3D</span></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel">
+        <div class="xfield"><div class="flabel">Primary benchmark combination</div><ul>
+          <li><b>Culture Partners:</b> category positioning, assessment, executive webinars, business-outcome framing.</li>
+          <li><b>The Table Group:</b> founder IP, books, organizational-health category, executive offsite as entry engagement.</li>
+          <li><b>Arbinger:</b> mindset-based frameworks, practical tools, newsletter, webinars, facilitator pathway.</li>
+          <li><b>CCL:</b> research authority, clear audience segmentation, program transparency, buyer enablement.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Recommended demand system</div><p>Tamien and Vaney publish distinct but coordinated points of view → content routes to a Think3D culture or leadership diagnostic → the diagnostic leads to an executive debrief → the debrief identifies the right workshop, retreat, assessment, or consulting path → delivery creates case studies, testimonials, and new content → relevant organizations enter long-term nurture through HubSpot.</p></div>
+      </div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Recommended model — Elevate You</h4><span class="tag elevate"><i></i>Elevate You</span></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel">
+        <div class="xfield"><div class="flabel">Primary benchmark combination</div><ul>
+          <li><b>BetterUp:</b> personalized development at scale, enterprise proof, privacy, solution segmentation.</li>
+          <li><b>Marshall Goldsmith:</b> measurable behavior change, founder authority, free tools, stakeholder evidence.</li>
+          <li><b>FranklinCovey:</b> inside-out development, habits, reinforced journeys, organizational scale.</li>
+          <li><b>Blanchard:</b> productized self-leadership, multiple delivery formats, application, measurement.</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Recommended demand system</div><p>Tamien and Matt publish self-leadership and behavior-under-pressure content → content routes to an Elevate You diagnostic, public experience, or executive briefing → nurture explains the practice loop, privacy model, participant experience, and organizational value → qualified buyers enter a fit and diagnostic conversation → the recommended pilot, cohort, or implementation is scoped after discovery → delivery creates validated evidence, participant stories, and expansion opportunities in Pipedrive.</p></div>
+      </div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Highest-impact activities to implement first</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel">
+        <div class="xfield"><ul>
+          <li>Confirm each business's actual offer architecture with Tamien, Vaney, and Matt before campaigns are built.</li>
+          <li>Define one named category and signature entry diagnostic for each business.</li>
+          <li>Build two separate monthly webinar programs: Think3D culture/leadership topics and Elevate You self-leadership/behavior topics.</li>
+          <li>Create a proof-capture system covering testimonials, executive interviews, results, and implementation stories.</li>
+          <li>Build separate owned email audiences and nurture sequences.</li>
+          <li>Optimize the live personal-brand websites so every CTA routes to the correct business, CRM, and follow-up owner.</li>
+          <li>Create one flagship entry engagement for each business, once owners confirm offer packaging.</li>
+          <li>Use partner distribution — chambers, associations, HR communities, conferences, and trusted introducers.</li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="northstar reveal" style="margin-top:44px;">
+    <div class="eyebrow" style="margin-bottom:10px;">Final Recommendation</div>
+    <p style="font-size:17px; font-weight:500; line-height:1.5;">The single most important lesson from the category leaders isn't their posting frequency — it's their demand architecture:</p>
+    <div class="cadence-row" style="margin-top:22px;">
+      <div class="cadchip">Distinct category</div>
+      <div class="cadchip">Memorable IP</div>
+      <div class="cadchip">Founder authority</div>
+      <div class="cadchip">Useful assessment or event</div>
+      <div class="cadchip">Owned audience</div>
+      <div class="cadchip">Consultative conversation</div>
+      <div class="cadchip">Defined entry engagement</div>
+      <div class="cadchip">Sustained implementation</div>
+      <div class="cadchip">Measurable proof</div>
+      <div class="cadchip">Referral &amp; expansion</div>
+    </div>
+    <p style="margin-top:24px; font-size:14.5px; color:var(--ink-soft); line-height:1.6; max-width:640px;">Think3D and Elevate You should each build this independently. Coordination happens only through approved events, referrals, and Tamien's ownership — never a merged brand or funnel.</p>
+  </div>
+</section>
+
+<section id="journey" data-label="Buyer Journey">
+  <div class="eyebrow reveal">The High-Ticket Standard</div>
+  <h2 class="h-lg reveal">The path a serious buyer actually takes.</h2>
+  <p class="lede reveal">No channel should try to close a six-figure engagement from a single social post or landing page. Every step earns the right to the next.</p>
+
+  <div class="flow reveal">
+    <div class="step"><div class="box"><div class="n">01</div><div class="t">Authority &amp; reputation</div></div></div><div class="arrow">→</div>
+    <div class="step"><div class="box"><div class="n">02</div><div class="t">Problem recognition</div></div></div><div class="arrow">→</div>
+    <div class="step"><div class="box"><div class="n">03</div><div class="t">Repeated trust exposure</div></div></div><div class="arrow">→</div>
+    <div class="step"><div class="box"><div class="n">04</div><div class="t">Proof &amp; method understanding</div></div></div><div class="arrow">→</div>
+    <div class="step"><div class="box"><div class="n">05</div><div class="t">Diagnostic conversation</div></div></div><div class="arrow">→</div>
+    <div class="step"><div class="box"><div class="n">06</div><div class="t">Stakeholder alignment</div></div></div><div class="arrow">→</div>
+    <div class="step"><div class="box"><div class="n">07</div><div class="t">Scoped recommendation</div></div></div><div class="arrow">→</div>
+    <div class="step"><div class="box"><div class="n">08</div><div class="t">Proposal &amp; decision</div></div></div><div class="arrow">→</div>
+    <div class="step"><div class="box"><div class="n">09</div><div class="t">Implementation</div></div></div><div class="arrow">→</div>
+    <div class="step"><div class="box"><div class="n">10</div><div class="t">Proof capture &amp; expansion</div></div></div></div>
+  </div>
+  <p class="flow-note reveal">Direct enrollment is only appropriate when the buyer already trusts Tamien, Vaney, Think3D, or Elevate You; the offer is standardized; and price, fit, and terms are already clear.</p>
+</section>
+
+<section id="system" class="bg-alt" data-label="Marketing System">
+  <div class="eyebrow reveal">Marketing Operating Mix</div>
+  <h2 class="h-lg reveal">Four jobs, working together.</h2>
+  <p class="lede reveal">Marketing must accomplish these before ever asking for a commercial commitment.</p>
+
+  <div class="grid4">
+    <div class="scard reveal"><div class="tag-mini">01</div><h4>Authority &amp; brand building</h4><p>Sustained founder-led thought leadership, signature ideas, speaking, and category education.</p></div>
+    <div class="scard reveal"><div class="tag-mini">02</div><h4>Proof &amp; risk reduction</h4><p>Case studies, testimonials, implementation walkthroughs, and stakeholder FAQs.</p></div>
+    <div class="scard reveal"><div class="tag-mini">03</div><h4>Demand capture &amp; nurture</h4><p>Diagnostics, executive briefings, event registrations, and relevant follow-up.</p></div>
+    <div class="scard reveal"><div class="tag-mini">04</div><h4>Selective direct response</h4><p>Invitations to a diagnostic, workshop, or qualified conversation — capturing existing demand, not manufacturing it.</p></div>
+  </div>
+  <div class="paidnote reveal">Paid media amplifies what's already proven — <b style="color:var(--ink)">organic proof always comes first.</b> No broad awareness spend without a named audience and a working conversion path.</div>
+</section>
+
+<section id="measurement" data-label="Measurement">
+  <div class="eyebrow reveal">Measurement Framework</div>
+  <h2 class="h-lg reveal">Revenue movement, not content volume.</h2>
+
+  <div class="northstar reveal">
+    <div class="eyebrow" style="margin-bottom:8px;">North star</div>
+    <p>Qualified pipeline and revenue influenced by founder-led authority, content, events, partnerships, and outbound — reported separately for each business.</p>
+  </div>
+
+  <div class="scoregrid">
+    <div class="scorecat reveal"><h5>Authority &amp; audience</h5><ul><li>Qualified profile views</li><li>Target-account engagement</li><li>Speaking &amp; podcast invitations</li></ul></div>
+    <div class="scorecat reveal"><h5>Owned audience</h5><ul><li>Landing-page conversion rate</li><li>Diagnostic &amp; briefing registrations</li><li>Growth of warm marketable segments</li></ul></div>
+    <div class="scorecat reveal"><h5>Pipeline</h5><ul><li>Qualified leads by brand &amp; source</li><li>Meetings booked, opportunities created</li><li>Pipeline value influenced</li></ul></div>
+    <div class="scorecat reveal"><h5>Event performance</h5><ul><li>Registration-to-attendance rate</li><li>Post-event meetings &amp; opportunities</li><li>Revenue influenced</li></ul></div>
+  </div>
+</section>
+
+<section id="roadmap" class="bg-alt" data-label="How We Build">
+  <div class="eyebrow reveal">How We Build — And Keep Building</div>
+  <h2 class="h-lg reveal">Built in phases. Operated as a standing engagement.</h2>
+  <p class="lede reveal">Authority-led marketing compounds — it doesn't stop after a launch window. The first three phases stand up the system; the fourth is the standing operating cadence for as long as the engagement runs.</p>
+
+  <div class="momentum reveal">
+    <div class="flabel-row"><i></i>Already in motion — not hypothetical</div>
+    <ul>
+      <li><b>Sioux Falls</b> is closed and complete — 72 confirmed unique registrants, full show-up email cadence, promotion wrapped.</li>
+      <li><b>Kansas City</b> is live now — registrations building, Apollo outreach running, HubSpot workflows on.</li>
+      <li><b>Jacksonville</b> promotion is underway, pointed at Pathlight's registration page.</li>
+      <li><b>September 22 (Elevate You)</b> has a confirmed Strategic Event Brief, a five-tier product menu, and Zeffy selected as the registration and payment platform — venue is the last open item.</li>
+    </ul>
+  </div>
+
+  <div class="phases">
+    <div class="phase reveal">
+      <div class="days">PHASE 1 — FOUNDATION</div>
+      <h4>Define the system</h4>
+      <div class="lbl">Priority work</div>
+      <p>Finalize business roles, buyer groups, category positioning, named methodology, offer journeys, CTAs, CRM ownership, and one proprietary diagnostic per business.</p>
+      <div class="deliv">→ Approved category &amp; message architecture</div>
+    </div>
+    <div class="phase reveal">
+      <div class="days">PHASE 2 — AUTHORITY &amp; DEMAND</div>
+      <h4>Launch the engines</h4>
+      <div class="lbl">Priority work</div>
+      <p>Separate founder source sessions, recurring point-of-view content, first diagnostic and executive debrief, one recurring webinar per business.</p>
+      <div class="deliv">→ Owned-audience capture &amp; nurture workflows live</div>
+    </div>
+    <div class="phase reveal">
+      <div class="days">PHASE 3 — CONVERT &amp; PROVE</div>
+      <h4>Turn activity into pipeline</h4>
+      <div class="lbl">Priority work</div>
+      <p>Publish problem-specific case studies, deploy buyer-enablement guides, promote proven assets, launch selective outbound or paid tests.</p>
+      <div class="deliv">→ Qualified pipeline reporting, documented proof library</div>
+    </div>
+    <div class="phase reveal">
+      <div class="days">ONGOING — EVERY MONTH AFTER</div>
+      <h4>Keep executing, keep iterating</h4>
+      <div class="lbl">Standing cadence</div>
+      <p>Fresh founder content every month, a campaign or event always in motion, continuous testing of offers and channels, and monthly reporting that reprioritizes the next month's work.</p>
+      <div class="deliv">→ Continuous execution &amp; monthly optimization</div>
+    </div>
+  </div>
+</section>
+
+<section id="roles" data-label="Roles &amp; Ownership">
+  <div class="eyebrow reveal">Operating Model</div>
+  <h2 class="h-lg reveal">Clear owners. No overlap.</h2>
+
+  <div class="tablewrap reveal">
+    <table>
+      <thead><tr><th>Owner</th><th>Responsible for</th></tr></thead>
+      <tbody>
+        <tr><td><b>StreamLab</b></td><td>Marketing strategy and campaign architecture, content planning and distribution, landing pages, CRM workflows, reporting, and performance optimization.</td></tr>
+        <tr><td><b>Tamien</b></td><td>Executive authority and source material, final voice and positioning approval, strategic relationships, and commercial conversations across both brands.</td></tr>
+        <tr><td><b>Vaney</b></td><td>Culture and community authority, Think3D inbound leadership, speaking and partnerships, protection of his distinct point of view.</td></tr>
+        <tr><td><b>Matt / Elevate You leadership</b></td><td>Product, delivery, and proof credibility; pilot outcomes and expansion recommendations; final offer and event details.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cadence-row reveal">
+    <div class="cadchip"><b>Weekly</b> — campaign, content &amp; blocker review</div>
+    <div class="cadchip"><b>Monthly</b> — performance &amp; pipeline report</div>
+    <div class="cadchip"><b>Quarterly</b> — positioning, offer &amp; budget review</div>
+  </div>
+</section>
+
+<section id="firstmove" class="bg-alt" data-label="First Move">
+  <div class="eyebrow reveal">Already Underway</div>
+  <h2 class="h-lg reveal">September 22 — the proof point, already in build.</h2>
+
+  <div class="firstmove-wrap">
+    <div class="reveal">
+      <div class="datepill">📅 Elevate You Event — Sept 22</div>
+      <p class="lede" style="margin-top:0;">The logistics are already moving. What's left is finalizing Elevate You's category-level positioning and diagnostic conversion path so this event lands as the first complete implementation of the system above — not just another seminar.</p>
+    </div>
+    <div class="checklist reveal">
+      <ul>
+        <li><b>Done —</b> Strategic Event Brief received from Matt (Jul 24)</li>
+        <li><b>Done —</b> Five-tier product menu &amp; core talking points confirmed</li>
+        <li><b>Done —</b> Zeffy selected as the registration &amp; payment platform</li>
+        <li><b>Open —</b> Venue confirmation &amp; capacity (Matt)</li>
+        <li><b>Open —</b> Warm outreach list — coaching clients &amp; companies already in conversation</li>
+        <li><b>Next —</b> Diagnostic/strategy-session conversion path + full Pipedrive attribution</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="proposal">
+  <div class="eyebrow reveal">Our Proposal</div>
+  <h2 class="h-xl reveal">Let's build this, together.</h2>
+  <p class="lede reveal">StreamLab runs the strategy, systems, content, and reporting. You bring the authority, the relationships, and the final word on voice.</p>
+
+  <div class="actionlist reveal">
+    <div class="actionitem"><div class="n">01</div><p>Approve the master brand architecture and offer ladder for both businesses.</p></div>
+    <div class="actionitem"><div class="n">02</div><p>Confirm Think3D and Elevate You commercial owners and lead-routing rules.</p></div>
+    <div class="actionitem"><div class="n">03</div><p>Build one primary diagnostic for Think3D and one for Elevate You.</p></div>
+    <div class="actionitem"><div class="n">04</div><p>Complete Tamien and Vaney LinkedIn conversion audits.</p></div>
+    <div class="actionitem"><div class="n">05</div><p>Establish the monthly founder source-content recording cadence.</p></div>
+    <div class="actionitem"><div class="n">06</div><p>Build the September 22 event as the first full campaign under this plan.</p></div>
+  </div>
+
+  <div class="investcard reveal">
+    <h3>One integrated retainer. Scoped to outcomes, not tasks.</h3>
+    <p>A single monthly partnership covering strategy, content, campaign build, CRM systems, and reporting across both Think3D and Elevate You — structured around the priorities in this plan. Exact scope and investment to align on in this conversation.</p>
+    <div class="cta-row">
+      <a class="btn" href="#cover">Let's align on scope</a>
+      <a class="btn ghost" href="#roadmap">Review how we build &amp; keep building</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>Prepared by StreamLab AI — confidential, for Think3D &amp; Elevate You leadership only.</div>
+  <div>July 2026</div>
+</footer>
+
+<script>
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+  var labels = {
+    cover: 'Overview', tension: 'The Operating Principle', niche: 'Why This Needs a Different Playbook', summary: 'Executive Summary',
+    assets: 'Live Assets', benchmark: 'Category Benchmark', patterns: '10 Marketing Patterns',
+    recommendations: 'Recommendations',
+    journey: 'Buyer Journey', system: 'Marketing System', measurement: 'Measurement',
+    roadmap: 'How We Build', roles: 'Roles & Ownership',
+    firstmove: 'First Move', proposal: 'Our Proposal'
+  };
+  var order = Object.keys(labels);
+  var navidx = document.getElementById('navidx');
+  var navlabel = document.getElementById('navlabel');
+  var progress = document.getElementById('progress');
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) e.target.classList.add('in-view');
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  var currentId = 'cover';
+  var dotEls = {};
+  var navIo = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var id = e.target.id;
+        var i = order.indexOf(id);
+        if (i > -1) {
+          currentId = id;
+          navidx.textContent = String(i+1).padStart(2,'0');
+          navlabel.textContent = labels[id];
+          Object.keys(dotEls).forEach(function(k){ dotEls[k].classList.toggle('active', k === id); });
+        }
+      }
+    });
+  }, { threshold: 0, rootMargin: '-48% 0px -48% 0px' });
+  sections.forEach(function(s){ navIo.observe(s); });
+
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement;
+    var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = scrolled + '%';
+  }, { passive: true });
+
+  /* dot nav: build clickable jump-to-section rail */
+  var dotnav = document.getElementById('dotnav');
+  order.forEach(function(id){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Go to ' + labels[id]);
+    var tip = document.createElement('span');
+    tip.className = 'tip';
+    tip.textContent = labels[id];
+    b.appendChild(tip);
+    b.addEventListener('click', function(){
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    dotnav.appendChild(b);
+    dotEls[id] = b;
+  });
+  dotEls['cover'].classList.add('active');
+
+  /* collapsible benchmark & risk cards */
+  function wireCollapsible(selector, triggerClass, panelClass){
+    document.querySelectorAll(selector).forEach(function(card){
+      var trigger = card.querySelector('.' + triggerClass);
+      var panel = card.querySelector('.' + panelClass);
+      if (!trigger || !panel) return;
+      function setOpen(open){
+        card.classList.toggle('open', open);
+        trigger.setAttribute('aria-expanded', String(open));
+        panel.style.maxHeight = open ? (panel.scrollHeight + 'px') : '0px';
+      }
+      trigger.addEventListener('click', function(){ setOpen(!card.classList.contains('open')); });
+      setOpen(card.classList.contains('open'));
+    });
+  }
+  wireCollapsible('.xcard', 'xcard-trigger', 'xcard-panel');
+  window.addEventListener('resize', function(){
+    document.querySelectorAll('.xcard.open .xcard-panel').forEach(function(p){
+      p.style.maxHeight = p.scrollHeight + 'px';
+    });
+  });
+
+  /* keyboard: arrow left/right or space to move between sections, like a deck */
+  document.addEventListener('keydown', function(e){
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var tag = (document.activeElement && document.activeElement.tagName) || '';
+    if (tag === 'BUTTON' && (e.key === ' ' || e.key === 'Enter')) return; /* let collapsibles handle their own activation */
+    var i = order.indexOf(currentId);
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault();
+      var next = order[Math.min(i + 1, order.length - 1)];
+      document.getElementById(next).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      var prev = order[Math.max(i - 1, 0)];
+      document.getElementById(prev).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+</script>
