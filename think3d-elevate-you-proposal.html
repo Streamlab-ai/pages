@@ -324,6 +324,9 @@
   .investcard { margin-top: 56px; padding: 40px clamp(24px,5vw,52px); border-radius: var(--radius-lg); background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.12); }
   .investcard h3 { font-size: clamp(22px,2.8vw,30px); font-weight: 700; letter-spacing: -0.01em; color: #f5f5f7; }
   .investcard p { margin-top: 14px; font-size: 16px; color: #b6b6ba; max-width: 560px; line-height: 1.55; }
+  .pricerow { margin-top: 32px; display: flex; gap: 40px; flex-wrap: wrap; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .pricestat .amt { font-size: clamp(30px, 3.6vw, 42px); font-weight: 700; letter-spacing: -0.02em; color: #fff; font-variant-numeric: tabular-nums; }
+  .pricestat .lbl { margin-top: 6px; font-size: 13px; color: #9a9aa0; max-width: 220px; line-height: 1.4; }
   .cta-row { margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
   .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 600; font-size: 15px; text-decoration: none; border: none; cursor: pointer; }
   .btn.ghost { background: transparent; border: 1px solid rgba(255,255,255,0.25); color: #f5f5f7; }
@@ -1120,8 +1123,12 @@
   </div>
 
   <div class="investcard reveal">
-    <h3>One integrated retainer. Scoped to outcomes, not tasks.</h3>
-    <p>A single monthly partnership covering strategy, content, campaign build, CRM systems, and reporting across both Think3D and Elevate You — structured around the priorities in this plan. Exact scope and investment to align on in this conversation.</p>
+    <h3>Same rate as the build. Fully scoped now, not ops-only.</h3>
+    <p>During the build, each business unit invested $2,000/month — Think3D's $12,000 build over six months, Elevate You's $8,000 build over four. This proposal continues that same rate, per business unit, going forward. What changes is what it covers: not just HubSpot and Pipedrive upkeep, but the full strategy, content, campaign, and reporting system in this plan.</p>
+    <div class="pricerow">
+      <div class="pricestat"><div class="amt">$2,000<span class="mono" style="font-size:15px;color:#9a9aa0;">/mo</span></div><div class="lbl">Per business unit — Think3D or Elevate You</div></div>
+      <div class="pricestat"><div class="amt">$4,000<span class="mono" style="font-size:15px;color:#9a9aa0;">/mo</span></div><div class="lbl">Combined — both businesses, one integrated system</div></div>
+    </div>
     <div class="cta-row">
       <a class="btn" href="#cover">Let's align on scope</a>
       <a class="btn ghost" href="#roadmap">Review how we build &amp; keep building</a>
