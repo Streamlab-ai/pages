@@ -1,0 +1,585 @@
+<title>Implementation Plan — Think3D + Elevate You</title>
+<style>
+  :root {
+    --bg: #fbfbfa;
+    --bg-alt: #f2f1ee;
+    --ink: #1a1a1a;
+    --ink-soft: #55534d;
+    --ink-faint: #8c897f;
+    --line: rgba(0,0,0,0.10);
+    --card: #ffffff;
+    --card-line: rgba(0,0,0,0.09);
+    --accent: #1d4ed8;
+    --think3d: #1d4ed8;
+    --think3d-bg: rgba(29,78,216,0.08);
+    --elevate: #b5540a;
+    --elevate-bg: rgba(181,84,10,0.10);
+    --good: #166534;
+    --radius: 10px;
+    --maxw: 1180px;
+    --prose: 760px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16161a; --bg-alt: #1e1e23; --ink: #ececec; --ink-soft: #a8a6a0; --ink-faint: #726f68;
+      --line: rgba(255,255,255,0.12); --card: #1e1e23; --card-line: rgba(255,255,255,0.10);
+      --accent: #6ea8fe; --think3d: #6ea8fe; --think3d-bg: rgba(110,168,254,0.12);
+      --elevate: #f0975a; --elevate-bg: rgba(240,151,90,0.14); --good: #4ade80;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #16161a; --bg-alt: #1e1e23; --ink: #ececec; --ink-soft: #a8a6a0; --ink-faint: #726f68;
+    --line: rgba(255,255,255,0.12); --card: #1e1e23; --card-line: rgba(255,255,255,0.10);
+    --accent: #6ea8fe; --think3d: #6ea8fe; --think3d-bg: rgba(110,168,254,0.12);
+    --elevate: #f0975a; --elevate-bg: rgba(240,151,90,0.14); --good: #4ade80;
+  }
+  :root[data-theme="light"] {
+    --bg: #fbfbfa; --bg-alt: #f2f1ee; --ink: #1a1a1a; --ink-soft: #55534d; --ink-faint: #8c897f;
+    --line: rgba(0,0,0,0.10); --card: #ffffff; --card-line: rgba(0,0,0,0.09);
+    --accent: #1d4ed8; --think3d: #1d4ed8; --think3d-bg: rgba(29,78,216,0.08);
+    --elevate: #b5540a; --elevate-bg: rgba(181,84,10,0.10); --good: #166534;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased; line-height: 1.5;
+  }
+  h1, h2, h3, h4 { font-weight: 700; letter-spacing: -0.01em; margin: 0; }
+  p { margin: 0; }
+  a { color: var(--accent); }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+
+  #topbar {
+    position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: saturate(180%) blur(14px); -webkit-backdrop-filter: saturate(180%) blur(14px);
+    border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between;
+    padding: 14px max(20px, calc((100vw - var(--maxw)) / 2)); gap: 16px;
+  }
+  #topbar .brand { font-size: 13.5px; font-weight: 700; white-space: nowrap; }
+  #topbar .brand span { color: var(--ink-soft); font-weight: 500; }
+  #topbar a.backlink { font-size: 12.5px; font-weight: 600; text-decoration: none; white-space: nowrap; }
+
+  .shell { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; display: flex; gap: 48px; align-items: flex-start; }
+  #toc {
+    position: sticky; top: 66px; flex: 0 0 220px; padding: 32px 0 60px;
+    max-height: calc(100vh - 66px); overflow-y: auto;
+  }
+  #toc a { display: block; font-size: 13px; color: var(--ink-soft); text-decoration: none; padding: 6px 0; border-left: 2px solid transparent; padding-left: 12px; margin-left: -12px; }
+  #toc a:hover { color: var(--ink); }
+  #toc a.active { color: var(--accent); border-left-color: var(--accent); font-weight: 600; }
+  @media (max-width: 980px) { #toc { display: none; } }
+
+  main { flex: 1 1 auto; min-width: 0; padding: 44px 0 100px; }
+
+  .masthead { padding-bottom: 36px; border-bottom: 1px solid var(--line); margin-bottom: 40px; }
+  .eyebrow { display: inline-block; font-size: 12.5px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+  h1.title { font-size: clamp(30px, 4vw, 44px); line-height: 1.08; max-width: 780px; }
+  .dek { font-size: 17px; color: var(--ink-soft); max-width: var(--prose); margin-top: 16px; line-height: 1.6; }
+  .meta-row { margin-top: 22px; display: flex; gap: 26px; flex-wrap: wrap; font-size: 13px; color: var(--ink-faint); }
+  .meta-row b { color: var(--ink-soft); font-weight: 600; }
+
+  .statstrip { margin-top: 30px; display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--card-line); border: 1px solid var(--card-line); border-radius: var(--radius); overflow: hidden; }
+  @media (max-width: 700px) { .statstrip { grid-template-columns: repeat(2,1fr); } }
+  .stat { background: var(--card); padding: 18px 20px; }
+  .stat .n { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
+  .stat .l { font-size: 12px; color: var(--ink-soft); margin-top: 4px; }
+
+  section.doc-section { margin-bottom: 56px; scroll-margin-top: 80px; }
+  .snum { font-size: 12.5px; font-weight: 700; color: var(--ink-faint); font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+  h2.sec-title { font-size: clamp(22px, 2.6vw, 28px); margin-top: 6px; max-width: var(--prose); }
+  .sec-dek { font-size: 15px; color: var(--ink-soft); max-width: var(--prose); margin-top: 10px; line-height: 1.6; }
+
+  .callout { margin-top: 20px; padding: 16px 20px; border-radius: var(--radius); background: var(--bg-alt); border-left: 3px solid var(--accent); max-width: var(--prose); }
+  .callout p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
+  .callout b { color: var(--ink); }
+
+  table.datatable { width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 14px; }
+  table.datatable th { text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-faint); font-weight: 700; padding: 8px 14px; border-bottom: 1px solid var(--card-line); }
+  table.datatable td { padding: 10px 14px; border-bottom: 1px solid var(--card-line); vertical-align: top; }
+  table.datatable tr:last-child td { border-bottom: none; }
+  table.datatable tr:nth-child(even) td { background: var(--bg-alt); }
+  table.datatable .actcol { width: auto; }
+  table.datatable .ownercol { width: 130px; white-space: nowrap; }
+
+  .tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+  .tag.sl { background: var(--think3d-bg); color: var(--think3d); }
+  .tag.cl { background: var(--elevate-bg); color: var(--elevate); }
+  .tag.both { background: var(--bg-alt); color: var(--ink-soft); border: 1px solid var(--card-line); }
+  .tag i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+  .ownerkey { margin-top: 18px; display: flex; gap: 20px; flex-wrap: wrap; font-size: 13px; color: var(--ink-soft); }
+  .ownerkey span { display: inline-flex; align-items: center; gap: 7px; }
+
+  .channel-block { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--line); }
+  .channel-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  h3.channel-title { font-size: 19px; }
+  .channel-counts { font-size: 12px; color: var(--ink-faint); white-space: nowrap; }
+  .why-box { margin-top: 12px; max-width: var(--prose); }
+  .why-box .lbl { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--accent); }
+  .why-box p { font-size: 14.5px; color: var(--ink); margin-top: 4px; line-height: 1.6; }
+  .how-box { margin-top: 16px; max-width: var(--prose); }
+  .how-box .lbl { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-faint); }
+  .how-box p { font-size: 14px; color: var(--ink-soft); margin-top: 4px; line-height: 1.6; }
+
+  .cadence-row { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .cadchip { padding: 6px 13px; border-radius: 999px; border: 1px solid var(--card-line); font-size: 12.5px; font-weight: 600; background: var(--card); }
+  .cadchip b { color: var(--accent); font-weight: 700; }
+
+  .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px; max-width: 980px; }
+  @media (max-width: 760px) { .twocol { grid-template-columns: 1fr; } }
+  .panel { border-radius: var(--radius); padding: 22px 24px; border: 1px solid var(--card-line); background: var(--card); }
+  .panel h4 { font-size: 13.5px; text-transform: uppercase; letter-spacing: .04em; color: var(--ink-faint); font-weight: 700; margin-bottom: 14px; }
+  .panel ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .panel li { font-size: 14px; line-height: 1.5; padding-left: 18px; position: relative; }
+  .panel li::before { content: "—"; position: absolute; left: 0; color: var(--ink-faint); }
+
+  .scoregrid { margin-top: 20px; display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; max-width: 980px; }
+  @media (max-width: 700px) { .scoregrid { grid-template-columns: 1fr; } }
+  .scorecat { padding: 16px 18px; border-radius: var(--radius); border: 1px solid var(--card-line); background: var(--card); display: flex; align-items: flex-start; gap: 12px; }
+  .scorecat .num { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12.5px; color: var(--accent); font-weight: 700; flex-shrink: 0; padding-top: 2px; }
+  .scorecat p { font-size: 14px; line-height: 1.5; }
+
+  .cta-row { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 22px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 600; font-size: 14.5px; text-decoration: none; border: none; cursor: pointer; }
+  .btn.ghost { background: transparent; border: 1px solid var(--card-line); color: var(--ink); }
+
+  footer { padding: 32px max(20px, calc((100vw - var(--maxw)) / 2)) 48px; color: var(--ink-faint); font-size: 12.5px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; border-top: 1px solid var(--line); max-width: var(--maxw); margin: 0 auto; }
+</style>
+
+<div id="topbar">
+  <div class="brand">StreamLab AI <span>× Think3D + Elevate You</span></div>
+  <a class="backlink" href="https://streamlab-ai.github.io/pages/think3d-elevate-you-proposal.html">← Back to the Proposal</a>
+</div>
+
+<div class="shell">
+  <nav id="toc"></nav>
+
+  <main>
+    <div class="masthead">
+      <div class="eyebrow">Implementation Plan</div>
+      <h1 class="title">Every channel we run, why it matters, and who owns what.</h1>
+      <p class="dek">This is the working document behind the retainer — not a pitch. For each channel: what we're doing, why it's worth doing, roughly how we do it, and whether it's ours, yours, or shared. No fixed calendar — priority and sequencing get set together and revisited monthly.</p>
+      <div class="meta-row">
+        <div><b>Prepared by</b> StreamLab AI</div>
+        <div><b>Prepared for</b> Tamien Dysart, Vaney Hariri &amp; Matt Krall</div>
+        <div><b>Companion to</b> the Integrated Ops &amp; Marketing Proposal</div>
+      </div>
+      <div class="statstrip">
+        <div class="stat"><div class="n">14</div><div class="l">channel categories</div></div>
+        <div class="stat"><div class="n">75</div><div class="l">distinct tactics in scope</div></div>
+        <div class="stat"><div class="n">36</div><div class="l">run end-to-end by StreamLab</div></div>
+        <div class="stat"><div class="n">37</div><div class="l">shared — your input, our execution</div></div>
+      </div>
+    </div>
+
+    <section class="doc-section" id="howtoread">
+      <div class="snum">01</div>
+      <h2 class="sec-title">How to read this</h2>
+      <p class="sec-dek">Each channel below follows the same pattern: a table of every tactic and who owns it, a short note on why the channel earns its place in the plan, and a short note on how we actually run it. Skim the tables for scope, read the "why" and "how" for the channels you care most about.</p>
+      <div class="ownerkey">
+        <span><span class="tag sl"><i></i>StreamLab</span> we execute end-to-end</span>
+        <span><span class="tag cl"><i></i>Client</span> only you can do this</span>
+        <span><span class="tag both"><i></i>Both</span> you provide the input/relationship, we execute</span>
+      </div>
+      <div class="callout">
+        <p><b>Note on the calendar —</b> there isn't one. Every tactic below is in scope from day one; sequencing and priority get decided jointly at kickoff and reset every month based on what's actually converting, not locked into "week 3" before we've run a single campaign together.</p>
+      </div>
+    </section>
+
+    <section class="doc-section" id="startingfrom">
+      <div class="snum">02</div>
+      <h2 class="sec-title">Where we're starting from — not zero</h2>
+      <p class="sec-dek">This plan isn't a blank slate. Real proof already exists, and this is how we keep it moving and layer the rest on top.</p>
+      <table class="datatable" style="max-width:980px;">
+        <tr><th>Already true</th><th>Detail</th></tr>
+        <tr><td>Sioux Falls</td><td>Closed at 72 confirmed registrants — proof the show-up and follow-up system already works.</td></tr>
+        <tr><td>Kansas City</td><td>Complete — attendance to confirm with Tamien.</td></tr>
+        <tr><td>September 22 (Elevate You)</td><td>Confirmed brief, five-tier offer menu, Framer landing page in build, checkout via the existing HubSpot payment link.</td></tr>
+        <tr><td>Personal brands &amp; social</td><td>All three founders' sites and social channels are already live — this plan routes and optimizes them, it doesn't rebuild them.</td></tr>
+      </table>
+      <div class="callout">
+        <p>We don't manage the Think3D company website — likely the same external builder (Josh) as Elevate You's. Wherever this plan touches the website, we hand off messaging and assets rather than building it ourselves.</p>
+      </div>
+    </section>
+
+    <section class="doc-section" id="lockfirst">
+      <div class="snum">03</div>
+      <h2 class="sec-title">What we lock first</h2>
+      <p class="sec-dek">Not a phase — just the handful of decisions that unblock everything in the channel plan below, sequenced by dependency, not by week.</p>
+      <div class="twocol">
+        <div class="panel">
+          <h4>Yours to decide</h4>
+          <ul>
+            <li>Named category &amp; signature methodology per business — your IP, not ours to assume</li>
+            <li>Final diagnostic scope, matched to what you actually teach</li>
+            <li>Sign-off on category language before it goes live anywhere</li>
+            <li>Confirm Kansas City attendance with us so we can close the loop</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h4>Ours to build once decisions land</h4>
+          <ul>
+            <li>Lock CRM boundaries — HubSpot / Think3D, Pipedrive / Elevate You</li>
+            <li>Think3D culture diagnostic + Elevate You behavior diagnostic</li>
+            <li>LinkedIn profile optimization for Tamien, Vaney &amp; Matt</li>
+            <li>Lead-magnet page and executive-debrief format, each business</li>
+            <li>Sept 22 Framer landing page finalized, HubSpot checkout live</li>
+            <li>Lead-scoring model, SLA rules, and UTM governance across every channel</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="doc-section" id="channels">
+      <div class="snum">04</div>
+      <h2 class="sec-title">The channel plan</h2>
+      <p class="sec-dek">Fourteen categories, every tactic in scope, tagged by owner. This is the core of the plan — the reason it looks this long is that it's the actual scope of work, not a summary of it.</p>
+
+      <div class="channel-block" id="ch-li-organic" style="margin-top:28px; border-top:none; padding-top:0;">
+        <div class="channel-head"><h3 class="channel-title">1. LinkedIn — Organic</h3><span class="channel-counts">5 StreamLab · 1 Client · 5 Both</span></div>
+        <div class="why-box"><div class="lbl">Why</div><p>LinkedIn is the primary channel for all three founders' expertise-led buyers. Organic content is what builds the trust that everything downstream — outreach, paid, events — converts against. It's the main channel called out in the marketing plan, so it gets the most detail here.</p></div>
+        <table class="datatable">
+          <tr><th class="actcol">Activity</th><th class="ownercol">Owner</th></tr>
+          <tr><td>Founder posting — video, text, carousel, polls</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Posting cadence &amp; scheduling</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Comment-first engagement on target accounts</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>LinkedIn Newsletter</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>LinkedIn Articles</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>LinkedIn Live / audio (podcast extension)</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>LinkedIn Groups</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Team advocacy — Vaney, Matt, Manny resharing</td><td><span class="tag cl"><i></i>Client</span></td></tr>
+          <tr><td>Profile optimization — headline, About, Featured, banner</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Company Page posting</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Tagging / mention strategy</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+        </table>
+        <div class="how-box">
+          <div class="lbl">How — posting cadence per founder</div>
+          <div class="cadence-row">
+            <div class="cadchip"><b>Tamien</b> 4/wk — Intentional Leadership &amp; Identity, Culture as Currency, The Leadership Ripple</div>
+            <div class="cadchip"><b>Vaney</b> 3–4/wk — Culture Is Happening, Communication Is Message Received</div>
+            <div class="cadchip"><b>Matt</b> 3/wk — Self-Leadership &amp; Behavior Under Pressure</div>
+          </div>
+          <p style="margin-top:12px;">StreamLab schedules and manages comment-first engagement on target accounts daily; founders record or draft the raw content, StreamLab packages and posts it on cadence.</p>
+        </div>
+      </div>
+
+      <div class="channel-block" id="ch-li-paid">
+        <div class="channel-head"><h3 class="channel-title">2. LinkedIn — Outreach &amp; Paid</h3><span class="channel-counts">4 StreamLab · 2 Both</span></div>
+        <div class="why-box"><div class="lbl">Why</div><p>Organic reach alone doesn't generate qualified conversations fast enough for a five-to-six-figure sale. Direct outreach and paid amplification compress the timeline once organic content is already proving what resonates.</p></div>
+        <table class="datatable">
+          <tr><th class="actcol">Activity</th><th class="ownercol">Owner</th></tr>
+          <tr><td>HeyReach connect + DM sequences</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Sales Navigator list-building</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Single Image / Video Ads</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Event Ads</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Retargeting</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Matched-audience / ABM targeting</td><td><span class="tag both"><i></i>Both</span></td></tr>
+        </table>
+        <div class="how-box">
+          <div class="lbl">How</div>
+          <p>HeyReach is already licensed for Elevate You (~$79/mo); Think3D runs as a separate campaign on the same tool. Mechanics: 20–30 connections/day/sender, connect → add value → soft CTA. ICP is HR/People leaders and culture &amp; OD roles. Replies route to HubSpot or Pipedrive with a named owner. Paid (Single Image/Video Ads, Event Ads) promotes what's already proving out organically or drives event registration — funded by the client, built and managed by StreamLab.</p>
+        </div>
+      </div>
+
+      <div class="channel-block" id="ch-social">
+        <div class="channel-head"><h3 class="channel-title">3. Other Social Platforms</h3><span class="channel-counts">2 StreamLab · 3 Both</span></div>
+        <div class="why-box"><div class="lbl">Why</div><p>Instagram, YouTube, and Facebook reach audiences that don't live on LinkedIn — particularly Elevate You's more consumer-leaning retreat audience. Podcast guesting borrows other people's built-in trust instead of building it from scratch.</p></div>
+        <table class="datatable">
+          <tr><th class="actcol">Activity</th><th class="ownercol">Owner</th></tr>
+          <tr><td>Instagram — Reels, Stories, feed, Guides, Lives</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>YouTube — long-form, Shorts, channel SEO</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Facebook — page, groups, events, retargeting ads</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>X / Threads cross-posting</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Podcast — own show or guesting</td><td><span class="tag both"><i></i>Both</span></td></tr>
+        </table>
+        <div class="how-box"><div class="lbl">How</div><p>LinkedIn content gets repurposed into platform-native formats rather than rebuilt from zero. StreamLab schedules and publishes via the existing Blotato setup; founders supply the raw video/audio.</p></div>
+      </div>
+
+      <div class="channel-block" id="ch-email">
+        <div class="channel-head"><h3 class="channel-title">4. Email / Nurture</h3><span class="channel-counts">6 StreamLab · 2 Both</span></div>
+        <div class="why-box"><div class="lbl">Why</div><p>Owned-audience email is the one channel that's not subject to a platform algorithm change overnight, and it's where most B2B buyers actually convert after several touches — not on the first LinkedIn post.</p></div>
+        <table class="datatable">
+          <tr><th class="actcol">Activity</th><th class="ownercol">Owner</th></tr>
+          <tr><td>Founder newsletter</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Segmented nurture by persona/stage</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Event-triggered sequences</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Re-engagement / win-back</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Lead-magnet delivery</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Sales-assisted 1:1 sequences</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Deliverability management</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>A/B testing subject lines &amp; send times</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+        </table>
+        <div class="how-box"><div class="lbl">How</div><p>Segmented flows built in HubSpot for Think3D and Pipedrive/Mailchimp for Elevate You, triggered by diagnostic completion, event registration, or lead-magnet download — not a single blast list.</p></div>
+      </div>
+
+      <div class="channel-block" id="ch-seo">
+        <div class="channel-head"><h3 class="channel-title">5. SEO</h3><span class="channel-counts">6 StreamLab · 1 Both</span></div>
+        <div class="why-box"><div class="lbl">Why</div><p>Buyers researching "culture consulting" or "leadership development" before they know either founder's name need to find you organically. Over a 12+ month horizon, SEO is the lowest cost-per-lead channel in this whole plan.</p></div>
+        <table class="datatable">
+          <tr><th class="actcol">Activity</th><th class="ownercol">Owner</th></tr>
+          <tr><td>Technical SEO audit</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>On-page SEO / landing pages / blog</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Buyer-intent content</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Local SEO / Google Business Profile</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Backlink building / digital PR</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Schema markup</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>YouTube SEO</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+        </table>
+        <div class="how-box"><div class="lbl">How</div><p>Technical audit first, then a buyer-intent content calendar and backlink outreach, tracked against a defined keyword map for each business — reviewed quarterly since SEO moves slowly by nature.</p></div>
+      </div>
+
+      <div class="channel-block" id="ch-events">
+        <div class="channel-head"><h3 class="channel-title">6. Events</h3><span class="channel-counts">4 Both</span></div>
+        <div class="why-box"><div class="lbl">Why</div><p>In-person and virtual events are already proven demand generators for both businesses — Sioux Falls, Kansas City, September 22. This formalizes what's already working instead of reinventing it.</p></div>
+        <table class="datatable">
+          <tr><th class="actcol">Activity</th><th class="ownercol">Owner</th></tr>
+          <tr><td>In-person seminars/retreats</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Monthly podcast/webinars/briefings</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Speaking placements at third-party events</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Co-hosted events with partners/chambers</td><td><span class="tag both"><i></i>Both</span></td></tr>
+        </table>
+        <div class="how-box"><div class="lbl">How</div><p>Every event is run as a full campaign — dedicated landing page, promotion, attendee and no-show nurture — not a one-off ticket page. Attribution flows into HubSpot or Pipedrive per business.</p></div>
+      </div>
+
+      <div class="channel-block" id="ch-outbound">
+        <div class="channel-head"><h3 class="channel-title">7. Outbound / ABM</h3><span class="channel-counts">1 StreamLab · 2 Both</span></div>
+        <div class="why-box"><div class="lbl">Why</div><p>For named enterprise accounts, waiting for inbound isn't enough. Direct, researched outreach shortens the sales cycle for the highest-value targets specifically.</p></div>
+        <table class="datatable">
+          <tr><th class="actcol">Activity</th><th class="ownercol">Owner</th></tr>
+          <tr><td>Apollo cold email</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Named-account list + decision-maker mapping</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Direct mail / gifting to top accounts</td><td><span class="tag both"><i></i>Both</span></td></tr>
+        </table>
+        <div class="how-box"><div class="lbl">How</div><p>Apollo-run cold email sequences at scale, plus a small, manually curated named-account list for direct mail or gifting where it's worth the higher cost per touch.</p></div>
+      </div>
+
+      <div class="channel-block" id="ch-partnerships">
+        <div class="channel-head"><h3 class="channel-title">8. Partnerships &amp; Referral</h3><span class="channel-counts">5 Both</span></div>
+        <div class="why-box"><div class="lbl">Why</div><p>Chambers, HR associations, and past clients are trusted validators that get you in front of buyers who'd never respond to cold outreach.</p></div>
+        <table class="datatable">
+          <tr><th class="actcol">Activity</th><th class="ownercol">Owner</th></tr>
+          <tr><td>Chamber of Commerce partnerships</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>HR association partnerships</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Formal referral program</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Co-marketing with complementary consultants</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Affiliate / commission structure</td><td><span class="tag both"><i></i>Both</span></td></tr>
+        </table>
+        <div class="how-box"><div class="lbl">How</div><p>Relationship outreach the client leads, since these are trust-based introductions; StreamLab builds the mechanics behind them — tracking, incentive structure, and the co-marketing assets themselves.</p></div>
+      </div>
+
+      <div class="channel-block" id="ch-pr">
+        <div class="channel-head"><h3 class="channel-title">9. PR &amp; Media</h3><span class="channel-counts">3 Both</span></div>
+        <div class="why-box"><div class="lbl">Why</div><p>Third-party media coverage and podcast guest slots carry more credibility than anything either business can say about itself.</p></div>
+        <table class="datatable">
+          <tr><th class="actcol">Activity</th><th class="ownercol">Owner</th></tr>
+          <tr><td>Press releases</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Media / podcast guest-booking outreach</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>HARO / journalist source requests</td><td><span class="tag both"><i></i>Both</span></td></tr>
+        </table>
+        <div class="how-box"><div class="lbl">How</div><p>Structured guest-booking outreach and ongoing HARO/journalist monitoring, timed around real news — an event outcome, a published research piece — rather than generic pitching.</p></div>
+      </div>
+
+      <div class="channel-block" id="ch-content">
+        <div class="channel-head"><h3 class="channel-title">10. Content &amp; Authority Assets</h3><span class="channel-counts">2 StreamLab · 1 Client · 5 Both</span></div>
+        <div class="why-box"><div class="lbl">Why</div><p>Case studies, research, and each business's existing book are the proof buyers actually check before a five-to-six-figure purchase. These assets do the selling when nobody's in the room.</p></div>
+        <table class="datatable">
+          <tr><th class="actcol">Activity</th><th class="ownercol">Owner</th></tr>
+          <tr><td>Think3D diagnostic tool — new build</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Elevate You diagnostic tool — already exists, integrate into funnel</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Case studies / client logos</td><td><span class="tag cl"><i></i>Client</span></td></tr>
+          <tr><td>Original research / white papers</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Downloadable guides / e-books</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Video testimonials</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Framework/methodology one-pagers</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Existing books (both businesses already on Amazon) — promotion &amp; repurposing</td><td><span class="tag both"><i></i>Both</span></td></tr>
+        </table>
+        <div class="how-box"><div class="lbl">How</div><p>StreamLab builds the diagnostic tools, guides, and one-pagers; the client supplies logos, testimonials, and existing book content for us to repurpose into new formats.</p></div>
+      </div>
+
+      <div class="channel-block" id="ch-website">
+        <div class="channel-head"><h3 class="channel-title">11. Website / CRO</h3><span class="channel-counts">5 StreamLab</span></div>
+        <div class="why-box"><div class="lbl">Why</div><p>Every other channel drives traffic somewhere. If that destination doesn't convert, all the upstream work — content, outreach, ads — is wasted.</p></div>
+        <table class="datatable">
+          <tr><th class="actcol">Activity</th><th class="ownercol">Owner</th></tr>
+          <tr><td>Landing page testing (Framer)</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Chat widget / conversational forms</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Exit-intent popups</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Social-proof widgets</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>CTA hierarchy per page</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+        </table>
+        <div class="how-box"><div class="lbl">How</div><p>StreamLab owns all Framer-side testing, forms, popups, and CTA hierarchy end to end — this is fully in our hands, not handed off to Josh's team, since it's landing-page work, not the core company site.</p></div>
+      </div>
+
+      <div class="channel-block" id="ch-crm">
+        <div class="channel-head"><h3 class="channel-title">12. CRM / Sales-Assisted</h3><span class="channel-counts">1 StreamLab · 3 Both</span></div>
+        <div class="why-box"><div class="lbl">Why</div><p>A qualified lead that sits without a named owner or next action is a lead that quietly dies. This is the connective tissue between marketing activity and actual revenue.</p></div>
+        <table class="datatable">
+          <tr><th class="actcol">Activity</th><th class="ownercol">Owner</th></tr>
+          <tr><td>Lead scoring model</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>SLA / response-time enforcement</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Named-owner + next-activity discipline</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Deal-stage playbooks per business</td><td><span class="tag both"><i></i>Both</span></td></tr>
+        </table>
+        <div class="how-box"><div class="lbl">How</div><p>Lead scoring and SLA rules built directly into HubSpot for Think3D and Pipedrive for Elevate You, reviewed weekly against actual response times, not just set up once and left alone.</p></div>
+      </div>
+
+      <div class="channel-block" id="ch-community">
+        <div class="channel-head"><h3 class="channel-title">13. Community</h3><span class="channel-counts">2 Both</span></div>
+        <div class="why-box"><div class="lbl">Why</div><p>A private alumni community turns one-time buyers into repeat referrers and testimonial sources, extending customer value well past the initial engagement.</p></div>
+        <table class="datatable">
+          <tr><th class="actcol">Activity</th><th class="ownercol">Owner</th></tr>
+          <tr><td>Private alumni/member community</td><td><span class="tag both"><i></i>Both</span></td></tr>
+          <tr><td>Recurring alumni events</td><td><span class="tag both"><i></i>Both</span></td></tr>
+        </table>
+        <div class="how-box"><div class="lbl">How</div><p>Platform stood up jointly — StreamLab handles the tech and setup, the client drives actual member engagement and relationships, since that's not something we can manufacture from outside.</p></div>
+      </div>
+
+      <div class="channel-block" id="ch-analytics">
+        <div class="channel-head"><h3 class="channel-title">14. Analytics &amp; Measurement</h3><span class="channel-counts">4 StreamLab</span></div>
+        <div class="why-box"><div class="lbl">Why</div><p>None of the other thirteen categories mean anything if we can't trace them back to real pipeline and revenue. This is how we prove the retainer is working every month, not just report activity.</p></div>
+        <table class="datatable">
+          <tr><th class="actcol">Activity</th><th class="ownercol">Owner</th></tr>
+          <tr><td>UTM governance across every channel</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Attribution model</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Dashboards</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+          <tr><td>Call tracking</td><td><span class="tag sl"><i></i>StreamLab</span></td></tr>
+        </table>
+        <div class="how-box"><div class="lbl">How</div><p>UTM governance and a single attribution model applied across every channel above, StreamLab-owned dashboards, reviewed monthly alongside the Governance cadence below.</p></div>
+      </div>
+    </section>
+
+    <section class="doc-section" id="emulation">
+      <div class="snum">05</div>
+      <h2 class="sec-title">What we're adapting from the category leaders</h2>
+      <p class="sec-dek">The direct line from "what they do" to "what we're building," by business.</p>
+      <div class="twocol">
+        <div class="panel">
+          <h4><span class="tag" style="background:var(--think3d-bg); color:var(--think3d);"><i></i>Think3D</span></h4>
+          <ul>
+            <li><b>Own a named category</b>, not generic "culture consulting" (Culture Partners)</li>
+            <li><b>Client logos + outcome case studies</b> — the highest-leverage proof signal there is. We need these from you; we build them into the diagnostic and collateral, and hand assets to Think3D's web team for the site</li>
+            <li><b>Diagnostic + executive debrief</b> as the entry point</li>
+            <li><b>One flagship entry engagement</b>, clear duration and output (The Table Group)</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h4><span class="tag" style="background:var(--elevate-bg); color:var(--elevate);"><i></i>Elevate You</span></h4>
+          <ul>
+            <li><b>Connect the behavioral system to business outcomes</b> — productivity, retention, performance — without overclaiming (BetterUp). The single most important message we build this quarter.</li>
+            <li><b>Stakeholder-evidence loop</b> — change validated by people around the leader (Marshall Goldsmith)</li>
+            <li><b>Self-leadership diagnostic + monthly session</b> as the owned-audience engine (Wiseman Group)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="doc-section" id="whatweneed">
+      <div class="snum">06</div>
+      <h2 class="sec-title">What we need from you</h2>
+      <p class="sec-dek">A short, honest list — nothing hidden in a footnote.</p>
+      <div class="twocol">
+        <div class="panel">
+          <h4>Think3D — Tamien &amp; Vaney</h4>
+          <ul>
+            <li>Client logos + permission to use them</li>
+            <li>Existing testimonials or results to seed the first case studies</li>
+            <li>One recorded session monthly, each founder</li>
+            <li>Sign-off on category language before launch</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h4>Elevate You — Tamien &amp; Matt</h4>
+          <ul>
+            <li>Sept 22 venue confirmation</li>
+            <li>Warm outreach list</li>
+            <li>A Grateful Homie Project story or data point</li>
+            <li>One recorded session monthly, each founder</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="doc-section" id="measurement">
+      <div class="snum">07</div>
+      <h2 class="sec-title">Measurement</h2>
+      <p class="sec-dek">What "working" looks like, every month.</p>
+      <div class="callout">
+        <p><b>North star —</b> qualified pipeline and revenue influenced by founder-led authority, content, events, partnerships, and outbound — reported separately for each business, every month.</p>
+      </div>
+      <div class="scoregrid">
+        <div class="scorecat"><div class="num">01</div><p>Every campaign has a defined audience, offer, owner, and follow-up plan.</p></div>
+        <div class="scorecat"><div class="num">02</div><p>Every qualified lead has a named owner and next activity.</p></div>
+        <div class="scorecat"><div class="num">03</div><p>Every event has attendee and no-show nurture running.</p></div>
+        <div class="scorecat"><div class="num">04</div><p>One proof asset captured and published, every month.</p></div>
+        <div class="scorecat"><div class="num">05</div><p>One founder recording session, completed monthly.</p></div>
+        <div class="scorecat"><div class="num">06</div><p>Monthly reporting ties content and campaigns to real pipeline.</p></div>
+      </div>
+    </section>
+
+    <section class="doc-section" id="governance">
+      <div class="snum">08</div>
+      <h2 class="sec-title">Governance</h2>
+      <p class="sec-dek">The same cadence from the proposal, made concrete for this plan.</p>
+      <div class="cadence-row">
+        <div class="cadchip"><b>Weekly</b> — campaign, content &amp; blocker review</div>
+        <div class="cadchip"><b>Monthly</b> — performance &amp; pipeline report with decisions for next month</div>
+        <div class="cadchip"><b>Quarterly</b> — positioning, offer, channel &amp; budget review</div>
+      </div>
+    </section>
+
+    <section class="doc-section" id="close">
+      <div class="snum">09</div>
+      <h2 class="sec-title">Next steps</h2>
+      <p class="sec-dek">This starts the week scope is confirmed. The "what we need from you" list is the only thing standing between this plan and execution. No fixed countdown — just a running system reviewed and adjusted monthly.</p>
+      <div class="callout">
+        <p><b>A running system, not a finished project.</b> This plan doesn't end on a date — it rolls straight into the standing monthly cadence in Governance above, for both businesses.</p>
+      </div>
+      <div class="cta-row">
+        <a class="btn" href="https://streamlab-ai.github.io/pages/think3d-elevate-you-proposal.html">Review the full proposal</a>
+        <a class="btn ghost" href="#channels">Back to the Channel Plan</a>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <div>Prepared by StreamLab AI — confidential, for Think3D &amp; Elevate You leadership only.</div>
+  <div>August 2026</div>
+</footer>
+
+<script>
+  var tocSections = [
+    ['howtoread', 'How to Read This'],
+    ['startingfrom', "Where We're Starting From"],
+    ['lockfirst', 'What We Lock First'],
+    ['channels', 'The Channel Plan'],
+    ['emulation', "What We're Adapting"],
+    ['whatweneed', 'What We Need From You'],
+    ['measurement', 'Measurement'],
+    ['governance', 'Governance'],
+    ['close', 'Next Steps']
+  ];
+  var toc = document.getElementById('toc');
+  var links = {};
+  tocSections.forEach(function(s){
+    var a = document.createElement('a');
+    a.href = '#' + s[0];
+    a.textContent = s[1];
+    toc.appendChild(a);
+    links[s[0]] = a;
+  });
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        Object.keys(links).forEach(function(k){ links[k].classList.toggle('active', k === e.target.id); });
+      }
+    });
+  }, { threshold: 0, rootMargin: '-10% 0px -70% 0px' });
+  tocSections.forEach(function(s){
+    var el = document.getElementById(s[0]);
+    if (el) io.observe(el);
+  });
+</script>
