@@ -1,4 +1,4 @@
-<title>The First 90 Days — Think3D + Elevate You</title>
+<title>The Implementation Plan — Think3D + Elevate You</title>
 <style>
   :root {
     --bg: #ffffff;
@@ -162,10 +162,20 @@
   .panel.no li::before { content: "•"; position: absolute; left: 2px; color: var(--ink-faint); }
   .panel.yes li::before { content: "•"; position: absolute; left: 2px; color: var(--accent); }
 
-  .tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
+  .tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
   .tag.think3d { background: var(--think3d-bg); color: var(--think3d); }
   .tag.elevate { background: var(--elevate-bg); color: var(--elevate); }
   .tag i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .tag.sl { background: var(--think3d-bg); color: var(--think3d); }
+  .tag.cl { background: var(--elevate-bg); color: var(--elevate); }
+  .tag.both { background: var(--bg-alt); color: var(--ink-soft); border: 1px solid var(--card-line); }
+
+  .ownerlist { display: flex; flex-direction: column; }
+  .ownerrow { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--card-line); }
+  .ownerrow:last-child { border-bottom: none; }
+  .ownerrow .activity { font-size: 14px; color: var(--ink); line-height: 1.45; flex: 1; }
+  .ownerkey { margin-top: 20px; display: flex; gap: 18px; flex-wrap: wrap; font-size: 12.5px; color: var(--ink-soft); }
+  .ownerkey span { display: inline-flex; align-items: center; gap: 6px; }
 
   .phases { margin-top: 52px; display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
   @media (max-width: 900px) { .phases { grid-template-columns: 1fr; } }
@@ -205,14 +215,14 @@
 <div id="progress"></div>
 <nav id="topnav">
   <div class="brand">StreamLab AI <span>× Think3D + Elevate You</span></div>
-  <div class="idx mono"><span id="navidx">01</span> / 10 — <span id="navlabel">Overview</span></div>
+  <div class="idx mono"><span id="navidx">01</span> / 9 — <span id="navlabel">Overview</span></div>
 </nav>
 <div id="dotnav"></div>
 
 <section id="cover">
-  <div class="eyebrow reveal in-view">The First 90 Days — Prepared for Tamien Dysart, Vaney Hariri &amp; Matt Krall</div>
+  <div class="eyebrow reveal in-view">The Implementation Plan — Prepared for Tamien Dysart, Vaney Hariri &amp; Matt Krall</div>
   <h1 class="h-xl reveal in-view">From aligned strategy<br>to running system.</h1>
-  <p class="lede reveal in-view">The week-by-week execution plan for the Integrated Ops &amp; Marketing Proposal — what StreamLab builds, what we need from each of you, and how we'll know it's working, on a real calendar.</p>
+  <p class="lede reveal in-view">The channel-by-channel execution plan for the Integrated Ops &amp; Marketing Proposal — what StreamLab builds, what we need from each of you, and how we'll know it's working.</p>
   <div class="meta reveal in-view">
     <div><b>Prepared by</b> StreamLab AI</div>
     <div><b>Companion to</b> the Integrated Ops &amp; Marketing Proposal</div>
@@ -223,171 +233,218 @@
 
 <section id="howtoread" class="bg-alt" data-label="How to Read This Plan">
   <div class="eyebrow reveal">How to Read This Plan</div>
-  <h2 class="h-lg reveal">Three phases. One standard of done.</h2>
-  <p class="lede reveal">Three 30-day phases, each with a short build list and one deliverable. Note: we don't manage the Think3D company website — likely the same external builder as Elevate You's. Wherever this plan touches the website, we hand off messaging and assets rather than building it ourselves.</p>
+  <h2 class="h-lg reveal">Every channel. One standard of done.</h2>
+  <p class="lede reveal">This plan is organized by channel and activity, not by week — so we're not committing either business to a fixed calendar we can't control together. Note: we don't manage the Think3D company website — likely the same external builder as Elevate You's. Wherever this plan touches the website, we hand off messaging and assets rather than building it ourselves.</p>
 
   <div class="momentum reveal">
     <div class="flabel-row"><i></i>Where we're starting from — not zero</div>
     <ul>
       <li><b>Sioux Falls</b> closed at 72 confirmed registrants — proof the show-up and follow-up system already works.</li>
-      <li><b>Jacksonville</b> promotion is underway.</li>
-      <li><b>September 22 (Elevate You)</b> has a confirmed brief, a five-tier offer menu, and Zeffy selected as the platform.</li>
+      <li><b>Kansas City</b> is complete — attendance to confirm with Tamien.</li>
+      <li><b>September 22 (Elevate You)</b> has a confirmed brief, a five-tier offer menu, a Framer landing page in build, and checkout via the existing HubSpot payment link.</li>
       <li>All three personal-brand sites and social channels are already live — this plan optimizes and routes them, it doesn't rebuild them.</li>
     </ul>
   </div>
 </section>
 
-<section id="phase1" data-label="Phase 1 — Foundation">
-  <div class="eyebrow reveal">Days 1–30</div>
-  <h2 class="h-lg reveal">Define the category and conversion foundation.</h2>
-  <p class="lede reveal">Category language, a diagnostic, a conversion path — for both businesses. Most of this is ours to build; two things are genuinely yours to decide.</p>
+<section id="channels" data-label="Channel Plan & Ownership">
+  <div class="eyebrow reveal">Every Channel, Every Owner</div>
+  <h2 class="h-lg reveal">Nothing here is vague about who does what.</h2>
+  <p class="lede reveal">Fourteen channel categories, every tactic in scope, tagged by owner. Tap any category for the full breakdown. This is the plan itself — no separate week-by-week calendar sitting behind it. Sequencing and priority get set jointly at kickoff and revisited monthly, not locked to a fixed week.</p>
 
-  <div class="panel yes reveal" style="margin-top:28px;">
-    <h3>Open items for the kickoff</h3>
-    <ul>
-      <li>Named category &amp; signature methodology per business — your IP, not ours to assume</li>
-      <li>Final diagnostic scope, matched to what you actually teach</li>
-    </ul>
+  <div class="ownerkey reveal">
+    <span><span class="tag sl"><i></i>StreamLab</span> we execute end-to-end</span>
+    <span><span class="tag cl"><i></i>Client</span> only you can do this</span>
+    <span><span class="tag both"><i></i>Both</span> you provide the input/relationship, we execute</span>
   </div>
 
-  <div class="xlist single reveal">
-    <div class="xcard open">
-      <button class="xcard-trigger" aria-expanded="true"><div class="ttl"><h4>Week 1 — Lock the architecture</h4></div><span class="chev">⌄</span></button>
-      <div class="xcard-panel">
-        <div class="xfield"><ul>
-          <li>Finalize owners &amp; lead-routing per current team structure</li>
-          <li>Lock CRM boundaries — HubSpot / Think3D, Pipedrive / Elevate You</li>
-          <li>Scope each diagnostic, ready to align at kickoff</li>
-        </ul></div>
+  <div class="xlist reveal">
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>LinkedIn — Organic</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="ownerlist">
+        <div class="ownerrow"><div class="activity">Founder posting — video, text, carousel, polls</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Posting cadence &amp; scheduling</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Comment-first engagement on target accounts</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">LinkedIn Newsletter</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">LinkedIn Articles</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">LinkedIn Live / audio (podcast extension)</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">LinkedIn Groups</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Team advocacy — Vaney, Matt, Manny resharing</div><span class="tag cl"><i></i>Client</span></div>
+        <div class="ownerrow"><div class="activity">Profile optimization — headline, About, Featured, banner</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Company Page posting</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Tagging / mention strategy</div><span class="tag sl"><i></i>StreamLab</span></div>
+      </div>
+      <div class="xfield" style="padding: 0 20px 20px;">
+        <div class="flabel">Posting cadence, per founder</div>
+        <div class="cadence-row" style="margin-top:10px;">
+          <div class="cadchip"><b>Tamien</b> 4/wk — Intentional Leadership &amp; Identity, Culture as Currency, The Leadership Ripple</div>
+          <div class="cadchip"><b>Vaney</b> 3–4/wk — Culture Is Happening, Communication Is Message Received</div>
+          <div class="cadchip"><b>Matt</b> 3/wk — Self-Leadership &amp; Behavior Under Pressure</div>
+        </div>
+      </div>
       </div>
     </div>
     <div class="xcard">
-      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Week 2 — Build the diagnostics</h4></div><span class="chev">⌄</span></button>
-      <div class="xcard-panel">
-        <div class="xfield"><ul>
-          <li>Draft Think3D's culture diagnostic (Culture Partners pattern)</li>
-          <li>Draft Elevate You's behavior diagnostic (BetterUp pattern)</li>
-          <li>Tamien &amp; Vaney LinkedIn conversion audits</li>
-          <li>Elevate You's five-tier menu, translated into buyer-facing language</li>
-        </ul></div>
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>LinkedIn — Outreach &amp; Paid</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="ownerlist">
+        <div class="ownerrow"><div class="activity">HeyReach connect + DM sequences</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Sales Navigator list-building</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Single Image / Video Ads</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Event Ads</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Retargeting</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Matched-audience / ABM targeting</div><span class="tag both"><i></i>Both</span></div>
+      </div>
+      <div class="xfield" style="padding: 0 20px 20px;">
+        <p style="margin-top:0; font-size:13.5px; color:var(--ink-soft); line-height:1.55;">HeyReach is already licensed for Elevate You (~$79/mo); Think3D runs as a separate campaign on the same tool. Mechanics: 20–30 connections/day/sender, connect → add value → soft CTA, ICP is HR/People leaders and culture &amp; OD roles, replies route to HubSpot or Pipedrive with a named owner. Paid (Single Image/Video Ads, Event Ads) promotes what's already proving out organically or drives event registration — funded by the client, built and managed by StreamLab.</p>
+      </div>
       </div>
     </div>
     <div class="xcard">
-      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Week 3 — Package the entry point</h4></div><span class="chev">⌄</span></button>
-      <div class="xcard-panel">
-        <div class="xfield"><ul>
-          <li>Approve diagnostics + executive-debrief format</li>
-          <li>Build the lead-magnet page for each business</li>
-          <li>First founder recording session, both businesses</li>
-          <li>Sept 22 landing page + Zeffy checkout</li>
-        </ul></div>
-      </div>
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Other Social Platforms</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="ownerlist">
+        <div class="ownerrow"><div class="activity">Instagram — Reels, Stories, feed, Guides, Lives</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">YouTube — long-form, Shorts, channel SEO</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Facebook — page, groups, events, retargeting ads</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">X / Threads cross-posting</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Podcast — own show or guesting</div><span class="tag both"><i></i>Both</span></div>
+      </div></div>
     </div>
     <div class="xcard">
-      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Week 4 — Close out the foundation</h4></div><span class="chev">⌄</span></button>
-      <div class="xcard-panel">
-        <div class="xfield"><ul>
-          <li>Finish Jacksonville nurture</li>
-          <li>Build the monthly pipeline scorecard</li>
-          <li>Stand up regional Apollo &amp; nurture per business</li>
-        </ul></div>
-        <div class="xfield"><div class="flabel">Deliverable</div><p>Approved category architecture, diagnostics, conversion paths, and scorecards — both businesses.</p></div>
-      </div>
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Email / Nurture</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="ownerlist">
+        <div class="ownerrow"><div class="activity">Founder newsletter</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Segmented nurture by persona/stage</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Event-triggered sequences</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Re-engagement / win-back</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Lead-magnet delivery</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Sales-assisted 1:1 sequences</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Deliverability management</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">A/B testing subject lines &amp; send times</div><span class="tag sl"><i></i>StreamLab</span></div>
+      </div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>SEO</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="ownerlist">
+        <div class="ownerrow"><div class="activity">Technical SEO audit</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">On-page SEO / landing pages / blog</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Buyer-intent content</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Local SEO / Google Business Profile</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Backlink building / digital PR</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Schema markup</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">YouTube SEO</div><span class="tag sl"><i></i>StreamLab</span></div>
+      </div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Events</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="ownerlist">
+        <div class="ownerrow"><div class="activity">In-person seminars/retreats</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Monthly podcast/webinars/briefings</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Speaking placements at third-party events</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Co-hosted events with partners/chambers</div><span class="tag both"><i></i>Both</span></div>
+      </div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Outbound / ABM</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="ownerlist">
+        <div class="ownerrow"><div class="activity">Apollo cold email</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Named-account list + decision-maker mapping</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Direct mail / gifting to top accounts</div><span class="tag both"><i></i>Both</span></div>
+      </div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Partnerships &amp; Referral</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="ownerlist">
+        <div class="ownerrow"><div class="activity">Chamber of Commerce partnerships</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">HR association partnerships</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Formal referral program</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Co-marketing with complementary consultants</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Affiliate / commission structure</div><span class="tag both"><i></i>Both</span></div>
+      </div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>PR &amp; Media</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="ownerlist">
+        <div class="ownerrow"><div class="activity">Press releases</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Media / podcast guest-booking outreach</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">HARO / journalist source requests</div><span class="tag both"><i></i>Both</span></div>
+      </div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Content &amp; Authority Assets</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="ownerlist">
+        <div class="ownerrow"><div class="activity">Think3D diagnostic tool — new build</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Elevate You diagnostic tool — already exists, integrate into funnel</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Case studies / client logos</div><span class="tag cl"><i></i>Client</span></div>
+        <div class="ownerrow"><div class="activity">Original research / white papers</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Downloadable guides / e-books</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Video testimonials</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Framework/methodology one-pagers</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Existing books (both businesses already on Amazon) — promotion &amp; repurposing</div><span class="tag both"><i></i>Both</span></div>
+      </div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Website / CRO</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="ownerlist">
+        <div class="ownerrow"><div class="activity">Landing page testing (Framer)</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Chat widget / conversational forms</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Exit-intent popups</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Social-proof widgets</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">CTA hierarchy per page</div><span class="tag sl"><i></i>StreamLab</span></div>
+      </div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>CRM / Sales-Assisted</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="ownerlist">
+        <div class="ownerrow"><div class="activity">Lead scoring model</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">SLA / response-time enforcement</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Named-owner + next-activity discipline</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Deal-stage playbooks per business</div><span class="tag both"><i></i>Both</span></div>
+      </div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Community</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="ownerlist">
+        <div class="ownerrow"><div class="activity">Private alumni/member community</div><span class="tag both"><i></i>Both</span></div>
+        <div class="ownerrow"><div class="activity">Recurring alumni events</div><span class="tag both"><i></i>Both</span></div>
+      </div></div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Analytics &amp; Measurement</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel"><div class="ownerlist">
+        <div class="ownerrow"><div class="activity">UTM governance across every channel</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Attribution model</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Dashboards</div><span class="tag sl"><i></i>StreamLab</span></div>
+        <div class="ownerrow"><div class="activity">Call tracking</div><span class="tag sl"><i></i>StreamLab</span></div>
+      </div></div>
     </div>
   </div>
 </section>
 
-<section id="phase2" class="bg-alt" data-label="Phase 2 — Authority & Demand">
-  <div class="eyebrow reveal">Days 31–60</div>
-  <h2 class="h-lg reveal">Launch the authority and demand engines.</h2>
-  <p class="lede reveal">Founder content, both diagnostics, and the first full campaign — running end to end.</p>
+<section id="priorities" data-label="What We Lock First">
+  <div class="eyebrow reveal">Before Anything Goes Live</div>
+  <h2 class="h-lg reveal">A short list of decisions, not a calendar.</h2>
+  <p class="lede reveal">Everything in the Channel Plan above is in scope from day one. These are the handful of things that have to be decided or confirmed before the rest can run at full speed — not scheduled to a week, just sequenced by dependency.</p>
 
-  <div class="xlist single reveal">
-    <div class="xcard open">
-      <button class="xcard-trigger" aria-expanded="true"><div class="ttl"><h4>Weeks 5–6 — Go live</h4></div><span class="chev">⌄</span></button>
-      <div class="xcard-panel">
-        <div class="xfield"><ul>
-          <li>Monthly founder recording cadence begins, both businesses</li>
-          <li>First content series published, each business</li>
-          <li>Both diagnostics + debrief live</li>
-          <li>Sept 22 event run end-to-end, full Pipedrive attribution</li>
-        </ul></div>
-      </div>
-    </div>
-    <div class="xcard">
-      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Weeks 7–8 — Recurring engines</h4></div><span class="chev">⌄</span></button>
-      <div class="xcard-panel">
-        <div class="xfield"><ul>
-          <li>One monthly webinar live per business (Culture Partners / Wiseman Group cadence)</li>
-          <li>Frameworks turned into downloadable tools (Arbinger pattern)</li>
-          <li>Nurture fully live in HubSpot &amp; Pipedrive</li>
-          <li>First proof asset published, each business</li>
-          <li>HeyReach connection campaigns live for Think3D (Tamien + Vaney), separate from Elevate You's existing campaigns</li>
-        </ul></div>
-        <div class="xfield"><div class="flabel">Deliverable</div><p>Authority content running, two webinar formats live, owned-audience nurture fully operational.</p></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="subhead reveal">The LinkedIn Engine</div>
   <div class="twocol reveal">
-    <div class="panel yes">
-      <h3>Content — per founder, per week</h3>
+    <div class="panel no">
+      <h3>Yours to decide</h3>
       <ul>
-        <li>Tamien: 4 posts/wk — Intentional Leadership &amp; Identity, Culture as Currency, The Leadership Ripple</li>
-        <li>Vaney: 3–4 posts/wk — Culture Is Happening, Communication Is Message Received</li>
-        <li>Matt: 3 posts/wk — Self-Leadership &amp; Behavior Under Pressure</li>
+        <li>Named category &amp; signature methodology per business — your IP, not ours to assume</li>
+        <li>Final diagnostic scope, matched to what you actually teach</li>
+        <li>Sign-off on category language before it goes live anywhere</li>
+        <li>Confirm Kansas City attendance with us so we can close the loop</li>
       </ul>
     </div>
     <div class="panel yes">
-      <h3>Outreach — HeyReach, per business</h3>
+      <h3>Ours to build once decisions land</h3>
       <ul>
-        <li>Already licensed for Elevate You; extended to Think3D as a separate campaign</li>
-        <li>20–30 connections/day/sender — connect, add value, then a soft CTA</li>
-        <li>ICP: HR/People leaders, culture &amp; OD roles</li>
-        <li>Replies route to HubSpot / Pipedrive with a named owner</li>
+        <li>Lock CRM boundaries — HubSpot / Think3D, Pipedrive / Elevate You</li>
+        <li>Think3D culture diagnostic (Culture Partners pattern) + Elevate You behavior diagnostic (BetterUp pattern)</li>
+        <li>LinkedIn profile optimization for Tamien, Vaney &amp; Matt</li>
+        <li>Lead-magnet page and executive-debrief format, each business</li>
+        <li>Sept 22 Framer landing page finalized, checkout via the existing HubSpot payment link</li>
+        <li>Lead-scoring model + SLA rules in HubSpot &amp; Pipedrive, UTM governance across every channel</li>
       </ul>
-    </div>
-  </div>
-  <p class="lede reveal" style="margin-top:24px; font-size:15px;">Paid: LinkedIn Thought Leader Ads promote posts already proving out — the only LinkedIn spend in this plan.</p>
-</section>
-
-<section id="phase3" data-label="Phase 3 — Convert, Prove, Optimize">
-  <div class="eyebrow reveal">Days 61–90</div>
-  <h2 class="h-lg reveal">Convert, prove, and optimize.</h2>
-  <p class="lede reveal">Turn two months of activity into evidence, and cut what isn't converting.</p>
-
-  <div class="xlist single reveal">
-    <div class="xcard open">
-      <button class="xcard-trigger" aria-expanded="true"><div class="ttl"><h4>Weeks 9–10 — Prove it</h4></div><span class="chev">⌄</span></button>
-      <div class="xcard-panel">
-        <div class="xfield"><ul>
-          <li>Review weeks 1–8: what's actually converting</li>
-          <li>First Think3D case studies — revenue/execution framing (Culture Partners)</li>
-          <li>First Elevate You case material — outcome framing (BetterUp)</li>
-          <li>Buyer-enablement guides &amp; FAQs, both businesses</li>
-        </ul></div>
-      </div>
-    </div>
-    <div class="xcard">
-      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Weeks 11–12 — Scale what works</h4></div><span class="chev">⌄</span></button>
-      <div class="xcard-panel">
-        <div class="xfield"><ul>
-          <li>Promote proven assets; paid/ABM tests only where proof already works</li>
-          <li>Tighten CRM follow-up — owner, next-activity, stalled-lead review</li>
-          <li>Start partner &amp; referral outreach, both businesses</li>
-        </ul></div>
-      </div>
-    </div>
-    <div class="xcard">
-      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Week 13 — Review &amp; hand off</h4></div><span class="chev">⌄</span></button>
-      <div class="xcard-panel">
-        <div class="xfield"><ul>
-          <li>Full review against the targets below</li>
-          <li>Roll into the standing monthly cadence — this doesn't end at day 90</li>
-        </ul></div>
-        <div class="xfield"><div class="flabel">Deliverable</div><p>Pipeline reporting, proof library, and a repeatable campaign model — both businesses.</p></div>
-      </div>
     </div>
   </div>
 </section>
@@ -421,7 +478,7 @@
 <section id="whatweneed" data-label="What We Need From You">
   <div class="eyebrow reveal">What We Need From You</div>
   <h2 class="h-lg reveal">A short, honest list — nothing hidden in a footnote.</h2>
-  <p class="lede reveal">A short list, matched to the phase it blocks.</p>
+  <p class="lede reveal">A short list, matched to what it blocks.</p>
 
   <div class="twocol reveal">
     <div class="panel no">
@@ -438,7 +495,6 @@
       <ul>
         <li>Sept 22 venue confirmation</li>
         <li>Warm outreach list</li>
-        <li>Zeffy account created (not just selected)</li>
         <li>A Grateful Homie Project story or data point</li>
         <li>One recorded session monthly, each founder</li>
       </ul>
@@ -448,7 +504,7 @@
 
 <section id="measurement" class="bg-alt" data-label="Measurement">
   <div class="eyebrow reveal">Measurement</div>
-  <h2 class="h-lg reveal">The standard of "done" for day 90.</h2>
+  <h2 class="h-lg reveal">What "working" looks like, every month.</h2>
 
   <div class="northstar reveal">
     <div class="eyebrow" style="margin-bottom:8px;">North star</div>
@@ -468,7 +524,7 @@
 <section id="governance" data-label="Governance">
   <div class="eyebrow reveal">Governance</div>
   <h2 class="h-lg reveal">How we keep this on track, every week.</h2>
-  <p class="lede reveal">The same cadence from the proposal, made concrete for these 90 days.</p>
+  <p class="lede reveal">The same cadence from the proposal, made concrete for this plan.</p>
   <div class="cadence-row reveal">
     <div class="cadchip"><b>Weekly</b> — campaign, content &amp; blocker review</div>
     <div class="cadchip"><b>Monthly</b> — performance &amp; pipeline report with decisions for next month</div>
@@ -478,15 +534,15 @@
 
 <section id="close">
   <div class="eyebrow reveal">Next Steps</div>
-  <h2 class="h-xl reveal">Day 1 starts the week we align.</h2>
-  <p class="lede reveal">This calendar starts the week scope is confirmed. The "what we need from you" list is the only thing standing between this plan and week one.</p>
+  <h2 class="h-xl reveal">This starts the week scope is confirmed.</h2>
+  <p class="lede reveal">The "what we need from you" list is the only thing standing between this plan and execution. No fixed 90-day countdown — just a running system that gets reviewed and adjusted monthly.</p>
 
   <div class="investcard reveal">
-    <h3>90 days in, then it keeps going.</h3>
-    <p>Day 90 delivers a working system for both businesses, not a finished project. From there, the same cadence continues as the standing retainer.</p>
+    <h3>A running system, not a finished project.</h3>
+    <p>This plan doesn't end on a date — it rolls straight into the standing monthly cadence described in Governance above, for both businesses.</p>
     <div class="cta-row">
       <a class="btn" href="https://streamlab-ai.github.io/pages/think3d-elevate-you-proposal.html">Review the full proposal</a>
-      <a class="btn ghost" href="#phase1">Back to Phase 1</a>
+      <a class="btn ghost" href="#channels">Back to the Channel Plan</a>
     </div>
   </div>
 </section>
@@ -499,8 +555,8 @@
 <script>
   var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
   var labels = {
-    cover: 'Overview', howtoread: 'How to Read This Plan',
-    phase1: 'Phase 1 — Foundation', phase2: 'Phase 2 — Authority & Demand', phase3: 'Phase 3 — Convert & Prove',
+    cover: 'Overview', howtoread: 'How to Read This Plan', channels: 'Channel Plan & Ownership',
+    priorities: 'What We Lock First',
     emulation: "What We're Adapting", whatweneed: 'What We Need From You',
     measurement: 'Measurement', governance: 'Governance', close: 'Next Steps'
   };
