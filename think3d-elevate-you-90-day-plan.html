@@ -1,0 +1,578 @@
+<title>The First 90 Days — Think3D + Elevate You</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-alt: #f5f5f7;
+    --bg-dark: #0b0b0d;
+    --ink: #1d1d1f;
+    --ink-soft: #6e6e73;
+    --ink-faint: #a1a1a6;
+    --line: rgba(0,0,0,0.08);
+    --card: #ffffff;
+    --card-line: rgba(0,0,0,0.07);
+    --accent: #0071e3;
+    --accent-ink: #ffffff;
+    --think3d: #0071e3;
+    --think3d-bg: rgba(0,113,227,0.08);
+    --elevate: #d1690a;
+    --elevate-bg: rgba(209,105,10,0.09);
+    --good: #1d7a4c;
+    --radius-lg: 28px;
+    --radius-md: 18px;
+    --radius-sm: 10px;
+    --maxw: 1120px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #000000;
+      --bg-alt: #1d1d1f;
+      --ink: #f5f5f7;
+      --ink-soft: #98989d;
+      --ink-faint: #6e6e73;
+      --line: rgba(255,255,255,0.1);
+      --card: #17181a;
+      --card-line: rgba(255,255,255,0.09);
+      --accent: #2997ff;
+      --think3d: #2997ff;
+      --think3d-bg: rgba(41,151,255,0.12);
+      --elevate: #ff9f2e;
+      --elevate-bg: rgba(255,159,46,0.12);
+      --good: #34c778;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #000000; --bg-alt: #1d1d1f; --ink: #f5f5f7; --ink-soft: #98989d; --ink-faint: #6e6e73;
+    --line: rgba(255,255,255,0.1); --card: #17181a; --card-line: rgba(255,255,255,0.09);
+    --accent: #2997ff; --think3d: #2997ff; --think3d-bg: rgba(41,151,255,0.12);
+    --elevate: #ff9f2e; --elevate-bg: rgba(255,159,46,0.12); --good: #34c778;
+  }
+  :root[data-theme="light"] {
+    --bg: #ffffff; --bg-alt: #f5f5f7; --ink: #1d1d1f; --ink-soft: #6e6e73; --ink-faint: #a1a1a6;
+    --line: rgba(0,0,0,0.08); --card: #ffffff; --card-line: rgba(0,0,0,0.07);
+    --accent: #0071e3; --think3d: #0071e3; --think3d-bg: rgba(0,113,227,0.08);
+    --elevate: #d1690a; --elevate-bg: rgba(209,105,10,0.09); --good: #1d7a4c;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: auto; }
+  section[id] { scroll-margin-top: 60px; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+  h1, h2, h3 { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, sans-serif; text-wrap: balance; margin: 0; }
+  p { text-wrap: pretty; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-variant-numeric: tabular-nums; }
+
+  #progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--accent); z-index: 60; width: 0%; transition: width .1s linear; }
+
+  #topnav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50; height: 52px;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 max(20px, calc((100vw - var(--maxw)) / 2));
+    background: color-mix(in srgb, var(--bg) 72%, transparent);
+    backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--line);
+  }
+  #topnav .brand { font-size: 13px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; }
+  #topnav .brand span { color: var(--ink-soft); font-weight: 400; }
+  #topnav .idx { font-size: 12px; color: var(--ink-soft); font-family: ui-monospace, "SF Mono", Menlo, monospace; letter-spacing: 0.02em; white-space: nowrap; }
+
+  #dotnav { position: fixed; right: 22px; top: 50%; transform: translateY(-50%); z-index: 55; display: flex; flex-direction: column; gap: 12px; }
+  #dotnav button { width: 9px; height: 9px; padding: 0; border-radius: 50%; background: var(--ink-faint); border: none; cursor: pointer; position: relative; opacity: .55; transition: transform .2s, opacity .2s, background .2s; }
+  #dotnav button:hover, #dotnav button:focus-visible { opacity: 1; transform: scale(1.25); }
+  #dotnav button.active { background: var(--accent); opacity: 1; transform: scale(1.3); }
+  #dotnav button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  #dotnav button .tip {
+    position: absolute; right: 20px; top: 50%; transform: translateY(-50%); white-space: nowrap;
+    font-size: 11.5px; font-weight: 600; color: var(--ink); background: var(--card);
+    border: 1px solid var(--card-line); padding: 5px 10px; border-radius: 7px; opacity: 0; pointer-events: none; transition: opacity .15s;
+  }
+  #dotnav button:hover .tip, #dotnav button:focus-visible .tip { opacity: 1; }
+  @media (max-width: 900px) { #dotnav { display: none; } }
+
+  .chev { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--card-line);
+    display: flex; align-items: center; justify-content: center; font-size: 12px; color: var(--ink-soft); transition: transform .3s ease; }
+  .xcard.open .chev { transform: rotate(180deg); color: var(--accent); border-color: currentColor; }
+
+  .subhead { display: flex; align-items: center; gap: 14px; margin: 56px 0 4px; font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-faint); }
+  .subhead::after { content: ""; flex: 1; height: 1px; background: var(--card-line); }
+
+  .xlist { margin-top: 28px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; align-items: start; }
+  @media (max-width: 760px) { .xlist { grid-template-columns: 1fr; } }
+  .xlist.single { grid-template-columns: 1fr; }
+  .xcard { background: var(--card); border: 1px solid var(--card-line); border-radius: var(--radius-md); overflow: hidden; cursor: default; }
+  .xcard.open { grid-column: 1 / -1; }
+  .xcard-trigger { all: unset; box-sizing: border-box; display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 14px; cursor: pointer; padding: 17px 20px; }
+  .xcard-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .xcard-trigger .ttl { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .xcard-trigger h4 { font-size: 15px; font-weight: 700; letter-spacing: -0.01em; }
+  .xcard-trigger .sub { font-size: 12.5px; color: var(--ink-soft); font-weight: 500; }
+  .xcard-panel { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .35s ease, opacity .3s ease; padding: 0 20px; }
+  .xcard.open .xcard-panel { opacity: 1; padding-bottom: 22px; }
+  .xfield { margin-top: 16px; }
+  .xfield:first-child { margin-top: 0; }
+  .xfield .flabel { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; color: var(--accent); }
+  .xfield p, .xfield ul { margin-top: 6px; font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
+  .xfield ul { padding-left: 18px; margin-bottom: 0; }
+  .xfield ul li { margin-bottom: 5px; }
+  .xfield .notcopy { color: var(--elevate); }
+  .xrefs { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--card-line); font-size: 13px; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+  .xrefs .flabel { display: block; width: 100%; margin-bottom: 6px; }
+  .xrefs a { color: var(--accent); text-decoration: none; }
+  .xrefs a:hover { text-decoration: underline; }
+
+  .momentum { margin-top: 40px; padding: 28px 30px; border-radius: var(--radius-md); background: var(--card); border: 1px solid var(--card-line); }
+  .momentum .flabel-row { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--good); margin-bottom: 14px; }
+  .momentum .flabel-row i { width: 7px; height: 7px; border-radius: 50%; background: var(--good); box-shadow: 0 0 0 3px color-mix(in srgb, var(--good) 18%, transparent); }
+  .momentum ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .momentum li { font-size: 14.5px; line-height: 1.55; padding-left: 20px; position: relative; color: var(--ink-soft); }
+  .momentum li::before { content: "—"; position: absolute; left: 0; color: var(--ink-faint); }
+  .momentum li b { color: var(--ink); font-weight: 600; }
+
+  section { position: relative; padding: 148px max(20px, calc((100vw - var(--maxw)) / 2)) 120px; }
+  .bg-alt { background: var(--bg-alt); }
+  .bg-dark { background: var(--bg-dark); color: #f5f5f7; }
+  .bg-dark .ink-soft, .bg-dark .eyebrow { color: #9a9aa0; }
+
+  .eyebrow { display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+  .h-xl { font-size: clamp(36px, 6vw, 68px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.04; }
+  .h-lg { font-size: clamp(30px, 4.4vw, 48px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.08; }
+  .lede { font-size: clamp(18px, 2vw, 22px); color: var(--ink-soft); font-weight: 400; line-height: 1.5; max-width: 660px; margin-top: 20px; }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+  #cover { min-height: 100svh; display: flex; flex-direction: column; justify-content: center; padding-top: 52px; }
+  #cover .h-xl { font-size: clamp(42px, 8vw, 96px); }
+  #cover .meta { margin-top: 44px; display: flex; gap: 28px; flex-wrap: wrap; font-size: 14px; color: var(--ink-soft); }
+  #cover .meta b { color: var(--ink); font-weight: 600; }
+  .scrollcue { position: absolute; bottom: 40px; left: max(20px, calc((100vw - var(--maxw)) / 2)); font-size: 12px; color: var(--ink-faint); display: flex; align-items: center; gap: 8px; }
+  .scrollcue .bar { width: 1px; height: 28px; background: var(--ink-faint); animation: pulse 1.8s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{ opacity:.25 } 50%{ opacity:1 } }
+
+  .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 28px; }
+  @media (max-width: 760px) { .twocol { grid-template-columns: 1fr; } }
+  .panel { border-radius: var(--radius-md); padding: 32px; border: 1px solid var(--card-line); background: var(--card); }
+  .panel h3 { font-size: 15px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-faint); font-weight: 700; margin-bottom: 18px; }
+  .panel ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .panel li { font-size: 14.5px; line-height: 1.5; padding-left: 20px; position: relative; }
+  .panel.no li::before { content: "•"; position: absolute; left: 2px; color: var(--ink-faint); }
+  .panel.yes li::before { content: "•"; position: absolute; left: 2px; color: var(--accent); }
+
+  .tag { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
+  .tag.think3d { background: var(--think3d-bg); color: var(--think3d); }
+  .tag.elevate { background: var(--elevate-bg); color: var(--elevate); }
+  .tag i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+  .phases { margin-top: 52px; display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+  @media (max-width: 900px) { .phases { grid-template-columns: 1fr; } }
+  .phase { border-radius: var(--radius-md); border: 1px solid var(--card-line); background: var(--card); padding: 26px; display: flex; flex-direction: column; }
+  .phase.active { border-color: var(--accent); }
+  .phase .days { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 12.5px; color: var(--accent); font-weight: 700; letter-spacing: .02em; }
+  .phase h4 { margin-top: 10px; font-size: 19px; font-weight: 700; letter-spacing: -0.01em; }
+  .phase p { margin-top: 8px; font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+  .phase .deliv { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--card-line); font-size: 13.5px; font-weight: 600; }
+
+  .scoregrid { margin-top: 22px; display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; }
+  @media (max-width: 700px) { .scoregrid { grid-template-columns: 1fr; } }
+  .scorecat { padding: 20px 22px; border-radius: var(--radius-sm); border: 1px solid var(--card-line); background: var(--card); display: flex; align-items: flex-start; gap: 14px; }
+  .scorecat .num { font-family: ui-monospace, "SF Mono", Menlo, monospace; font-size: 13px; color: var(--accent); font-weight: 700; flex-shrink: 0; padding-top: 2px; }
+  .scorecat p { font-size: 14.5px; color: var(--ink); line-height: 1.5; }
+
+  .northstar { margin-top: 48px; padding: 30px 32px; border-radius: var(--radius-md); background: var(--card); border: 1px solid var(--card-line); }
+  .northstar .eyebrow { margin-bottom: 10px; }
+  .northstar p { font-size: 19px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.4; }
+
+  .cadence-row { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .cadchip { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--card-line); font-size: 13px; font-weight: 600; }
+  .cadchip b { color: var(--accent); font-weight: 700; }
+
+  #close .h-xl { color: #f5f5f7; }
+  #close .lede { color: #9a9aa0; }
+  .investcard { margin-top: 48px; padding: 40px clamp(24px,5vw,52px); border-radius: var(--radius-lg); background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.12); }
+  .investcard h3 { font-size: clamp(22px,2.8vw,30px); font-weight: 700; letter-spacing: -0.01em; color: #f5f5f7; }
+  .investcard p { margin-top: 14px; font-size: 16px; color: #b6b6ba; max-width: 560px; line-height: 1.55; }
+  .cta-row { margin-top: 28px; display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 24px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 600; font-size: 15px; text-decoration: none; border: none; cursor: pointer; }
+  .btn.ghost { background: transparent; border: 1px solid rgba(255,255,255,0.25); color: #f5f5f7; }
+  footer { padding: 40px max(20px, calc((100vw - var(--maxw)) / 2)) 48px; color: #6e6e73; font-size: 12.5px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+  #close { background: var(--bg-dark); }
+</style>
+
+<div id="progress"></div>
+<nav id="topnav">
+  <div class="brand">StreamLab AI <span>× Think3D + Elevate You</span></div>
+  <div class="idx mono"><span id="navidx">01</span> / 10 — <span id="navlabel">Overview</span></div>
+</nav>
+<div id="dotnav"></div>
+
+<section id="cover">
+  <div class="eyebrow reveal in-view">The First 90 Days — Prepared for Tamien Dysart, Vaney Hariri &amp; Matt Krall</div>
+  <h1 class="h-xl reveal in-view">From aligned strategy<br>to running system.</h1>
+  <p class="lede reveal in-view">The week-by-week execution plan for the Integrated Ops &amp; Marketing Proposal — what StreamLab builds, what we need from each of you, and how we'll know it's working, on a real calendar.</p>
+  <div class="meta reveal in-view">
+    <div><b>Prepared by</b> StreamLab AI</div>
+    <div><b>Companion to</b> the Integrated Ops &amp; Marketing Proposal</div>
+    <div><b>For</b> Think3D Solutions &amp; Elevate You</div>
+  </div>
+  <div class="scrollcue"><div class="bar"></div> Scroll</div>
+</section>
+
+<section id="howtoread" class="bg-alt" data-label="How to Read This Plan">
+  <div class="eyebrow reveal">How to Read This Plan</div>
+  <h2 class="h-lg reveal">Three phases. One standard of done.</h2>
+  <p class="lede reveal">This isn't a restated strategy deck — it's the operating calendar for it. Three 30-day phases, each with a week-by-week build list, a clear deliverable, and a named owner. Tap into any week for the detail; skim the headline if you just want the shape of it.</p>
+
+  <div class="momentum reveal">
+    <div class="flabel-row"><i></i>Where we're starting from — not zero</div>
+    <ul>
+      <li><b>Sioux Falls</b> closed at 72 confirmed registrants — proof the show-up and follow-up system already works.</li>
+      <li><b>Kansas City</b> is live now; <b>Jacksonville</b> promotion is underway.</li>
+      <li><b>September 22 (Elevate You)</b> has a confirmed brief, a five-tier offer menu, and Zeffy selected as the platform.</li>
+      <li>All three personal-brand sites and social channels are already live — this plan optimizes and routes them, it doesn't rebuild them.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="phase1" data-label="Phase 1 — Foundation">
+  <div class="eyebrow reveal">Days 1–30</div>
+  <h2 class="h-lg reveal">Define the category and conversion foundation.</h2>
+  <p class="lede reveal">Before a single new campaign goes out, both businesses need their own category language, their own diagnostic, and their own conversion path. Most of week one is decisions we already have the context to make from running both businesses' systems today — the few genuine open items go straight to the kickoff, not a round of approvals.</p>
+
+  <div class="panel yes reveal" style="margin-top:28px;">
+    <h3>Open items for the kickoff — not a checklist, an agenda</h3>
+    <ul>
+      <li>Named category and signature methodology for each business — this is Tamien, Vaney, and Matt's actual IP, so it's theirs to set, not ours to assume</li>
+      <li>Final scope of each proprietary diagnostic, matched against the real programs and frameworks already in use, not a generic template</li>
+    </ul>
+  </div>
+
+  <div class="xlist single reveal">
+    <div class="xcard open">
+      <button class="xcard-trigger" aria-expanded="true"><div class="ttl"><h4>Week 1 — Lock the architecture</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel">
+        <div class="xfield"><ul>
+          <li>Finalize Think3D and Elevate You commercial owner assignments and lead-routing rules based on the current team structure</li>
+          <li>Lock CRM ownership boundaries — HubSpot for Think3D, Pipedrive for Elevate You — and finalize measurement definitions</li>
+          <li>Scope the shape of each proprietary diagnostic based on what we already know of each program, ready to align live at kickoff</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Week 2 — Build the diagnostics</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel">
+        <div class="xfield"><ul>
+          <li>Draft the Think3D culture/leadership diagnostic (Culture Partners / Table Group pattern)</li>
+          <li>Draft the Elevate You self-leadership / behavior-under-pressure diagnostic (BetterUp / Goldsmith pattern)</li>
+          <li>Complete Tamien and Vaney LinkedIn conversion audits and featured-section updates</li>
+          <li>Translate the already-confirmed Elevate You five-tier product menu into buyer-facing language, with the Pilot → Embed → Scale explanation</li>
+          <li>Build the proof-capture checklist template used for every future event, workshop, cohort, and engagement</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Week 3 — Package the entry point</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel">
+        <div class="xfield"><ul>
+          <li>Approve final diagnostic builds and the executive-debrief format for each business</li>
+          <li>Build the primary diagnostic/executive-briefing lead magnet for Think3D and a separate one for Elevate You</li>
+          <li>Establish the monthly founder source-content recording cadence — first sessions scheduled</li>
+          <li>Build the September 22 landing page, Zeffy checkout, and campaign plan against the confirmed brief</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Week 4 — Close out the foundation</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel">
+        <div class="xfield"><ul>
+          <li>Carry Kansas City and Jacksonville nurture workflows through to completion</li>
+          <li>Build the integrated monthly marketing and pipeline scorecard</li>
+          <li>Prepare separate regional Apollo and nurture systems for Think3D and Elevate You</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Phase 1 deliverable</div><p>Approved category and message architecture, documented offer journeys, diagnostic briefs, optimized conversion paths, and separate campaign scorecards for both businesses.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="phase2" class="bg-alt" data-label="Phase 2 — Authority & Demand">
+  <div class="eyebrow reveal">Days 31–60</div>
+  <h2 class="h-lg reveal">Launch the authority and demand engines.</h2>
+  <p class="lede reveal">With the foundation approved, this phase is where the system goes live — founder content, diagnostics, webinars, and the first full campaign, running end to end.</p>
+
+  <div class="xlist single reveal">
+    <div class="xcard open">
+      <button class="xcard-trigger" aria-expanded="true"><div class="ttl"><h4>Weeks 5–6 — Go live</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel">
+        <div class="xfield"><ul>
+          <li>First founder source-content session recorded for Think3D and for Elevate You; monthly cadence begins</li>
+          <li>Publish the first recurring point-of-view / problem-diagnosis content series for each business</li>
+          <li>Launch the Think3D culture diagnostic and executive debrief live; launch the Elevate You self-leadership diagnostic and strategy conversation live</li>
+          <li>Execute the September 22 Elevate You event as the first full campaign — content, warm activation, landing page, nurture, diagnostic conversion, proof capture, and full Pipedrive attribution</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Weeks 7–8 — Build the recurring engines</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel">
+        <div class="xfield"><ul>
+          <li>Launch one recurring executive webinar per business — Think3D on culture/leadership topics (Culture Partners / Arbinger cadence), Elevate You on self-leadership/behavior-under-pressure topics (Wiseman Group cadence)</li>
+          <li>Turn Tamien and Vaney's frameworks into downloadable practical tools (Arbinger pattern)</li>
+          <li>Owned-audience capture and nurture workflows fully live in HubSpot and Pipedrive</li>
+          <li>Publish the first proof asset — case study, testimonial, or implementation story — for each business</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Phase 2 deliverable</div><p>Consistent business-specific authority content, two recurring executive education formats, owned-audience capture, diagnostic conversion paths, and event/nurture workflows fully operational.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="phase3" data-label="Phase 3 — Convert, Prove, Optimize">
+  <div class="eyebrow reveal">Days 61–90</div>
+  <h2 class="h-lg reveal">Convert, prove, and optimize.</h2>
+  <p class="lede reveal">The last phase turns two months of activity into evidence — and starts cutting whatever isn't converting.</p>
+
+  <div class="xlist single reveal">
+    <div class="xcard open">
+      <button class="xcard-trigger" aria-expanded="true"><div class="ttl"><h4>Weeks 9–10 — Prove it</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel">
+        <div class="xfield"><ul>
+          <li>Review content and campaign performance from weeks 1–8; identify what's actually converting</li>
+          <li>Publish problem-specific case studies for Think3D, framed in business-performance language — revenue, execution, retention — the way Culture Partners does</li>
+          <li>Publish the first behavioral-to-business-outcome case material for Elevate You — the same outcome-led framing BetterUp uses, without overstating unverified results</li>
+          <li>Deploy buyer-enablement guides and implementation FAQs for both businesses</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Weeks 11–12 — Scale what works</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel">
+        <div class="xfield"><ul>
+          <li>Promote proven assets; launch selective ABM, regional outbound, or paid tests only where organic proof and tracking are already working</li>
+          <li>Tighten CRM follow-up — enforced named owner, next-activity, SLA reminders, and stalled-lead review</li>
+          <li>Begin partner and referral distribution outreach — chambers, associations, HR networks — for both businesses</li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="xcard">
+      <button class="xcard-trigger" aria-expanded="false"><div class="ttl"><h4>Week 13 — Review and hand off to steady-state</h4></div><span class="chev">⌄</span></button>
+      <div class="xcard-panel">
+        <div class="xfield"><ul>
+          <li>Full 90-day review against the operational targets below</li>
+          <li>Present what continues into the standing monthly cadence — this doesn't end at day 90, it becomes how the retainer runs</li>
+        </ul></div>
+        <div class="xfield"><div class="flabel">Phase 3 deliverable</div><p>Qualified pipeline reporting, a documented proof library, buyer-enablement assets, optimized content themes, and a repeatable, business-specific campaign model for both Think3D and Elevate You.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="emulation" class="bg-alt" data-label="What We're Adapting">
+  <div class="eyebrow reveal">Built On What Already Works</div>
+  <h2 class="h-lg reveal">What we're adapting from the category leaders.</h2>
+  <p class="lede reveal">Every build item above traces back to a specific, proven pattern from the benchmark. Here's the direct line from "what they do" to "what we're building," by business.</p>
+
+  <div class="twocol reveal">
+    <div class="panel yes">
+      <h3><span class="tag think3d"><i></i>Think3D</span></h3>
+      <ul>
+        <li><b>Own a named category</b> — not generic "culture consulting." Culture Partners' "Change Activation" model is the template.</li>
+        <li><b>Client logos and business-outcome case studies</b> — the single highest-leverage public demand signal a category leader can show. This is the one place we need Think3D's help directly: client logos and permission to use them across the diagnostic, the website, and future collateral, framed in revenue/retention/execution language, the way Culture Partners does.</li>
+        <li><b>Branded diagnostic + executive debrief</b> as the serious, low-risk entry point.</li>
+        <li><b>Recurring executive webinars</b> connecting culture to accountability, execution, and leadership-team dysfunction (Culture Partners / Arbinger cadence).</li>
+        <li><b>Downloadable practical tools</b> — check-ins, conversation guides — from Tamien and Vaney's frameworks (Arbinger pattern).</li>
+        <li><b>One flagship executive-team entry engagement</b> with a clear duration and output (The Table Group pattern).</li>
+      </ul>
+    </div>
+    <div class="panel yes">
+      <h3><span class="tag elevate"><i></i>Elevate You</span></h3>
+      <ul>
+        <li><b>Explain how the behavioral system connects to business outcomes</b> — productivity, retention, performance — without overstating unverified results. This is BetterUp's core move, and it's the single most important piece of messaging we build for Elevate You this quarter.</li>
+        <li><b>Stakeholder-evidence loop</b> — behavior change validated by the people around the leader, not just self-reported (Marshall Goldsmith pattern).</li>
+        <li><b>Productized self-leadership entry point</b> with clear delivery formats — public experience, pilot, cohort (Blanchard pattern).</li>
+        <li><b>Self-leadership diagnostic + newsletter + monthly live session</b> as the owned-audience engine (Wiseman Group pattern).</li>
+        <li><b>Enterprise-style proof, privacy, and security messaging</b> for organizational buyers evaluating a pilot (BetterUp pattern).</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="whatweneed" data-label="What We Need From You">
+  <div class="eyebrow reveal">What We Need From You</div>
+  <h2 class="h-lg reveal">A short, honest list — nothing hidden in a footnote.</h2>
+  <p class="lede reveal">This plan only moves on schedule if a handful of things come from your side. Here's the complete list, matched to the phase it blocks.</p>
+
+  <div class="twocol reveal">
+    <div class="panel no">
+      <h3>Think3D — from Tamien &amp; Vaney</h3>
+      <ul>
+        <li>Client logos and permission to use them in case studies, the diagnostic, and the website — the proof signal this whole phase depends on</li>
+        <li>Existing testimonials, results, or client quotes to seed the first case studies</li>
+        <li>One 45–60 minute recorded source-content session per month, per founder</li>
+        <li>Review and approval of the named category language and diagnostic before it goes live</li>
+        <li>Kansas City venue/partner-list confirmations still outstanding from the Chamber contacts</li>
+      </ul>
+    </div>
+    <div class="panel no">
+      <h3>Elevate You — from Tamien &amp; Matt</h3>
+      <ul>
+        <li>September 22 venue confirmation and capacity</li>
+        <li>The warm outreach list — coaching clients and companies already in conversation</li>
+        <li>Confirmation the Zeffy account has actually been created (not just selected as the platform)</li>
+        <li>A story or data point from the Grateful Homie Project to anchor the campaign narrative</li>
+        <li>One 45–60 minute recorded source-content session per month, per founder</li>
+        <li>Review of the self-leadership diagnostic against your actual intake process before it's productized</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="measurement" class="bg-alt" data-label="Measurement">
+  <div class="eyebrow reveal">Measurement</div>
+  <h2 class="h-lg reveal">The standard of "done" for day 90.</h2>
+
+  <div class="northstar reveal">
+    <div class="eyebrow" style="margin-bottom:8px;">North star</div>
+    <p>Qualified pipeline and revenue influenced by founder-led authority, content, events, partnerships, and outbound — reported separately for each business, every month.</p>
+  </div>
+
+  <div class="scoregrid">
+    <div class="scorecat reveal"><div class="num">01</div><p>100% of active campaigns have a defined audience, offer, CTA, owner, landing page, tracking, and follow-up plan.</p></div>
+    <div class="scorecat reveal"><div class="num">02</div><p>100% of qualified leads have a named owner and a next activity.</p></div>
+    <div class="scorecat reveal"><div class="num">03</div><p>100% of events have attendee and no-show nurture running.</p></div>
+    <div class="scorecat reveal"><div class="num">04</div><p>Every active personal and company profile has a clear, working conversion path.</p></div>
+    <div class="scorecat reveal"><div class="num">05</div><p>At least one meaningful proof asset captured and published, every month.</p></div>
+    <div class="scorecat reveal"><div class="num">06</div><p>One source-content session per founder, completed monthly.</p></div>
+    <div class="scorecat reveal"><div class="num">07</div><p>Monthly reporting connects content and campaigns to named leads, meetings, opportunities, and pipeline.</p></div>
+    <div class="scorecat reveal"><div class="num">08</div><p>Qualified pipeline reporting and a documented proof library exist for both businesses by day 90.</p></div>
+  </div>
+</section>
+
+<section id="governance" data-label="Governance">
+  <div class="eyebrow reveal">Governance</div>
+  <h2 class="h-lg reveal">How we keep this on track, every week.</h2>
+  <p class="lede reveal">The same cadence from the proposal, made concrete for these 90 days.</p>
+  <div class="cadence-row reveal">
+    <div class="cadchip"><b>Weekly</b> — campaign, content &amp; blocker review</div>
+    <div class="cadchip"><b>Monthly</b> — performance &amp; pipeline report with decisions for next month</div>
+    <div class="cadchip"><b>Quarterly</b> — positioning, offer, channel &amp; budget review</div>
+  </div>
+</section>
+
+<section id="close">
+  <div class="eyebrow reveal">Next Steps</div>
+  <h2 class="h-xl reveal">Day 1 starts the week we align.</h2>
+  <p class="lede reveal">This calendar starts running the week the scope is confirmed. Everything on the "what we need from you" list is the only thing standing between this plan and week one.</p>
+
+  <div class="investcard reveal">
+    <h3>90 days in, then it keeps going.</h3>
+    <p>This plan closes on day 90 with a working system for both businesses — not a finished project. From there, the same cadence continues as the standing retainer, exactly as covered in the Integrated Ops &amp; Marketing Proposal.</p>
+    <div class="cta-row">
+      <a class="btn" href="https://streamlab-ai.github.io/pages/think3d-elevate-you-proposal.html">Review the full proposal</a>
+      <a class="btn ghost" href="#phase1">Back to Phase 1</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>Prepared by StreamLab AI — confidential, for Think3D &amp; Elevate You leadership only.</div>
+  <div>August 2026</div>
+</footer>
+
+<script>
+  var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+  var labels = {
+    cover: 'Overview', howtoread: 'How to Read This Plan',
+    phase1: 'Phase 1 — Foundation', phase2: 'Phase 2 — Authority & Demand', phase3: 'Phase 3 — Convert & Prove',
+    emulation: "What We're Adapting", whatweneed: 'What We Need From You',
+    measurement: 'Measurement', governance: 'Governance', close: 'Next Steps'
+  };
+  var order = Object.keys(labels);
+  var navidx = document.getElementById('navidx');
+  var navlabel = document.getElementById('navlabel');
+  var progress = document.getElementById('progress');
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('in-view'); });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  var currentId = 'cover';
+  var dotEls = {};
+  var navIo = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var id = e.target.id;
+        var i = order.indexOf(id);
+        if (i > -1) {
+          currentId = id;
+          navidx.textContent = String(i+1).padStart(2,'0');
+          navlabel.textContent = labels[id];
+          Object.keys(dotEls).forEach(function(k){ dotEls[k].classList.toggle('active', k === id); });
+        }
+      }
+    });
+  }, { threshold: 0, rootMargin: '-48% 0px -48% 0px' });
+  sections.forEach(function(s){ navIo.observe(s); });
+
+  window.addEventListener('scroll', function(){
+    var h = document.documentElement;
+    var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = scrolled + '%';
+  }, { passive: true });
+
+  var dotnav = document.getElementById('dotnav');
+  order.forEach(function(id){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.setAttribute('aria-label', 'Go to ' + labels[id]);
+    var tip = document.createElement('span');
+    tip.className = 'tip';
+    tip.textContent = labels[id];
+    b.appendChild(tip);
+    b.addEventListener('click', function(){
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    dotnav.appendChild(b);
+    dotEls[id] = b;
+  });
+  dotEls['cover'].classList.add('active');
+
+  function wireCollapsible(selector, triggerClass, panelClass){
+    document.querySelectorAll(selector).forEach(function(card){
+      var trigger = card.querySelector('.' + triggerClass);
+      var panel = card.querySelector('.' + panelClass);
+      if (!trigger || !panel) return;
+      function setOpen(open){
+        card.classList.toggle('open', open);
+        trigger.setAttribute('aria-expanded', String(open));
+        panel.style.maxHeight = open ? (panel.scrollHeight + 'px') : '0px';
+      }
+      trigger.addEventListener('click', function(){ setOpen(!card.classList.contains('open')); });
+      setOpen(card.classList.contains('open'));
+    });
+  }
+  wireCollapsible('.xcard', 'xcard-trigger', 'xcard-panel');
+  window.addEventListener('resize', function(){
+    document.querySelectorAll('.xcard.open .xcard-panel').forEach(function(p){ p.style.maxHeight = p.scrollHeight + 'px'; });
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var tag = (document.activeElement && document.activeElement.tagName) || '';
+    if (tag === 'BUTTON' && (e.key === ' ' || e.key === 'Enter')) return;
+    var i = order.indexOf(currentId);
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault();
+      var next = order[Math.min(i + 1, order.length - 1)];
+      document.getElementById(next).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
+      var prev = order[Math.max(i - 1, 0)];
+      document.getElementById(prev).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+</script>
