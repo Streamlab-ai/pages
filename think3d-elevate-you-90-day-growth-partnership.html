@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="90-Day Integrated Growth Partnership proposal for Think3D and Elevate You, prepared by StreamLab AI.">
+<title>Think3D + Elevate You — 90-Day Integrated Growth Partnership</title>
+<style>
+  :root {
+    --ink: #132331;
+    --muted: #5e6b76;
+    --paper: #f7f5f0;
+    --white: #ffffff;
+    --navy: #102b3c;
+    --blue: #2b6f9f;
+    --teal: #1c7a73;
+    --gold: #c7943d;
+    --red: #b54343;
+    --line: #d9ddd9;
+    --soft-blue: #eaf2f8;
+    --soft-teal: #e8f4f1;
+    --soft-gold: #f7f0e1;
+    --soft-red: #faeded;
+    --shadow: 0 16px 40px rgba(16,43,60,.10);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    line-height: 1.55;
+  }
+  a { color: inherit; }
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px 28px;
+    background: rgba(16,43,60,.96);
+    color: white;
+    border-bottom: 1px solid rgba(255,255,255,.14);
+    backdrop-filter: blur(10px);
+  }
+  .brand { font-weight: 700; letter-spacing: .02em; white-space: nowrap; }
+  .topbar nav { display: flex; gap: 18px; flex-wrap: wrap; justify-content: flex-end; }
+  .topbar nav a { color: rgba(255,255,255,.78); text-decoration: none; font-size: 12px; }
+  .topbar nav a:hover { color: white; }
+  .hero {
+    min-height: 92vh;
+    display: grid;
+    align-items: center;
+    padding: 80px 7vw 70px;
+    color: white;
+    background:
+      radial-gradient(circle at 83% 20%, rgba(28,122,115,.55), transparent 30%),
+      radial-gradient(circle at 8% 86%, rgba(199,148,61,.25), transparent 30%),
+      linear-gradient(135deg, #0c2433 0%, #173f55 60%, #102b3c 100%);
+  }
+  .hero-inner { max-width: 1120px; margin: 0 auto; width: 100%; }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .12em;
+    color: #b9ddd8;
+  }
+  .eyebrow::before { content: ""; width: 28px; height: 2px; background: var(--gold); }
+  h1 { font-size: clamp(48px, 7vw, 92px); line-height: .98; letter-spacing: -.045em; margin: 28px 0 28px; max-width: 980px; }
+  .hero-copy { max-width: 780px; font-size: 21px; color: rgba(255,255,255,.80); }
+  .hero-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 48px; max-width: 920px; }
+  .hero-stat { padding: 18px 20px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 14px; }
+  .hero-stat strong { display: block; font-size: 27px; color: white; }
+  .hero-stat span { font-size: 12px; color: rgba(255,255,255,.68); }
+  .hero-meta { margin-top: 48px; font-size: 12px; color: rgba(255,255,255,.55); }
+  main { max-width: 1220px; margin: 0 auto; padding: 0 30px 90px; }
+  section { padding: 88px 0; border-bottom: 1px solid var(--line); }
+  section:last-child { border-bottom: 0; }
+  .section-kicker { color: var(--teal); font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: .11em; margin-bottom: 10px; }
+  h2 { font-size: clamp(34px, 4vw, 54px); line-height: 1.05; letter-spacing: -.035em; margin: 0 0 18px; max-width: 900px; }
+  h3 { margin: 0 0 10px; font-size: 21px; letter-spacing: -.015em; }
+  .lead { font-size: 19px; color: var(--muted); max-width: 900px; margin-bottom: 36px; }
+  .callout {
+    border-left: 5px solid var(--gold);
+    background: var(--white);
+    padding: 22px 24px;
+    border-radius: 0 12px 12px 0;
+    box-shadow: var(--shadow);
+    margin: 30px 0;
+  }
+  .callout strong { color: var(--navy); }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
+  .card { background: var(--white); border: 1px solid var(--line); border-radius: 16px; padding: 24px; box-shadow: 0 9px 25px rgba(16,43,60,.05); }
+  .card p { color: var(--muted); margin: 0; }
+  .quote-card { position: relative; padding-top: 46px; }
+  .quote-card::before { content: "“"; position: absolute; top: 8px; left: 22px; font-size: 56px; color: var(--gold); line-height: 1; }
+  .quote-card .speaker { margin-top: 18px; font-size: 12px; color: var(--teal); font-weight: 700; text-transform: uppercase; letter-spacing: .08em; }
+  .two-lane { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .lane { padding: 28px; border-radius: 18px; }
+  .lane.blue { background: var(--soft-blue); border: 1px solid #c8dce9; }
+  .lane.teal { background: var(--soft-teal); border: 1px solid #c3ddd8; }
+  .lane ul, .card ul { margin: 15px 0 0; padding-left: 18px; }
+  .lane li, .card li { margin: 7px 0; }
+  .outcome-num { display: inline-flex; width: 34px; height: 34px; align-items: center; justify-content: center; border-radius: 50%; background: var(--navy); color: white; font-weight: 800; margin-bottom: 16px; }
+  .hours-summary { display: grid; grid-template-columns: 1fr 1.1fr; gap: 24px; margin-bottom: 28px; }
+  .hours-big { background: var(--navy); color: white; border-radius: 18px; padding: 32px; }
+  .hours-big strong { display: block; font-size: 72px; line-height: 1; letter-spacing: -.05em; }
+  .hours-big span { color: rgba(255,255,255,.72); }
+  .hours-note { background: var(--soft-gold); border: 1px solid #e8d3a7; border-radius: 18px; padding: 28px; }
+  .table-wrap { overflow-x: auto; background: white; border: 1px solid var(--line); border-radius: 16px; }
+  table { width: 100%; border-collapse: collapse; min-width: 900px; }
+  th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .07em; color: var(--muted); background: #f2f3f1; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+  td { vertical-align: top; padding: 15px 16px; border-bottom: 1px solid #eceeeb; font-size: 13px; }
+  tr:last-child td { border-bottom: 0; }
+  td.hours { font-weight: 800; text-align: right; white-space: nowrap; }
+  .total-row td { background: var(--navy); color: white; font-weight: 700; }
+  .total-row td.hours { font-size: 18px; }
+  .tiny { color: var(--muted); font-size: 11px; }
+  .roadmap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .phase { position: relative; background: white; border: 1px solid var(--line); border-radius: 16px; padding: 26px; }
+  .phase-tag { font-size: 11px; font-weight: 800; color: var(--teal); text-transform: uppercase; letter-spacing: .08em; }
+  .phase h3 { margin-top: 10px; }
+  .phase ul { padding-left: 18px; margin-bottom: 0; }
+  .phase li { margin: 8px 0; }
+  .brand-plan { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .brand-box { border-radius: 18px; padding: 28px; color: white; }
+  .brand-box.think { background: linear-gradient(135deg,#123b55,#256a93); }
+  .brand-box.elevate { background: linear-gradient(135deg,#185d59,#2e8e83); }
+  .brand-box ul { padding-left: 18px; margin-bottom: 0; color: rgba(255,255,255,.86); }
+  .scorecard { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 15px; }
+  .score { background: white; border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+  .score strong { display: block; margin-bottom: 8px; color: var(--navy); }
+  .score span { color: var(--muted); font-size: 13px; }
+  .responsibility { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .responsibility .card:first-child { border-top: 5px solid var(--teal); }
+  .responsibility .card:last-child { border-top: 5px solid var(--gold); }
+  .sla { margin-top: 22px; background: var(--soft-red); border: 1px solid #ecc6c6; border-radius: 14px; padding: 22px; }
+  .sla-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; margin-top: 16px; }
+  .sla-item { background: white; padding: 15px; border-radius: 10px; }
+  .sla-item strong { font-size: 20px; display: block; }
+  .price-panel { display: grid; grid-template-columns: .9fr 1.1fr; gap: 24px; align-items: stretch; }
+  .price { background: var(--navy); color: white; border-radius: 20px; padding: 34px; }
+  .price .amount { font-size: 64px; line-height: 1; letter-spacing: -.05em; font-weight: 850; margin: 18px 0 8px; }
+  .price .per { color: rgba(255,255,255,.65); }
+  .price hr { border: 0; border-top: 1px solid rgba(255,255,255,.18); margin: 26px 0; }
+  .price .performance { font-size: 30px; font-weight: 800; color: #f0c76f; }
+  .terms { background: white; border: 1px solid var(--line); border-radius: 20px; padding: 30px; }
+  .terms dl { display: grid; grid-template-columns: 150px 1fr; gap: 12px 16px; margin: 20px 0 0; }
+  .terms dt { font-weight: 800; color: var(--navy); }
+  .terms dd { margin: 0; color: var(--muted); }
+  .excluded { margin-top: 22px; background: #f1f2ef; border-radius: 12px; padding: 18px; font-size: 12px; color: var(--muted); }
+  .decision { text-align: center; background: linear-gradient(135deg,#102b3c,#1b536a); color: white; border-radius: 24px; padding: 66px 40px; }
+  .decision h2 { margin-left: auto; margin-right: auto; }
+  .decision p { color: rgba(255,255,255,.76); font-size: 18px; max-width: 720px; margin: 0 auto 30px; }
+  .decision-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; max-width: 900px; margin: 0 auto; text-align: left; }
+  .decision-item { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); border-radius: 12px; padding: 18px; }
+  .decision-item strong { display: block; color: #f0c76f; margin-bottom: 5px; }
+  details { background: white; border: 1px solid var(--line); border-radius: 12px; padding: 0 18px; margin: 10px 0; }
+  summary { cursor: pointer; font-weight: 750; padding: 16px 0; }
+  details p, details ul { color: var(--muted); }
+  footer { padding: 34px 30px; background: #0b202d; color: rgba(255,255,255,.58); text-align: center; font-size: 11px; }
+  @media (max-width: 900px) {
+    .topbar nav { display: none; }
+    .hero-grid, .grid-3, .roadmap, .scorecard, .decision-grid { grid-template-columns: 1fr; }
+    .grid-2, .two-lane, .hours-summary, .brand-plan, .responsibility, .price-panel { grid-template-columns: 1fr; }
+    .sla-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media print {
+    .topbar { display: none; }
+    body { background: white; }
+    .hero { min-height: auto; padding: 60px 45px; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    main { max-width: none; padding: 0 35px 40px; }
+    section { padding: 48px 0; break-inside: avoid; }
+    .card, .phase, .price, .terms, .brand-box, .decision { break-inside: avoid; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .table-wrap { overflow: visible; }
+    table { min-width: 0; font-size: 10px; }
+    th, td { padding: 8px 9px; }
+    .decision { break-before: page; }
+  }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">StreamLab AI × Think3D + Elevate You</div>
+  <nav aria-label="Proposal navigation">
+    <a href="#heard">What we heard</a>
+    <a href="#operating">Operating model</a>
+    <a href="#scope">Scope & hours</a>
+    <a href="#roadmap">90 days</a>
+    <a href="#model">Financial model</a>
+    <a href="#decision">Decision</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">90-Day Integrated Growth Partnership</div>
+    <h1>Build authority.<br>Create pipeline.<br>Prove the return.</h1>
+    <p class="hero-copy">A measurable operating partnership for Think3D and Elevate You: one two-person StreamLab delivery team running the marketing, CRM, campaigns, content, and reporting system—while keeping both businesses operationally separate.</p>
+    <div class="hero-grid">
+      <div class="hero-stat"><strong>2 businesses</strong><span>Separate brands, funnels, CRMs, and reporting</span></div>
+      <div class="hero-stat"><strong>236 hrs/mo</strong><span>Estimated combined delivery capacity across two specialists</span></div>
+      <div class="hero-stat"><strong>90 days</strong><span>Initial implementation and proof period</span></div>
+    </div>
+    <div class="hero-meta">Prepared by StreamLab AI · For Tamien Dysart, Vaney Hariri & Matt Krall · August 2026 · Confidential</div>
+  </div>
+</section>
+
+<main>
+<section id="heard">
+  <div class="section-kicker">01 · What we heard</div>
+  <h2>The decision is not whether marketing sounds good. It is whether the system can produce measurable commercial movement.</h2>
+  <p class="lead">The July 30 discussion made the buying criteria clear. This proposal responds directly to those criteria rather than repeating the strategy presentation.</p>
+  <div class="grid-3">
+    <div class="card quote-card">
+      <h3>Measurable ROI</h3>
+      <p>Think3D needs something that works before year-end. The engagement cannot be another open-ended marketing experiment.</p>
+      <div class="speaker">Tamien's priority</div>
+    </div>
+    <div class="card quote-card">
+      <h3>Clear commercial visibility</h3>
+      <p>The team needs to see how campaigns, qualified conversations, opportunities, pipeline value, and revenue connect.</p>
+      <div class="speaker">Matt's priority</div>
+    </div>
+    <div class="card quote-card">
+      <h3>Shared operating rhythm</h3>
+      <p>StreamLab runs demand generation, systems, nurture, and attribution while the internal teams provide expertise, approvals, and commercial conversations.</p>
+      <div class="speaker">The partnership requirement</div>
+    </div>
+  </div>
+  <div class="callout"><strong>Our response:</strong> keep the existing $4,000 combined monthly investment, make the execution load completely visible, define a 90-day scorecard, and add performance upside on net-new revenue sourced by StreamLab.</div>
+</section>
+
+<section id="operating">
+  <div class="section-kicker">02 · Operating principle</div>
+  <h2>One measurable growth system, with clear handoffs from attention to revenue.</h2>
+  <p class="lead">High-ticket growth requires consistent demand creation, strong conversion infrastructure, and a reliable feedback loop. This proposal is focused on the future operating model—not on evaluating any individual team member or relitigating past activity.</p>
+  <div class="grid-3">
+    <div class="card">
+      <div class="outcome-num">1</div>
+      <h3>Create qualified demand</h3>
+      <p>Founder authority, educational content, events, diagnostics, email, partnerships, and targeted outreach create multiple paths into each business.</p>
+    </div>
+    <div class="card">
+      <div class="outcome-num">2</div>
+      <h3>Capture and nurture interest</h3>
+      <p>Landing pages, CRM workflows, lead routing, nurture sequences, reminders, and attribution make the buyer journey easier to manage and measure.</p>
+    </div>
+    <div class="card">
+      <div class="outcome-num">3</div>
+      <h3>Convert and learn</h3>
+      <p>Commercial conversations, opportunity updates, outcome feedback, and monthly reviews show which messages and channels deserve more investment.</p>
+    </div>
+  </div>
+  <div class="callout"><strong>The goal:</strong> reduce dependence on any one person by making the growth process visible, repeatable, supported by automation, and easier for the full team to execute.</div>
+</section>
+
+<section id="outcomes">
+  <div class="section-kicker">03 · The 90-day mandate</div>
+  <h2>Build demand and improve conversion infrastructure in parallel.</h2>
+  <p class="lead">Demand generation and conversion infrastructure reinforce each other. The strongest model creates qualified interest while continuously improving how that interest is captured, nurtured, and advanced.</p>
+  <div class="two-lane">
+    <div class="lane blue">
+      <div class="outcome-num">1</div>
+      <h3>Give every qualified inquiry a clear next step</h3>
+      <ul>
+        <li>Named owner and next action for every qualified lead</li>
+        <li>Lead scoring, routing, reminders, and escalation</li>
+        <li>Structured re-engagement for priority existing inquiries</li>
+        <li>Weekly pipeline health and next-action visibility</li>
+      </ul>
+    </div>
+    <div class="lane teal">
+      <div class="outcome-num">2</div>
+      <h3>Build repeatable qualified demand</h3>
+      <ul>
+        <li>Founder authority and educational content</li>
+        <li>Diagnostics, events, email nurture, and outreach</li>
+        <li>Separate Think3D and Elevate You buyer journeys</li>
+        <li>Attribution from source through opportunity and revenue</li>
+      </ul>
+    </div>
+  </div>
+  <div class="grid-3" style="margin-top:20px">
+    <div class="card"><div class="outcome-num">1</div><h3>Every inquiry has direction</h3><p>Each qualified record has a source, owner, next action, status, and stage.</p></div>
+    <div class="card"><div class="outcome-num">2</div><h3>One campaign is always moving</h3><p>At least one event, diagnostic, nurture, or targeted outreach campaign is live for each business.</p></div>
+    <div class="card"><div class="outcome-num">3</div><h3>Every month ends with decisions</h3><p>Reporting ties work to audience quality, meetings, opportunities, pipeline value, and collected revenue.</p></div>
+  </div>
+</section>
+
+<section id="scope">
+  <div class="section-kicker">04 · Delivery capacity and value</div>
+  <h2>A two-person StreamLab delivery pod, with an estimated 236 hours of work each month.</h2>
+  <p class="lead">The hours below make the operating load visible. They are planning estimates—not hourly billing and not a promise that every tactic runs at maximum volume every month. Priorities rotate based on active campaigns, available founder inputs, and conversion evidence.</p>
+  <div class="hours-summary">
+    <div class="hours-big"><strong>236</strong><span>estimated combined delivery hours per month across strategy/automation and content/campaign execution</span></div>
+    <div class="hours-note"><h3>Why the scope must be prioritized</h3><p>The implementation plan contains 14 channel categories and 75 distinct tactics. The retainer covers the operating system, but the monthly mix is intentionally selected—not every tactic is pushed at full intensity at the same time.</p></div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Workstream</th><th>Itemized StreamLab activities</th><th>Primary outputs</th><th style="text-align:right">Est. hrs/mo</th></tr></thead>
+      <tbody>
+        <tr><td><strong>1. Strategy & governance</strong></td><td>Weekly campaign and decision meeting; monthly prioritization; campaign briefs; stakeholder coordination.</td><td>Approved monthly priority map, briefs, blockers, decisions.</td><td class="hours">16</td></tr>
+        <tr><td><strong>2. CRM & sales operations</strong></td><td>HubSpot/Pipedrive hygiene; lead routing and scoring; response-support automations; owner and next-action visibility; sales-assisted playbooks; structured re-engagement workflows.</td><td>Clean CRM, visible handoffs, re-engagement workflows, and commercial visibility.</td><td class="hours">24</td></tr>
+        <tr><td><strong>3. Analytics & reporting</strong></td><td>UTM governance; attribution model; dashboard maintenance; weekly funnel-health checks; monthly performance report.</td><td>Separate Think3D/Elevate You scorecards and revenue influence view.</td><td class="hours">12</td></tr>
+        <tr><td><strong>4. Founder content system</strong></td><td>Three source sessions and preparation; editorial calendar; drafting/editing approximately 40–44 founder LinkedIn posts; newsletters, articles, carousels, and polls.</td><td>Distinct authority content for Tamien, Vaney, and Matt.</td><td class="hours">52</td></tr>
+        <tr><td><strong>5. Repurposing & publishing</strong></td><td>Platform adaptation for Instagram, Facebook, YouTube, and X/Threads; short-form assets; scheduling; QA; tagging; company-page distribution.</td><td>Consistent multi-channel publishing without duplicating generic posts.</td><td class="hours">28</td></tr>
+        <tr><td><strong>6. LinkedIn engagement & outreach</strong></td><td>Comment-first engagement; Sales Navigator lists; HeyReach sequences; response routing; campaign optimization; paid amplification builds when approved.</td><td>Qualified audience growth and trackable conversations.</td><td class="hours">24</td></tr>
+        <tr><td><strong>7. Email & nurture</strong></td><td>Founder newsletter; event and diagnostic sequences; re-engagement; deliverability and A/B tests; sales-assisted one-to-one sequences.</td><td>Owned audiences and stage-specific follow-up in both CRMs.</td><td class="hours">18</td></tr>
+        <tr><td><strong>8. Event campaigns</strong></td><td>Registration/checkout pages; warm and cold promotion; reminders; attendee/no-show nurture; event assets; post-event follow-up, attribution, and report.</td><td>End-to-end campaign system for events and executive sessions.</td><td class="hours">24</td></tr>
+        <tr><td><strong>9. Diagnostics, landing pages & CRO</strong></td><td>Think3D diagnostic build; Elevate You diagnostic integration; lead-magnet and debrief pages; Framer forms, CTA tests, chat/social-proof elements; routing handoffs.</td><td>Low-risk entry points that capture and qualify demand.</td><td class="hours">18</td></tr>
+        <tr><td><strong>10. Proof & authority assets</strong></td><td>Case-study capture; framework one-pagers; guides; testimonial and client-logo packaging; book-content repurposing.</td><td>Evidence assets that reduce risk in high-ticket decisions.</td><td class="hours">8</td></tr>
+        <tr><td><strong>11. SEO & buyer-intent content</strong></td><td>Technical/on-page optimization; keyword map; buyer-intent articles; YouTube SEO; schema, GBP, and backlink support.</td><td>Compounding discoverability and high-intent traffic.</td><td class="hours">8</td></tr>
+        <tr><td><strong>12. Partnership & PR enablement</strong></td><td>Partner/referral mechanics; co-marketing assets; media/podcast outreach support; relationship tracking.</td><td>Trusted distribution beyond owned channels.</td><td class="hours">4</td></tr>
+        <tr class="total-row"><td colspan="3">Estimated combined monthly delivery capacity</td><td class="hours">236</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="tiny" style="margin-top:12px">The first 90 days shift more hours toward setup, backlog recovery, diagnostics, attribution, and event builds. Later months shift more capacity toward content, campaigns, optimization, and proof.</p>
+</section>
+
+<section id="roadmap">
+  <div class="section-kicker">05 · 30 / 60 / 90-day implementation</div>
+  <h2>A controlled proof period—not an indefinite leap of faith.</h2>
+  <p class="lead">The first 90 days establish the operating baseline, activate the highest-priority demand systems, and give both leadership teams enough evidence to decide what should scale next.</p>
+  <div class="roadmap">
+    <div class="phase"><div class="phase-tag">Days 1–30</div><h3>Protect and instrument</h3><ul><li>Confirm brand, offer, CRM, and lead-owner boundaries</li><li>Launch dormant-lead reactivation support</li><li>Enforce lead routing, alerts, and response reporting</li><li>Finalize UTM and attribution rules</li><li>Optimize founder LinkedIn conversion paths</li><li>Complete active event campaign requirements</li></ul></div>
+    <div class="phase"><div class="phase-tag">Days 31–60</div><h3>Launch the demand engines</h3><ul><li>Run founder source sessions and publishing cadence</li><li>Deploy Think3D diagnostic and Elevate You funnel integration</li><li>Launch segmented nurture and re-engagement</li><li>Activate HeyReach/Apollo campaigns by ICP</li><li>Build first proof assets and executive-debrief path</li><li>Run full event promotion and follow-up</li></ul></div>
+    <div class="phase"><div class="phase-tag">Days 61–90</div><h3>Convert, prove, and reprioritize</h3><ul><li>Measure audience quality, responses, meetings, and pipeline</li><li>Publish problem-specific case studies and guides</li><li>Optimize offers, pages, sequences, and CTAs</li><li>Test paid amplification only where organic proof exists</li><li>Review lead quality, pipeline movement, and conversion feedback jointly</li><li>Approve the next-quarter channel mix</li></ul></div>
+  </div>
+</section>
+
+<section id="brands">
+  <div class="section-kicker">06 · Separate businesses, separate execution</div>
+  <h2>One StreamLab team. Two independent demand systems.</h2>
+  <p class="lead">Coordination happens through Tamien, approved events, and referrals—not through a merged brand, combined CRM, or ambiguous buyer journey.</p>
+  <div class="brand-plan">
+    <div class="brand-box think"><h3>Think3D priorities</h3><ul><li>HubSpot routing, pipeline visibility, re-engagement, and reporting</li><li>Think3D culture/leadership diagnostic and executive debrief</li><li>Tamien + Vaney authority and LinkedIn conversion system</li><li>Think3D University, SurveyMonkey, Apollo, and event campaigns</li><li>Category positioning, proof library, and flagship entry engagement</li><li>Company-site messaging/asset handoff to the external web team</li></ul></div>
+    <div class="brand-box elevate"><h3>Elevate You priorities</h3><ul><li>Pipedrive pilot engine, n8n workflows, and diagnostic routing</li><li>Existing behavioral diagnostic integrated into a complete funnel</li><li>Tamien + Matt authority and self-leadership content engine</li><li>September event campaign, checkout, nurture, and attribution</li><li>HeyReach outreach, owned-audience nurture, and pilot proof</li><li>Clear pathways for individual, cohort, and organizational offers</li></ul></div>
+  </div>
+</section>
+
+<section id="measurement">
+  <div class="section-kicker">07 · Measurement</div>
+  <h2>Four scorecards create one shared view of growth.</h2>
+  <p class="lead">The monthly review separates delivery, lead management, qualified pipeline, and business outcomes so the team can see what is working, what needs support, and what should change next.</p>
+  <div class="scorecard">
+    <div class="score"><strong>Marketing delivery</strong><span>Campaigns launched, founder content delivered, nurture active, landing pages live, target-account engagement.</span></div>
+    <div class="score"><strong>Lead management</strong><span>Response coverage, contact progress, next actions, stage updates, and qualification feedback.</span></div>
+    <div class="score"><strong>Qualified pipeline</strong><span>Qualified leads, meetings booked, opportunities created, pipeline value, source and brand.</span></div>
+    <div class="score"><strong>Revenue</strong><span>Proposals sent, wins, collected revenue, influenced revenue, revenue-share calculation.</span></div>
+  </div>
+  <div class="callout"><strong>90-day success standard:</strong> reliable attribution and funnel visibility are live; priority inquiries have clear next actions; each business has active demand capture and nurture; and leadership can see which channels are producing qualified conversations and pipeline.</div>
+</section>
+
+<section id="responsibilities">
+  <div class="section-kicker">08 · Shared operating agreement</div>
+  <h2>Growth is shared: StreamLab runs the engine while the client team supplies expertise and leads commercial conversations.</h2>
+  <div class="responsibility">
+    <div class="card"><h3>StreamLab owns</h3><ul><li>Strategy, campaign architecture, and monthly prioritization</li><li>Content planning, packaging, publishing, and distribution</li><li>Landing pages, diagnostics, email nurture, outreach mechanics</li><li>CRM workflows, attribution, dashboards, and reporting</li><li>Lead alerts, routing, escalation, and visibility</li><li>Performance optimization based on evidence</li></ul></div>
+    <div class="card"><h3>Think3D / Elevate You own</h3><ul><li>Final offer, category, methodology, and voice approval</li><li>Founder source sessions, proof, testimonials, and relationships</li><li>Sales conversations, qualification judgment, proposals, and closing</li><li>Consistent lead handling and complete CRM updates</li><li>Accurate revenue reporting for attributable opportunities</li><li>Approvals and inputs by agreed deadlines</li></ul></div>
+  </div>
+  <div class="sla">
+    <h3>Recommended lead-handling rhythm</h3>
+    <p>These standards keep handoffs visible, support a fair performance review, and help both teams learn from results.</p>
+    <div class="sla-grid">
+      <div class="sla-item"><strong>2 hrs</strong><span>Target first response for high-intent inbound during business hours</span></div>
+      <div class="sla-item"><strong>1 day</strong><span>Target first response for other accepted qualified inquiries</span></div>
+      <div class="sla-item"><strong>5 touches</strong><span>Recommended follow-up sequence over 10 business days</span></div>
+      <div class="sla-item"><strong>100%</strong><span>Stage, next action, commercial activity, and outcome visible in CRM</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="model">
+  <div class="section-kicker">09 · Recommended financial model</div>
+  <h2>Stable execution capacity, plus real upside when the system produces collected revenue.</h2>
+  <p class="lead">This model preserves the team required to run the work and gives StreamLab meaningful skin in the game while recognizing that revenue is produced through a shared process.</p>
+  <div class="price-panel">
+    <div class="price">
+      <div class="eyebrow">Base partnership</div>
+      <div class="amount">$4,000</div>
+      <div class="per">per month, combined for Think3D + Elevate You</div>
+      <hr>
+      <div class="performance">+ 5%</div>
+      <div class="per">of collected net-new revenue from StreamLab-sourced opportunities</div>
+    </div>
+    <div class="terms">
+      <h3>Commercial terms</h3>
+      <dl>
+        <dt>Initial term</dt><dd>90 days, followed by a performance and scope review.</dd>
+        <dt>Attribution</dt><dd>The opportunity must be created after the engagement begins and traceable to a StreamLab-managed campaign, event, diagnostic, content CTA, nurture path, outbound sequence, or tracked referral mechanism.</dd>
+        <dt>Payment trigger</dt><dd>Revenue share is calculated only on cash collected, excluding taxes, refunds, pass-through costs, and unpaid invoices.</dd>
+        <dt>Coverage</dt><dd>The 5% applies to the first 12 months of collected revenue from the sourced client relationship.</dd>
+        <dt>Existing pipeline</dt><dd>No revenue share on opportunities already active in the CRM before the start date unless both parties explicitly classify them as reactivated by the new campaign.</dd>
+        <dt>Transparency</dt><dd>Think3D and Elevate You provide closed-won values and collections status for attributable opportunities.</dd>
+      </dl>
+      <div class="excluded"><strong>Excluded from the base retainer:</strong> advertising spend, software subscriptions, direct mail/gifting, event venue and production costs, major core-company website development, third-party contractors, and travel. These require separate approval.</div>
+    </div>
+  </div>
+  <div class="grid-2" style="margin-top:22px">
+    <div class="card"><h3>Why not commission-only?</h3><p>The engagement requires fixed weekly delivery across strategy, CRM, content, campaigns, systems, and reporting. A stable base funds that operating capacity, while the revenue share adds meaningful upside when attributable work produces collected revenue.</p></div>
+    <div class="card"><h3>Why this model is aligned</h3><p>The base protects execution capacity. The 5% reward grows only when a StreamLab-sourced opportunity becomes real collected revenue. Both parties therefore benefit from qualified—not merely high-volume—lead generation.</p></div>
+  </div>
+</section>
+
+<section id="decision">
+  <div class="decision">
+    <div class="section-kicker" style="color:#b9ddd8">10 · Decision</div>
+    <h2>Approve a 90-day implementation and accountability period.</h2>
+    <p>We are not asking for faith in another marketing plan. We are asking to operate the system, measure the results, and let the next 90 days determine what deserves to scale.</p>
+    <div class="decision-grid">
+      <div class="decision-item"><strong>1 · Confirm scope</strong>Approve the combined $4,000 monthly base and 5% sourced-revenue share.</div>
+      <div class="decision-item"><strong>2 · Confirm owners</strong>Confirm the commercial owner and lead-handling rhythm for each business and inquiry type.</div>
+      <div class="decision-item"><strong>3 · Start the proof period</strong>Launch the 90-day plan the week commercial terms and required inputs are confirmed.</div>
+    </div>
+  </div>
+</section>
+
+<section id="appendix">
+  <div class="section-kicker">Appendix · Definitions and safeguards</div>
+  <h2>How we keep performance attribution clear.</h2>
+  <details open><summary>What counts as a StreamLab-sourced opportunity?</summary><p>A new opportunity whose first documented source is a StreamLab-managed event, diagnostic, tracked landing page, email nurture, founder-content CTA, outbound campaign, paid campaign, or formal referral mechanism created and tracked by StreamLab.</p></details>
+  <details><summary>What counts as an accepted qualified opportunity?</summary><p>A real contact within an agreed buyer profile who has a relevant organizational or individual need, has agreed to a substantive diagnostic or commercial conversation, and is accepted by the designated sales owner. Rejected leads require a documented reason in the CRM.</p></details>
+  <details><summary>How are handoff delays handled?</summary><p>Any delay is shown neutrally in the monthly operations scorecard so the team can distinguish source quality from process timing. The goal is not blame; it is to identify where automation, clarity, or additional support is needed.</p></details>
+  <details><summary>Do all 75 implementation tactics run every month?</summary><p>No. All are available within the operating system, but the monthly mix is prioritized jointly based on active events, founder inputs, funnel evidence, business urgency, and available capacity. The 236-hour estimate represents the full monthly delivery plan across the selected workstreams.</p></details>
+  <details><summary>What is the review decision after 90 days?</summary><p>Leadership reviews delivery completion, lead-management consistency, qualified pipeline, collected revenue, channel evidence, and the true operating workload. The parties then continue, reprioritize, resize, or conclude the engagement based on evidence.</p></details>
+</section>
+</main>
+<footer>StreamLab AI · Confidential proposal for Think3D Solutions and Elevate You · August 2026</footer>
+</body>
+</html>
