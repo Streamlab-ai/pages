@@ -138,7 +138,7 @@
     .proof-strip li { font-size: 0.8125rem; color: var(--slate); padding-left: 20px; position: relative; line-height: 1.5; }
     .proof-strip li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 1px; background-color: var(--green); }
 
-    .press-badge { display: flex; align-items: center; gap: 24px; margin-top: 36px; padding: 24px; background: var(--cream-mid); border: 1px solid var(--amber); }
+    .press-badge { display: flex; align-items: center; gap: 24px; margin-top: 36px; padding: 24px; background: var(--cream-mid); border: 1px solid var(--rule); }
     .press-badge__cert { flex-shrink: 0; width: 180px; border: 1px solid var(--rule); box-shadow: 0 2px 10px rgba(0,0,0,0.10); cursor: zoom-in; transition: transform 0.15s, box-shadow 0.15s; }
     .press-badge__cert:hover { transform: scale(1.03); box-shadow: 0 4px 16px rgba(0,0,0,0.16); }
     .press-badge__text { font-size: 0.85rem; color: var(--slate); line-height: 1.6; }
@@ -261,6 +261,7 @@
         <h1 class="hero__headline">What got you here may be starting to get in the way of what comes next.</h1>
         <p class="hero__sub">You've built a career on being capable. Solving problems. Carrying responsibility. Getting results.</p>
         <p class="hero__sub hero__sub--tight">But maybe you're overthinking decisions you used to make quickly. Carrying more than you should. Reacting in ways you don't like. Or realizing that the way you've learned to succeed is beginning to cost more than you're willing to pay.</p>
+        <p class="hero__sub hero__sub--tight" style="font-weight: 500; color: var(--ink);">You may not need more advice. You may need a place to understand why the same patterns keep showing up—and what you want to do differently when they do.</p>
         <div class="hero__actions">
           <a href="#identity-audit" class="btn btn--dark">Start with the Identity Audit</a>
         </div>
@@ -294,19 +295,19 @@
 
       <div class="sequence__steps" role="list">
         <div class="sequence__step" role="listitem">
-          <span class="sequence__step-num">01 — Awareness</span>
-          <h3 class="sequence__step-name">See the pattern.</h3>
-          <p class="sequence__step-body">“I’m stressed” is difficult to work with. “When I feel my competence being questioned, I start controlling the conversation” gives us somewhere to begin. We look beneath the visible behavior at the stories, beliefs, expectations, and identities that may be shaping it.</p>
+          <span class="sequence__step-num">01</span>
+          <h3 class="sequence__step-name">Make it specific.</h3>
+          <p class="sequence__step-body">Vague friction is difficult to change. We get specific about the moment: what happened, what you noticed, what you told yourself, and how you responded.</p>
         </div>
         <div class="sequence__step" role="listitem">
-          <span class="sequence__step-num">02 — Alignment</span>
-          <h3 class="sequence__step-name">Decide what fits who you're becoming.</h3>
-          <p class="sequence__step-body">Connect the change to who you are becoming. When the behavior is tied to identity, it stops feeling optional.</p>
+          <span class="sequence__step-num">02</span>
+          <h3 class="sequence__step-name">Go upstream.</h3>
+          <p class="sequence__step-body">We look beneath the visible behavior at the beliefs, stories, expectations, or identities that may be shaping the pattern—and whether they still serve you.</p>
         </div>
         <div class="sequence__step" role="listitem">
-          <span class="sequence__step-num">03 — Activation</span>
+          <span class="sequence__step-num">03</span>
           <h3 class="sequence__step-name">Test it in real life.</h3>
-          <p class="sequence__step-body">Insight isn't the finish line. You take a different choice back into the meeting, relationship, decision, or difficult moment where the old pattern normally appears. Then we learn from what actually happened.</p>
+          <p class="sequence__step-body">Insight isn't the finish line. You take a different choice back into the actual meeting, relationship, decision, or difficult moment, then learn from what happened.</p>
         </div>
       </div>
 
@@ -346,12 +347,11 @@
             </ul>
           </div>
 
-          <!-- NEW: Press / authority badge — addresses audit's Expert Authority + Content & Credibility gap. Real certificate image (converted from client-supplied PDF), not a placeholder mark. Click image to enlarge. -->
+          <!-- Press / authority badge — addresses audit's Expert Authority + Content & Credibility gap. Real certificate image (converted from client-supplied PDF). Click image to enlarge; text links to the live USA Leaders article. -->
           <div class="press-badge">
             <img class="press-badge__cert" src="https://streamlab-ai.github.io/pages/images/matt-krall-usa-leaders-certificate.jpg" alt="USA Leaders Certificate of Recognition — Matt Krall, Leaders Shaping Organizational Transformation in 2026" onclick="document.getElementById('cert-lightbox').classList.add('is-open')">
             <div class="press-badge__text">
-              <strong>Featured in LEADERS — Shaping Organizational Transformation in 2026</strong>, a USA Leaders publication recognizing executives driving organizational change.
-              <span class="press-badge__flag">⚠ [NEEDS LIVE ARTICLE LINK — the only link Matt sent us 403s; no public URL found. Ask Matt for the actual published article URL or a PDF we can host.]</span>
+              <strong>Featured in LEADERS — Shaping Organizational Transformation in 2026</strong>, a USA Leaders publication recognizing executives driving organizational change. <a href="https://theusaleaders.com/industry-leaders/matt-krall/" target="_blank" rel="noopener noreferrer" class="arrow-link" style="display:inline;">Read the feature</a>
             </div>
           </div>
         </div>
@@ -483,7 +483,7 @@
       <div class="cta-block__form">
         <!-- LIVE FILLOUT EMBED — form built by client, verified ID q87akt26gGus -->
         <div style="width:100%;height:500px;" data-fillout-id="q87akt26gGus" data-fillout-embed-type="standard" data-fillout-inherit-parameters data-fillout-dynamic-resize></div>
-        <p style="font-size:0.72rem; color:var(--slate-light); margin-top:14px; text-align:center;">Phone number, role, and company are no longer required — only what's needed to deliver the Audit. <a href="#" class="arrow-link" style="display:inline;">Privacy policy</a></p>
+        <p style="font-size:0.72rem; color:var(--slate-light); margin-top:14px; text-align:center;">Phone number, role, and company are no longer required — only what's needed to deliver the Audit. <a href="https://app.termly.io/policy-viewer/policy.html?policyUUID=d963f78d-3d81-4199-aee8-1784fa3f8c9d" class="arrow-link" style="display:inline;" target="_blank" rel="noopener noreferrer">Privacy policy</a></p>
       </div>
       <p class="cta-block__note">Matt works with a small number of senior executives and operators. Every path starts here.</p>
     </div>
