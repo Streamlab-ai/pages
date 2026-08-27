@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>MattKrall.com V2 — Proposed Changes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FAF9F6; --cream-mid:#F3F0EA; --ink:#1A1A18; --charcoal:#1E2527;
+    --slate:#555550; --slate-light:#8A8A82; --green:#2A5A43; --amber:#B8833E; --rule:#DDD9D0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--charcoal);font-family:'Inter',sans-serif;color:var(--ink);}
+  h1,h2,h3{font-family:'Playfair Display',serif;font-weight:600;line-height:1.2;}
+  .deck{max-width:920px;margin:0 auto;padding:40px 20px 120px;}
+  .slide{background:var(--cream);border:1px solid var(--rule);margin-bottom:28px;padding:56px 60px;min-height:420px;display:flex;flex-direction:column;justify-content:center;position:relative;}
+  .slide__num{position:absolute;top:24px;right:28px;font-size:0.7rem;color:var(--slate-light);letter-spacing:0.08em;}
+  .kicker{display:block;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);font-weight:600;margin-bottom:18px;}
+  .kicker--amber{color:var(--amber);}
+  h1{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:20px;}
+  h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:20px;}
+  p.lede{font-size:1.05rem;color:var(--slate);line-height:1.75;max-width:640px;font-weight:300;}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:24px;}
+  .col h3{font-size:1.05rem;color:var(--ink);margin-bottom:10px;}
+  .col p{font-size:0.9rem;color:var(--slate);line-height:1.6;font-weight:300;}
+  .before{border-left:3px solid #b8464a;padding-left:18px;}
+  .after{border-left:3px solid var(--green);padding-left:18px;}
+  .tag{display:inline-block;font-size:0.65rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;padding:3px 8px;margin-bottom:10px;}
+  .tag--before{background:#b8464a;color:#fff;}
+  .tag--after{background:var(--green);color:#fff;}
+  ul.check{list-style:none;margin-top:18px;}
+  ul.check li{font-size:0.92rem;color:var(--slate);padding:10px 0 10px 26px;border-bottom:1px solid var(--rule);position:relative;}
+  ul.check li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:700;}
+  .scorebar-row{display:flex;align-items:center;gap:16px;margin:14px 0;}
+  .scorebar-label{width:180px;font-size:0.85rem;color:var(--ink);flex-shrink:0;}
+  .scorebar-track{flex:1;height:10px;background:var(--rule);border-radius:6px;overflow:hidden;}
+  .scorebar-fill{height:100%;background:var(--green);border-radius:6px;}
+  .scorebar-fill--low{background:var(--amber);}
+  .scorebar-val{width:36px;text-align:right;font-size:0.82rem;color:var(--slate);}
+  .badge-mock{display:flex;align-items:center;gap:16px;background:var(--cream-mid);border:1px solid var(--rule);padding:16px 20px;margin-top:20px;}
+  .badge-mock__mark{width:44px;height:44px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.65rem;text-align:center;font-weight:700;flex-shrink:0;}
+  .footer-slide{text-align:center;color:var(--cream);padding:60px 20px;}
+  .footer-slide a{color:var(--amber);}
+  .steps{counter-reset:step;margin-top:20px;}
+  .step{display:flex;gap:18px;margin-bottom:20px;align-items:flex-start;}
+  .step__num{width:32px;height:32px;border-radius:50%;background:var(--charcoal);color:var(--cream);display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:600;flex-shrink:0;}
+  .step__text{font-size:0.92rem;color:var(--slate);line-height:1.55;padding-top:4px;}
+  .step__text strong{color:var(--ink);}
+  .flagbox{background:#FFF6E8;border:1px solid var(--amber);padding:18px 22px;margin-top:24px;font-size:0.88rem;color:#6b4c1f;}
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <div class="slide">
+    <span class="slide__num">01 / 08</span>
+    <span class="kicker">MattKrall.com — Website V2</span>
+    <h1>Identity Audit-first entry, plus AI search visibility upgrades</h1>
+    <p class="lede">A walkthrough of the changes from Matt's website revision handoff, fully built into the mockup — and the additional fixes we're recommending from an AI-search audit of the current live site.</p>
+  </div>
+
+  <div class="slide">
+    <span class="slide__num">02 / 08</span>
+    <span class="kicker kicker--amber">The Core Change</span>
+    <h2>The entry point moved from a conversation to an exercise.</h2>
+    <div class="grid2">
+      <div class="col before">
+        <span class="tag tag--before">Before</span>
+        <h3>Request a Clarity Conversation</h3>
+        <p>First ask was a 30-minute conversation before the visitor had experienced any value. Higher-friction, higher drop-off.</p>
+      </div>
+      <div class="col after">
+        <span class="tag tag--after">After</span>
+        <h3>Start with the Identity Audit</h3>
+        <p>First ask is a 15-minute self-guided audit, delivered by email. The Clarity Conversation becomes the optional second step.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <span class="slide__num">03 / 08</span>
+    <span class="kicker">New Visitor Journey</span>
+    <h2>Recognition → Form → Identity Audit → Clarity Conversation → Next step</h2>
+    <div class="steps">
+      <div class="step"><div class="step__num">1</div><div class="step__text"><strong>Recognition</strong> — visitor sees themselves in the problem copy.</div></div>
+      <div class="step"><div class="step__num">2</div><div class="step__text"><strong>Light form</strong> — name + email only; phone, role, and company are optional or removed.</div></div>
+      <div class="step"><div class="step__num">3</div><div class="step__text"><strong>Identity Audit</strong> — 15-minute guided self-audit, completed independently.</div></div>
+      <div class="step"><div class="step__num">4</div><div class="step__text"><strong>Clarity Conversation</strong> — optional, complimentary 30 minutes to make it specific.</div></div>
+      <div class="step"><div class="step__num">5</div><div class="step__text"><strong>Right next step</strong> — six-session 1:1 coaching, another form of support, or nothing further. All valid.</div></div>
+    </div>
+  </div>
+
+  <div class="slide">
+    <span class="slide__num">04 / 08</span>
+    <span class="kicker">What Else Changed</span>
+    <h2>Three new sections, one relocation.</h2>
+    <ul class="check">
+      <li><strong>"How I Coach"</strong> — new section under About, answers what it's actually like to work with Matt.</li>
+      <li><strong>Six-session engagement, spelled out</strong> — cadence, format, what happens at the end. Replaces vague "Inner Game of Leadership" framing.</li>
+      <li><strong>Outcome section</strong> — closes on "good coaching should make the coach less necessary."</li>
+      <li><strong>Testimonials redistributed</strong> — moved from one block to sitting directly under the claims they support.</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <span class="slide__num">05 / 08</span>
+    <span class="kicker kicker--amber">Decision Needed From Matt</span>
+    <h2>Executive-only, or broaden the qualifying language?</h2>
+    <p class="lede">The current copy repeatedly limits the offer to senior executives/operators by title. The Audit and coaching product itself don't require that title — just real stakes and willingness to look inward.</p>
+    <div class="flagbox">Development can ship everything else without this call. But hero language and some 1:1 section wording should be locked only after Matt confirms the audience scope.</div>
+  </div>
+
+  <div class="slide">
+    <span class="slide__num">06 / 08</span>
+    <span class="kicker">AI Search Audit — mattkrall.com</span>
+    <h2>Overall score: 77 / 100</h2>
+    <div class="scorebar-row"><div class="scorebar-label">Technical Foundations</div><div class="scorebar-track"><div class="scorebar-fill" style="width:100%"></div></div><div class="scorebar-val">100</div></div>
+    <div class="scorebar-row"><div class="scorebar-label">Page Markup</div><div class="scorebar-track"><div class="scorebar-fill" style="width:100%"></div></div><div class="scorebar-val">100</div></div>
+    <div class="scorebar-row"><div class="scorebar-label">Platform Visibility</div><div class="scorebar-track"><div class="scorebar-fill" style="width:100%"></div></div><div class="scorebar-val">100</div></div>
+    <div class="scorebar-row"><div class="scorebar-label">Expert Authority</div><div class="scorebar-track"><div class="scorebar-fill" style="width:84%"></div></div><div class="scorebar-val">~84</div></div>
+    <div class="scorebar-row"><div class="scorebar-label">AI Chatbots</div><div class="scorebar-track"><div class="scorebar-fill scorebar-fill--low" style="width:33%"></div></div><div class="scorebar-val">~33</div></div>
+    <div class="scorebar-row"><div class="scorebar-label">Content &amp; Credibility</div><div class="scorebar-track"><div class="scorebar-fill scorebar-fill--low" style="width:30%"></div></div><div class="scorebar-val">~30</div></div>
+    <p class="lede" style="margin-top:20px;font-size:0.82rem;color:var(--slate-light);">Category scores read from the audit screenshot at low resolution — treat as directional; re-confirm exact figures against the source report before quoting them to Matt.</p>
+  </div>
+
+  <div class="slide">
+    <span class="slide__num">07 / 08</span>
+    <span class="kicker kicker--amber">What We Fixed / Recommend</span>
+    <h2>Content &amp; Credibility, Expert Authority, AI-chatbot citability</h2>
+    <div class="badge-mock">
+      <div class="badge-mock__mark">LEADERS<br>2026</div>
+      <div>
+        <strong>Added:</strong> "Featured in LEADERS — USA Leaders, 2026" badge in the About section. Third-party recognition is a strong authority signal for AI answer engines.
+      </div>
+    </div>
+    <ul class="check" style="margin-top:24px;">
+      <li><strong>Built:</strong> FAQ schema expanded 4 → 7 questions, phrased the way people ask AI assistants (already in mockup).</li>
+      <li><strong>Recommended, not yet built:</strong> visible "last updated" dates on the 3 articles + internal linking between them (freshness + link graph signals).</li>
+      <li><strong>Recommended:</strong> pull a quote/asset from the USA Leaders digital article once we can access it (link in Matt's email currently returns a 403 — needs a forwarded PDF or public URL).</li>
+    </ul>
+  </div>
+
+  <div class="slide">
+    <span class="slide__num">08 / 08</span>
+    <span class="kicker">Next Steps</span>
+    <h2>What we need to ship this.</h2>
+    <div class="steps">
+      <div class="step"><div class="step__num">1</div><div class="step__text">Matt confirms audience scope (executive-only vs. broader).</div></div>
+      <div class="step"><div class="step__num">2</div><div class="step__text">Matt signs off on the mockup as the source of truth for copy.</div></div>
+      <div class="step"><div class="step__num">3</div><div class="step__text">StreamLab wires the form → Identity Audit delivery automation and QA's against the 11-point acceptance checklist from the handoff.</div></div>
+      <div class="step"><div class="step__num">4</div><div class="step__text">Push to the live GitHub repo (Streamlab-ai/matt-website) — pending explicit go-ahead, per standing instruction not to write/deploy without approval.</div></div>
+    </div>
+  </div>
+
+  <div class="footer-slide">StreamLab Ai · Prepared for Matt Krall · mattkrall.com V2</div>
+
+</div>
+</body>
+</html>
