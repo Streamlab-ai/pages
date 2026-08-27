@@ -139,7 +139,7 @@
     .proof-strip li::before { content: ''; position: absolute; left: 0; top: 9px; width: 8px; height: 1px; background-color: var(--green); }
 
     .press-badge { display: flex; align-items: center; gap: 20px; margin-top: 36px; padding: 20px 24px; background: var(--cream-mid); border: 1px solid var(--rule); }
-    .press-badge__mark { flex-shrink: 0; width: 52px; height: 52px; border-radius: 50%; background: var(--green); color: var(--cream); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 0.8rem; text-align: center; line-height: 1.1; }
+    .press-badge__cert { flex-shrink: 0; width: 90px; border: 1px solid var(--rule); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
     .press-badge__text { font-size: 0.82rem; color: var(--slate); line-height: 1.5; }
     .press-badge__text strong { color: var(--ink); }
 
@@ -339,9 +339,9 @@
             </ul>
           </div>
 
-          <!-- NEW: Press / authority badge — addresses audit's Expert Authority + Content & Credibility gap -->
+          <!-- NEW: Press / authority badge — addresses audit's Expert Authority + Content & Credibility gap. Real certificate image (converted from client-supplied PDF), not a placeholder mark. -->
           <a class="press-badge" href="#NEEDS-LINK" style="text-decoration:none; border: 1px solid var(--amber); background:#FFF6E8;">
-            <div class="press-badge__mark">LEADERS<br>2026</div>
+            <img class="press-badge__cert" src="https://streamlab-ai.github.io/pages/images/matt-krall-usa-leaders-certificate.jpg" alt="USA Leaders Certificate of Recognition — Matt Krall, Leaders Shaping Organizational Transformation in 2026">
             <div class="press-badge__text"><strong>Featured in LEADERS — Shaping Organizational Transformation in 2026</strong>, a USA Leaders publication recognizing executives driving organizational change. <span style="color:#6b4c1f; font-weight:600;">⚠ [NEEDS LIVE ARTICLE LINK — the only link Matt sent us 403s; no public URL found. Ask Matt for the actual published article URL or a PDF we can host.]</span></div>
           </a>
         </div>
