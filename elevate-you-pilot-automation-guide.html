@@ -510,26 +510,27 @@
   .how-card li {
     font-size: 12.5px;
     color: var(--text-secondary);
-    display: flex;
-    gap: 8px;
-    align-items: flex-start;
+    display: block;
+    position: relative;
+    padding-left: 26px;
     counter-increment: step;
     line-height: 1.5;
   }
   .how-card li::before {
     content: counter(step);
+    position: absolute;
+    left: 0;
+    top: 1px;
     font-size: 10px;
     font-weight: 700;
     color: var(--accent);
     background: var(--accent-light);
-    min-width: 18px;
+    width: 18px;
     height: 18px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-    margin-top: 1px;
   }
 
   /* ── FIELDS TABLE ── */
@@ -841,8 +842,8 @@
   <div class="panel active" id="tab-launch">
 
     <div class="section-eyebrow">Getting started</div>
-    <div class="section-title">Three steps, then the system handles the rest</div>
-    <p class="section-desc">Every new pilot cohort starts with the same three actions from Matt. Once all three are done, WF1 through WF5 execute automatically — no further input needed until results are ready. As of July 9, 2026, participants advance to Practice phase automatically the moment they complete their pre-diagnostic, so the weekly heat map needs no manual per-participant step either.</p>
+    <div class="section-title">Four steps, then the system handles the rest</div>
+    <p class="section-desc">Every new pilot cohort starts with the same four actions from Matt. Once all four are done, WF1 through WF5 execute automatically — no further input needed until results are ready. As of July 9, 2026, participants advance to Practice phase automatically the moment they complete their pre-diagnostic, so the weekly heat map needs no manual per-participant step either.</p>
 
     <div class="step-list">
       <div class="step-item">
@@ -852,8 +853,30 @@
         </div>
         <div class="step-body">
           <div class="step-badge blue">Matt's Action</div>
+          <h4>Make Sure the Deal Exists in Pipedrive</h4>
+          <p><strong>The automation never creates a deal.</strong> It fills an existing deal with participants. So before anything else, open Pipedrive and check that this client has a deal in the pilot pipeline.</p>
+          <p style="margin-top:10px"><strong>If the deal already exists</strong>, note which stage it is sitting in and move on to step 2.</p>
+          <p style="margin-top:10px"><strong>If there is no deal yet</strong>, create one:</p>
+          <ol class="compact">
+            <li>Go to <a href="https://elevateyou.pipedrive.com/deals" target="_blank" class="inline-link">Pipedrive &rarr; Deals ↗</a></li>
+            <li>Click <strong>+ Deal</strong> in the top left</li>
+            <li>Give it the client or cohort name, for example <code>WRCCPA Pilot &mdash; September 2026</code></li>
+            <li>Link the organisation and a contact person if you have them</li>
+            <li>Choose the pilot pipeline and leave it in an <strong>early stage</strong>. Any stage except Pilot Active</li>
+            <li>Save</li>
+          </ol>
+          <p style="margin-top:10px">Leaving it out of Pilot Active matters. Moving the deal into that stage is what fires the automation in step 4, and it only fires on the move. A deal created directly into Pilot Active has never moved, so nothing happens.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-left">
+          <div class="step-num blue">2</div>
+          <div class="step-line-v"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-badge blue">Matt's Action</div>
           <h4>Build the Cohort Roster in the Rosters folder</h4>
-          <p>Open the <a href="https://elevateyou963-my.sharepoint.com/personal/pilots_goelevateyou_com/Documents/Pilot%20Automation/Rosters" target="_blank" class="inline-link">Rosters folder ↗</a> in the pilots@goelevateyou.com OneDrive. Right click <strong>ElevateU — Pilot Roster Template.xlsx</strong>, choose <strong>Copy to</strong>, and save the copy into the same Rosters folder. Rename it for the cohort, then add each participant to the <strong>PilotRoster</strong> table.</p>
+          <p>Open the <a href="https://elevateyou963-my.sharepoint.com/personal/pilots_goelevateyou_com/Documents/Pilot%20Automation/Rosters" target="_blank" class="inline-link">Rosters folder ↗</a> in the pilots@goelevateyou.com OneDrive. Right click the roster template, choose <strong>Duplicate</strong>, and rename the new copy for this cohort. Then add each participant to the <strong>PilotRoster</strong> table.</p>
           <p style="margin-top:10px"><strong>Columns must be entered in this exact order</strong> — WF1 reads each row by column position, not by header name, so a column out of place will corrupt every row behind it:</p>
           <ol class="compact">
             <li><code>PilotName</code></li>
@@ -869,19 +892,20 @@
             <li><code>Notes</code> — optional</li>
           </ol>
           <p style="margin-top:10px">Assign a unique Cohort ID that will identify this group across all data — for example, <code>SF-2026-07</code> for Sioux Falls July 2026. Never reuse an ID.</p>
+          <div class="callout" style="margin-top:14px;margin-bottom:0"><div class="callout-icon">⚠️</div><div><h4>Never change the column order. It is hardcoded.</h4><p>WF1 does not read your headers. It reads each row <strong>by column number</strong>: position 1 is the pilot name, position 2 is the cohort ID, position 5 is the email, position 9 is the champion email. Those positions are written into the automation. Renaming a header is harmless. <strong>Inserting, deleting or reordering a column shifts everything to its right and breaks the import.</strong> The dangerous version is a column inserted late, near the champion columns. Email and name still line up, so every row imports and looks fine, but the champion email field now holds a person&rsquo;s name and the Monday leader report quietly never arrives. If you need to record something extra, <strong>add the new column after Notes</strong>, at the very end, where nothing reads it. If you need a field the automation actually uses, that is a change to WF1, so send it to StreamLab AI rather than editing the template.</p></div></div>
           <div class="callout" style="margin-top:14px;margin-bottom:0"><div class="callout-icon">⚠️</div><div><h4>Always duplicate the template. Never build a new spreadsheet.</h4><p>WF1 reads a named table called <strong>PilotRoster</strong> that lives inside the template file. A fresh spreadsheet has no such table, so the read fails and the deal stalls with no error message.</p></div></div>
           <div class="callout" style="margin-top:14px;margin-bottom:0"><div class="callout-icon">⚠️</div><div><h4>The file must live in the pilots@ OneDrive.</h4><p>WF1 has that drive hardcoded. A roster uploaded to your own OneDrive or a team site produces a link that looks perfectly valid, resolves, and then fails the read. Any folder inside the pilots@ drive works. Rosters is the one shared with the team.</p></div></div>
         </div>
       </div>
       <div class="step-item">
         <div class="step-left">
-          <div class="step-num blue">2</div>
+          <div class="step-num blue">3</div>
           <div class="step-line-v"></div>
         </div>
         <div class="step-body">
           <div class="step-badge blue">Matt's Action</div>
           <h4>Fill Three Fields on the Deal</h4>
-          <p>The deal already exists in Pipedrive. <strong>The automation does not create deals.</strong> It fills an existing deal with participants. Open that deal and set all three of these <em>before</em> touching the stage:</p>
+          <p>Open the deal from step 1 and set all three of these <em>before</em> touching the stage:</p>
           <ol class="compact">
             <li><strong>Roster File URL</strong> — right click your roster file, Copy link, paste it here</li>
             <li><strong>Confirm Pilot Cohort</strong> — set to <strong>Yes</strong></li>
@@ -892,7 +916,7 @@
       </div>
       <div class="step-item">
         <div class="step-left">
-          <div class="step-num blue">3</div>
+          <div class="step-num blue">4</div>
           <div class="step-line-v"></div>
         </div>
         <div class="step-body">
@@ -980,12 +1004,34 @@
 
     <div class="section-eyebrow">Monitoring</div>
     <div class="section-title">See who's responded and who hasn't</div>
-    <p class="section-desc">The system tracks every participant's status in real time. These are the four Pipedrive filters the workflows themselves rely on — the same ones give Matt an immediate view of where each cohort stands.</p>
+    <p class="section-desc">The system tracks every participant's status in real time. These are the saved Pipedrive filters the workflows rely on, and the same ones give you an immediate view of where each cohort stands.</p>
+
+    <div class="how-grid" style="margin-bottom:26px">
+      <div class="how-card">
+        <div class="how-card-icon">🔎</div>
+        <h4>How to open a saved filter</h4>
+        <ol>
+          <li>Go to <strong>Contacts &rarr; People</strong> in the left sidebar</li>
+          <li>Click the <strong>filter name</strong> shown above the list, next to the people count</li>
+          <li>Pick the filter you want from the dropdown</li>
+          <li>The list reloads showing only matching people</li>
+        </ol>
+      </div>
+      <div class="how-card">
+        <div class="how-card-icon">🔗</div>
+        <h4>Or jump straight there</h4>
+        <ol>
+          <li>Each filter name below is a direct link. Click it and Pipedrive opens on that filter.</li>
+          <li>These links are safe to bookmark and safe to share with anyone who has Pipedrive access.</li>
+          <li>If a filter opens empty, that is an answer, not an error. It means nobody is currently in that state.</li>
+        </ol>
+      </div>
+    </div>
 
     <div class="filter-card">
       <div class="filter-card-header">
         <div>
-          <div class="filter-name">Pre-Diagnostic Not Sent <span class="filter-id">Filter 171</span></div>
+          <div class="filter-name"><a href="https://elevateyou.pipedrive.com/persons/list/filter/171" target="_blank" class="inline-link">Pre-Diagnostic Not Sent ↗</a> <span class="filter-id">Filter 171</span></div>
           <div class="filter-logic">Contact Type = Pilot Respondent · Pre-Diagnostic Status = Not Sent</div>
         </div>
         <div class="filter-use">The queue WF2 sends against each weekday morning. If someone stays stuck here, WF2 hasn't reached them yet.</div>
@@ -996,7 +1042,7 @@
     <div class="filter-card">
       <div class="filter-card-header">
         <div>
-          <div class="filter-name">Pre-Diagnostic Sent — No Completion <span class="filter-id">Filter 172</span></div>
+          <div class="filter-name"><a href="https://elevateyou.pipedrive.com/persons/list/filter/172" target="_blank" class="inline-link">Pre-Diagnostic Sent (No Completion) ↗</a> <span class="filter-id">Filter 172</span></div>
           <div class="filter-logic">Contact Type = Pilot Respondent · Pre-Diagnostic Status = Sent</div>
         </div>
         <div class="filter-use">Everyone who received the link but hasn't submitted. This is also the pool WF3 pulls reminder candidates from every Friday.</div>
@@ -1007,23 +1053,23 @@
     <div class="filter-card">
       <div class="filter-card-header">
         <div>
-          <div class="filter-name">Practice Phase Active <span class="filter-id">Filter 173</span></div>
+          <div class="filter-name"><a href="https://elevateyou.pipedrive.com/persons/list/filter/173" target="_blank" class="inline-link">Act II Active ↗</a> <span class="filter-id">Filter 173</span></div>
           <div class="filter-logic">Current Phase = Practice</div>
         </div>
         <div class="filter-use">WF4 pulls this exact filter every Friday to build the heat map send list.</div>
       </div>
-      <div class="filter-tip"><strong>Use this to:</strong> see who's currently in the active practice period. Current Phase advances to Practice automatically when WF3 marks someone's pre-diagnostic Completed — no manual update needed.</div>
+      <div class="filter-tip"><strong>Use this to:</strong> see who is currently in the active practice period. Current Phase advances to Practice automatically when WF3 marks someone&rsquo;s pre-diagnostic Completed, so no manual update is needed. <strong>Note the name.</strong> In Pipedrive this filter is called <em>Act II Active</em>, not Practice Phase. Searching for &ldquo;Practice&rdquo; will not find it.</div>
     </div>
 
     <div class="filter-card">
       <div class="filter-card-header">
         <div>
-          <div class="filter-name">Post-Diagnostic Sent <span class="filter-id">Filter 174</span></div>
+          <div class="filter-name"><a href="https://elevateyou.pipedrive.com/persons/list/filter/174" target="_blank" class="inline-link">Post-Diagnostic Sent ↗</a> <span class="filter-id">Filter 174</span></div>
           <div class="filter-logic">Post-Diagnostic Status = Sent</div>
         </div>
-        <div class="filter-use">Used by WF5 to confirm a cohort's post-diagnostic has gone out before it starts checking for completed pre+post data pairs.</div>
+        <div class="filter-use">Intended to show everyone whose post-diagnostic has been sent but not yet completed. No workflow uses it. It exists for humans to check on the post-diagnostic round.</div>
       </div>
-      <div class="filter-tip"><strong>Use this to:</strong> check whether the post-diagnostic round has been sent for a given cohort.</div>
+      <div class="filter-tip"><strong>Do not rely on this one yet.</strong> Its saved condition points at a value that does not exist on the Post-Diagnostic Status field, so it returns nobody no matter what the data says. Reported to StreamLab AI on 10 September 2026. Until it is repaired, check post-diagnostic status on the person record itself, or in the Participant Send Log.</div>
     </div>
 
     <div class="divider"></div>
@@ -1083,7 +1129,7 @@
 
     <div class="section-eyebrow">Pipedrive custom fields</div>
     <div class="section-title">What gets tracked on every participant</div>
-    <p class="section-desc">These custom Person fields are set automatically by the workflows, with one exception noted below. Matt can view and filter on any of them directly in Pipedrive's People list view.</p>
+    <p class="section-desc">These custom Person fields are set automatically by the workflows. You can view and filter on any of them from the <strong>Contacts &rarr; People</strong> list. To see or edit the field definitions themselves, go to <strong>Settings &rarr; Company &rarr; Data fields &rarr; Person</strong>. Changing a field&rsquo;s options there will break the workflows that write to it, so read rather than edit.</p>
 
     <div class="fields-wrap">
       <table class="fields-table">
@@ -1120,7 +1166,7 @@
           <tr>
             <td><div class="field-name">Post-Diagnostic Status</div><div class="field-type">Single option</div></td>
             <td>
-              <div class="field-desc" style="margin-bottom:8px">Mirrors Pre-Diagnostic Status for the post-practice round. Checked by WF5 (via Filter 174) before assembling the Executive Brief.</div>
+              <div class="field-desc" style="margin-bottom:8px">Mirrors Pre-Diagnostic Status for the post-practice round. Set automatically by WF4 when the post round goes out, and by WF3 when a post response comes back. WF5 reads the response data itself rather than this field.</div>
               <span class="status-chip gray"><span class="chip-dot"></span>Not Sent</span>
               <span class="status-chip blue"><span class="chip-dot"></span>Sent</span>
               <span class="status-chip amber"><span class="chip-dot"></span>Reminder Sent</span>
@@ -1140,7 +1186,7 @@
               <span class="status-chip green"><span class="chip-dot"></span>Practice</span>
               <span class="status-chip gray"><span class="chip-dot"></span>Proof</span>
               <span class="status-chip gray"><span class="chip-dot"></span>Complete</span>
-              <div class="field-desc" style="margin-top:8px">Advances Diagnostic → Practice automatically — WF3 sets this the moment it marks someone's pre-diagnostic Completed. Proof and Complete are not yet automated and would need to be set manually if used.</div>
+              <div class="field-desc" style="margin-top:8px">Advances Diagnostic → Practice automatically — WF3 sets this the moment it marks someone's pre-diagnostic Completed. All four values are automated. WF1 sets Diagnostic at import. WF3 advances to Practice the moment it marks a pre-diagnostic Completed, and to Complete when the post-diagnostic comes back. WF4 sets Proof when the post-diagnostic is sent. You should not need to set this field by hand.</div>
             </td>
           </tr>
         </tbody>
@@ -1149,7 +1195,8 @@
 
     <div class="columns-wrap">
       <h4>Recommended column setup for People list view</h4>
-      <p>Add these columns to your Pipedrive People view. They give you a full picture of every participant's status at a glance.</p>
+      <p>Add these columns to your Pipedrive People view. They give you a full picture of every participant&rsquo;s status at a glance.</p>
+      <p style="margin-top:10px"><strong>How to add them:</strong> open <strong>Contacts &rarr; People</strong>, click the <strong>Customize columns</strong> icon at the top right of the list, then search each field name below and tick it. The view saves itself and stays that way next time you open it.</p>
       <div class="col-tags">
         <div class="col-tag">Cohort ID</div>
         <div class="col-tag">Pre-Diagnostic Status</div>
@@ -1176,7 +1223,7 @@
       <div class="qref-item">
         <div class="qref-q">Who hasn't submitted their diagnostic?</div>
         <div class="qref-divider"></div>
-        <div class="qref-a">Pipedrive → "Pre-Diagnostic Sent — No Completion" (Filter 172)</div>
+        <div class="qref-a"><a href="https://elevateyou.pipedrive.com/persons/list/filter/172" target="_blank" class="inline-link">Pipedrive: Pre-Diagnostic Sent (No Completion) ↗</a> (Filter 172)</div>
       </div>
       <div class="qref-item">
         <div class="qref-q">How many people are in a specific cohort?</div>
@@ -1196,7 +1243,7 @@
       <div class="qref-item">
         <div class="qref-q">Why isn't someone getting the Friday heat map?</div>
         <div class="qref-divider"></div>
-        <div class="qref-a">Check their <strong>Current Phase</strong> field is Practice — it only advances once their pre-diagnostic is marked Completed</div>
+        <div class="qref-a">Check their <strong>Current Phase</strong> is Practice. It advances only once their pre-diagnostic is marked Completed. See <a href="https://elevateyou.pipedrive.com/persons/list/filter/173" target="_blank" class="inline-link">Act II Active ↗</a> (Filter 173) for everyone currently eligible</div>
       </div>
       <div class="qref-item">
         <div class="qref-q">View this week's team heat map data</div>
@@ -1204,9 +1251,19 @@
         <div class="qref-a"><a href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQCIlhrqM5ZKTJqeavPCzXD8ATATZfQWEig_-CYQglYsXg0?e=rIA4cF" target="_blank" class="inline-link">Weekly Heat Map Responses ↗</a></div>
       </div>
       <div class="qref-item">
+        <div class="qref-q">The deal is in Pilot Active but nothing happened</div>
+        <div class="qref-arrow">→</div>
+        <div class="qref-a">Check Roster File URL is filled, Confirm Pilot Cohort = Yes, and Roster Import Status = Not Started. Then drag the deal out to another stage and back into Pilot Active. The automation fires on the move, not on the stage</div>
+      </div>
+      <div class="qref-item">
+        <div class="qref-q">Where do I see whether an import worked?</div>
+        <div class="qref-arrow">→</div>
+        <div class="qref-a">The deal&rsquo;s <strong>Automation Notes</strong> field. WF1 writes to it at every step, including the reason if it failed</div>
+      </div>
+      <div class="qref-item">
         <div class="qref-q">Launch a new pilot cohort</div>
         <div class="qref-divider"></div>
-        <div class="qref-a"><a href="https://elevateyou963-my.sharepoint.com/personal/pilots_goelevateyou_com/Documents/Pilot%20Automation/Rosters" target="_blank" class="inline-link">Duplicate template in Rosters ↗</a> → paste link into Roster File URL, Confirm = Yes, Import Status = Not Started → <em>then</em> drag deal to Pilot Active</div>
+        <div class="qref-a">Deal exists in Pipedrive → <a href="https://elevateyou963-my.sharepoint.com/personal/pilots_goelevateyou_com/Documents/Pilot%20Automation/Rosters" target="_blank" class="inline-link">duplicate the template in Rosters ↗</a> → paste link into Roster File URL, Confirm = Yes, Import Status = Not Started → <em>then</em> drag the deal to Pilot Active</div>
       </div>
       <div class="qref-item">
         <div class="qref-q">View the Executive Brief data package</div>
