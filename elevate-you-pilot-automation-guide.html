@@ -811,7 +811,7 @@
 <div class="header">
   <div class="header-eyebrow">
     <div class="pill"><div class="pill-dot"></div>Pilot Automation System</div>
-    <div class="pill amber"><div class="pill-dot"></div>Rev. 3 — verified against live build</div>
+    <div class="pill amber"><div class="pill-dot"></div>Rev. 4 — re-verified against live build, Sep 10 2026</div>
   </div>
   <h1>How the System Works</h1>
   <p class="header-sub">A reference guide for launching pilot cohorts, reading diagnostic data, and managing participants in Pipedrive. This revision was checked line-by-line against the live WF1–WF5 n8n workflows.</p>
@@ -841,8 +841,8 @@
   <div class="panel active" id="tab-launch">
 
     <div class="section-eyebrow">Getting started</div>
-    <div class="section-title">Two steps, then the system handles the rest</div>
-    <p class="section-desc">Every new pilot cohort starts with the same two actions from Matt. Once both are done, WF1 through WF5 execute automatically — no further input needed until results are ready. As of July 9, 2026, participants advance to Practice phase automatically the moment they complete their pre-diagnostic, so the weekly heat map needs no manual per-participant step either.</p>
+    <div class="section-title">Three steps, then the system handles the rest</div>
+    <p class="section-desc">Every new pilot cohort starts with the same three actions from Matt. Once all three are done, WF1 through WF5 execute automatically — no further input needed until results are ready. As of July 9, 2026, participants advance to Practice phase automatically the moment they complete their pre-diagnostic, so the weekly heat map needs no manual per-participant step either.</p>
 
     <div class="step-list">
       <div class="step-item">
@@ -852,8 +852,8 @@
         </div>
         <div class="step-body">
           <div class="step-badge blue">Matt's Action</div>
-          <h4>Upload the Cohort Roster to SharePoint</h4>
-          <p>Open the <a href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQATa5Qq47j7T5acJepWobg6Af0EO_9RUP98TvE9k0fDbLs?e=fVGMEi" target="_blank" class="inline-link">Pilot Roster Template ↗</a> in SharePoint and add each participant to the <strong>PilotRoster</strong> table.</p>
+          <h4>Build the Cohort Roster in the Rosters folder</h4>
+          <p>Open the <a href="https://elevateyou963-my.sharepoint.com/personal/pilots_goelevateyou_com/Documents/Pilot%20Automation/Rosters" target="_blank" class="inline-link">Rosters folder ↗</a> in the pilots@goelevateyou.com OneDrive. Right click <strong>ElevateU — Pilot Roster Template.xlsx</strong>, choose <strong>Copy to</strong>, and save the copy into the same Rosters folder. Rename it for the cohort, then add each participant to the <strong>PilotRoster</strong> table.</p>
           <p style="margin-top:10px"><strong>Columns must be entered in this exact order</strong> — WF1 reads each row by column position, not by header name, so a column out of place will corrupt every row behind it:</p>
           <ol class="compact">
             <li><code>PilotName</code></li>
@@ -869,6 +869,8 @@
             <li><code>Notes</code> — optional</li>
           </ol>
           <p style="margin-top:10px">Assign a unique Cohort ID that will identify this group across all data — for example, <code>SF-2026-07</code> for Sioux Falls July 2026. Never reuse an ID.</p>
+          <div class="callout" style="margin-top:14px;margin-bottom:0"><div class="callout-icon">⚠️</div><div><h4>Always duplicate the template. Never build a new spreadsheet.</h4><p>WF1 reads a named table called <strong>PilotRoster</strong> that lives inside the template file. A fresh spreadsheet has no such table, so the read fails and the deal stalls with no error message.</p></div></div>
+          <div class="callout" style="margin-top:14px;margin-bottom:0"><div class="callout-icon">⚠️</div><div><h4>The file must live in the pilots@ OneDrive.</h4><p>WF1 has that drive hardcoded. A roster uploaded to your own OneDrive or a team site produces a link that looks perfectly valid, resolves, and then fails the read. Any folder inside the pilots@ drive works. Rosters is the one shared with the team.</p></div></div>
         </div>
       </div>
       <div class="step-item">
@@ -878,8 +880,27 @@
         </div>
         <div class="step-body">
           <div class="step-badge blue">Matt's Action</div>
-          <h4>Set the Trigger in Pipedrive</h4>
-          <p>Open the client's Deal in Pipedrive. Set <strong>Stage → Pilot Active</strong> and flip <strong>Confirm Pilot Cohort → Yes</strong>. WF1 fires the moment both conditions are true on the same deal update.</p>
+          <h4>Fill Three Fields on the Deal</h4>
+          <p>The deal already exists in Pipedrive. <strong>The automation does not create deals.</strong> It fills an existing deal with participants. Open that deal and set all three of these <em>before</em> touching the stage:</p>
+          <ol class="compact">
+            <li><strong>Roster File URL</strong> — right click your roster file, Copy link, paste it here</li>
+            <li><strong>Confirm Pilot Cohort</strong> — set to <strong>Yes</strong></li>
+            <li><strong>Roster Import Status</strong> — must read <strong>Not Started</strong></li>
+          </ol>
+          <p style="margin-top:10px">Each one is a separate guard inside WF1. If any is missing the workflow stops, and most of the time it stops quietly.</p>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-left">
+          <div class="step-num blue">3</div>
+          <div class="step-line-v"></div>
+        </div>
+        <div class="step-body">
+          <div class="step-badge blue">Matt's Action</div>
+          <h4>Move the Deal to Pilot Active</h4>
+          <p>This is the trigger. Drag the deal into <strong>Pilot Active</strong>, and only now.</p>
+          <div class="callout" style="margin-top:14px;margin-bottom:0"><div class="callout-icon">⚠️</div><div><h4>Order matters. This is the mistake to avoid.</h4><p>WF1 listens for the deal <strong>moving into</strong> Pilot Active, and reads the other three fields at that instant. Set Confirm to Yes after the deal is already sitting in Pilot Active and nothing happens, because the stage never changed. If that occurs, drag the deal out to any other stage and back in.</p></div></div>
+          <p style="margin-top:12px">Participants appear in Pipedrive within seconds. The deal&rsquo;s <strong>Automation Notes</strong> field is written at each step, so read it to confirm the import landed.</p>
         </div>
       </div>
       <div class="step-item">
@@ -890,7 +911,7 @@
         <div class="step-body">
           <div class="step-badge green">Automation Active</div>
           <h4>WF1 through WF5 run automatically from here</h4>
-          <p>WF1 imports the roster and creates Pipedrive records. WF2 sends the pre-filled diagnostic link every weekday at 8AM Central to anyone marked Not Sent. WF3 runs every Friday at 10AM Central — it matches completed responses back to Pipedrive, marks them Completed, <strong>advances Current Phase to Practice automatically</strong> so no one needs to update that field by hand, and sends a reminder to anyone still unresponded 3+ days after their initial send. WF4 then sends the weekly leader heat map every Friday at 8AM Central and delivers the Monday leader report. WF5 checks every Monday at 10AM Central for cohorts with both pre- and post-diagnostic data ready, then assembles the Executive Brief data package and notifies Matt/Tamien.</p>
+          <p>WF1 imports the roster and creates Pipedrive records. WF2 sends the pre-filled diagnostic link every weekday at 12:00 noon Central to anyone marked Not Sent. WF3 runs every Friday at 2:00 PM Central — it matches completed responses back to Pipedrive, marks them Completed, <strong>advances Current Phase to Practice automatically</strong> so no one needs to update that field by hand, and sends a reminder to anyone still unresponded 3+ days after their initial send. WF4 then sends the weekly leader heat map every Friday at 12:00 noon Central and delivers the Monday leader report at 12:00 noon Central. WF5 checks every Monday at 2:00 PM Central for cohorts with both pre- and post-diagnostic data ready, then assembles the Executive Brief data package and notifies Matt/Tamien.</p>
         </div>
       </div>
     </div>
@@ -913,25 +934,25 @@
         <div class="wf-node">
           <div class="wf-node-label">WF2</div>
           <div class="wf-node-name">Diagnostic Send</div>
-          <div class="wf-node-when">Weekdays, 8AM Central</div>
+          <div class="wf-node-when">Weekdays, 12:00 noon Central</div>
         </div>
         <div class="wf-connector"><div class="wf-connector-line"></div><div class="wf-connector-arrow"></div></div>
         <div class="wf-node">
           <div class="wf-node-label">WF3</div>
           <div class="wf-node-name">Response Tracking</div>
-          <div class="wf-node-when">Fridays, 10AM Central — tracks + 3-day reminder</div>
+          <div class="wf-node-when">Fridays, 2:00 PM Central — tracks + 3-day reminder</div>
         </div>
         <div class="wf-connector"><div class="wf-connector-line"></div><div class="wf-connector-arrow"></div></div>
         <div class="wf-node">
           <div class="wf-node-label">WF4</div>
           <div class="wf-node-name">Weekly Heat Map</div>
-          <div class="wf-node-when">Friday 8AM send · Monday 8AM report</div>
+          <div class="wf-node-when">Friday 12:00 noon send · Monday 12:00 noon report</div>
         </div>
         <div class="wf-connector"><div class="wf-connector-line"></div><div class="wf-connector-arrow"></div></div>
         <div class="wf-node">
           <div class="wf-node-label">WF5</div>
           <div class="wf-node-name">Executive Brief</div>
-          <div class="wf-node-when">Mondays, 10AM Central — checks pre+post data ready</div>
+          <div class="wf-node-when">Mondays, 2:00 PM Central — checks pre+post data ready</div>
         </div>
       </div>
     </div>
@@ -1026,7 +1047,7 @@
         <div class="how-card-icon">🔢</div>
         <h4>Getting a per-cohort count</h4>
         <ol>
-          <li><a href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQATa5Qq47j7T5acJepWobg6Af0EO_9RUP98TvE9k0fDbLs?e=fVGMEi" target="_blank" class="inline-link">Open Pilot Roster Template ↗</a> — use the Send Log tab</li>
+          <li><a href="https://elevateyou963-my.sharepoint.com/personal/pilots_goelevateyou_com/_layouts/15/Doc.aspx?sourcedoc=%7B282B6A1C-C8FD-4BC8-87A5-555B7EA9AF92%7D&amp;file=ElevateU%20%E2%80%94%20Participant%20Send%20Log.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank" class="inline-link">Open the Participant Send Log ↗</a> — one row per participant, per send</li>
           <li>Filter by the <strong>Cohort ID</strong> column</li>
           <li>Row count = total participants in that cohort</li>
           <li>Note: Pipedrive does not display group totals</li>
@@ -1160,7 +1181,7 @@
       <div class="qref-item">
         <div class="qref-q">How many people are in a specific cohort?</div>
         <div class="qref-divider"></div>
-        <div class="qref-a"><a href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQATa5Qq47j7T5acJepWobg6Af0EO_9RUP98TvE9k0fDbLs?e=fVGMEi" target="_blank" class="inline-link">Pilot Roster / Send Log ↗</a> → filter by Cohort ID</div>
+        <div class="qref-a"><a href="https://elevateyou963-my.sharepoint.com/personal/pilots_goelevateyou_com/_layouts/15/Doc.aspx?sourcedoc=%7B282B6A1C-C8FD-4BC8-87A5-555B7EA9AF92%7D&amp;file=ElevateU%20%E2%80%94%20Participant%20Send%20Log.xlsx&amp;action=default&amp;mobileredirect=true" target="_blank" class="inline-link">Participant Send Log ↗</a> → filter by Cohort ID</div>
       </div>
       <div class="qref-item">
         <div class="qref-q">View all submissions for one cohort</div>
@@ -1185,7 +1206,7 @@
       <div class="qref-item">
         <div class="qref-q">Launch a new pilot cohort</div>
         <div class="qref-divider"></div>
-        <div class="qref-a"><a href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQATa5Qq47j7T5acJepWobg6Af0EO_9RUP98TvE9k0fDbLs?e=fVGMEi" target="_blank" class="inline-link">Upload Roster ↗</a> (11 columns, exact order) → Pipedrive: Pilot Active + Confirm Yes</div>
+        <div class="qref-a"><a href="https://elevateyou963-my.sharepoint.com/personal/pilots_goelevateyou_com/Documents/Pilot%20Automation/Rosters" target="_blank" class="inline-link">Duplicate template in Rosters ↗</a> → paste link into Roster File URL, Confirm = Yes, Import Status = Not Started → <em>then</em> drag deal to Pilot Active</div>
       </div>
       <div class="qref-item">
         <div class="qref-q">View the Executive Brief data package</div>
@@ -1212,9 +1233,9 @@
         <div class="link-label">Weekly Leader Heat Map Responses</div>
         <div class="link-arrow">↗</div>
       </a>
-      <a class="link-row" href="https://elevateyou963-my.sharepoint.com/:x:/g/personal/pilots_goelevateyou_com/IQATa5Qq47j7T5acJepWobg6Af0EO_9RUP98TvE9k0fDbLs?e=fVGMEi" target="_blank">
+      <a class="link-row" href="https://elevateyou963-my.sharepoint.com/personal/pilots_goelevateyou_com/Documents/Pilot%20Automation/Rosters" target="_blank">
         <div class="link-icon">📁</div>
-        <div class="link-label">Pilot Roster Template — upload new cohorts here</div>
+        <div class="link-label">Rosters folder — duplicate the template here for each new cohort</div>
         <div class="link-arrow">↗</div>
       </a>
     </div>
@@ -1232,7 +1253,7 @@
 <!-- FOOTER -->
 <div class="footer">
   <div class="footer-left">Elevate You × StreamLab AI &nbsp;·&nbsp; Pilot Automation System &nbsp;·&nbsp; Confidential</div>
-  <div class="footer-right">Revised July 2026 &nbsp;·&nbsp; verified against live n8n build &nbsp;·&nbsp; streamlabai.com</div>
+  <div class="footer-right">Revised 10 September 2026 &nbsp;·&nbsp; re-verified against live n8n, Pipedrive and OneDrive &nbsp;·&nbsp; streamlabai.com</div>
 </div>
 
 <script>
