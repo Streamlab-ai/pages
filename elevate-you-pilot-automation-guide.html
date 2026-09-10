@@ -812,7 +812,7 @@
 <div class="header">
   <div class="header-eyebrow">
     <div class="pill"><div class="pill-dot"></div>Pilot Automation System</div>
-    <div class="pill amber"><div class="pill-dot"></div>Rev. 4 — re-verified against live build, Sep 10 2026</div>
+    <div class="pill amber"><div class="pill-dot"></div>Rev. 5 — re-verified against live build, Sep 10 2026</div>
   </div>
   <h1>How the System Works</h1>
   <p class="header-sub">A reference guide for launching pilot cohorts, reading diagnostic data, and managing participants in Pipedrive. This revision was checked line-by-line against the live WF1–WF5 n8n workflows.</p>
@@ -935,7 +935,7 @@
         <div class="step-body">
           <div class="step-badge green">Automation Active</div>
           <h4>WF1 through WF5 run automatically from here</h4>
-          <p>WF1 imports the roster and creates Pipedrive records. WF2 sends the pre-filled diagnostic link every weekday at 12:00 noon Central to anyone marked Not Sent. WF3 runs every Friday at 2:00 PM Central — it matches completed responses back to Pipedrive, marks them Completed, <strong>advances Current Phase to Practice automatically</strong> so no one needs to update that field by hand, and sends a reminder to anyone still unresponded 3+ days after their initial send. WF4 then sends the weekly leader heat map every Friday at 12:00 noon Central and delivers the Monday leader report at 12:00 noon Central. WF5 checks every Monday at 2:00 PM Central for cohorts with both pre- and post-diagnostic data ready, then assembles the Executive Brief data package and notifies Matt/Tamien.</p>
+          <p>WF1 imports the roster and creates Pipedrive records. WF2 sends the pre-filled diagnostic link every weekday at 8AM Central to anyone marked Not Sent. WF3 runs every Friday at 10AM Central — it matches completed responses back to Pipedrive, marks them Completed, <strong>advances Current Phase to Practice automatically</strong> so no one needs to update that field by hand, and sends a reminder to anyone still unresponded 3+ days after their initial send. WF4 then sends the weekly leader heat map every Friday at 8AM Central and delivers the Monday leader report at 8AM Central. WF5 checks every Monday at 10AM Central for cohorts with both pre- and post-diagnostic data ready, then assembles the Executive Brief data package and notifies Matt/Tamien.</p>
         </div>
       </div>
     </div>
@@ -958,25 +958,25 @@
         <div class="wf-node">
           <div class="wf-node-label">WF2</div>
           <div class="wf-node-name">Diagnostic Send</div>
-          <div class="wf-node-when">Weekdays, 12:00 noon Central</div>
+          <div class="wf-node-when">Weekdays, 8AM Central</div>
         </div>
         <div class="wf-connector"><div class="wf-connector-line"></div><div class="wf-connector-arrow"></div></div>
         <div class="wf-node">
           <div class="wf-node-label">WF3</div>
           <div class="wf-node-name">Response Tracking</div>
-          <div class="wf-node-when">Fridays, 2:00 PM Central — tracks + 3-day reminder</div>
+          <div class="wf-node-when">Fridays, 10AM Central — tracks + 3-day reminder</div>
         </div>
         <div class="wf-connector"><div class="wf-connector-line"></div><div class="wf-connector-arrow"></div></div>
         <div class="wf-node">
           <div class="wf-node-label">WF4</div>
           <div class="wf-node-name">Weekly Heat Map</div>
-          <div class="wf-node-when">Friday 12:00 noon send · Monday 12:00 noon report</div>
+          <div class="wf-node-when">Friday 8AM send · Monday 8AM report</div>
         </div>
         <div class="wf-connector"><div class="wf-connector-line"></div><div class="wf-connector-arrow"></div></div>
         <div class="wf-node">
           <div class="wf-node-label">WF5</div>
           <div class="wf-node-name">Executive Brief</div>
-          <div class="wf-node-when">Mondays, 2:00 PM Central — checks pre+post data ready</div>
+          <div class="wf-node-when">Mondays, 10AM Central — checks pre+post data ready</div>
         </div>
       </div>
     </div>
@@ -1069,7 +1069,7 @@
         </div>
         <div class="filter-use">Intended to show everyone whose post-diagnostic has been sent but not yet completed. No workflow uses it. It exists for humans to check on the post-diagnostic round.</div>
       </div>
-      <div class="filter-tip"><strong>Do not rely on this one yet.</strong> Its saved condition points at a value that does not exist on the Post-Diagnostic Status field, so it returns nobody no matter what the data says. Reported to StreamLab AI on 10 September 2026. Until it is repaired, check post-diagnostic status on the person record itself, or in the Participant Send Log.</div>
+      <div class="filter-tip"><strong>Use this to:</strong> see who has been sent their post-diagnostic but has not completed it yet. Repaired 10 September 2026. Its saved condition previously pointed at a value that does not exist on the field, so it could never match anybody. It works now. An empty result means nobody is currently at that status.</div>
     </div>
 
     <div class="divider"></div>
