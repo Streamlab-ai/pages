@@ -3,7 +3,7 @@
   "subtitle": "Outreach & opportunity tracker",
   "author": "Rafay Baloch",
   "owner": "Ruth Maclang",
-  "updatedAt": "2026-10-05T13:44:19Z",
+  "updatedAt": "2026-10-05T13:57:35Z",
   "researchDate": "2026-10-05",
   "scope": "Initial outreach batch · Book visibility",
   "phase": "Prepared for review",
@@ -307,10 +307,16 @@
     },
     {
       "title": "Review the five first-wave pitches",
-      "body": "Confirm angles and author availability. Ruth will send from a dedicated outreach Gmail once it is ready."
+      "body": "Confirm angles and author availability. Ruth has selected her outreach email and will send under her own name once the pitches are approved."
     }
   ],
   "activity": [
+    {
+      "date": "2026-10-05",
+      "title": "Outreach sender confirmed",
+      "detail": "Ruth confirmed the email account to use under her name. Pitches remain drafts; no outreach has been sent.",
+      "kind": "Preparation"
+    },
     {
       "date": "2026-10-05",
       "title": "Amazon starting baseline recorded",
