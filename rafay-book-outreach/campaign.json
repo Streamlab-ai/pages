@@ -3,7 +3,7 @@
   "subtitle": "Outreach & opportunity tracker",
   "author": "Rafay Baloch",
   "owner": "Ruth Maclang",
-  "updatedAt": "2026-10-05T14:11:30Z",
+  "updatedAt": "2026-10-05T14:15:50Z",
   "researchDate": "2026-10-05",
   "scope": "Book visibility · YouTube and blog-review prospecting",
   "phase": "Expanding reviewer research",
@@ -31,7 +31,7 @@
         }
       ],
       "angle": "Independent review for readers learning practical web pentesting",
-      "subject": "Review consideration: Web Hacking Arsenal by Rafay Baloch",
+      "subject": "Help Net Security X Web Hacking Arsenal",
       "message": "Hi Help Net Security editorial team,\n\nI saw your July review of CTRL+ALT+PWN and wanted to suggest a more technical title for your book coverage.\n\nI’m helping Rafay Baloch with outreach for Web Hacking Arsenal: A Practical Guide to Modern Web Pentesting, published by CRC Press. It focuses on web application testing, with practical examples and a public companion code repository.\n\nWould your team be interested in considering a digital review copy? I can coordinate delivery directly with the author. Any review would be entirely independent, with no expectation of a positive assessment.\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
       "needs": "Confirm this title has not already been pitched and arrange private digital-copy fulfillment. Do not attach the book to the first email.",
       "stage": "Draft ready",
@@ -60,7 +60,7 @@
         }
       ],
       "angle": "An educator’s independent assessment of a web-pentesting learning resource",
-      "subject": "Book consideration for your bug bounty learning audience",
+      "subject": "Katie Paxton-Fear X Web Hacking Arsenal",
       "message": "Hi Katie,\n\nYour focus on making bug bounty learning approachable is why I’m reaching out.\n\nI’m Ruth, helping Rafay Baloch with outreach for Web Hacking Arsenal: A Practical Guide to Modern Web Pentesting. The publisher describes a mix of web-testing theory and practical examples, with chapter-wise code available publicly.\n\nWould you be open to a digital copy to assess whether it would be useful to your audience? You would have complete freedom to decide whether to cover it and what to say. I can arrange the copy with Rafay if it interests you.\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
       "needs": "Recheck recent channel activity and prior outreach, then confirm review-copy delivery. This is an editorial invitation, not a paid sponsorship request.",
       "stage": "Draft ready",
@@ -93,7 +93,7 @@
         }
       ],
       "angle": "How browser research becomes a repeatable web-testing method",
-      "subject": "Guest idea: browser findings → better web-testing questions",
+      "subject": "Critical Thinking X Web Hacking Arsenal",
       "message": "Hi Critical Thinking team,\n\nYour episode with Jorian Woltjer on browser logic errors and XS-Leaks caught my attention, particularly given the overlap with Rafay Baloch’s work in browser and web application security.\n\nI’m Ruth, helping Rafay with outreach around his book, Web Hacking Arsenal: A Practical Guide to Modern Web Pentesting.\n\nRafay is a cybersecurity researcher, author and founder of REDSECLABS. His research has included browser security vulnerabilities and CVEs, with previous work covered by outlets including the BBC and TechCrunch, and he has presented his research at conferences including Black Hat.\n\nRather than doing a conventional book interview, I thought there could be a strong technical conversation around how researchers move from unusual browser behaviour to exploitable security findings, where conventional web pentesting methodologies miss logic and browser-side issues, and how modern testers can develop better hypotheses rather than relying primarily on scanners and checklists.\n\nThe discussion could naturally draw on practical examples and techniques from Web Hacking Arsenal, which is focused on modern, hands-on web application penetration testing.\n\nWould that be of interest for an upcoming episode? I’d be happy to send over a short outline with a few possible technical angles.\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
       "needs": "Body revised by Rafay. Confirm prior contact, final send approval and availability; coordinate specific technical examples before recording. No recording time is committed.",
       "stage": "Draft ready",
@@ -126,7 +126,7 @@
         }
       ],
       "angle": "Turning a web vulnerability finding into a useful engineering test",
-      "subject": "Form proposal: from a web finding to an actionable AppSec test",
+      "subject": "Application Security Weekly X Web Hacking Arsenal",
       "message": "Suggested show: Application Security Weekly\nGuest: Rafay Baloch\nProposed topic: From an isolated web finding to an actionable AppSec test\n\nReason:\nYour recent discussion on moving from bug bounty bugs to more secure systems is a strong fit for a practical follow-on. Rafay is the author of Web Hacking Arsenal and is open to a technical discussion drawing on web application and browser-security work.\n\nTopic:\nHow to document a finding clearly, test the assumptions around it in an authorized environment, and turn that learning into a useful regression check for developers. The proposed discussion would use examples agreed with Rafay and focus on engineering lessons.\n\nSubmitter: Ruth Maclang, coordinating author outreach. Please route scheduling through me initially.\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
       "needs": "Rafay must approve the technical scope and bio. Ruth must complete sender details and answer PR/vendor disclosures truthfully; do not authorize a direct calendar invite or select paid placement by default.",
       "stage": "Draft ready",
@@ -159,7 +159,7 @@
         }
       ],
       "angle": "Why an isolated finding should change the next testing question",
-      "subject": "Guest idea: what a web finding should change in your testing process",
+      "subject": "Absolute AppSec X Web Hacking Arsenal",
       "message": "Hi Seth and Ken,\n\nYour recent episode topics on CRLF-powered desynchronization and IDOR prevention suggested a good fit for Rafay Baloch’s web-testing experience.\n\nI’m helping Rafay with outreach for his book, Web Hacking Arsenal. A possible discussion for Absolute AppSec: how a single finding should change the questions a tester asks next, and how to communicate those lessons to an engineering team.\n\nHe is open to interviews, and I can work with him on a concrete, vendor-neutral outline rather than a general book overview.\n\nWould that topic fit your guest queue?\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
       "needs": "Confirm prior contact, author-approved examples and availability before scheduling.",
       "stage": "Draft ready",
@@ -188,7 +188,7 @@
         }
       ],
       "angle": "An original practical article supported by the author’s experience",
-      "subject": "Article idea: turning web findings into a repeatable testing method",
+      "subject": "PenTest Magazine X Web Hacking Arsenal",
       "message": "Hi PenTest editorial team,\n\nYour invitation for practical tutorials and case studies looks like a fit for a contribution from Rafay Baloch, author of Web Hacking Arsenal.\n\nI’m coordinating his outreach. Would you consider an outline for an original article on turning a web vulnerability finding into a repeatable testing method? The proposed piece would cover the testing question, evidence to capture and how to communicate the result, using an authorized example approved by Rafay.\n\nWe would develop an original contribution to your requirements; any book excerpt would require separate permission.\n\nWould you like an outline before we develop the article?\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
       "needs": "Confirm Rafay can contribute and approve an original article. Agree length, rights and effort before drafting the full piece; do not promise a paid placement or assume excerpt permission.",
       "stage": "Draft ready",
@@ -217,7 +217,7 @@
         }
       ],
       "angle": "An accessible practitioner article about the judgment behind web testing",
-      "subject": "Contributor inquiry: the questions behind a useful web security assessment",
+      "subject": "Security Boulevard X Web Hacking Arsenal",
       "message": "Hi Security Boulevard editorial team,\n\nI’m Ruth, coordinating outreach for Rafay Baloch, author of Web Hacking Arsenal. I’m contacting you through your contributor route with an application-security article idea.\n\nProposed angle: the questions behind a useful web security assessment. The piece would explain how testers form a hypothesis, validate what they observe and give developers evidence they can act on, with a practical example agreed with Rafay.\n\nThe article would be written for security practitioners and engineering teams, with an emphasis on useful methodology. We can provide an approved bio and outline for editorial review.\n\nWould this be a fit for your application-security coverage?\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
       "needs": "Confirm author participation, final bio, originality and editorial requirements before submitting. Do not enter invented author contact information.",
       "stage": "Draft ready",
@@ -250,7 +250,7 @@
         }
       ],
       "angle": "Browser trust boundaries explained for working software engineers",
-      "subject": "Topic proposal: browser trust boundaries for web engineers",
+      "subject": "Software Engineering Radio X Web Hacking Arsenal",
       "message": "Hi Robert,\n\nI’m Ruth, coordinating outreach for Rafay Baloch, author of Web Hacking Arsenal. Following your topic-proposal format, I’d like to propose a discussion of browser trust boundaries for web engineers:\n\n• How browser security assumptions influence application design.\n• Where developers should distinguish client behavior from server-enforced controls.\n• How to turn an observed browser behavior into a testable security question.\n• What evidence makes a finding reproducible and useful to developers.\n• How to carry that learning into regression testing.\n\nRafay is open to a practical, vendor-neutral discussion. Supporting work: Web Hacking Arsenal, published by CRC Press, and its public companion repository. We would agree concrete examples with him before recording.\n\nWould this topic be worth developing for the show?\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193\nCompanion repository: https://github.com/RedSecLabs/Web-Hacking-Arsenal",
       "needs": "Check the archive for overlapping recent topics, obtain Rafay-approved examples and supporting talk/research links, and confirm any employer communication requirements. Expect a longer editorial queue; this is not a 30-day placement forecast.",
       "stage": "Draft ready",
