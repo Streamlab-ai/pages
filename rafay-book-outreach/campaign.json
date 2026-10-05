@@ -3,46 +3,13 @@
   "subtitle": "Outreach & opportunity tracker",
   "author": "Rafay Baloch",
   "owner": "Ruth Maclang",
-  "updatedAt": "2026-10-05T13:44:19Z",
+  "updatedAt": "2026-10-05T14:11:30Z",
   "researchDate": "2026-10-05",
-  "scope": "Initial outreach batch · Book visibility",
-  "phase": "Prepared for review",
+  "scope": "Book visibility · YouTube and blog-review prospecting",
+  "phase": "Expanding reviewer research",
   "bookUrl": "https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
   "bookRepository": "https://github.com/RedSecLabs/Web-Hacking-Arsenal",
   "prospects": [
-    {
-      "id": "critical-thinking",
-      "name": "Critical Thinking",
-      "channel": "Podcast",
-      "wave": 1,
-      "person": "Podcast team",
-      "contactLabel": "info@criticalthinkingpodcast.io",
-      "contactUrl": "mailto:info@criticalthinkingpodcast.io",
-      "fit": "An unusually close match for a technical conversation about browser security and web testing.",
-      "evidence": "The official site lists episode 193 on browser logic errors and XS-Leaks, with Jorian Woltjer. Its episode notes publish the contact address.",
-      "sources": [
-        {
-          "label": "Podcast and contact",
-          "url": "https://www.criticalthinkingpodcast.io/"
-        },
-        {
-          "label": "Browser security episode",
-          "url": "https://www.criticalthinkingpodcast.io/browser-logic-errors-xs-leaks-with-jorian-woltjer/"
-        }
-      ],
-      "angle": "How browser research becomes a repeatable web-testing method",
-      "subject": "Guest idea: browser findings → better web-testing questions",
-      "message": "Hi Critical Thinking team,\n\nYour episode on browser logic errors and XS-Leaks with Jorian Woltjer caught my attention while researching a guest fit.\n\nI’m Ruth, helping Rafay Baloch with outreach for Web Hacking Arsenal: A Practical Guide to Modern Web Pentesting. He is open to a technical conversation about browser security and web application testing.\n\nA possible angle: how researchers turn an unexpected browser behavior into a testable hypothesis, and what that teaches bug bounty hunters about finding gaps in their approach. I’d coordinate concrete examples with Rafay before recording.\n\nWould a short guest outline on that angle be useful?\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
-      "needs": "Confirm prior contact and have Rafay approve the outline and examples. No recording time is committed.",
-      "stage": "Draft ready",
-      "checkedOn": "2026-10-05",
-      "sentAt": null,
-      "followUpOn": null,
-      "response": null,
-      "outcome": null,
-      "outcomeUrl": null,
-      "followUp": "If sent and unanswered, consider one short follow-up after 5–7 business days; respect the outlet’s stated process and stop after a decline."
-    },
     {
       "id": "help-net-security",
       "name": "Help Net Security",
@@ -96,6 +63,39 @@
       "subject": "Book consideration for your bug bounty learning audience",
       "message": "Hi Katie,\n\nYour focus on making bug bounty learning approachable is why I’m reaching out.\n\nI’m Ruth, helping Rafay Baloch with outreach for Web Hacking Arsenal: A Practical Guide to Modern Web Pentesting. The publisher describes a mix of web-testing theory and practical examples, with chapter-wise code available publicly.\n\nWould you be open to a digital copy to assess whether it would be useful to your audience? You would have complete freedom to decide whether to cover it and what to say. I can arrange the copy with Rafay if it interests you.\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
       "needs": "Recheck recent channel activity and prior outreach, then confirm review-copy delivery. This is an editorial invitation, not a paid sponsorship request.",
+      "stage": "Draft ready",
+      "checkedOn": "2026-10-05",
+      "sentAt": null,
+      "followUpOn": null,
+      "response": null,
+      "outcome": null,
+      "outcomeUrl": null,
+      "followUp": "If sent and unanswered, consider one short follow-up after 5–7 business days; respect the outlet’s stated process and stop after a decline."
+    },
+    {
+      "id": "critical-thinking",
+      "name": "Critical Thinking",
+      "channel": "Podcast",
+      "wave": 1,
+      "person": "Podcast team",
+      "contactLabel": "info@criticalthinkingpodcast.io",
+      "contactUrl": "mailto:info@criticalthinkingpodcast.io",
+      "fit": "An unusually close match for a technical conversation about browser security and web testing.",
+      "evidence": "The official site lists episode 193 on browser logic errors and XS-Leaks, with Jorian Woltjer. Its episode notes publish the contact address.",
+      "sources": [
+        {
+          "label": "Podcast and contact",
+          "url": "https://www.criticalthinkingpodcast.io/"
+        },
+        {
+          "label": "Browser security episode",
+          "url": "https://www.criticalthinkingpodcast.io/browser-logic-errors-xs-leaks-with-jorian-woltjer/"
+        }
+      ],
+      "angle": "How browser research becomes a repeatable web-testing method",
+      "subject": "Guest idea: browser findings → better web-testing questions",
+      "message": "Hi Critical Thinking team,\n\nYour episode with Jorian Woltjer on browser logic errors and XS-Leaks caught my attention, particularly given the overlap with Rafay Baloch’s work in browser and web application security.\n\nI’m Ruth, helping Rafay with outreach around his book, Web Hacking Arsenal: A Practical Guide to Modern Web Pentesting.\n\nRafay is a cybersecurity researcher, author and founder of REDSECLABS. His research has included browser security vulnerabilities and CVEs, with previous work covered by outlets including the BBC and TechCrunch, and he has presented his research at conferences including Black Hat.\n\nRather than doing a conventional book interview, I thought there could be a strong technical conversation around how researchers move from unusual browser behaviour to exploitable security findings, where conventional web pentesting methodologies miss logic and browser-side issues, and how modern testers can develop better hypotheses rather than relying primarily on scanners and checklists.\n\nThe discussion could naturally draw on practical examples and techniques from Web Hacking Arsenal, which is focused on modern, hands-on web application penetration testing.\n\nWould that be of interest for an upcoming episode? I’d be happy to send over a short outline with a few possible technical angles.\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
+      "needs": "Body revised by Rafay. Confirm prior contact, final send approval and availability; coordinate specific technical examples before recording. No recording time is committed.",
       "stage": "Draft ready",
       "checkedOn": "2026-10-05",
       "sentAt": null,
@@ -170,39 +170,6 @@
       "outcome": null,
       "outcomeUrl": null,
       "followUp": "If sent and unanswered, consider one short follow-up after 5–7 business days; respect the outlet’s stated process and stop after a decline."
-    },
-    {
-      "id": "owasp-london",
-      "name": "OWASP London",
-      "channel": "Community talk",
-      "wave": 2,
-      "person": "Chapter organizers",
-      "contactLabel": "PaperCall speaker submission",
-      "contactUrl": "https://www.papercall.io/owasp-london",
-      "fit": "A credible practitioner community accepting technical talks, with a clear noncommercial rule.",
-      "evidence": "The chapter CFP accepts 10–15 minute lightning talks and longer talks. It prohibits commercial promotion and describes recording/streaming. No specific event slot is confirmed.",
-      "sources": [
-        {
-          "label": "Chapter CFP and requirements",
-          "url": "https://www.papercall.io/owasp-london"
-        },
-        {
-          "label": "OWASP chapter",
-          "url": "https://owasp.org/chapters/london"
-        }
-      ],
-      "angle": "A short, practical session about turning findings into reusable tests",
-      "subject": "Proposed lightning talk: one web finding, better testing questions",
-      "message": "Proposed title: One web finding, better testing questions\nFormat: 10–15 minute lightning talk\nSpeaker: Rafay Baloch\n\nProposed abstract:\nFinding a vulnerability is one step; understanding what else it implies is another. This session would explore how to move from a single web application finding to a small set of useful follow-on tests in an authorized environment. It would show how to separate observations from assumptions, document a reproducible case, and turn the result into a lesson developers can use.\n\nIntended audience: web application testers, bug bounty practitioners and AppSec engineers.\n\nTakeaways: a clearer testing hypothesis, a stronger evidence trail and a reusable regression question.\n\nCoordinator: Ruth Maclang. Rafay’s final abstract, example and availability will be confirmed before submission.\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
-      "needs": "Obtain Rafay’s approved abstract, speaker bio, recording agreement and London/remote availability before submission. Keep book promotion out of the talk; book may appear in the speaker bio. No travel commitment.",
-      "stage": "Draft ready",
-      "checkedOn": "2026-10-05",
-      "sentAt": null,
-      "followUpOn": null,
-      "response": null,
-      "outcome": null,
-      "outcomeUrl": null,
-      "followUp": "Follow the submission process. Record any acknowledgement before setting a follow-up; avoid duplicate form submissions."
     },
     {
       "id": "pentest-magazine",
@@ -298,6 +265,10 @@
   ],
   "decisions": [
     {
+      "title": "Expand YouTube and book-review blogs",
+      "body": "Research more relevant cybersecurity YouTubers and blogs that publish independent book reviews. Verify recent activity, review fit and a public contact route before adding a tailored pitch."
+    },
+    {
       "title": "Confirm the review-copy route",
       "body": "Provide a private digital-copy delivery route, or confirm Rafay will fulfill vetted requests. The full book stays private."
     },
@@ -306,11 +277,17 @@
       "body": "Share previous outreach and existing coverage so the first wave can be checked before sending."
     },
     {
-      "title": "Review the five first-wave pitches",
-      "body": "Confirm angles and author availability. Ruth will send from a dedicated outreach Gmail once it is ready."
+      "title": "Confirm the remaining first-wave pitches",
+      "body": "The Critical Thinking message has been revised. Confirm final send approval, other pitch angles and author availability before outreach."
     }
   ],
   "activity": [
+    {
+      "date": "2026-10-05",
+      "title": "Reviewer priorities updated",
+      "detail": "YouTube and independent blog reviews are the next research priority. The active list now contains eight prospects; existing relevant podcast pitches remain available. Critical Thinking draft revised. No prospect sends recorded.",
+      "kind": "Update"
+    },
     {
       "date": "2026-10-05",
       "title": "Amazon starting baseline recorded",
