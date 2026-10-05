@@ -5,8 +5,8 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="description" content="Public outreach tracker for Rafay Baloch’s Web Hacking Arsenal: researched prospects, draft pitches and verified campaign progress.">
 <title>Web Hacking Arsenal · Outreach dashboard</title>
-<link rel="stylesheet" href="styles.css">
-<script src="app.js" defer></script>
+<link rel="stylesheet" href="styles.css?v=20261005-baseline">
+<script src="app.js?v=20261005-baseline" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to dashboard</a>
@@ -24,6 +24,11 @@
   <p id="load-status" role="status" aria-live="polite"></p>
   <div id="metrics" class="metrics" aria-label="Campaign totals"></div>
   <p id="metric-note" class="fineprint"></p>
+  <section id="book-baseline" class="baseline-card" aria-labelledby="baseline-title" hidden>
+   <div class="baseline-intro"><p class="eyebrow">BOOK PERFORMANCE / STARTING BASELINE</p><h2 id="baseline-title">Amazon reader ratings</h2><p id="baseline-date" class="baseline-date"></p><div id="baseline-values" class="baseline-values"></div><div class="baseline-links"><a id="amazon-link" target="_blank" rel="noopener noreferrer">View book on Amazon ↗</a><a id="amazon-reviews-link" target="_blank" rel="noopener noreferrer">Read customer reviews ↗</a></div></div>
+   <div class="baseline-distribution"><p class="eyebrow">DISPLAYED RATING BREAKDOWN</p><div id="baseline-stars"></div></div>
+   <p id="baseline-note" class="baseline-note"></p>
+  </section>
   <div class="focus-banner"><div><span class="eyebrow">CURRENT FOCUS</span><h2>Start with five thoughtful approaches.</h2><p>First-wave pitches are ready for review. Confirm the copy-delivery route and previous contacts before sending.</p></div><button id="show-first" type="button">Review first wave <span aria-hidden="true">→</span></button></div>
  </section>
  <section id="prospects" class="section">

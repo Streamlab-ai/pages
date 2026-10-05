@@ -22,6 +22,7 @@ function render(){
  const p=campaign.prospects;
  text('updated','Updated '+formatDate(campaign.updatedAt,true)+' PHT');
  $('book-link').href=safeUrl(campaign.bookUrl);
+ renderBaseline();
  const values=[['Researched',p.length,'Prospects in this batch'],['Drafts ready',p.filter(x=>x.stage==='Draft ready').length,'Prepared for review'],['Messages sent',p.filter(x=>x.sentAt).length,'Recorded outreach'],['Positive replies',p.filter(x=>x.response?.type==='positive').length,'Confirmed interest'],['Opportunities',p.filter(x=>x.outcome).length,'Accepted or published'],['Published',p.filter(x=>x.outcome?.type==='published'&&x.outcomeUrl).length,'With an evidence link']];
  $('metrics').replaceChildren(...values.map(([label,value,note])=>{const e=node('div',undefined,'metric');e.append(node('p',label,'metric-label'),node('p',String(value),'metric-number'),node('p',note,'metric-note'));return e;}));
  text('metric-note',campaign.metricNote);text('methodology',campaign.methodology);
@@ -29,6 +30,24 @@ function render(){
  $('decisions').replaceChildren(...campaign.decisions.map((d,i)=>{const row=node('div',undefined,'decision'),body=node('div');body.append(node('h3',d.title),node('p',d.body));row.append(node('span',String(i+1).padStart(2,'0'),'decision-index'),body);return row;}));
  $('activity-items').replaceChildren(...campaign.activity.map(d=>{const row=node('article',undefined,'activity-item'),date=node('time',formatDate(d.date+'T12:00:00Z')+' · '+d.kind);date.dateTime=d.date;row.append(date,node('h3',d.title),node('p',d.detail));return row;}));
  renderRows();
+}
+function renderBaseline(){
+ const baseline=campaign.bookBaselines?.[0];
+ $('book-baseline').hidden=!baseline;
+ if(!baseline)return;
+ text('baseline-date','Observed '+formatDate(baseline.observedAt,true)+' PHT · '+baseline.platform);
+ $('baseline-values').replaceChildren();
+ const rating=node('div'),total=node('div');
+ rating.append(node('strong',baseline.rating.toFixed(1)+' / '+baseline.ratingScale),node('span','Average rating'));
+ total.append(node('strong',String(baseline.globalRatings)),node('span','Global ratings'));
+ $('baseline-values').append(rating,total);
+ $('amazon-link').href=safeUrl(campaign.amazonUrl||baseline.sourceUrl);
+ $('amazon-reviews-link').href=safeUrl(baseline.reviewPageUrl);
+ $('baseline-stars').replaceChildren(...[5,4,3,2,1].map(star=>{
+  const value=baseline.starPercentages[String(star)],row=node('div',undefined,'star-row'),track=node('div',undefined,'star-track'),fill=node('div',undefined,'star-fill');
+  track.setAttribute('aria-hidden','true');fill.style.width=Math.max(0,Math.min(100,value))+'%';track.append(fill);row.append(node('span',star+' star'),track,node('span',value+'%'));return row;
+ }));
+ text('baseline-note',baseline.note);
 }
 function renderRows(){
  if(!campaign)return;

@@ -3,7 +3,7 @@
   "subtitle": "Outreach & opportunity tracker",
   "author": "Rafay Baloch",
   "owner": "Ruth Maclang",
-  "updatedAt": "2026-10-05T13:28:20Z",
+  "updatedAt": "2026-10-05T13:44:19Z",
   "researchDate": "2026-10-05",
   "scope": "Initial outreach batch · Book visibility",
   "phase": "Prepared for review",
@@ -313,11 +313,40 @@
   "activity": [
     {
       "date": "2026-10-05",
+      "title": "Amazon starting baseline recorded",
+      "detail": "Amazon.com displayed 4.7/5 from 16 global ratings. Book link added; this existing baseline is separate from outreach results.",
+      "kind": "Baseline"
+    },
+    {
+      "date": "2026-10-05",
       "title": "Initial batch prepared",
       "detail": "Nine prospects researched against official sources; nine tailored drafts prepared. Five are prioritized for the first wave.",
       "kind": "Preparation"
     }
   ],
   "methodology": "This batch uses official outlet pages, publicly listed professional contact routes and the publisher’s book listing. Fit is an editorial judgment, not an expression of interest. Public contact information does not verify inbox delivery. Prior-contact deduplication is pending.",
-  "metricNote": "Counts cover this recorded batch only. A draft is not a sent message; a reply is not a confirmed booking; a booking is not published coverage."
+  "metricNote": "Counts cover this recorded batch only. A draft is not a sent message; a reply is not a confirmed booking; a booking is not published coverage.",
+  "amazonUrl": "https://www.amazon.com/dp/1032447192?lv=shuf&channelId=500&plpRedirect=mhFallback",
+  "bookBaselines": [
+    {
+      "platform": "Amazon.com",
+      "asin": "1032447192",
+      "selectedFormat": "Paperback",
+      "observedAt": "2026-10-05T13:42:52Z",
+      "sourceUrl": "https://www.amazon.com/dp/1032447192?lv=shuf&channelId=500&plpRedirect=mhFallback",
+      "reviewPageUrl": "https://www.amazon.com/portal/customer-reviews/1032447192/ref=cm_cr_dp_d_show_all_top?_encoding=UTF8&ie=UTF8&reviewerType=all_reviews",
+      "rating": 4.7,
+      "ratingScale": 5,
+      "globalRatings": 16,
+      "writtenReviewCount": null,
+      "starPercentages": {
+        "5": 80,
+        "4": 12,
+        "3": 8,
+        "2": 0,
+        "1": 0
+      },
+      "note": "Starting observation, recorded before any outreach from this batch. Amazon labels the total as global ratings, not a separately verified written-review count. The displayed aggregate may include other formats and countries. Later changes do not by themselves prove campaign attribution."
+    }
+  ]
 }
