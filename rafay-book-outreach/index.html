@@ -6,7 +6,7 @@
 <meta name="description" content="Public outreach tracker for Rafay Baloch’s Web Hacking Arsenal: researched prospects, draft pitches and verified campaign progress.">
 <title>Web Hacking Arsenal · Outreach dashboard</title>
 <link rel="stylesheet" href="styles.css?v=20261005-expanded">
-<script src="app.js?v=20261005-authorcopy" defer></script>
+<script src="app.js?v=20261005-draftreview" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to dashboard</a>
@@ -29,20 +29,20 @@
    <div class="baseline-distribution"><p class="eyebrow">DISPLAYED RATING BREAKDOWN</p><div id="baseline-stars"></div></div>
    <p id="baseline-note" class="baseline-note"></p>
   </section>
-  <div class="focus-banner"><div><span class="eyebrow">CURRENT FOCUS</span><h2>Review the expanded outreach list.</h2><p id="focus-summary">Review sources, contact routes and individual pitches. Rafay fulfills vetted review-copy requests directly.</p></div><button id="show-first" type="button">Review unsent drafts <span aria-hidden="true">→</span></button></div>
+  <div class="focus-banner"><div><span class="eyebrow">CURRENT FOCUS</span><h2>Review the expanded outreach list.</h2><p id="focus-summary">Review sources, contact routes and individual pitches. Rafay fulfills vetted review-copy requests directly.</p></div><button id="show-first" type="button">Review drafts <span aria-hidden="true">→</span></button></div>
  </section>
  <section id="prospects" class="section">
   <div class="section-heading"><div><p class="eyebrow">02 / RESEARCH & MESSAGES</p><h2>The prospect list</h2></div><span id="result-count" class="count-label"></span></div>
   <p class="section-description">Open a prospect to see the fit, source evidence, contact route and its individual pitch.</p>
   <div id="research-summary" class="research-summary" aria-label="Prospects by audience"></div><p id="research-holds" class="fineprint"></p>
-  <div class="filters"><label class="search-label"><span class="sr-only">Search prospects</span><input id="search" type="search" placeholder="Search prospects, people or angles…"></label><label><span class="sr-only">Filter by wave</span><select id="wave"><option value="all">All waves</option><option value="1">First wave · priority</option><option value="2">Second wave · next</option></select></label><label><span class="sr-only">Filter by audience</span><select id="channel"><option value="all">All audiences</option></select></label><label><span class="sr-only">Filter by review state</span><select id="review-state"><option value="all">All review states</option><option value="ready">Unsent drafts ready</option><option value="hold">Needs a check</option><option value="sent">Previously sent</option></select></label><button id="clear" class="quiet" type="button">Reset</button></div>
+  <div class="filters"><label class="search-label"><span class="sr-only">Search prospects</span><input id="search" type="search" placeholder="Search prospects, people or angles…"></label><label><span class="sr-only">Filter by wave</span><select id="wave"><option value="all">All waves</option><option value="1">First wave · priority</option><option value="2">Second wave · next</option></select></label><label><span class="sr-only">Filter by audience</span><select id="channel"><option value="all">All audiences</option></select></label><label><span class="sr-only">Filter by review state</span><select id="review-state"><option value="all">All review states</option><option value="ready">Drafts ready for review</option><option value="hold">Needs a check</option></select></label><button id="clear" class="quiet" type="button">Reset</button></div>
   <div class="table-shell"><table><thead><tr><th scope="col">Prospect / audience</th><th scope="col">Proposed angle</th><th scope="col">Wave</th><th scope="col">Status</th><th scope="col"><span class="sr-only">Draft</span></th></tr></thead><tbody id="prospect-rows"></tbody></table><p id="empty" hidden>No matching prospects. Try another search or reset the filters.</p></div>
   <div class="table-footer"><span>Research checked <strong>5 Oct 2026</strong> · Contact evidence and gaps are shown per prospect.</span><button id="export" type="button" class="text-button">Download this list ↓</button></div>
   <p class="fineprint" id="methodology"></p>
  </section>
  <div class="lower-grid">
  <section id="next-steps" class="section"><div class="section-heading"><div><p class="eyebrow">03 / READY TO MOVE</p><h2>Next campaign actions</h2></div></div><div id="decisions" class="decisions"></div></section>
- <section id="activity" class="section"><div class="section-heading"><div><p class="eyebrow">04 / CAMPAIGN LOG</p><h2>What has happened</h2></div></div><div id="activity-items"></div><div class="outcome-note"><strong>Results need evidence.</strong><p>Replies, interviews and published coverage appear here when recorded. No email is sent from this dashboard.</p></div></section>
+ <section id="activity" class="section"><div class="section-heading"><div><p class="eyebrow">04 / CAMPAIGN LOG</p><h2>What has happened</h2></div></div><div id="activity-items"></div><div class="outcome-note"><strong>Results need evidence.</strong><p>Replies, interviews and published coverage appear here when recorded. Email is handled separately from this review workspace.</p></div></section>
  </div>
  <footer><span>Maintained by Ruth Maclang · Author outreach</span><span>Shared published data · checks for updates every minute</span></footer>
  <noscript><p class="notice">JavaScript is needed for filters and drafts. <a href="campaign.json">Open the published campaign data</a>.</p></noscript>
