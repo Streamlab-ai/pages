@@ -3,10 +3,10 @@
   "subtitle": "Outreach & opportunity tracker",
   "author": "Rafay Baloch",
   "owner": "Ruth Maclang",
-  "updatedAt": "2026-10-05T14:15:50Z",
+  "updatedAt": "2026-10-05T14:38:46.235680+00:00",
   "researchDate": "2026-10-05",
-  "scope": "Book visibility · YouTube and blog-review prospecting",
-  "phase": "Expanding reviewer research",
+  "scope": "Book reviews, creator coverage and technical outreach",
+  "phase": "Reviewer-list expansion and response tracking",
   "bookUrl": "https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
   "bookRepository": "https://github.com/RedSecLabs/Web-Hacking-Arsenal",
   "prospects": [
@@ -33,21 +33,23 @@
       "angle": "Independent review for readers learning practical web pentesting",
       "subject": "Help Net Security X Web Hacking Arsenal",
       "message": "Hi Help Net Security editorial team,\n\nI saw your July review of CTRL+ALT+PWN and wanted to suggest a more technical title for your book coverage.\n\nI’m helping Rafay Baloch with outreach for Web Hacking Arsenal: A Practical Guide to Modern Web Pentesting, published by CRC Press. It focuses on web application testing, with practical examples and a public companion code repository.\n\nWould your team be interested in considering a digital review copy? I can coordinate delivery directly with the author. Any review would be entirely independent, with no expectation of a positive assessment.\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
-      "needs": "Confirm this title has not already been pitched and arrange private digital-copy fulfillment. Do not attach the book to the first email.",
-      "stage": "Draft ready",
+      "needs": "Initial email sent. Rafay will fulfill vetted review-copy requests directly. Check earlier author outreach before any follow-up; do not attach the full book publicly.",
+      "stage": "Sent",
       "checkedOn": "2026-10-05",
-      "sentAt": null,
-      "followUpOn": null,
+      "sentAt": "2026-10-05T14:26:12.995Z",
+      "followUpOn": "2026-10-12T04:00:00Z",
       "response": null,
       "outcome": null,
       "outcomeUrl": null,
-      "followUp": "If sent and unanswered, consider one short follow-up after 5–7 business days; respect the outlet’s stated process and stop after a decline."
+      "followUp": "If sent and unanswered, consider one short follow-up after 5–7 business days; respect the outlet’s stated process and stop after a decline.",
+      "sentVersion": "Original pitch sent 5 October 2026; private evidence retained.",
+      "draftStatus": "Original sent pitch"
     },
     {
       "id": "insiderphd",
       "name": "InsiderPhD",
       "channel": "YouTube / education",
-      "wave": 1,
+      "wave": 2,
       "person": "Katie Paxton-Fear",
       "contactLabel": "katie@insiderphd.dev",
       "contactUrl": "mailto:katie@insiderphd.dev",
@@ -61,16 +63,19 @@
       ],
       "angle": "An educator’s independent assessment of a web-pentesting learning resource",
       "subject": "Katie Paxton-Fear X Web Hacking Arsenal",
-      "message": "Hi Katie,\n\nYour focus on making bug bounty learning approachable is why I’m reaching out.\n\nI’m Ruth, helping Rafay Baloch with outreach for Web Hacking Arsenal: A Practical Guide to Modern Web Pentesting. The publisher describes a mix of web-testing theory and practical examples, with chapter-wise code available publicly.\n\nWould you be open to a digital copy to assess whether it would be useful to your audience? You would have complete freedom to decide whether to cover it and what to say. I can arrange the copy with Rafay if it interests you.\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
-      "needs": "Recheck recent channel activity and prior outreach, then confirm review-copy delivery. This is an editorial invitation, not a paid sponsorship request.",
-      "stage": "Draft ready",
+      "message": "Hi Katie,\n\nYour work making bug bounty and API security approachable stood out while researching educators for Web Hacking Arsenal: A Practical Guide to Modern Web Pentesting.\n\nI’m Ruth, coordinating outreach for its author, Rafay Baloch. His browser-security research and practical web-testing experience inform the book, which is published by CRC Press and has a public companion code repository.\n\nWould you be open to considering it for an independent review or learning-resource recommendation? Rafay can provide a digital review copy directly if it interests you. There is no obligation to cover it or give a positive assessment.\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
+      "needs": "Revised first-contact draft for review. Original email already sent; do not resend automatically. Verify current channel activity and resource-review fit before any further outreach. Rafay fulfills vetted copy requests.",
+      "stage": "Sent",
       "checkedOn": "2026-10-05",
-      "sentAt": null,
+      "sentAt": "2026-10-05T14:27:00Z",
       "followUpOn": null,
       "response": null,
       "outcome": null,
       "outcomeUrl": null,
-      "followUp": "If sent and unanswered, consider one short follow-up after 5–7 business days; respect the outlet’s stated process and stop after a decline."
+      "followUp": "If sent and unanswered, consider one short follow-up after 5–7 business days; respect the outlet’s stated process and stop after a decline.",
+      "sentVersion": "Original pitch sent 5 October 2026; private evidence retained.",
+      "holdReason": "Further outreach on hold pending recent channel activity and resource-review checks, per the new brief.",
+      "draftStatus": "Revised first-contact draft — not sent"
     },
     {
       "id": "critical-thinking",
@@ -95,15 +100,17 @@
       "angle": "How browser research becomes a repeatable web-testing method",
       "subject": "Critical Thinking X Web Hacking Arsenal",
       "message": "Hi Critical Thinking team,\n\nYour episode with Jorian Woltjer on browser logic errors and XS-Leaks caught my attention, particularly given the overlap with Rafay Baloch’s work in browser and web application security.\n\nI’m Ruth, helping Rafay with outreach around his book, Web Hacking Arsenal: A Practical Guide to Modern Web Pentesting.\n\nRafay is a cybersecurity researcher, author and founder of REDSECLABS. His research has included browser security vulnerabilities and CVEs, with previous work covered by outlets including the BBC and TechCrunch, and he has presented his research at conferences including Black Hat.\n\nRather than doing a conventional book interview, I thought there could be a strong technical conversation around how researchers move from unusual browser behaviour to exploitable security findings, where conventional web pentesting methodologies miss logic and browser-side issues, and how modern testers can develop better hypotheses rather than relying primarily on scanners and checklists.\n\nThe discussion could naturally draw on practical examples and techniques from Web Hacking Arsenal, which is focused on modern, hands-on web application penetration testing.\n\nWould that be of interest for an upcoming episode? I’d be happy to send over a short outline with a few possible technical angles.\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
-      "needs": "Body revised by Rafay. Confirm prior contact, final send approval and availability; coordinate specific technical examples before recording. No recording time is committed.",
-      "stage": "Draft ready",
+      "needs": "Initial email sent. Await a reply; coordinate approved examples and availability before any booking. Do not resend this initial pitch.",
+      "stage": "Sent",
       "checkedOn": "2026-10-05",
-      "sentAt": null,
-      "followUpOn": null,
+      "sentAt": "2026-10-05T14:28:50.601Z",
+      "followUpOn": "2026-10-12T04:00:00Z",
       "response": null,
       "outcome": null,
       "outcomeUrl": null,
-      "followUp": "If sent and unanswered, consider one short follow-up after 5–7 business days; respect the outlet’s stated process and stop after a decline."
+      "followUp": "If sent and unanswered, consider one short follow-up after 5–7 business days; respect the outlet’s stated process and stop after a decline.",
+      "sentVersion": "Original pitch sent 5 October 2026; private evidence retained.",
+      "draftStatus": "Original sent pitch"
     },
     {
       "id": "appsec-weekly",
@@ -128,7 +135,7 @@
       "angle": "Turning a web vulnerability finding into a useful engineering test",
       "subject": "Application Security Weekly X Web Hacking Arsenal",
       "message": "Suggested show: Application Security Weekly\nGuest: Rafay Baloch\nProposed topic: From an isolated web finding to an actionable AppSec test\n\nReason:\nYour recent discussion on moving from bug bounty bugs to more secure systems is a strong fit for a practical follow-on. Rafay is the author of Web Hacking Arsenal and is open to a technical discussion drawing on web application and browser-security work.\n\nTopic:\nHow to document a finding clearly, test the assumptions around it in an authorized environment, and turn that learning into a useful regression check for developers. The proposed discussion would use examples agreed with Rafay and focus on engineering lessons.\n\nSubmitter: Ruth Maclang, coordinating author outreach. Please route scheduling through me initially.\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
-      "needs": "Rafay must approve the technical scope and bio. Ruth must complete sender details and answer PR/vendor disclosures truthfully; do not authorize a direct calendar invite or select paid placement by default.",
+      "needs": "Official form requires submitter details, guest email, bio, PR/vendor disclosures and show selection. Use truthful details; no guest email or direct-calendar permission has been supplied. Not submitted.",
       "stage": "Draft ready",
       "checkedOn": "2026-10-05",
       "sentAt": null,
@@ -136,7 +143,8 @@
       "response": null,
       "outcome": null,
       "outcomeUrl": null,
-      "followUp": "Follow the submission process. Record any acknowledgement before setting a follow-up; avoid duplicate form submissions."
+      "followUp": "Follow the submission process. Record any acknowledgement before setting a follow-up; avoid duplicate form submissions.",
+      "draftStatus": "First-contact draft — not sent"
     },
     {
       "id": "absolute-appsec",
@@ -161,20 +169,22 @@
       "angle": "Why an isolated finding should change the next testing question",
       "subject": "Absolute AppSec X Web Hacking Arsenal",
       "message": "Hi Seth and Ken,\n\nYour recent episode topics on CRLF-powered desynchronization and IDOR prevention suggested a good fit for Rafay Baloch’s web-testing experience.\n\nI’m helping Rafay with outreach for his book, Web Hacking Arsenal. A possible discussion for Absolute AppSec: how a single finding should change the questions a tester asks next, and how to communicate those lessons to an engineering team.\n\nHe is open to interviews, and I can work with him on a concrete, vendor-neutral outline rather than a general book overview.\n\nWould that topic fit your guest queue?\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
-      "needs": "Confirm prior contact, author-approved examples and availability before scheduling.",
-      "stage": "Draft ready",
+      "needs": "Initial email sent. Await a reply; coordinate approved examples and availability before any booking. Do not resend this initial pitch.",
+      "stage": "Sent",
       "checkedOn": "2026-10-05",
-      "sentAt": null,
-      "followUpOn": null,
+      "sentAt": "2026-10-05T14:29:25.442Z",
+      "followUpOn": "2026-10-12T04:00:00Z",
       "response": null,
       "outcome": null,
       "outcomeUrl": null,
-      "followUp": "If sent and unanswered, consider one short follow-up after 5–7 business days; respect the outlet’s stated process and stop after a decline."
+      "followUp": "If sent and unanswered, consider one short follow-up after 5–7 business days; respect the outlet’s stated process and stop after a decline.",
+      "sentVersion": "Original pitch sent 5 October 2026; private evidence retained.",
+      "draftStatus": "Original sent pitch"
     },
     {
       "id": "pentest-magazine",
       "name": "PenTest Magazine",
-      "channel": "Editorial article",
+      "channel": "Book review / interview",
       "wave": 2,
       "person": "Editorial team",
       "contactLabel": "hello@pentestmag.com",
@@ -187,23 +197,25 @@
           "url": "https://pentestmag.com/about/"
         }
       ],
-      "angle": "An original practical article supported by the author’s experience",
+      "angle": "Independent book review or a technical interview anchored in Web Hacking Arsenal",
       "subject": "PenTest Magazine X Web Hacking Arsenal",
-      "message": "Hi PenTest editorial team,\n\nYour invitation for practical tutorials and case studies looks like a fit for a contribution from Rafay Baloch, author of Web Hacking Arsenal.\n\nI’m coordinating his outreach. Would you consider an outline for an original article on turning a web vulnerability finding into a repeatable testing method? The proposed piece would cover the testing question, evidence to capture and how to communicate the result, using an authorized example approved by Rafay.\n\nWe would develop an original contribution to your requirements; any book excerpt would require separate permission.\n\nWould you like an outline before we develop the article?\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
-      "needs": "Confirm Rafay can contribute and approve an original article. Agree length, rights and effort before drafting the full piece; do not promise a paid placement or assume excerpt permission.",
-      "stage": "Draft ready",
+      "message": "Hi PenTest editorial team,\n\nYour focus on practical penetration-testing tutorials and case studies looks like a fit for Web Hacking Arsenal: A Practical Guide to Modern Web Pentesting.\n\nI’m Ruth, helping author and browser-security researcher Rafay Baloch with outreach. Would your editors consider an independent review of the book, or a book-linked interview about how testers move from unusual browser behavior to better web-testing hypotheses?\n\nRafay can supply a digital review copy directly to a vetted reviewer. For an interview, we could develop angles on browser trust boundaries, logic flaws missed by checklist-led testing, or turning a finding into useful lessons for developers.\n\nWould either format fit your coverage? Any review would be entirely independent.\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
+      "needs": "Original contributed-article pitch already sent. This replacement prioritizes a book review or book-linked interview, as requested in the new brief. Do not send it as a duplicate initial email; select the appropriate next contact after review.",
+      "stage": "Sent",
       "checkedOn": "2026-10-05",
-      "sentAt": null,
+      "sentAt": "2026-10-05T14:30:00.156Z",
       "followUpOn": null,
       "response": null,
       "outcome": null,
       "outcomeUrl": null,
-      "followUp": "If sent and unanswered, consider one short follow-up after 5–7 business days; respect the outlet’s stated process and stop after a decline."
+      "followUp": "If sent and unanswered, consider one short follow-up after 5–7 business days; respect the outlet’s stated process and stop after a decline.",
+      "sentVersion": "Original pitch sent 5 October 2026; private evidence retained.",
+      "draftStatus": "Revised first-contact draft — not sent"
     },
     {
       "id": "security-boulevard",
       "name": "Security Boulevard",
-      "channel": "Editorial article",
+      "channel": "Book review / interview",
       "wave": 2,
       "person": "Contributor editorial team",
       "contactLabel": "Write for Security Boulevard form",
@@ -216,10 +228,10 @@
           "url": "https://securityboulevard.com/write-for-security-boulevard/"
         }
       ],
-      "angle": "An accessible practitioner article about the judgment behind web testing",
+      "angle": "Book-focused coverage for application-security practitioners",
       "subject": "Security Boulevard X Web Hacking Arsenal",
-      "message": "Hi Security Boulevard editorial team,\n\nI’m Ruth, coordinating outreach for Rafay Baloch, author of Web Hacking Arsenal. I’m contacting you through your contributor route with an application-security article idea.\n\nProposed angle: the questions behind a useful web security assessment. The piece would explain how testers form a hypothesis, validate what they observe and give developers evidence they can act on, with a practical example agreed with Rafay.\n\nThe article would be written for security practitioners and engineering teams, with an emphasis on useful methodology. We can provide an approved bio and outline for editorial review.\n\nWould this be a fit for your application-security coverage?\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
-      "needs": "Confirm author participation, final bio, originality and editorial requirements before submitting. Do not enter invented author contact information.",
+      "message": "Hi Security Boulevard editorial team,\n\nYour application-security coverage and contributor route prompted me to ask about a book-focused editorial opportunity.\n\nI’m Ruth, coordinating outreach for Rafay Baloch, author of Web Hacking Arsenal: A Practical Guide to Modern Web Pentesting, published by CRC Press. His work centers on browser security and practical web application testing.\n\nWould you consider the book for an independent review, resource mention, or a technical interview with Rafay? Possible interview angles include browser trust boundaries and how testers develop hypotheses beyond routine scanning.\n\nIf a review is a fit, Rafay can provide a digital copy directly to a vetted reviewer. There is no expectation of a positive review or a commitment to publish.\n\nWould this belong with your editorial team, or is there a better book-coverage contact?\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193",
+      "needs": "Revised initial inquiry; not submitted. Contributor route is verified, but independent book-review acceptance is not. Confirm the appropriate editorial contact and truthful submitter bio before submission.",
       "stage": "Draft ready",
       "checkedOn": "2026-10-05",
       "sentAt": null,
@@ -227,7 +239,8 @@
       "response": null,
       "outcome": null,
       "outcomeUrl": null,
-      "followUp": "Follow the submission process. Record any acknowledgement before setting a follow-up; avoid duplicate form submissions."
+      "followUp": "Follow the submission process. Record any acknowledgement before setting a follow-up; avoid duplicate form submissions.",
+      "draftStatus": "Revised first-contact draft — not sent"
     },
     {
       "id": "se-radio",
@@ -252,36 +265,44 @@
       "angle": "Browser trust boundaries explained for working software engineers",
       "subject": "Software Engineering Radio X Web Hacking Arsenal",
       "message": "Hi Robert,\n\nI’m Ruth, coordinating outreach for Rafay Baloch, author of Web Hacking Arsenal. Following your topic-proposal format, I’d like to propose a discussion of browser trust boundaries for web engineers:\n\n• How browser security assumptions influence application design.\n• Where developers should distinguish client behavior from server-enforced controls.\n• How to turn an observed browser behavior into a testable security question.\n• What evidence makes a finding reproducible and useful to developers.\n• How to carry that learning into regression testing.\n\nRafay is open to a practical, vendor-neutral discussion. Supporting work: Web Hacking Arsenal, published by CRC Press, and its public companion repository. We would agree concrete examples with him before recording.\n\nWould this topic be worth developing for the show?\n\nBest,\nRuth Maclang\nOutreach for Rafay Baloch\n\nBook reference: https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193\nCompanion repository: https://github.com/RedSecLabs/Web-Hacking-Arsenal",
-      "needs": "Check the archive for overlapping recent topics, obtain Rafay-approved examples and supporting talk/research links, and confirm any employer communication requirements. Expect a longer editorial queue; this is not a 30-day placement forecast.",
-      "stage": "Draft ready",
+      "needs": "Initial email sent. Await a reply; coordinate approved examples and availability before any booking. Do not resend this initial pitch.",
+      "stage": "Sent",
       "checkedOn": "2026-10-05",
-      "sentAt": null,
-      "followUpOn": null,
+      "sentAt": "2026-10-05T14:30:36.854Z",
+      "followUpOn": "2026-10-12T04:00:00Z",
       "response": null,
       "outcome": null,
       "outcomeUrl": null,
-      "followUp": "If sent and unanswered, consider one short follow-up after 5–7 business days; respect the outlet’s stated process and stop after a decline."
+      "followUp": "If sent and unanswered, consider one short follow-up after 5–7 business days; respect the outlet’s stated process and stop after a decline.",
+      "sentVersion": "Original pitch sent 5 October 2026; private evidence retained.",
+      "draftStatus": "Original sent pitch"
     }
   ],
   "decisions": [
     {
-      "title": "Expand YouTube and book-review blogs",
-      "body": "Research more relevant cybersecurity YouTubers and blogs that publish independent book reviews. Verify recent activity, review fit and a public contact route before adding a tailored pitch."
+      "title": "Qualify the expanded reviewer list",
+      "body": "Research 40–60 relevant opportunities using comparable-book reviews, current activity, official contact routes and audience fit. Prioritize quality over list size."
     },
     {
-      "title": "Confirm the review-copy route",
-      "body": "Provide a private digital-copy delivery route, or confirm Rafay will fulfill vetted requests. The full book stays private."
+      "title": "Route interested reviewers to Rafay",
+      "body": "Rafay fulfills vetted digital review-copy requests directly. Collect recipient details and proposed coverage privately; do not attach the full book to initial outreach."
     },
     {
-      "title": "Avoid duplicate approaches",
-      "body": "Share previous outreach and existing coverage so the first wave can be checked before sending."
+      "title": "Review revised drafts before further contact",
+      "body": "Revised first-contact pitches are separate from original sent messages. Avoid duplicate sends; hold further InsiderPhD outreach until activity and review-fit checks are complete."
     },
     {
-      "title": "Confirm the remaining first-wave pitches",
-      "body": "The Critical Thinking message has been revised. Confirm final send approval, other pitch angles and author availability before outreach."
+      "title": "Record actual outcomes",
+      "body": "Track replies, accepted copies, review commitments, interviews, published coverage and permissioned endorsements separately. A sent email is not proof of delivery or coverage."
     }
   ],
   "activity": [
+    {
+      "date": "2026-10-05",
+      "title": "Six email pitches sent; new brief applied",
+      "detail": "Six individual sends verified in Gmail. The new strategy prioritizes comparable-book reviewers; revised initial drafts are retained separately from send history. Two website submissions remain unsent.",
+      "kind": "Outreach"
+    },
     {
       "date": "2026-10-05",
       "title": "Reviewer priorities updated",
@@ -301,7 +322,7 @@
       "kind": "Preparation"
     }
   ],
-  "methodology": "This batch uses official outlet pages, publicly listed professional contact routes and the publisher’s book listing. Fit is an editorial judgment, not an expression of interest. Public contact information does not verify inbox delivery. Prior-contact deduplication is pending.",
+  "methodology": "Official outlet and reviewer sources underpin audience fit, comparable-book evidence and public contact routes. New prospects require current-activity and duplicate-contact checks. Sent history is preserved when a draft is revised; no review or placement is guaranteed.",
   "metricNote": "Counts cover this recorded batch only. A draft is not a sent message; a reply is not a confirmed booking; a booking is not published coverage.",
   "amazonUrl": "https://www.amazon.com/dp/1032447192?lv=shuf&channelId=500&plpRedirect=mhFallback",
   "bookBaselines": [
@@ -325,5 +346,13 @@
       },
       "note": "Starting observation, recorded before any outreach from this batch. Amazon labels the total as global ratings, not a separately verified written-review count. The displayed aggregate may include other formats and countries. Later changes do not by themselves prove campaign attribution."
     }
-  ]
+  ],
+  "researchGoal": {
+    "totalMin": 40,
+    "totalMax": 60,
+    "editorialMin": 15,
+    "creatorMin": 15,
+    "podcastNewsletterMin": 10,
+    "copyFulfillment": "Rafay supplies vetted review copies directly."
+  }
 }

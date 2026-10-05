@@ -6,7 +6,7 @@
 <meta name="description" content="Public outreach tracker for Rafay Baloch’s Web Hacking Arsenal: researched prospects, draft pitches and verified campaign progress.">
 <title>Web Hacking Arsenal · Outreach dashboard</title>
 <link rel="stylesheet" href="styles.css?v=20261005-baseline">
-<script src="app.js?v=20261005-baseline" defer></script>
+<script src="app.js?v=20261005-strategy" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to dashboard</a>
@@ -17,7 +17,7 @@
  <div class="sidebar-bottom"><span class="avatar">RB</span><div><strong>Rafay Baloch</strong><small>Book visibility campaign</small></div></div>
 </aside>
 <main id="main">
- <header class="topbar"><span>CAMPAIGN WORKSPACE <span class="separator">/</span> <strong>Initial batch</strong></span><span class="public-label"><span class="dot"></span> Public view</span></header>
+ <header class="topbar"><span>CAMPAIGN WORKSPACE <span class="separator">/</span> <strong>Reviewer campaign</strong></span><span class="public-label"><span class="dot"></span> Public view</span></header>
  <section id="overview" class="overview">
   <div class="heading-row"><div><p class="eyebrow">WEB HACKING ARSENAL</p><h1>Outreach dashboard<span>.</span></h1><p class="intro">Relevant audiences. Personal pitches. Progress you can verify.</p></div><a class="book-link" id="book-link" href="https://www.routledge.com/Web-Hacking-Arsenal-A-Practical-Guide-to-Modern-Web-Pentesting/Baloch/p/book/9781032447193" target="_blank" rel="noopener noreferrer">View the book <span aria-hidden="true">↗</span></a></div>
   <div class="sync-row"><span id="updated">Loading published data…</span><button id="refresh" type="button">↻ Refresh</button></div>
@@ -29,7 +29,7 @@
    <div class="baseline-distribution"><p class="eyebrow">DISPLAYED RATING BREAKDOWN</p><div id="baseline-stars"></div></div>
    <p id="baseline-note" class="baseline-note"></p>
   </section>
-  <div class="focus-banner"><div><span class="eyebrow">CURRENT FOCUS</span><h2>Find more YouTube and blog reviewers.</h2><p>Expand the list with relevant YouTubers and independent book-review blogs. Existing pitches remain available; confirm send approval, copy delivery and previous contacts before outreach.</p></div><button id="show-first" type="button">Review first wave <span aria-hidden="true">→</span></button></div>
+  <div class="focus-banner"><div><span class="eyebrow">CURRENT FOCUS</span><h2>Find more YouTube and blog reviewers.</h2><p>Build 40–60 qualified opportunities from comparable-book reviews and relevant technical audiences. Rafay fulfills vetted review-copy requests directly. Revised drafts and actual send history are tracked separately.</p></div><button id="show-first" type="button">Review first wave <span aria-hidden="true">→</span></button></div>
  </section>
  <section id="prospects" class="section">
   <div class="section-heading"><div><p class="eyebrow">02 / RESEARCH & MESSAGES</p><h2>The prospect list</h2></div><span id="result-count" class="count-label"></span></div>
@@ -40,11 +40,11 @@
   <p class="fineprint" id="methodology"></p>
  </section>
  <div class="lower-grid">
- <section id="next-steps" class="section"><div class="section-heading"><div><p class="eyebrow">03 / READY TO MOVE</p><h2>Before the first send</h2></div></div><div id="decisions" class="decisions"></div></section>
+ <section id="next-steps" class="section"><div class="section-heading"><div><p class="eyebrow">03 / READY TO MOVE</p><h2>Next campaign actions</h2></div></div><div id="decisions" class="decisions"></div></section>
  <section id="activity" class="section"><div class="section-heading"><div><p class="eyebrow">04 / CAMPAIGN LOG</p><h2>What has happened</h2></div></div><div id="activity-items"></div><div class="outcome-note"><strong>Results need evidence.</strong><p>Replies, interviews and published coverage appear here when recorded. No email is sent from this dashboard.</p></div></section>
  </div>
  <footer><span>Maintained by Ruth Maclang · Author outreach</span><span>Shared published data · checks for updates every minute</span></footer>
  <noscript><p class="notice">JavaScript is needed for filters and drafts. <a href="campaign.json">Open the published campaign data</a>.</p></noscript>
 </main>
-<dialog id="prospect-dialog" aria-labelledby="dialog-title"><div class="dialog-heading"><div><p class="eyebrow" id="dialog-channel"></p><h2 id="dialog-title"></h2></div><button id="close-dialog" type="button" aria-label="Close prospect details">×</button></div><div class="dialog-body"><div class="research-panel"><div id="dialog-status"></div><h3>Why this prospect</h3><p id="dialog-fit"></p><h3>What we verified</h3><p id="dialog-evidence"></p><div id="dialog-sources" class="sources"></div><h3>Contact route</h3><p id="dialog-person"></p><a id="dialog-contact" target="_blank" rel="noopener noreferrer"></a><h3>Before sending</h3><p id="dialog-needs"></p><h3>Follow-up approach</h3><p id="dialog-follow-up"></p><div id="dialog-outcome"></div></div><div class="pitch-panel"><div class="pitch-heading"><div><p class="eyebrow">INDIVIDUAL PITCH</p><h3>Draft for review</h3></div><button id="copy-message" type="button">Copy draft</button></div><div class="subject-box"><span>SUBJECT / PROPOSAL TITLE</span><p id="dialog-subject"></p></div><pre id="dialog-message"></pre><p class="draft-note">Prepared from the publisher’s listing, official outlet pages and the author’s stated areas of expertise. Proposed technical examples require author review.</p><p id="copy-status" role="status" aria-live="polite"></p></div></div></dialog>
+<dialog id="prospect-dialog" aria-labelledby="dialog-title"><div class="dialog-heading"><div><p class="eyebrow" id="dialog-channel"></p><h2 id="dialog-title"></h2></div><button id="close-dialog" type="button" aria-label="Close prospect details">×</button></div><div class="dialog-body"><div class="research-panel"><div id="dialog-status"></div><h3>Why this prospect</h3><p id="dialog-fit"></p><h3>What we verified</h3><p id="dialog-evidence"></p><div id="dialog-sources" class="sources"></div><h3>Contact route</h3><p id="dialog-person"></p><a id="dialog-contact" target="_blank" rel="noopener noreferrer"></a><h3>Before sending</h3><p id="dialog-needs"></p><h3>Follow-up approach</h3><p id="dialog-follow-up"></p><div id="dialog-outcome"></div></div><div class="pitch-panel"><div class="pitch-heading"><div><p class="eyebrow">INDIVIDUAL PITCH</p><h3 id="draft-version">First-contact draft</h3></div><button id="copy-message" type="button">Copy draft</button></div><div class="subject-box"><span>SUBJECT / PROPOSAL TITLE</span><p id="dialog-subject"></p></div><pre id="dialog-message"></pre><p class="draft-note">Prepared from the publisher’s listing, official outlet pages and the author’s stated areas of expertise. Proposed technical examples require author review.</p><p id="copy-status" role="status" aria-live="polite"></p></div></div></dialog>
 </body></html>

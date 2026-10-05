@@ -63,16 +63,16 @@ function renderRows(){
 function showProspect(id,open=true){
  const p=campaign.prospects.find(x=>x.id===id);if(!p)return;currentId=id;
  text('dialog-title',p.name);text('dialog-channel',p.channel+' / '+(p.wave===1?'FIRST WAVE':'RESERVE'));
- const details=node('div');details.append(node('span',p.stage,'pill'));if(p.sentAt)details.append(node('p','Sent '+formatDate(p.sentAt)));if(p.followUpOn)details.append(node('p','Follow-up due '+formatDate(p.followUpOn)));
+ const details=node('div');details.append(node('span',p.stage,'pill'));if(p.sentAt)details.append(node('p','Original pitch sent '+formatDate(p.sentAt)));if(p.followUpOn)details.append(node('p','Follow-up review due '+formatDate(p.followUpOn)));if(p.holdReason)details.append(node('p',p.holdReason));
  $('dialog-status').replaceChildren(details);text('dialog-fit',p.fit);text('dialog-evidence',p.evidence);text('dialog-person',p.person);text('dialog-contact',p.contactLabel);$('dialog-contact').href=safeUrl(p.contactUrl);
  $('dialog-sources').replaceChildren(...p.sources.map(s=>link(s.label,s.url)));
- text('dialog-needs',p.needs);text('dialog-follow-up',p.followUp);text('dialog-subject',p.subject);text('dialog-message',p.message);text('copy-status','');
+ text('dialog-needs',p.needs);text('dialog-follow-up',p.followUp);text('dialog-subject',p.subject);text('dialog-message',p.message);text('copy-status','');text('draft-version',p.draftStatus||'First-contact draft — not sent');
  const outcome=$('dialog-outcome');outcome.replaceChildren();if(p.response){outcome.append(node('h3','Recorded reply'),node('p',p.response.summary));}if(p.outcome){outcome.append(node('h3','Confirmed opportunity'),node('p',p.outcome.summary));if(p.outcomeUrl)outcome.append(link('View evidence',p.outcomeUrl));}
  if(open){$('prospect-dialog').showModal();$('close-dialog').focus();}
 }
 $('close-dialog').onclick=()=>$('prospect-dialog').close();
 $('prospect-dialog').addEventListener('click',e=>{if(e.target===$('prospect-dialog')){const r=e.target.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)e.target.close();}});
-$('copy-message').onclick=async()=>{const p=campaign.prospects.find(x=>x.id===currentId);try{await navigator.clipboard.writeText('Subject: '+p.subject+'\n\n'+p.message);text('copy-status','Copied subject and draft. Nothing has been sent.');}catch{const range=document.createRange();range.selectNodeContents($('dialog-message'));window.getSelection().removeAllRanges();window.getSelection().addRange(range);text('copy-status','Clipboard unavailable. Draft selected; use your device’s Copy command.');}};
+$('copy-message').onclick=async()=>{const p=campaign.prospects.find(x=>x.id===currentId);try{await navigator.clipboard.writeText('Subject: '+p.subject+'\n\n'+p.message);text('copy-status',p.sentAt?'Copied. An earlier pitch was already sent; check history before further contact.':'Copied subject and draft. Copying does not send a message.');}catch{const range=document.createRange();range.selectNodeContents($('dialog-message'));window.getSelection().removeAllRanges();window.getSelection().addRange(range);text('copy-status','Clipboard unavailable. Draft selected; use your device’s Copy command.');}};
 ['search','wave','channel'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',renderRows));
 $('clear').onclick=()=>{$('search').value='';$('wave').value='all';$('channel').value='all';renderRows();};
 $('show-first').onclick=()=>{$('search').value='';$('channel').value='all';$('wave').value='1';renderRows();$('prospects').scrollIntoView();$('wave').focus({preventScroll:true});};
